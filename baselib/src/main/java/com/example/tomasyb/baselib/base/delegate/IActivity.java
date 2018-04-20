@@ -14,15 +14,23 @@ public interface IActivity {
     boolean useEventBus();
 
     /**
-     * 初始化 View, 如果initView(Bundle)} 返回 0,
+     * 初始化 View, 如果saveInstanceState 返回 0,
      * 框架则不会调用Activity#setContentView(int)}
      */
-    void initView(@Nullable Bundle saveInstanceState);
+    int initView(@Nullable Bundle saveInstanceState);
 
     /**
-     *
+     * 初始化数据
      * @param saveInstanceState
      */
     void initData(@Nullable Bundle saveInstanceState);
 
+    /**
+     *
+     * @return 这个Activity是否使用Fragment
+     * 据此判断是否注册。FragmentManager.FragmentLifecycleCallbacks
+     * 返回false 此Activity不需要绑定奶Fragment，你再在这个Activity绑定继承于BaseFragment
+     * 的Fragment将不再起任何作用
+     */
+    boolean useFragment();
 }
