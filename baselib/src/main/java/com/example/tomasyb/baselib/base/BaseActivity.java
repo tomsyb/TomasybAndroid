@@ -20,7 +20,7 @@ import butterknife.Unbinder;
 public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IActivity {
     //黄油刀
     private Unbinder mBinder;
-    @Inject
+
     @Nullable
     private P mPresenter;//如果当前页面逻辑简单可以为null
 
