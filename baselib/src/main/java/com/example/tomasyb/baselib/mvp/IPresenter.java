@@ -5,14 +5,8 @@ package com.example.tomasyb.baselib.mvp;
  * Created by Tomasyb on 4/28/2016
  */
 public interface IPresenter {
-
-    /**
-     * 做一些初始化操作
-     */
+    //初始化
     void onStart();
-
-    /**
-     * 在框架中Activity#onDestroy() 时会默认调用  IPresenter#onDestroy()
-     */
+    //在Activity的onDestroy()默认调用
     void onDestroy();
 }

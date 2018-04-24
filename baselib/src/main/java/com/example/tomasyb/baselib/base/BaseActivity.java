@@ -6,9 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.tomasyb.baselib.base.delegate.IActivity;
 import com.example.tomasyb.baselib.mvp.IPresenter;
-
-import javax.inject.Inject;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
