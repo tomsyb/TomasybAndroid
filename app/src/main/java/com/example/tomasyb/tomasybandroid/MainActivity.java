@@ -10,6 +10,8 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.example.tomasyb.tomasybandroid.example.dagger.DaggerStudyActivity;
+import com.example.tomasyb.utilslib.utils.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 helper.setOnClickListener(R.id.item_ac_main_btn, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        ActivityUtils.startActivity(DaggerStudyActivity.class);
                     }
                 });
             }

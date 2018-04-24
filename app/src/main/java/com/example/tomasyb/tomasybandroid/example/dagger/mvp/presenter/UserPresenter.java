@@ -16,6 +16,6 @@ public class UserPresenter {
         this.mUser = mUser;
     }
     public void showUserName(){
-        activity.showUserName();
+        activity.showUserName(mUser.getName());
     }
 }

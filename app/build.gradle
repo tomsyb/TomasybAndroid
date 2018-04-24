@@ -36,4 +36,5 @@ dependencies {
     annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
         exclude module: 'support-annotations'
     }
+    implementation project(':utilslib')
 }
