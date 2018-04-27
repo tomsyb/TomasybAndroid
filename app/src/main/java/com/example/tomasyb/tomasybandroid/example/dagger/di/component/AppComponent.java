@@ -11,6 +11,7 @@ import retrofit2.Retrofit;
 
 /**
  * Created by Tomasyb on 2018-4-25.
+ * 全局
  */
 @Singleton
 @Component(modules = ApiModule.class)

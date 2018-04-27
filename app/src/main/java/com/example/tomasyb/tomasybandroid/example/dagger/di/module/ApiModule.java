@@ -1,5 +1,7 @@
 package com.example.tomasyb.tomasybandroid.example.dagger.di.module;
 
+import com.example.tomasyb.tomasybandroid.example.dagger.entity.User;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -41,5 +43,11 @@ public class ApiModule {
                .build();
        return retrofit;
    }
+    @Provides
+    @Singleton
+    User provideUser(){
+        return new User("name form ApiProvide");
+    }
+
 
 }

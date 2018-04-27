@@ -3,7 +3,7 @@
     package="com.example.tomasyb.tomasybandroid">
 
     <application
-        android:name="com.example.tomasyb.tomasybandroid.base.IApplication"
+        android:name=".base.IApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,8 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--dagger2学习-->
-        <activity android:name=".example.dagger.DaggerStudyActivity"></activity>
+        <!-- dagger2学习 -->
+        <activity android:name=".example.dagger.DaggerStudyActivity" />
+        <activity android:name=".example.callback.CallBackActivity"></activity>
     </application>
 
 </manifest>

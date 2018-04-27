@@ -1,7 +1,6 @@
 package com.example.tomasyb.tomasybandroid;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initView();
         initData();
-
     }
 
     private void initView() {

@@ -30,10 +30,7 @@ public class UserModule {
     public DaggerStudyActivity provideDaggerStudyActivity(){
         return activity;
     }
-    @Provides
-    public User provideUser(){
-        return new User("我是用户");
-    }
+
     //参数是由上面提供
     @Provides
     public UserPresenter provideUserPresenter(DaggerStudyActivity activity,User user){
