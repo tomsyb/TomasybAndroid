@@ -1,5 +1,8 @@
 # 2018
 
+## **面试指导文章**
+
+[［干货］2017已来，最全面试总结——这些Android面试题你一定需要](https://blog.csdn.net/xhmj12/article/details/54730883)
 ## **一、Activity的生命周期**
 
 onCreate()-->onStart()-->onResume()-->onPause()-->onStop()-->onDestroy()

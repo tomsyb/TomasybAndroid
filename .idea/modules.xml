@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselib/baselib.iml" filepath="$PROJECT_DIR$/baselib/baselib.iml" />
       <module fileurl="file://$PROJECT_DIR$/utilslib/utilslib.iml" filepath="$PROJECT_DIR$/utilslib/utilslib.iml" />
+      <module fileurl="file://D:\2017\Tomasyb\TomasybAndroid\utilslib\utilslib.iml" filepath="D:\2017\Tomasyb\TomasybAndroid\utilslib\utilslib.iml" />
     </modules>
   </component>
 </project>
