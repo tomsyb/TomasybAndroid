@@ -6,7 +6,12 @@ import android.os.Bundle;
 import com.example.tomasyb.tomasybandroid.R;
 
 /**
- * 回调使用介绍
+ * @Author: YanBo.
+ * @Date: 2018-4-28.
+ * @Describe: 回调使用介绍
+ * 两种方式：
+ * 1.内部类形式
+ * 2.直接实现定义的接口
  */
 public class CallBackActivity extends AppCompatActivity {
 
@@ -18,14 +23,8 @@ public class CallBackActivity extends AppCompatActivity {
     }
 
     private void TextCallBack() {
-        MyCallBack myCallBack = new MyCallBack();
-        myCallBack.setListener(new MyCallBack.onListener() {
-            @Override
-            public void success(String name) {
-
-            }
-        });
+        Print print = new Print();
+        //print.getName();
     }
-
 
 }

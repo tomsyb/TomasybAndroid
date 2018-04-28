@@ -4,7 +4,7 @@ package com.example.tomasyb.tomasybandroid.example.callback;
  * Created by Tomasyb on 2018-4-27.
  */
 
-public class MyCallBack {
+public class Print {
     public interface onListener{
         void success(String name);
     }
