@@ -1,4 +1,4 @@
-package com.example.tomasyb.tomasybandroid.example;
+package com.example.tomasyb.tomasybandroid.example.life;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

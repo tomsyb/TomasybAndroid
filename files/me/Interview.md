@@ -11,7 +11,7 @@
 那么相邻的方法之间有什么区别呢？
 ![先看图](https://upload-images.jianshu.io/upload_images/1467278-21c8544f417e6713.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550)
 
-
+[界面实例](https://blog.csdn.net/xhmj12/article/details/54730883)
 ## **Service生命周期**
 
 两种启动方式：(两种生命周期不一样)
