@@ -19,7 +19,8 @@
         </activity>
         <!-- dagger2学习 -->
         <activity android:name=".example.dagger.DaggerStudyActivity" />
-        <activity android:name=".example.callback.CallBackActivity"></activity>
+        <activity android:name=".example.callback.CallBackActivity" />
+        <activity android:name=".example.ActivityLifeActivity"></activity>
     </application>
 
 </manifest>

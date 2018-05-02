@@ -7,8 +7,10 @@
 
 ![先看图](https://upload-images.jianshu.io/upload_images/1467278-3a28d45b96ce5745.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/664)
 
+其实Activity中的方法大都是两两对应的，只有onRestart方法散发着单身狗的清香。
+那么相邻的方法之间有什么区别呢？
+![先看图](https://upload-images.jianshu.io/upload_images/1467278-21c8544f417e6713.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550)
 
-onCreate()-->onStart()-->onResume()-->onPause()-->onStop()-->onDestroy()
 
 ## **Service生命周期**
 
