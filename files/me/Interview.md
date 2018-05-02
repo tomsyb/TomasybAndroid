@@ -5,6 +5,8 @@
 [［干货］2017已来，最全面试总结——这些Android面试题你一定需要](https://blog.csdn.net/xhmj12/article/details/54730883)
 ## **一、Activity的生命周期**
 
+[先看图](https://upload-images.jianshu.io/upload_images/1467278-3a28d45b96ce5745.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/664)
+
 onCreate()-->onStart()-->onResume()-->onPause()-->onStop()-->onDestroy()
 
 ## **Service生命周期**
