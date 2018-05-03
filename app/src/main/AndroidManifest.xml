@@ -11,16 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <!-- dagger2学习 -->
+        <activity android:name=".example.dagger.DaggerStudyActivity" />
+        <activity android:name=".example.callback.CallBackActivity" />
+        <activity android:name=".example.life.ActivityLifeActivity" />
+        <activity android:name=".example.custom.CustomViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- dagger2学习 -->
-        <activity android:name=".example.dagger.DaggerStudyActivity" />
-        <activity android:name=".example.callback.CallBackActivity" />
-        <activity android:name=".example.life.ActivityLifeActivity"></activity>
     </application>
 
 </manifest>
