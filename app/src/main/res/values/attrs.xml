@@ -10,22 +10,5 @@
         <attr name="background_color" format="color" />
         <attr name="complex" format="integer" />
     </declare-styleable>
-    <!--自定义图片文字view
-    1.文字
-    2.字体大小
-    3.字体颜色
-    4.图片
-    5.图片显示风格
-    -->
-    <declare-styleable name="CustomImgTvView">
-        <attr name="TvSize" format="dimension"/>
-        <attr name="TvText" format="string"/>
-        <attr name="TvColor" format="color"/>
-        <attr name="Img" format="reference"/>
-        <attr name="ImgScaleType">
-            <enum name="fillXY" value="0"/>
-            <enum name="center" value="1"/>
-        </attr>
-    </declare-styleable>
 
 </resources>
