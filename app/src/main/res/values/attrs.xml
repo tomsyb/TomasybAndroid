@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--自定义TextView学习（一）-->
+    <!--定义名字，颜色，大小等
+    format：该值取值类型
+    string,color,demension,integer,enum,reference,float,boolean,fraction,flag;-->
+    <declare-styleable name="CustomStyle">
+        <attr name="text_color" format="color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="background_color" format="color" />
+        <attr name="complex" format="integer" />
+    </declare-styleable>
+
+</resources>

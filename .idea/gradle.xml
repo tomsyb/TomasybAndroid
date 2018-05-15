@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselib" />
             <option value="$PROJECT_DIR$/rxjavalib" />
+            <option value="$PROJECT_DIR$/mybaselib" />
             <option value="$PROJECT_DIR$/utilslib" />
           </set>
         </option>

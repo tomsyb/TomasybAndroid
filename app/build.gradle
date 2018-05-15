@@ -37,4 +37,5 @@ dependencies {
         exclude module: 'support-annotations'
     }
     implementation project(':utilslib')
+    implementation project(':mybaselib')
 }

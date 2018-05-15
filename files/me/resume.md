@@ -7,7 +7,7 @@
 
 以下均为我熟练使用的技能
 
-- 了解Activity生命周期及使用方法。
+- 了解Activity生命周期及LaunchMode的使用。
 - 熟悉View的绘制流程
 - Web开发：PHP/Hack/Node
 - Web框架：ThinkPHP/Yaf/Yii/Lavarel/LazyPHP
