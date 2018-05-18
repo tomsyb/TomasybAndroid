@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.tomasyb.tomasybandroid.example.dagger.DaggerStudyActivity;
 import com.example.tomasyb.utilslib.utils.ActivityUtils;
+import com.tomasyb.rxjavalibs.RxjavaMainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.main_rv)
     RecyclerView mainRv;
     private List<String> mDatas = new ArrayList<>();
+    private BaseQuickAdapter<String,BaseViewHolder> mAdapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,23 +33,31 @@ public class MainActivity extends AppCompatActivity {
         initView();
         initData();
     }
-
     private void initView() {
         mainRv.setLayoutManager(new LinearLayoutManager(this));
-        mainRv.setAdapter(new BaseQuickAdapter<String,BaseViewHolder>(R.layout.item_ac_main,mDatas) {
-
-
+        mAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_ac_main,mDatas) {
             @Override
             protected void convert(BaseViewHolder helper, String item) {
                 helper.setText(R.id.item_ac_main_btn,item);
-                helper.setOnClickListener(R.id.item_ac_main_btn, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                helper.addOnClickListener(R.id.item_ac_main_btn);
+            }
+        };
+
+        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                switch (position){
+                    case 0://dagger2学习
                         ActivityUtils.startActivity(DaggerStudyActivity.class);
-                    }
-                });
+                        break;
+                    case 1:
+                        ActivityUtils.startActivity(RxjavaMainActivity.class);
+                        break;
+                }
             }
         });
+        mainRv.setAdapter(mAdapter);
+
     }
 
     private void initData() {
@@ -55,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < stringArray.length; i++) {
             mDatas.add(stringArray[i]);
         }
+        mAdapter.notifyDataSetChanged();
     }
 
 }

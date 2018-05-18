@@ -1,4 +1,4 @@
-package com.example.yanb.rxjavalib;
+package com.tomasyb.rxjavalibs;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.yanb.rxjavalib.test", appContext.getPackageName());
+        assertEquals("com.tomasyb.rxjavalibs.test", appContext.getPackageName());
     }
 }

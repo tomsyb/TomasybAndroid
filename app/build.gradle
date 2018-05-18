@@ -26,7 +26,6 @@ dependencies {
     testImplementation rootProject.ext.dependencies["junit"]
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation project(':baselib')
     //适配器
     implementation rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
     //tools
@@ -37,5 +36,6 @@ dependencies {
         exclude module: 'support-annotations'
     }
     implementation project(':utilslib')
-    implementation project(':rxjavalib')
+    implementation project(':rxjavalibs')
+    implementation project(':baselib')
 }

@@ -1,4 +1,4 @@
-package com.example.yanb.rxjavalib;
+package com.tomasyb.rxjavalibs;
 
 import org.junit.Test;
 

@@ -2,5 +2,6 @@
     <string name="app_name">TomasybAndroid</string>
     <array name="mainArray">
         <item>dagger2学习</item>
+        <item>RxjavaStudy</item>
     </array>
 </resources>
