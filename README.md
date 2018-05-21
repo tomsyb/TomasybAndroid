@@ -25,5 +25,5 @@
 
 ## **Android快捷开发**
 
-- 多图预览
+- [多图预览很简单只有一个类](https://github.com/Tomsyb/TomasybAndroid/blob/master/utilslib/src/main/java/com/example/tomasyb/utilslib/img/ZoomImageView.java)
 
