@@ -38,4 +38,5 @@ dependencies {
     implementation project(':utilslib')
     implementation project(':rxjavalibs')
     implementation project(':baselib')
+    implementation project(':controllib')
 }
