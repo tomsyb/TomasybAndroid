@@ -23,3 +23,23 @@
 - [给初学者的RxJava2.0教程](https://www.jianshu.com/p/464fa025229e)
 
 
+## **Android快捷开发**
+
+- [多图预览很简单只有一个类](https://github.com/Tomsyb/TomasybAndroid/blob/master/utilslib/src/main/java/com/example/tomasyb/utilslib/img/ZoomImageView.java)
+
+## **UI控件**
+
+圆形图片CircleImageView
+用法
+
+```
+<de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/hugh"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/dark" />
+```
+
+
