@@ -19,9 +19,7 @@
 
 ## **Rxjava**
 
-- [手把手教你使用Rxjava2.0](https://www.jianshu.com/p/d149043d103a)
-- [给初学者的RxJava2.0教程](https://www.jianshu.com/p/464fa025229e)
-
+- [Rxjava专栏](https://github.com/Tomsyb/TomasybAndroid/blob/master/files/rxjava/rxjavastudy.md)
 
 ## **Android快捷开发**
 
