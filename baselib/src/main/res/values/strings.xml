@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">baselib</string>
+    <string name="com_loading">请稍后...</string>
+    <string name="net_error">网络访问错误，请稍后再试</string>
 </resources>

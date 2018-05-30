@@ -9,7 +9,6 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.example.tomasyb.tomasybandroid.example.dagger.DaggerStudyActivity;
 import com.example.tomasyb.utilslib.utils.ActivityUtils;
 import com.tomasyb.rxjavalibs.RxjavaMainActivity;
 
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (position){
                     case 0://dagger2学习
-                        ActivityUtils.startActivity(DaggerStudyActivity.class);
                         break;
                     case 1:
                         ActivityUtils.startActivity(RxjavaMainActivity.class);

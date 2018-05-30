@@ -120,4 +120,6 @@ dependencies {
     api rootProject.ext.dependencies["timber"]
     testImplementation rootProject.ext.dependencies["junit"]
 
+    compile 'com.android.support:multidex:1.0.0'//分包
+
 }

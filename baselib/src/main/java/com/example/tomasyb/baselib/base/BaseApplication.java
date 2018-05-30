@@ -2,33 +2,43 @@ package com.example.tomasyb.baselib.base;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.annotation.NonNull;
-
-import com.example.tomasyb.baselib.base.delegate.IAppLifecycles;
-import com.example.tomasyb.baselib.di.component.AppComponent;
+import android.content.res.Resources;
+import android.support.multidex.MultiDex;
 
 /**
- * Created by Tomasyb on 2018-4-20.
+ * APPLICATION
  */
+public class BaseApplication extends Application {
+    private static BaseApplication baseApplication;
 
-public class BaseApplication extends Application implements IApp{
-    private IAppLifecycles mAppDelegate;
-    /**
-     *
-     * @return
-     */
-    @NonNull
     @Override
-    public AppComponent getAppComponent() {
-        return null;
+    public void onCreate() {
+        super.onCreate();
+        baseApplication = this;
+    }
+
+    public static Context getAppContext() {
+        return baseApplication;
+    }
+
+    public static Resources getAppResources() {
+        return baseApplication.getResources();
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
     }
 
     /**
+     * 分包
      *
      * @param base
      */
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+        MultiDex.install(this);
     }
+
 }
