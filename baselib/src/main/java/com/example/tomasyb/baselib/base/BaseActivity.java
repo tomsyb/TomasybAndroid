@@ -3,6 +3,7 @@ package com.example.tomasyb.baselib.base;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -31,10 +32,12 @@ public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> exte
     public M mModel;
     public Context mContext;
     public Unbinder mUnbinder;//黄油刀
+    private boolean isConfigChange = false;//屏幕是否改变
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isConfigChange = false;
         doBeforeSetContentView();
         setContentView(getLayoutId());
         mUnbinder = ButterKnife.bind(this);
@@ -196,12 +199,25 @@ public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> exte
     public void showNetErrorTip(String error) {
         ToastUitl.showToastWithImg(error,R.drawable.ic_wifi_off);
     }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        isConfigChange=true;
+    }
+
     /**
      * 销毁
      */
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (mPre !=null)
+            mPre.onDestroy();
+        if (!isConfigChange){
+            AppManager.getAppManager().finishActivity(this);
+        }
         mUnbinder.unbind();
     }
+
 }
