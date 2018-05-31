@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="tab_unselect">#c9c9c9</color>
-    <color name="main">#16A0FF</color>
-    <!--常用颜色-->
-    <color name="com_red"> #FF0000</color>
-</resources>

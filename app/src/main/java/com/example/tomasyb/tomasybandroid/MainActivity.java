@@ -9,7 +9,6 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.example.tomasyb.utilslib.utils.ActivityUtils;
 import com.tomasyb.rxjavalibs.RxjavaMainActivity;
 
 import java.util.ArrayList;
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     case 0://dagger2学习
                         break;
                     case 1:
-                        ActivityUtils.startActivity(RxjavaMainActivity.class);
+                        //ActivityUtils.startActivity(RxjavaMainActivity.class);
                         break;
                 }
             }

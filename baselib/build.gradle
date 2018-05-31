@@ -47,79 +47,26 @@ dependencies {
         exclude module: 'support-v4'
     }
     api rootProject.ext.dependencies["annotations"]
-
-    //view
-    api(rootProject.ext.dependencies["autolayout"]) {
-        exclude group: 'com.android.support'
-    }
     api(rootProject.ext.dependencies["butterknife"]) {
         exclude module: 'support-annotations'
     }
 
     //rx
-    api rootProject.ext.dependencies["rxjava2"]
-    api(rootProject.ext.dependencies["rxandroid2"]) {
-        exclude module: 'rxjava'
-    }
-    api(rootProject.ext.dependencies["rxcache2"]) {
-        exclude module: 'rxjava'
-        exclude module: 'dagger'
-    }
-    implementation(rootProject.ext.dependencies["rxcache-jolyglot-gson"]) {
-        exclude module: 'gson'
-    }
-    api(rootProject.ext.dependencies["rxlifecycle2"]) {
-        exclude module: 'rxjava'
-        exclude module: 'jsr305'
-    }
-    api(rootProject.ext.dependencies["rxlifecycle2-android"]) {
-        exclude module: 'support-annotations'
-        exclude module: 'rxjava'
-        exclude module: 'rxandroid'
-        exclude module: 'rxlifecycle'
-    }
-    api(rootProject.ext.dependencies["rxpermissions2"]) {
-        exclude module: 'rxjava'
-        exclude module: 'support-annotations'
-    }
-    api rootProject.ext.dependencies['rxerrorhandler2']
-
     //network
-    api(rootProject.ext.dependencies["retrofit"]) {
-        exclude module: 'okhttp'
-        exclude module: 'okio'
-    }
-    implementation(rootProject.ext.dependencies["retrofit-converter-gson"]) {
-        exclude module: 'gson'
-        exclude module: 'okhttp'
-        exclude module: 'okio'
-        exclude module: 'retrofit'
-    }
-    implementation(rootProject.ext.dependencies["retrofit-adapter-rxjava2"]) {
-        exclude module: 'rxjava'
-        exclude module: 'okhttp'
-        exclude module: 'retrofit'
-        exclude module: 'okio'
-    }
     api rootProject.ext.dependencies["okhttp3"]
-    api(rootProject.ext.dependencies["glide"]) {
-        exclude module: 'support-v4'
-    }
-    annotationProcessor(rootProject.ext.dependencies["glide-compiler"]) {
-        exclude module: 'jsr305'
-    }
-
-    //tools
-    compileOnly rootProject.ext.dependencies["javax.annotation"]
-    api rootProject.ext.dependencies["dagger2"]
-    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
-    api rootProject.ext.dependencies["androideventbus"]
-    api rootProject.ext.dependencies["gson"]
-
-    //test
-    api rootProject.ext.dependencies["timber"]
     testImplementation rootProject.ext.dependencies["junit"]
 
     compile 'com.android.support:multidex:1.0.0'//分包
+
+    //retrofit和rxjava
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta3'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
+    compile 'io.reactivex:rxjava:1.0.1'
+    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
+
+
+    compile 'com.orhanobut:logger:1.13'//打印日志
 
 }

@@ -3,8 +3,9 @@ package com.example.tomasyb.tomasybandroid.example.life;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.tomasybandroid.R;
-import com.example.tomasyb.utilslib.utils.L;
+
 
 /**
  * Activity生命周期
@@ -49,7 +50,7 @@ public class ActivityLifeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_life);
-        L.e("onCreate处于后台不可见");
+        LogUtils.e("onCreate处于后台不可见");
     }
 
     /**
@@ -59,7 +60,7 @@ public class ActivityLifeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        L.e("onStart()处于可见，未出现在前台我们看不到");
+        LogUtils.e("onStart()处于可见，未出现在前台我们看不到");
     }
 
     /**
@@ -69,7 +70,7 @@ public class ActivityLifeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        L.e("onResume()前台，用户可见");
+        LogUtils.e("onResume()前台，用户可见");
     }
 
     /**
@@ -82,7 +83,7 @@ public class ActivityLifeActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        L.e("onPause()暂停处于前台并可见");
+        LogUtils.e("onPause()暂停处于前台并可见");
     }
 
     /**
@@ -94,7 +95,7 @@ public class ActivityLifeActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        L.e("onStop()不可见");
+        LogUtils.e("onStop()不可见");
     }
 
     /**
@@ -106,7 +107,7 @@ public class ActivityLifeActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        L.e("onDestroy()销毁不可见");
+        LogUtils.e("onDestroy()销毁不可见");
     }
 
     /**
@@ -119,6 +120,6 @@ public class ActivityLifeActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        L.e("onRestart()重启可见");
+        LogUtils.e("onRestart()重启可见");
     }
 }

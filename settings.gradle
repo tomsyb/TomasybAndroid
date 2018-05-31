@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':utilslib', ':rxjavalibs', ':controllib'
+include ':app', ':baselib', ':rxjavalibs', ':controllib'

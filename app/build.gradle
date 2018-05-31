@@ -35,7 +35,6 @@ dependencies {
     annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
         exclude module: 'support-annotations'
     }
-    implementation project(':utilslib')
     implementation project(':rxjavalibs')
     implementation project(':baselib')
     implementation project(':controllib')

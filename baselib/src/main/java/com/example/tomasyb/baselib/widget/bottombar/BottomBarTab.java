@@ -1,4 +1,4 @@
-package com.example.tomasyb.utilslib.bottombar;
+package com.example.tomasyb.baselib.widget.bottombar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -16,8 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.tomasyb.utilslib.R;
-
+import com.example.tomasyb.baselib.R;
 
 /**
  * Created by YanBo on 16/6/3.
@@ -63,7 +62,7 @@ public class BottomBarTab extends FrameLayout {
 
         mIcon.setImageResource(icon);
         mIcon.setLayoutParams(params);
-        mIcon.setColorFilter(ContextCompat.getColor(context, R.color.tab_unselect));
+        mIcon.setColorFilter(ContextCompat.getColor(context, R.color.b_tab_unselect));
         lLContainer.addView(mIcon);
 
         mTvTitle = new TextView(context);
@@ -71,7 +70,7 @@ public class BottomBarTab extends FrameLayout {
         LinearLayout.LayoutParams paramsTv = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         paramsTv.topMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
         mTvTitle.setTextSize(10);
-        mTvTitle.setTextColor(ContextCompat.getColor(context, R.color.tab_unselect));
+        mTvTitle.setTextColor(ContextCompat.getColor(context, R.color.b_tab_unselect));
         mTvTitle.setLayoutParams(paramsTv);
         lLContainer.addView(mTvTitle);
 
@@ -80,7 +79,7 @@ public class BottomBarTab extends FrameLayout {
         int min = dip2px(context, 20);
         int padding = dip2px(context, 5);
         mTvUnreadCount = new TextView(context);
-        mTvUnreadCount.setBackgroundResource(R.drawable.bg_msg_circle_red);
+        mTvUnreadCount.setBackgroundResource(R.drawable.shap_msg_circle_red);
         mTvUnreadCount.setMinWidth(min);
         mTvUnreadCount.setTextColor(Color.WHITE);
         mTvUnreadCount.setPadding(padding, 0, padding, 0);
@@ -111,8 +110,8 @@ public class BottomBarTab extends FrameLayout {
             mIcon.setColorFilter(ContextCompat.getColor(mContext, R.color.main));
             mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.main));
         } else {
-            mIcon.setColorFilter(ContextCompat.getColor(mContext, R.color.tab_unselect));
-            mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.tab_unselect));
+            mIcon.setColorFilter(ContextCompat.getColor(mContext, R.color.b_tab_unselect));
+            mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.b_tab_unselect));
         }
     }
 

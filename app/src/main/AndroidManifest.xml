@@ -11,16 +11,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".example.callback.CallBackActivity" />
+        <activity android:name=".example.life.ActivityLifeActivity" />
+        <activity android:name=".example.custom.CustomViewActivity"></activity>
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".example.callback.CallBackActivity" />
-        <activity android:name=".example.life.ActivityLifeActivity" />
-        <activity android:name=".example.custom.CustomViewActivity"></activity>
-        <activity android:name=".SplashActivity"></activity>
     </application>
 
 </manifest>

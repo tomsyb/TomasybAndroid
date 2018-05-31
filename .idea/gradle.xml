@@ -12,7 +12,6 @@
             <option value="$PROJECT_DIR$/baselib" />
             <option value="$PROJECT_DIR$/controllib" />
             <option value="$PROJECT_DIR$/rxjavalibs" />
-            <option value="$PROJECT_DIR$/utilslib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

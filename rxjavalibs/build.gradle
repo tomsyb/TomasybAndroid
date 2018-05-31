@@ -32,7 +32,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation rootProject.ext.dependencies["rxjava2"]
-    implementation project(':utilslib')
     // net
     implementation rootProject.ext.dependencies["retrofit"]
     implementation rootProject.ext.dependencies["retrofit-converter-gson"]

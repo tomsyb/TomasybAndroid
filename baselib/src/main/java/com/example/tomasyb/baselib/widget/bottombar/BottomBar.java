@@ -1,4 +1,4 @@
-package com.example.tomasyb.utilslib.bottombar;
+package com.example.tomasyb.baselib.widget.bottombar;
 
 import android.content.Context;
 import android.graphics.Color;
