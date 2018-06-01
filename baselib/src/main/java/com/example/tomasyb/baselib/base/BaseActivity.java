@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
 import com.example.tomasyb.baselib.R;
+import com.example.tomasyb.baselib.base.rx.RxManager;
+import com.example.tomasyb.baselib.util.TUtil;
 import com.example.tomasyb.baselib.util.ToastUitl;
 import com.example.tomasyb.baselib.widget.LoadingDialog;
 import com.example.tomasyb.baselib.widget.StatusBarCompat;
@@ -32,25 +34,30 @@ public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> exte
     public M mModel;
     public Context mContext;
     public Unbinder mUnbinder;//黄油刀
+    public RxManager mRxManager;
     private boolean isConfigChange = false;//屏幕是否改变
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         isConfigChange = false;
+        mRxManager = new RxManager();
         doBeforeSetContentView();
         setContentView(getLayoutId());
         mUnbinder = ButterKnife.bind(this);
         mContext = this;
+        mPre = TUtil.getT(this,0);
+        mModel = TUtil.getT(this,1);
+        if (mPre !=null){
+            mPre.mContext = this;
+        }
         this.initView();
         this.initPresenter();
     }
 
     //******************************************************************子类实现*********
     public abstract int getLayoutId();//获取布局ID
-
     public abstract void initView();//初始化
-
     public abstract void initPresenter();//初始化Presenter
 
     /**
@@ -214,6 +221,9 @@ public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> exte
         super.onDestroy();
         if (mPre !=null)
             mPre.onDestroy();
+        if (mRxManager !=null){
+            mRxManager.clear();
+        }
         if (!isConfigChange){
             AppManager.getAppManager().finishActivity(this);
         }
