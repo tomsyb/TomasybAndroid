@@ -8,6 +8,9 @@
 以下均为我熟练使用的技能
 
 - 了解Activity生命周期及LaunchMode的使用。
+- 了解ARouter页面路由框架实现页面解耦
+
+
 - 熟悉View的绘制流程
 - Web开发：PHP/Hack/Node
 - Web框架：ThinkPHP/Yaf/Yii/Lavarel/LazyPHP
@@ -17,6 +20,7 @@
 - 版本管理、文档和自动化部署工具：Svn/Git/PHPDoc/Phing/Composer
 - 单元测试：PHPUnit/SimpleTest/Qunit
 - 云和开放平台：SAE/BAE/AWS/微博开放平台/微信应用开发
+
 
 
 

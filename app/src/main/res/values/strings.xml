@@ -4,4 +4,9 @@
         <item>dagger2学习</item>
         <item>RxjavaStudy</item>
     </array>
+    <!--首页4个按钮-->
+    <string name="main_tab_home">首页</string>
+    <string name="main_tab_guide">导游</string>
+    <string name="main_tab_book">书签</string>
+    <string name="main_tab_me">我的</string>
 </resources>

@@ -40,10 +40,7 @@
             app:civ_border_color="@color/dark" />
 ```
 
-## **个人信息**
-
-## **地图相关知识**
-
-[高德地图](https://github.com/Tomsyb/TomasybAndroid/blob/master/files/map/GaoMap.md)
-
-
+| 说明 | 备注 | 地址 |
+| ------------- |:-------------| :-----|
+| ARouter路由框架| Activity跳转框架| [https://github.com/alibaba/ARouter](https://github.com/alibaba/ARouter) |
+| 高德地图| 常用API| [地址](https://github.com/Tomsyb/TomasybAndroid/blob/master/files/map/GaoMap.md) |
