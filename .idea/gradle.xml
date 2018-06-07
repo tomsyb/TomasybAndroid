@@ -11,7 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselib" />
             <option value="$PROJECT_DIR$/controllib" />
-            <option value="$PROJECT_DIR$/rxjavalibs" />
+            <option value="$PROJECT_DIR$/irecyclerview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

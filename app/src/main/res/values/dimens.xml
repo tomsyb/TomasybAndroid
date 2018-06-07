@@ -1,0 +1,4 @@
+<resources>
+    <!---->
+    <dimen name="main_bottom_bar">52dp</dimen>
+</resources>

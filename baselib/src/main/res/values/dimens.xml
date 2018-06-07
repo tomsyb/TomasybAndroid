@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <dimen name="b_dp_8">8dp</dimen>
+        <dimen name="b_dp_16">8dp</dimen>
+
+        <!--字体-->
+        <dimen name="b_font_tiny">10sp</dimen>
+        <dimen name="b_font_small">12sp</dimen>
+        <dimen name="b_font_normal">14sp</dimen>
+</resources>

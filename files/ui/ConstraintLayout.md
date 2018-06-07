@@ -36,7 +36,8 @@ compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
 ## 注意
 
-布局中match_constraint是0 让布局用约束控制
+- 布局中match_constraint是0 让布局用约束控制
+- 当控件w!=0,或固定值，约束不会改变控件的尺寸，w=0才能用约束控制控件尺寸
 
 ## 关于均分
 

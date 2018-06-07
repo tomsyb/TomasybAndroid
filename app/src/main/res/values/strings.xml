@@ -1,7 +1,20 @@
 <resources>
-    <string name="app_name">蓝火</string>
+    <string name="app_name">黑洞</string>
     <array name="mainArray">
         <item>dagger2学习</item>
         <item>RxjavaStudy</item>
     </array>
+    <!--首页4个按钮-->
+    <string name="main_tab_home">首页</string>
+    <string name="main_tab_guide">导游</string>
+    <string name="main_tab_book">书签</string>
+    <string name="main_tab_me">我的</string>
+    <string-array name="index_top_static">
+        <!--定死不能更改的5个频道-->
+        <item>头条</item>
+        <item>科技</item>
+        <item>财经</item>
+        <item>军事</item>
+        <item>体育</item>
+    </string-array>
 </resources>

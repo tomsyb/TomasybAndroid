@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="@string/com_loading"
+        android:text="@string/b_com_loading"
         android:textColor="@color/b_main_black"
         android:textSize="14sp" />
 

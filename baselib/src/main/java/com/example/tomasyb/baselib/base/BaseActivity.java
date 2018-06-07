@@ -28,7 +28,38 @@ import butterknife.Unbinder;
  * @date 2018-5-30.10:23
  * @since JDK 1.8
  */
-
+/***************使用例子*********************/
+//1.mvp模式
+//public class SampleActivity extends BaseActivity<NewsChanelPresenter, NewsChannelModel>implements NewsChannelContract.View {
+//    @Override
+//    public int getLayoutId() {
+//        return R.layout.activity_news_channel;
+//    }
+//
+//    @Override
+//    public void initPresenter() {
+//        mPresenter.setVM(this, mModel);
+//    }
+//
+//    @Override
+//    public void initView() {
+//    }
+//}
+//2.普通模式
+//public class SampleActivity extends BaseActivity {
+//    @Override
+//    public int getLayoutId() {
+//        return R.layout.activity_news_channel;
+//    }
+//
+//    @Override
+//    public void initPresenter() {
+//    }
+//
+//    @Override
+//    public void initView() {
+//    }
+//}
 public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> extends AppCompatActivity {
     public V mPre;
     public M mModel;
@@ -200,7 +231,7 @@ public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> exte
      * 网络访问错误提醒
      */
     public void showNetErrorTip() {
-        ToastUitl.showToastWithImg(getText(R.string.net_error).toString(),R.drawable.ic_wifi_off);
+        ToastUitl.showToastWithImg(getText(R.string.b_net_error).toString(),R.drawable.ic_wifi_off);
     }
 
     public void showNetErrorTip(String error) {
