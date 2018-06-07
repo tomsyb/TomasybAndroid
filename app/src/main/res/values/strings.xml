@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">蓝火</string>
+    <string name="app_name">黑洞</string>
     <array name="mainArray">
         <item>dagger2学习</item>
         <item>RxjavaStudy</item>
