@@ -1,5 +1,6 @@
 package com.example.tomasyb.tomasybandroid.ui.main.contract;
 
+import com.example.tomasyb.baselib.base.BasePre;
 import com.example.tomasyb.baselib.base.IBaseModel;
 import com.example.tomasyb.baselib.base.IBaseView;
 import com.example.tomasyb.tomasybandroid.bean.IndexTable;
@@ -17,12 +18,18 @@ import rx.Observable;
  * @since JDK 1.8
  */
 
-public interface IIndexContract {
+public interface IndexContract {
+    //Model
     interface Model extends IBaseModel{
-        Observable<List<IndexTable>> lodeIndexData();
+        Observable<List<IndexTable>> loadIndexTopData();
     }
+    //VIEW
     interface View extends IBaseView{
         void changeData(List<IndexTable> data);
     }
 
+    // presenter
+    abstract static class Presenter extends BasePre<View,Model>{
+        public abstract void loadIndexTopData();
+    }
 }

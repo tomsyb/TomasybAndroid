@@ -18,4 +18,9 @@ public class Constant {
      * 首页选中的tab
      */
     public static final String HOME_CURRENT_TAB_POSITION="HOME_CURRENT_TAB_POSITION";
+    public static final String INDEX_TOP_DATA="INDEX_TOP_DATA";
+    /**
+     * 首页基础数据
+     */
+    public static final String INDEX_TOP_NAME="INDEX_TOP_NAME";
 }

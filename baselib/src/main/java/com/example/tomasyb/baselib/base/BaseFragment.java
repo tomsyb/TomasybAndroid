@@ -188,7 +188,7 @@ public abstract  class BaseFragment<T extends BasePre, E extends IBaseModel> ext
      * 网络访问错误提醒
      */
     public void showNetErrorTip() {
-        ToastUitl.showToastWithImg(getText(R.string.net_error).toString(), R.drawable.ic_wifi_off);
+        ToastUitl.showToastWithImg(getText(R.string.b_net_error).toString(), R.drawable.ic_wifi_off);
     }
 
     public void showNetErrorTip(String error) {

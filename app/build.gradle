@@ -42,7 +42,6 @@ dependencies {
     annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
         exclude module: 'support-annotations'
     }
-    implementation project(':rxjavalibs')
     implementation project(':baselib')
     implementation project(':controllib')
     //arouter跳转路由

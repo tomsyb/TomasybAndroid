@@ -37,6 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <android.support.design.widget.TabLayout
+                    android:id="@+id/index_fg_tablayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:tabBackground="@color/b_main_orange"
@@ -55,17 +56,9 @@
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.view.ViewPager
+            android:id="@+id/index_fg_vp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/b_dp_16"
-            app:backgroundTint="@color/b_main_orange"
-            android:src="@drawable/b_ic_arrow_upward"
-            app:layout_behavior="com.jaydenxiao.androidfire.widget.ScrollAwareFABBehavior"/>
     </android.support.design.widget.CoordinatorLayout>
 </android.support.constraint.ConstraintLayout>

@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/baselib/baselib.iml" filepath="$PROJECT_DIR$/baselib/baselib.iml" />
       <module fileurl="file://$PROJECT_DIR$/controllib/controllib.iml" filepath="$PROJECT_DIR$/controllib/controllib.iml" />
       <module fileurl="file://D:\2017\Tomasyb\TomasybAndroid\controllib\controllib.iml" filepath="D:\2017\Tomasyb\TomasybAndroid\controllib\controllib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rxjavalibs/rxjavalibs.iml" filepath="$PROJECT_DIR$/rxjavalibs/rxjavalibs.iml" />
     </modules>
   </component>
 </project>
