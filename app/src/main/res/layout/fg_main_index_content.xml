@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/index_content_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-</android.support.constraint.ConstraintLayout>
+    <com.aspsine.irecyclerview.IRecyclerView
+        android:id="@+id/content_irc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:loadMoreEnabled="true"
+        app:refreshEnabled="true"
+        android:background="@color/b_main_white"
+        app:refreshHeaderLayout="@layout/layout_irecyclerview_refresh_header">
+    </com.aspsine.irecyclerview.IRecyclerView>
+</FrameLayout>
