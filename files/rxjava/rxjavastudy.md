@@ -49,13 +49,116 @@ Rxjava观察者模式
 
 ### **Observable操作符**
 
-| 说明 | 操作符 | 备注 |
+| 操作符 | 说明 | 备注 |
 | ------------- |:-------------| :-----|
 | 创建| create()| ... |
 | just(T...)| 将传入的参数依次发送出来| ... |
 | from(T[]) / from(Iterable<? extends T>)| 将传入的数组或 Iterable 拆分成具体对象后，依次发送出来| ... |
-| dfs| 1| ... |
+| map()| 对象转换一对一| 使用列子见附1 |
 | dfs| 1| ... |
 | dfs| 1| ... |
 | dfs| 1| ... |
 
+#### 附1、map()
+
+场景将对象装换为String并打印
+
+```
+IndexTable[] table = {new IndexTable("张三"),new IndexTable("李四")};
+        /**
+         * Func1 和Action1类似用于包装含有一个参数的方法，
+         * 区别：
+         * 不同：Func1包装有返回值，
+         * 同：ActionX,FuncX有多个，用于不同参数的方法
+         */
+        //使用just可连续传值from是数组
+        Observable.from(table)//输入类型为数组
+                .map(new Func1<IndexTable, String>() {//前面是需要转换的类型，后面是转换后的类型
+                    @Override
+                    public String call(IndexTable table) {//参数类型IndexTable
+                        return table.getIndexTopName();//返回类型String
+                    }
+                }).subscribe(new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                LogUtils.e(s);
+            }
+        });
+```
+
+
+#### 附2、flatMap()
+
+场景: 打印一个学生数组每个学生锁修课程的名字
+
+```
+Student[] students = new Student[3];
+        for (int i = 0; i < 3; i++) {
+            Student student = new Student();
+            List<Student.Course> courseList = new ArrayList<>();
+            for (int j = 0;j < 4; j++) {
+                Student.Course course = new Student.Course();
+                course.setCourse("语文"+j);
+                courseList.add(course);
+            }
+            student.setName("张三"+i);
+            student.setmCourse(courseList);
+            students[i] = student;
+        }
+        //打印多个学生的所有所学课程
+        Observable.from(students).subscribe(new Subscriber<Student>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Student student) {
+//                for (int i = 0; i < student.getmCourse().size(); i++) {
+//                    LogUtils.e("课程-->"+student.getmCourse().get(i).getCourse());
+//                }
+            }
+        });
+
+        //换用flatMap方法
+        /**
+         * flatMap返回Observable对象并用Observable对象发送
+         */
+        Observable.from(students)
+                .flatMap(new Func1<Student, Observable<Student.Course>>() {
+                    @Override
+                    public Observable<Student.Course> call(Student student) {
+                        return Observable.from(student.getmCourse());
+                    }
+                }).subscribe(new Subscriber<Student.Course>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Student.Course course) {
+                LogUtils.e(course.getCourse());
+            }
+        });
+```

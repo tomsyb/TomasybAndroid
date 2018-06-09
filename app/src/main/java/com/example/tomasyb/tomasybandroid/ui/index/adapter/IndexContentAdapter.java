@@ -67,7 +67,8 @@ public class IndexContentAdapter extends MultiItemRecycleViewAdapter<NewsSummary
      * @param position
      */
     private void setPhotoValues(ViewHolderHelper helper, NewsSummary bean, int position) {
-
+        helper.setText(R.id.photo_title,bean.getTitle());
+        helper.setText(R.id.photo_tv_time,bean.getPtime());
     }
 
     /**
@@ -77,6 +78,6 @@ public class IndexContentAdapter extends MultiItemRecycleViewAdapter<NewsSummary
      * @param postion 位置
      */
     private void setNomallValues(ViewHolderHelper helper,NewsSummary bean,int postion) {
-
+        helper.setText(R.id.normal_tv_title,bean.getTitle());
     }
 }
