@@ -4,18 +4,19 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
-import android.os.Bundle;
+import android.hardware.Camera;
+import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.tomasyb.baselib.base.BaseActivity;
+import com.example.tomasyb.baselib.util.LogUtils;
+import com.example.tomasyb.tomasybandroid.api.ScreenShotTools;
 import com.example.tomasyb.tomasybandroid.common.Constant;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * 引导页
@@ -31,13 +32,52 @@ public class SplashActivity extends BaseActivity {
     public int getLayoutId() {
         return R.layout.activity_splash;
     }
-
     @Override
     public void initView() {
         setTranslanteBar();
         mTvCentent.setText("哈哈哈");
-        toMainActivity();
+
+        mImgCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenLightOn();
+            }
+        });
+
     }
+
+    private Camera m_Camera;
+    private void OpenLightOn()    {
+        if ( null == m_Camera )
+        {
+            m_Camera = Camera.open();
+        }
+
+        Camera.Parameters parameters = m_Camera.getParameters();
+        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+        m_Camera.setParameters( parameters );
+        m_Camera.autoFocus( new Camera.AutoFocusCallback (){
+            public void onAutoFocus(boolean success, Camera camera) {
+            }
+        });
+        m_Camera.startPreview();
+    }
+
+    private void CloseLightOff()   {
+        if ( m_Camera != null )
+        {
+            m_Camera.stopPreview();
+            m_Camera.release();
+            m_Camera = null;
+        }
+    }
+    public void screenShot() {
+        boolean result = ScreenShotTools.shotBitmap(this);
+        if (result) {
+            LogUtils.e("截屏成功");
+        }
+    }
+
 
     private void toMainActivity() {
         PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat("alpha", 0.3f, 1f);
