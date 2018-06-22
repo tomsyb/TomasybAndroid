@@ -11,6 +11,9 @@
     <color name="b_main_red">#FF0000</color>
 
     <color name="b_tab_unselect">#c9c9c9</color>
+    <color name="b_text_gray">#999999</color>
+    <color name="b_text_graylight">#b0b8b2</color>
+    <color name="b_line_gray">#eeeeee</color>
     <color name="main">#16A0FF</color>
 
     <!--白天主题-->
