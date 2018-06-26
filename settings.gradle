@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':controllib', ':irecyclerview'
+include ':app', ':baselib', ':irecyclerview'

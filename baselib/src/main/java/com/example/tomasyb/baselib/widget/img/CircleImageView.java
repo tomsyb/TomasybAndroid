@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.tomasyb.controllib.custom;
+package com.example.tomasyb.baselib.widget.img;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -41,9 +41,19 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.widget.ImageView;
+import com.example.tomasyb.baselib.R;
 
-import com.tomasyb.controllib.R;
-
+/**
+ * 圆形ImageView 不再写shap实现圆形View
+ *
+ * <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/hugh"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/dark" />
+ */
 public class CircleImageView extends ImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
