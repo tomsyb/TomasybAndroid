@@ -31,3 +31,5 @@
 | ------------- |:-------------| :-----|
 | ARouter路由框架| Activity跳转框架| [https://github.com/alibaba/ARouter](https://github.com/alibaba/ARouter) |
 | 高德地图| 常用API| [地址](https://github.com/Tomsyb/TomasybAndroid/blob/master/files/map/GaoMap.md) |
+| 优秀项目汇总目录| 各种常用框架汇总| [地址](https://github.com/Tomsyb/Android-Hot-Libraries) |
+
