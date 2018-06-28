@@ -1,5 +1,6 @@
 # Http协议深入浅出
 
+
 首先[了解Http协议](http://www.cnblogs.com/ranyonsue/p/5984001.html)
 
 下面是我自己的一些总结
@@ -72,7 +73,7 @@ uniform resource locator 统一资源定位器，是一种具体的URI可用来�
 
 可通过请求方法和路径就可访问
 2.无连接
-
+3.无状态
 
 
 
