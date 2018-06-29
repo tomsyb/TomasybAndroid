@@ -63,13 +63,6 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!-- qq配置结束 -->
 
-        <activity android:name=".VideoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

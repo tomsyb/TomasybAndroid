@@ -56,6 +56,7 @@ uniform resource identifier 统一资源标识符，用来唯一的标识一个�
 2.存放资源的主机名
 3.资源自身的名称，由路径表示着重强调于资源
 
+
 - URL
 
 uniform resource locator 统一资源定位器，是一种具体的URI可用来标识一个资源，而且还指明了如何locate这个资源
@@ -74,6 +75,7 @@ uniform resource locator 统一资源定位器，是一种具体的URI可用来�
 可通过请求方法和路径就可访问
 
 2.无连接
+
 3.无状态
 
 

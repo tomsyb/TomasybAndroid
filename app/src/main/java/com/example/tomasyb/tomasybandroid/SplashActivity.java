@@ -30,6 +30,7 @@ public class SplashActivity extends BaseActivity {
     public int getLayoutId() {
         return R.layout.activity_splash;
     }
+
     @Override
     public void initView() {
         setTranslanteBar();
