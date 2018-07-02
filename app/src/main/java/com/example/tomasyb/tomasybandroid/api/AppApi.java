@@ -1,7 +1,5 @@
 package com.example.tomasyb.tomasybandroid.api;
 
-import com.example.tomasyb.baselib.base.api.Api;
-
 /**
  * 外部网络请求
  *
@@ -12,7 +10,5 @@ import com.example.tomasyb.baselib.base.api.Api;
  */
 
 public class AppApi {
-    public static AppService getService(){
-        return Api.getDefault("http://c.m.163.com/").create(AppService.class);
-    }
+
 }

@@ -7,7 +7,7 @@ import com.example.tomasyb.tomasybandroid.bean.IndexTable;
 
 import java.util.List;
 
-import rx.Observable;
+
 
 /**
  * 首页Contract
@@ -21,7 +21,7 @@ import rx.Observable;
 public interface IndexContract {
     //Model
     interface Model extends IBaseModel{
-        Observable<List<IndexTable>> loadIndexTopData();
+
     }
     //VIEW
     interface View extends IBaseView{

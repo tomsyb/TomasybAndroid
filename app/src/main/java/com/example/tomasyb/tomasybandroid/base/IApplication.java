@@ -7,6 +7,7 @@ import com.example.tomasyb.baselib.util.LogUtils;
 
 /**
  * Created by Tomasyb on 2018-4-24.
+ * IApplication程序入口
  */
 
 public class IApplication extends BaseApplication{

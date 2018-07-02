@@ -2,8 +2,6 @@ package com.example.tomasyb.baselib.base;
 
 import android.content.Context;
 
-import com.example.tomasyb.baselib.base.rx.RxManager;
-
 /**
  * Presenter基类
  *
@@ -17,7 +15,6 @@ public abstract class BasePre<V,M>{
     public Context mContext;
     public V mView;
     public M mModel;
-    public RxManager mRxManager = new RxManager();
     /**
      * 设置View和Model
      * @param v view
@@ -40,7 +37,7 @@ public abstract class BasePre<V,M>{
      * 结束
      */
     public void onDestroy(){
-        mRxManager.clear();
+
     }
 
 }

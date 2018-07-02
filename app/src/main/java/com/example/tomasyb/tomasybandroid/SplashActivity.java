@@ -35,14 +35,7 @@ public class SplashActivity extends BaseActivity {
     public void initView() {
         setTranslanteBar();
         mTvCentent.setText("哈哈哈");
-
-        mImgCenter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
+        toMainActivity();
     }
 
 

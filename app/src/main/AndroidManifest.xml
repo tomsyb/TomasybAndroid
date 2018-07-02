@@ -32,10 +32,18 @@
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
         <activity android:name=".example.custom.CustomViewActivity" />
-        <activity android:name=".SplashActivity"></activity>
-        <!-- 常用UI主界面 -->
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- .............常用UI主界面................ -->
         <activity android:name=".comui.ComUiMainActivity" />
-        <!-- 登录界面 -->
+
+        <!-- .............登录界面................ -->
         <activity
             android:name=".comui.LoginActivity"
             android:windowSoftInputMode="adjustResize">

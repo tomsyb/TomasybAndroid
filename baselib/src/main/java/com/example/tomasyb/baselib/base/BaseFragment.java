@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tomasyb.baselib.R;
-import com.example.tomasyb.baselib.base.rx.RxManager;
 import com.example.tomasyb.baselib.util.TUtil;
 import com.example.tomasyb.baselib.util.ToastUitl;
 import com.example.tomasyb.baselib.widget.LoadingDialog;
@@ -59,7 +58,6 @@ public abstract  class BaseFragment<T extends BasePre, E extends IBaseModel> ext
     protected View rootView;
     public T mPresenter;
     public E mModel;
-    public RxManager mRxManager;
     public Unbinder mUnbinder;//黄油刀
 
     @Nullable
@@ -67,7 +65,6 @@ public abstract  class BaseFragment<T extends BasePre, E extends IBaseModel> ext
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView == null)
             rootView = inflater.inflate(getLayoutResource(), container, false);
-        mRxManager=new RxManager();
         mUnbinder = ButterKnife.bind(this,rootView);
         mPresenter = TUtil.getT(this, 0);
         mModel= TUtil.getT(this,1);
@@ -201,7 +198,6 @@ public abstract  class BaseFragment<T extends BasePre, E extends IBaseModel> ext
         mUnbinder.unbind();
         if (mPresenter != null)
             mPresenter.onDestroy();
-        mRxManager.clear();
     }
 
 

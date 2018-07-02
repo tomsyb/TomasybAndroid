@@ -3,10 +3,9 @@ package com.example.tomasyb.baselib.base.api;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.SparseArray;
 
 import com.example.tomasyb.baselib.base.BaseApplication;
-import com.example.tomasyb.baselib.util.NetWorkUtils;
+import com.example.tomasyb.baselib.util.NetworkUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -22,7 +21,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -34,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @since JDK 1.8
  */
 
-public class Api {
+public class Apis {
     public static final int READ_TIME_OUT = 7676;//读取超时（毫秒）
     public static final int CONNECT_TIME_OUT = 7676;//链接超时（毫秒）
     public Retrofit mRetrofit;
@@ -75,7 +73,7 @@ public class Api {
      * 构造方法私有
      * @param baseUrl 跟地址
      */
-    private Api(String baseUrl){
+    private Apis(String baseUrl){
         //日志
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -93,21 +91,20 @@ public class Api {
             }
         };
 
-        mOkhttpClient = new OkHttpClient.Builder()
-                .readTimeout(READ_TIME_OUT, TimeUnit.MILLISECONDS)
-                .connectTimeout(CONNECT_TIME_OUT,TimeUnit.MILLISECONDS)
-                .addInterceptor(mRewriteCacheControlInterceptor)
-                .addNetworkInterceptor(mRewriteCacheControlInterceptor)
-                .addInterceptor(headerIntercepter)
-                .addInterceptor(loggingInterceptor)
-                .cache(cache)
-                .build();
+//        mOkhttpClient = new OkHttpClient.Builder()
+//                .readTimeout(READ_TIME_OUT, TimeUnit.MILLISECONDS)
+//                .connectTimeout(CONNECT_TIME_OUT,TimeUnit.MILLISECONDS)
+//                .addInterceptor(mRewriteCacheControlInterceptor)
+//                .addNetworkInterceptor(mRewriteCacheControlInterceptor)
+//                .addInterceptor(headerIntercepter)
+//                .addInterceptor(loggingInterceptor)
+//                .cache(cache)
+//                .build();
 
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").serializeNulls().create();
         mRetrofit = new Retrofit.Builder()
                 .client(mOkhttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(baseUrl)
                 .build();
     }
@@ -118,46 +115,46 @@ public class Api {
      * @return
      */
     public static Retrofit getDefault(String baseUrl) {
-        Api api = new Api(baseUrl);
+        Apis api = new Apis(baseUrl);
         return api.mRetrofit;
     }
 
-    /**
-     * 根据网络状况获取缓存的策略
-     */
-    @NonNull
-    public static String getCacheControl() {
-        return NetWorkUtils.isNetConnected(BaseApplication.getAppContext()) ? CACHE_CONTROL_AGE : CACHE_CONTROL_CACHE;
-    }
-    /**
-     * 云端响应头拦截器，用来配置缓存策略
-     * Dangerous interceptor that rewrites the server's cache-control header.
-     */
-    private final Interceptor mRewriteCacheControlInterceptor = new Interceptor() {
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            Request request = chain.request();
-            String cacheControl = request.cacheControl().toString();
-            if (!NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
-                request = request.newBuilder()
-                        .cacheControl(TextUtils.isEmpty(cacheControl)? CacheControl.FORCE_NETWORK:CacheControl.FORCE_CACHE)
-                        .build();
-            }
-            Response originalResponse = chain.proceed(request);
-            if (NetWorkUtils.isNetConnected(BaseApplication.getAppContext())) {
-                //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
-
-                return originalResponse.newBuilder()
-                        .header("Cache-Control", cacheControl)
-                        .removeHeader("Pragma")
-                        .build();
-            } else {
-                return originalResponse.newBuilder()
-                        .header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_STALE_SEC)
-                        .removeHeader("Pragma")
-                        .build();
-            }
-        }
-    };
+//    /**
+//     * 根据网络状况获取缓存的策略
+//     */
+//    @NonNull
+//    public static String getCacheControl() {
+//        return NetworkUtils.isNetConnected(BaseApplication.getAppContext()) ? CACHE_CONTROL_AGE : CACHE_CONTROL_CACHE;
+//    }
+//    /**
+//     * 云端响应头拦截器，用来配置缓存策略
+//     * Dangerous interceptor that rewrites the server's cache-control header.
+//     */
+//    private final Interceptor mRewriteCacheControlInterceptor = new Interceptor() {
+//        @Override
+//        public Response intercept(Chain chain) throws IOException {
+//            Request request = chain.request();
+//            String cacheControl = request.cacheControl().toString();
+//            if (!NetworkUtils.isNetConnected(BaseApplication.getAppContext())) {
+//                request = request.newBuilder()
+//                        .cacheControl(TextUtils.isEmpty(cacheControl)? CacheControl.FORCE_NETWORK:CacheControl.FORCE_CACHE)
+//                        .build();
+//            }
+//            Response originalResponse = chain.proceed(request);
+//            if (NetworkUtils.isNetConnected(BaseApplication.getAppContext())) {
+//                //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
+//
+//                return originalResponse.newBuilder()
+//                        .header("Cache-Control", cacheControl)
+//                        .removeHeader("Pragma")
+//                        .build();
+//            } else {
+//                return originalResponse.newBuilder()
+//                        .header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_STALE_SEC)
+//                        .removeHeader("Pragma")
+//                        .build();
+//            }
+//        }
+//    };
 
 }

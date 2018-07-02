@@ -1,6 +1,5 @@
 package com.example.tomasyb.tomasybandroid.ui.main.presenter;
 
-import com.example.tomasyb.baselib.base.rx.RxSubscriber;
 import com.example.tomasyb.tomasybandroid.bean.IndexTable;
 import com.example.tomasyb.tomasybandroid.ui.main.contract.IndexContract;
 
@@ -23,16 +22,6 @@ public class IndexPresenter extends IndexContract.Presenter{
 
     @Override
     public void loadIndexTopData() {
-        mRxManager.add(mModel.loadIndexTopData().subscribe(new RxSubscriber<List<IndexTable>>(mContext,false) {
-            @Override
-            protected void _onNext(List<IndexTable> indexTables) {
-                mView.changeData(indexTables);
-            }
 
-            @Override
-            protected void _onError(String message) {
-
-            }
-        }));
     }
 }

@@ -24,9 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import rx.Observable;
-import rx.Subscriber;
-import rx.functions.Func1;
+
 
 /**
  * 首页滑动内容Fragment
@@ -37,7 +35,7 @@ import rx.functions.Func1;
  * @since JDK 1.8
  */
 
-public class IndexContentFragment extends BaseFragment<IndexContentPresenter,IndexContentModel> implements IndexContentContract.View,OnRefreshListener{
+public class IndexContentFragment extends BaseFragment{
     @BindView(R.id.content_irc)
     IRecyclerView mIrc;
     private IndexContentAdapter mAdapter;
@@ -59,44 +57,6 @@ public class IndexContentFragment extends BaseFragment<IndexContentPresenter,Ind
         mDatas.clear();
         mAdapter = new IndexContentAdapter(getContext(),mDatas);
         mIrc.setAdapter(mAdapter);
-        mIrc.setOnRefreshListener(this);
-        //数据为空才重新发起请求
-        if(mAdapter.getSize()<=0) {
-            mStartPage = 0;
-            mPresenter.getIndexList("list","T1348648756099",0);
-        }
-    }
-
-    @Override
-    public void showLoading(String content) {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void changeData(List<NewsSummary> newsSummaries) {
-        if (newsSummaries != null) {
-            mStartPage += 20;
-            if (mAdapter.getPageBean().isRefresh()) {
-                mIrc.setRefreshing(false);
-                mAdapter.replaceAll(newsSummaries);
-            } else {
-                if (newsSummaries.size() > 0) {
-                    mIrc.setLoadMoreStatus(LoadMoreFooterView.Status.GONE);
-                    mAdapter.addAll(newsSummaries);
-                } else {
-                    mIrc.setLoadMoreStatus(LoadMoreFooterView.Status.THE_END);
-                }
-            }
-        }
-    }
-
-    @Override
-    public void onRefresh() {
 
     }
 }

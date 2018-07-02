@@ -182,7 +182,6 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
     @Override
     public void onSoftKeyboardClosed() {
         LogUtils.e("键盘隐藏");
-        Log.e("wenzhihao", "----->hide");
         ObjectAnimator mAnimatorTranslateY = ObjectAnimator.ofFloat(body, "translationY", body.getTranslationY(), 0);
         mAnimatorTranslateY.setDuration(300);
         mAnimatorTranslateY.setInterpolator(new AccelerateDecelerateInterpolator());

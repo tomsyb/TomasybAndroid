@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
 import com.example.tomasyb.baselib.R;
-import com.example.tomasyb.baselib.base.rx.RxManager;
 import com.example.tomasyb.baselib.util.TUtil;
 import com.example.tomasyb.baselib.util.ToastUitl;
 import com.example.tomasyb.baselib.widget.LoadingDialog;
@@ -65,14 +64,12 @@ public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> exte
     public M mModel;
     public Context mContext;
     public Unbinder mUnbinder;//黄油刀
-    public RxManager mRxManager;
     private boolean isConfigChange = false;//屏幕是否改变
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         isConfigChange = false;
-        mRxManager = new RxManager();
         doBeforeSetContentView();
         setContentView(getLayoutId());
         mUnbinder = ButterKnife.bind(this);
@@ -252,9 +249,6 @@ public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> exte
         super.onDestroy();
         if (mPre !=null)
             mPre.onDestroy();
-        if (mRxManager !=null){
-            mRxManager.clear();
-        }
         if (!isConfigChange){
             AppManager.getAppManager().finishActivity(this);
         }
