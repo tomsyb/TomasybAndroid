@@ -19,9 +19,7 @@ import retrofit2.Retrofit;
 /**
  * Retrofit工具类
  * 构建Retrofit.Builder，并对Okhttp配置
- * 1、 设置日志拦截器，拦截服务器返回的json数据。Retrofit将请求到json数据直接转换成了实体类，
- * 但有时候我们需要查看json数据，Retrofit并没有提供直接获取json数据的功能。
- * 因此我们需要自定义一个日志拦截器拦截json数据，并输入到控制台。
+ * 1、 日志log打印json数据
  *
  * 2. 设置Http请求头。给OkHttp 添加请求头拦截器，配置请求头信息。还可以为接口统一添加请求头数据。
  * 例如，把用户名、密码（或者token）统一添加到请求头。后续每个接口的请求头中都会携带用户名、

@@ -11,7 +11,8 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- * Created by zhpan on 2018/4/20.
+ * Created by yanbo on 2018/4/20.
+ * 日志拦截器
  */
 
 public class LoggingInterceptor implements Interceptor {

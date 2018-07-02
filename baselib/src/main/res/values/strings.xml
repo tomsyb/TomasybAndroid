@@ -5,4 +5,11 @@
     <string name="b_loading">请稍后...</string>
     <string name="b_reload">重新尝试</string>
     <string name="b_no_net">网络不可用,请检查你的网络</string>
+
+    <string name="b_connect_error">网络连接失败,请检查网络</string>
+    <string name="b_connect_timeout">连接超时,请稍后再试</string>
+    <string name="b_bad_network">服务器异常</string>
+    <string name="b_parse_error">解析服务器响应数据失败</string>
+    <string name="b_unknown_error">未知错误</string>
+    <string name="b_response_return_error">服务器返回数据失败</string>
 </resources>
