@@ -15,6 +15,7 @@ import com.example.tomasyb.baselib.util.TUtil;
 import com.example.tomasyb.baselib.util.ToastUitl;
 import com.example.tomasyb.baselib.widget.LoadingDialog;
 import com.example.tomasyb.baselib.widget.StatusBarCompat;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -59,7 +60,7 @@ import butterknife.Unbinder;
 //    public void initView() {
 //    }
 //}
-public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> extends AppCompatActivity {
+public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> extends RxAppCompatActivity {
     public V mPre;
     public M mModel;
     public Context mContext;

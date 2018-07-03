@@ -10,6 +10,7 @@ package com.example.tomasyb.tomasybandroid.common;
  */
 
 public class Constant {
+    public static String BASE_URL = "http://gank.io/"+"api/data/";
     /**
      * 界面跳转
      */
@@ -23,4 +24,5 @@ public class Constant {
      * 首页基础数据
      */
     public static final String INDEX_TOP_NAME="INDEX_TOP_NAME";
+
 }

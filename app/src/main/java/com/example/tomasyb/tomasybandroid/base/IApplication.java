@@ -3,6 +3,7 @@ import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.tomasyb.baselib.base.BaseApplication;
+import com.example.tomasyb.baselib.util.InitUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
 
 /**
@@ -17,6 +18,7 @@ public class IApplication extends BaseApplication{
         super.onCreate();
         //初始化logger
         LogUtils.logInit(true);
+        InitUtils.init(this);
         initRouter();
     }
 

@@ -20,15 +20,9 @@ import retrofit2.Retrofit;
  * Retrofit工具类
  * 构建Retrofit.Builder，并对Okhttp配置
  * 1、 日志log打印json数据
- *
- * 2. 设置Http请求头。给OkHttp 添加请求头拦截器，配置请求头信息。还可以为接口统一添加请求头数据。
- * 例如，把用户名、密码（或者token）统一添加到请求头。后续每个接口的请求头中都会携带用户名、
- * 密码（或者token）数据，避免了为每个接口单独添加。
- *
- * 3. 为OkHttp配置缓存。同样可以同过拦截器实现缓存处理。包括控制缓存的最大生命值，控制缓存的过期时间。
- *
- * 4. 如果采用https，我们还可以在此处理证书校验以及服务器校验。
- *
+ * 2. 设置Http请求头。防止每次输入
+ * 3. 为OkHttp配置缓存。（包括其最大生命和缓存过期时间）
+ * 4. 如果采用https，可在此处理证书校验以及服务器校验。
  * 5. 为Retrofit添加GsonConverterFactory
  *
  * @author 严博

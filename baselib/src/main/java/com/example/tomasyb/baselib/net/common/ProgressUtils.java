@@ -2,11 +2,8 @@ package com.example.tomasyb.baselib.net.common;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
-
-import com.zhpan.idea.dialog.DialogUtils;
-
+import com.example.tomasyb.baselib.net.dialog.DialogUtils;
 import java.lang.ref.WeakReference;
-
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
