@@ -8,6 +8,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -30,9 +31,12 @@ public interface ApiService {
     @GET("福利/10/1")
     Observable<List<MeiZi>> getMeizi();
 
+
+    //--------------------------------------------------------------------------------------
     /**
      * 下面是Retrofit单独使用的接口
      */
     @GET("rest/app/disguiseLogin")
-    Call<LoginUser> getUserMsg(@Query("account") String account, @Query("password") String psd);
+    Call<BaseEnty<LoginUser>> getUserMsg(@Query("account") String account,
+                              @Query("password") String psd);
 }
