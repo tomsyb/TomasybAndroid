@@ -32,7 +32,7 @@ public interface ApiService {
     Observable<List<MeiZi>> getMeizi();
 
 
-    //--------------------------------------------------------------------------------------
+
     /**
      * 下面是Retrofit单独使用的接口
      */

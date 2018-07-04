@@ -4,16 +4,9 @@
 
 ## 接口样式
 
-| 样式 | 写法 | 备注 |
-| ------------- |:-------------| :-----|
-| http://scrs.daqsoft.com/api/rest/app/disguiseLogin?account=yanb&password=123456| @GET("rest/app/disguiseLogin")
-                                                                                       Call<BaseEnty<LoginUser>> getUserMsg(@Query("account") String account,
-                                                                                                                 @Query("password") String psd);| ... |
-
-
 ### 一、GET
 
-1、简单的
+**1、简单的**
 
 http://102.10.10.132/api/News
 
@@ -22,7 +15,7 @@ http://102.10.10.132/api/News
  Call<NewsBean> getItem();
 ```
 
-2、Url中有参数
+**2、Url中有参数**
 
 http://102.10.10.132/api/News/1
 http://102.10.10.132/api/News/{资讯id}
