@@ -23,6 +23,7 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * Created by yanb on 2017/4/18.
+ * 处理服务器响应
  */
 
 public abstract class DefaultObserver<T> implements Observer<T> {

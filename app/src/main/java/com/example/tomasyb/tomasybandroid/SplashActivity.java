@@ -23,6 +23,7 @@ import java.util.List;
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Retrofit;
 
 /**
  * 引导页
@@ -56,6 +57,9 @@ public class SplashActivity extends BaseActivity {
                         ToastUitl.showLong("请求成功，妹子个数为" + response.size());
                     }
                 });
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("")
+                .build();
     }
 
 

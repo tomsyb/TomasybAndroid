@@ -66,6 +66,11 @@
  * 5. 为Retrofit添加GsonConverterFactory
 
 
+### 3、通过GsonConverterFactory获取真实响应数据
+
+我们只关心返回成功的数据其他我们通过重写GsonConverterFactory，GsonRequestBodyConverter，GsonResponseBodyConverter来处理其他错误信息
+
+### 4、构建DefaultObserver处理服务器响应。
 
 
 
