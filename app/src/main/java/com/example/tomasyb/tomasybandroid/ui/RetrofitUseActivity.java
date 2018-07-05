@@ -4,17 +4,24 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tomasyb.baselib.base.BaseActivity;
+import com.example.tomasyb.baselib.net.common.DefaultObserver;
+import com.example.tomasyb.baselib.net.common.ProgressUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
+import com.example.tomasyb.baselib.util.ToastUitl;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.bean.LoginUser;
 import com.example.tomasyb.tomasybandroid.common.Constant;
 import com.example.tomasyb.tomasybandroid.net.ApiService;
 import com.example.tomasyb.tomasybandroid.net.BaseEnty;
+import com.example.tomasyb.tomasybandroid.net.RetrofitHelper;
 
 import java.io.IOException;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,8 +56,27 @@ public class RetrofitUseActivity extends BaseActivity {
                 getUserMsg();
                 break;
             case R.id.btn_2:
+                RJget();
                 break;
         }
+    }
+
+    /**
+     * --------------------------------------------------------Rxjava和Retrofit结合使用
+     */
+    private void RJget() {
+        RetrofitHelper.getmApiService()
+                .getUser("yanb","123456")
+                .compose(this.<BaseEnty<LoginUser>>bindToLifecycle())
+                .compose(ProgressUtils.<BaseEnty<LoginUser>>applyProgressBar(this))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<BaseEnty<LoginUser>>() {
+                    @Override
+                    public void onSuccess(BaseEnty<LoginUser> response) {
+                        ToastUitl.showLong("请求成功"+response.getData().getName());
+                    }
+                });
     }
 
     /**
@@ -68,7 +94,7 @@ public class RetrofitUseActivity extends BaseActivity {
         call.enqueue(new Callback<BaseEnty<LoginUser>>() {
             @Override
             public void onResponse(Call<BaseEnty<LoginUser>> call, Response<BaseEnty<LoginUser>> response) {
-                LogUtils.e(response.body().getMessage());
+                ToastUitl.showLong("请求成功message="+response.body().getMessage());
             }
 
             @Override

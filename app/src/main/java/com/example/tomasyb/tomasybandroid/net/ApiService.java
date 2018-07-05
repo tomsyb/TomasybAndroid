@@ -1,17 +1,10 @@
 package com.example.tomasyb.tomasybandroid.net;
 
 import com.example.tomasyb.tomasybandroid.bean.LoginUser;
-import com.example.tomasyb.tomasybandroid.bean.MeiZi;
-
-import java.util.List;
 
 import io.reactivex.Observable;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
-import retrofit2.http.Field;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
 /**
@@ -24,12 +17,6 @@ import retrofit2.http.Query;
  */
 
 public interface ApiService {
-    /**
-     * 测试地址
-     */
-    @Headers("Cache-Control: public, max-age=100")
-    @GET("福利/10/1")
-    Observable<List<MeiZi>> getMeizi();
 
     //--------------------------------------------------------------Retrofit单独使用
 
@@ -40,8 +27,14 @@ public interface ApiService {
     @GET("rest/app/disguiseLogin")
     Call<BaseEnty<LoginUser>> getUserMsg(@Query("account") String account,
                               @Query("password") String psd);
+
     //--------------------------------------------------------------Retrofit+Rxjava结合使用
 
-
+    /**
+     * get
+     */
+    @GET("rest/app/disguiseLogin")
+    Observable<BaseEnty<LoginUser>> getUser(@Query("account") String account,
+                                               @Query("password") String psd);
 
 }

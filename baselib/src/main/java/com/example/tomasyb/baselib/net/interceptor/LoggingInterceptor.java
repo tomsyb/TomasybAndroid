@@ -12,7 +12,8 @@ import okhttp3.ResponseBody;
 
 /**
  * Created by yanbo on 2018/4/20.
- * 日志拦截器
+ *
+ * 日志拦截器可以打印json数据
  */
 
 public class LoggingInterceptor implements Interceptor {

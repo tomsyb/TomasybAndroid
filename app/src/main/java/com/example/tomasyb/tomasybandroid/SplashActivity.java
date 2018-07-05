@@ -4,26 +4,15 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
-import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.tomasyb.baselib.base.BaseActivity;
-import com.example.tomasyb.baselib.net.common.DefaultObserver;
-import com.example.tomasyb.baselib.net.common.ProgressUtils;
-import com.example.tomasyb.baselib.util.ToastUitl;
-import com.example.tomasyb.tomasybandroid.bean.MeiZi;
 import com.example.tomasyb.tomasybandroid.common.Constant;
-import com.example.tomasyb.tomasybandroid.net.RetrofitHelper;
-
-import java.util.List;
 
 import butterknife.BindView;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
 
 /**
  * 引导页
@@ -44,20 +33,6 @@ public class SplashActivity extends BaseActivity {
     public void initView() {
         setTranslanteBar();
         mTvCentent.setText("哈哈哈");
-
-        RetrofitHelper.getmApiService()
-                .getMeizi()
-                .compose(this.<List<MeiZi>>bindToLifecycle())
-                .compose(ProgressUtils.<List<MeiZi>>applyProgressBar(this))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<List<MeiZi>>() {
-                    @Override
-                    public void onSuccess(List<MeiZi> response) {
-                        ToastUitl.showLong("请求成功，妹子个数为" + response.size());
-                    }
-                });
-
     }
 
     private void toMainActivity() {
@@ -79,7 +54,7 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                ARouter.getInstance().build(Constant.MAIN).navigation();
+                ARouter.getInstance().build(Constant.MAIN_STUDY).navigation();
                 finish();
             }
 

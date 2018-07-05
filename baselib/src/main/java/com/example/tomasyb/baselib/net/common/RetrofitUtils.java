@@ -44,6 +44,7 @@ public class RetrofitUtils {
                 .readTimeout(BaseConfig.READ_TIME_OUT, TimeUnit.MILLISECONDS)
                 .connectTimeout(BaseConfig.CONNECT_TIME_OUT,TimeUnit.MILLISECONDS)
                 .addInterceptor(new LoggingInterceptor())
+                // 配置请求头统一配置信息
                 .addInterceptor(new HttpHeaderInterceptor())
                 .addNetworkInterceptor(new HttpCacheInterceptor())
                 // .sslSocketFactory(SslContextFactory.getSSLSocketFactoryForTwoWay())  // https认证 如果要使用https且为自定义证书 可以去掉这两行注释，并自行配制证书。
@@ -61,6 +62,7 @@ public class RetrofitUtils {
         OkHttpClient client = RetrofitUtils.getOkBuilder().build();
         return new Retrofit.Builder()
                 .client(client)
+                //自定义处理返回数据
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(baseUrl);

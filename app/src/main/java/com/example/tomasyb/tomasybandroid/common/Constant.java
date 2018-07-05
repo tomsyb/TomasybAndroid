@@ -10,11 +10,12 @@ package com.example.tomasyb.tomasybandroid.common;
  */
 
 public class Constant {
-    public static String BASE_URL = "http://gank.io/"+"api/data/";
+    public static String BASE_URL = "http://scrs.daqsoft.com/api/";
     /**
      * 界面跳转
      */
     public static final String MAIN = "/main/mainActivity";
+    public static final String MAIN_STUDY = "/study/main/StudyMainActivity";
     /**
      * 首页选中的tab
      */

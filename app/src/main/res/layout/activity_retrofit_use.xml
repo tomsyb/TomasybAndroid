@@ -23,7 +23,13 @@
                 android:id="@+id/btn_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:text="retrofit和rxjava网络请求结合使用"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <Button
+                android:text="GET"
                 android:id="@+id/btn_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
