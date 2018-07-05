@@ -57,11 +57,8 @@ public class SplashActivity extends BaseActivity {
                         ToastUitl.showLong("请求成功，妹子个数为" + response.size());
                     }
                 });
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("")
-                .build();
-    }
 
+    }
 
     private void toMainActivity() {
         PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat("alpha", 0.3f, 1f);

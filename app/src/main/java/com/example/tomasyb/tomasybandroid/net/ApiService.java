@@ -31,12 +31,17 @@ public interface ApiService {
     @GET("福利/10/1")
     Observable<List<MeiZi>> getMeizi();
 
-
+    //--------------------------------------------------------------Retrofit单独使用
 
     /**
      * 下面是Retrofit单独使用的接口
+     * http://scrs.daqsoft.com/api/rest/app/disguiseLogin?account=yanb&password=123456
      */
     @GET("rest/app/disguiseLogin")
     Call<BaseEnty<LoginUser>> getUserMsg(@Query("account") String account,
                               @Query("password") String psd);
+    //--------------------------------------------------------------Retrofit+Rxjava结合使用
+
+
+
 }

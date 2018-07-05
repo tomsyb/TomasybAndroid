@@ -16,7 +16,7 @@
 
 package com.example.tomasyb.baselib.net.converter;
 
-import com.example.tomasyb.baselib.net.common.BaseResponse;
+import com.example.tomasyb.baselib.net.entity.BaseResponse;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;

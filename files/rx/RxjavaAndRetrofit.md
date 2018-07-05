@@ -44,17 +44,7 @@
 
 ### 1、构建服务器返回数据基类BaseResponse
 
-说在前面，假设我们请求的json样式如下
-
-```
-{
- "code": 200,
- "message": "成功",
- "content": {
-    ...
-    }
-}
-```
+样式见
 
 ### 2、构建RetrofitUtils
 
