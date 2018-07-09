@@ -1,7 +1,6 @@
 package com.example.tomasyb.tomasybandroid.ui.index.adapter;
 
 import android.content.Context;
-import android.support.v4.app.NavUtils;
 import android.text.TextUtils;
 
 import com.aspsine.irecyclerview.universaladapter.ViewHolderHelper;
@@ -33,7 +32,7 @@ public class IndexContentAdapter extends MultiItemRecycleViewAdapter<NewsSummary
                 if (itemType == TYPE_PHOTO_ITEM){
                     return R.layout.item_index_content_photo;
                 }else {
-                    return R.layout.item_index_content_normal;
+                    return R.layout.item_title_content;
                 }
             }
 
@@ -51,7 +50,7 @@ public class IndexContentAdapter extends MultiItemRecycleViewAdapter<NewsSummary
     @Override
     public void convert(ViewHolderHelper helper, NewsSummary bean) {
         switch (helper.getLayoutId()){
-            case R.layout.item_index_content_normal://普通item
+            case R.layout.item_title_content://普通item
                 setNomallValues(helper,bean,getPosition(helper));
                 break;
             case R.layout.item_index_content_photo://带图文的item

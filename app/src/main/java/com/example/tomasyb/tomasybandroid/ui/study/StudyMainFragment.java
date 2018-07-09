@@ -7,8 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aspsine.irecyclerview.animation.AlphaInAnimation;
 import com.example.tomasyb.baselib.base.BaseFragment;
 import com.example.tomasyb.tomasybandroid.R;
+import com.example.tomasyb.tomasybandroid.bean.StudyMainEntity;
+import com.example.tomasyb.tomasybandroid.ui.study.adapter.StudyMainAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +34,9 @@ public class StudyMainFragment extends BaseFragment {
     @BindView(R.id.rv)
     RecyclerView mRv;
 
+    private List<StudyMainEntity> mDatas;//数据
+    private String mTitle;
+    private StudyMainAdapter adapter;
 
     /**
      * 单列获取fragment
@@ -55,14 +64,22 @@ public class StudyMainFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        initData();
-        mRv.setLayoutManager(new LinearLayoutManager(mRv.getContext()));
-        mRv.setAdapter();
+        mTitle = getArguments().getString(ARG_TITLE);
+        initAdapter();
     }
 
-    private void initData() {
-
+    private void initAdapter() {
+        mDatas = new ArrayList<>();
+        mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new StudyMainAdapter(getActivity(), R.layout.item_title_content, mDatas);
+        for (int i = 0; i < 18; i++) {
+            StudyMainEntity bean = new StudyMainEntity();
+            bean.setTitle("标题"+i);
+            bean.setContent("内容"+i);
+            mDatas.add(bean);
+        }
+        mRv.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
-
 
 }
