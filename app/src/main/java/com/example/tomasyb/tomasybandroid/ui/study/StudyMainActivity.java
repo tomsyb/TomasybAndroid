@@ -39,6 +39,7 @@ public class StudyMainActivity extends BaseActivity {
         return R.layout.activity_study_main;
     }
 
+
     @Override
     public void initView() {
         initFragments();
@@ -76,11 +77,9 @@ public class StudyMainActivity extends BaseActivity {
         mFragment = new ArrayList<>();
         mTitles = new ArrayList<>();
         mTitles.add("Rxjava");
-        mTitles.add("Rxjava");
-        mTitles.add("Rxjava");
-        mTitles.add("Rxjava");
-        for (String title:mTitles){
-            mFragment.add(StudyMainFragment.getInstance(title));
+        mTitles.add("Retrofit");
+        for (int i = 0; i < mTitles.size(); i++) {
+            mFragment.add(StudyMainFragment.getInstance(i));
         }
     }
 

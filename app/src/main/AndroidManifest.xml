@@ -32,7 +32,7 @@
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
         <activity android:name=".example.custom.CustomViewActivity" />
-        <activity android:name=".SplashActivity"></activity>
+        <activity android:name=".SplashActivity" />
 
         <!-- .............常用UI主界面................ -->
         <activity android:name=".comui.ComUiMainActivity" />
@@ -63,9 +63,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!-- qq配置结束 -->
         <!-- Retrofit用法 -->
-        <activity android:name=".ui.RetrofitUseActivity">
-
-        </activity>
+        <activity android:name=".ui.RetrofitUseActivity"></activity>
         <activity android:name=".ui.study.StudyMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,6 +71,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.study.RxjavaStudyActivity"></activity>
     </application>
 
 </manifest>

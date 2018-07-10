@@ -3,22 +3,24 @@ package com.example.tomasyb.tomasybandroid.ui.study;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.aspsine.irecyclerview.animation.AlphaInAnimation;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.aspsine.irecyclerview.universaladapter.ViewHolderHelper;
+import com.aspsine.irecyclerview.universaladapter.recyclerview.CommonRecycleViewAdapter;
+import com.aspsine.irecyclerview.universaladapter.recyclerview.OnItemClickListener;
 import com.example.tomasyb.baselib.base.BaseFragment;
+import com.example.tomasyb.baselib.util.JsonUtils;
+import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.bean.StudyMainEntity;
-import com.example.tomasyb.tomasybandroid.ui.study.adapter.StudyMainAdapter;
+import com.example.tomasyb.tomasybandroid.common.Common;
+import com.example.tomasyb.tomasybandroid.common.Constant;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * 学习主Fragment
@@ -34,20 +36,21 @@ public class StudyMainFragment extends BaseFragment {
     @BindView(R.id.rv)
     RecyclerView mRv;
 
-    private List<StudyMainEntity> mDatas;//数据
-    private String mTitle;
-    private StudyMainAdapter adapter;
+    private List<StudyMainEntity.RxjavaBean> mRxjavaDatas;//Rxjava数据
+    private List<StudyMainEntity.RetrofitBean> mRetrofitDatas;//Retrofit数据
+    private int mPostion;
+    private CommonRecycleViewAdapter adapter;
 
     /**
      * 单列获取fragment
      *
-     * @param title
+     * @param postion 位置
      * @return
      */
-    public static StudyMainFragment getInstance(String title) {
+    public static StudyMainFragment getInstance(int postion) {
         StudyMainFragment fragment = new StudyMainFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(ARG_TITLE, title);
+        bundle.putInt(ARG_TITLE, postion);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -64,22 +67,64 @@ public class StudyMainFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        mTitle = getArguments().getString(ARG_TITLE);
-        initAdapter();
+        mPostion = getArguments().getInt(ARG_TITLE);
+        mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        initData();
     }
 
-    private void initAdapter() {
-        mDatas = new ArrayList<>();
-        mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new StudyMainAdapter(getActivity(), R.layout.item_title_content, mDatas);
-        for (int i = 0; i < 18; i++) {
-            StudyMainEntity bean = new StudyMainEntity();
-            bean.setTitle("标题"+i);
-            bean.setContent("内容"+i);
-            mDatas.add(bean);
+    /**
+     * 初始化数据
+     */
+    private void initData() {
+        String json = Common.getJson(getActivity(), "rx.json");
+        StudyMainEntity bean = JsonUtils.JsonToObject(json, StudyMainEntity.class);
+        mRxjavaDatas = bean.getRxjava();
+        mRetrofitDatas = bean.getRetrofit();
+        if (mPostion == 0){
+            initRxjavaAdapter();
+        }else {
+            initRetrofitAdapter();
         }
-        mRv.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
     }
+
+    /**
+     * Retrofit的适配器
+     */
+    private void initRetrofitAdapter() {
+        adapter = new CommonRecycleViewAdapter<StudyMainEntity.RetrofitBean>(getActivity(),R.layout.item_title_content,mRetrofitDatas){
+
+            @Override
+            public void convert(final ViewHolderHelper helper, final StudyMainEntity.RetrofitBean bean) {
+                helper.setText(R.id.normal_tv_title,bean.getName());
+                helper.setText(R.id.item_content,bean.getContent());
+            }
+        };
+        mRv.setAdapter(adapter);
+    }
+
+    /**
+     * Rxjava的适配器
+     */
+    private void initRxjavaAdapter() {
+        adapter = new CommonRecycleViewAdapter<StudyMainEntity.RxjavaBean>(getActivity(),R.layout.item_title_content,mRxjavaDatas){
+
+            @Override
+            public void convert(final ViewHolderHelper helper, final StudyMainEntity.RxjavaBean bean) {
+                helper.setText(R.id.normal_tv_title,bean.getName());
+                helper.setText(R.id.item_content,bean.getContent());
+                helper.setOnClickListener(R.id.item_ll_content, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ARouter.getInstance().build(Constant.MAIN_STUDY_RXJAVA)
+                                .withInt(Constant.STUDY_TYPE,helper.getPosition())
+                                .navigation();
+                    }
+                });
+            }
+        };
+        mRv.setAdapter(adapter);
+    }
+
 
 }

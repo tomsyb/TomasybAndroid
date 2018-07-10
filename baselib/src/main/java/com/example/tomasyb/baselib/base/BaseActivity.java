@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Window;
 
 import com.example.tomasyb.baselib.R;
@@ -17,6 +18,7 @@ import com.example.tomasyb.baselib.widget.LoadingDialog;
 import com.example.tomasyb.baselib.widget.StatusBarCompat;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -61,6 +63,7 @@ import butterknife.Unbinder;
 //    }
 //}
 public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> extends RxAppCompatActivity {
+    private Toolbar mToolbar;
     public V mPre;
     public M mModel;
     public Context mContext;
@@ -73,6 +76,7 @@ public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> exte
         isConfigChange = false;
         doBeforeSetContentView();
         setContentView(getLayoutId());
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mUnbinder = ButterKnife.bind(this);
         mContext = this;
         mPre = TUtil.getT(this,0);

@@ -1,7 +1,7 @@
 package com.example.tomasyb.tomasybandroid.common;
 
 /**
- * 常量
+ * 常量及
  *
  * @author 严博
  * @version 1.0.0
@@ -11,11 +11,14 @@ package com.example.tomasyb.tomasybandroid.common;
 
 public class Constant {
     public static String BASE_URL = "http://scrs.daqsoft.com/api/";
+    public static String STUDY_TYPE = "STUDY_TYPE";
+
     /**
      * 界面跳转
      */
     public static final String MAIN = "/main/mainActivity";
     public static final String MAIN_STUDY = "/study/main/StudyMainActivity";
+    public static final String MAIN_STUDY_RXJAVA = "/study/RxjavaActivity";
     /**
      * 首页选中的tab
      */
@@ -25,5 +28,7 @@ public class Constant {
      * 首页基础数据
      */
     public static final String INDEX_TOP_NAME="INDEX_TOP_NAME";
+
+
 
 }
