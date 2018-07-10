@@ -73,6 +73,11 @@ public class RetrofitUseActivity extends BaseActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver<BaseEnty<LoginUser>>() {
                     @Override
+                    public void onFail(String message) {
+                        super.onFail(message);
+                    }
+
+                    @Override
                     public void onSuccess(BaseEnty<LoginUser> response) {
                         ToastUitl.showLong("请求成功"+response.getData().getName());
                     }

@@ -7,10 +7,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.tomasyb.tomasybandroid.ui.study.RxjavaStudyActivity">
+    <include layout="@layout/include_layout_toolbar"/>
     <Button
         android:id="@+id/txjava_btn_show"
         android:textSize="14sp"
         android:text="点击看效果"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/rxstudy_tv_content"
+        android:text="操作结果："
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

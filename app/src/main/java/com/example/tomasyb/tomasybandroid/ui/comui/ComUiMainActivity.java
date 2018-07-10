@@ -1,4 +1,4 @@
-package com.example.tomasyb.tomasybandroid.comui;
+package com.example.tomasyb.tomasybandroid.ui.comui;
 
 import android.os.Bundle;
 

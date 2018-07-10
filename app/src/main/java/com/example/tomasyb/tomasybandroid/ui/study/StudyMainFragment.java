@@ -118,6 +118,7 @@ public class StudyMainFragment extends BaseFragment {
                     public void onClick(View v) {
                         ARouter.getInstance().build(Constant.MAIN_STUDY_RXJAVA)
                                 .withInt(Constant.STUDY_TYPE,helper.getPosition())
+                                .withString(Constant.STUDY_TITLE,bean.getName())
                                 .navigation();
                     }
                 });

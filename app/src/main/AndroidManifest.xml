@@ -35,11 +35,11 @@
         <activity android:name=".SplashActivity" />
 
         <!-- .............常用UI主界面................ -->
-        <activity android:name=".comui.ComUiMainActivity" />
+        <activity android:name=".ui.comui.ComUiMainActivity" />
 
         <!-- .............登录界面................ -->
         <activity
-            android:name=".comui.LoginActivity"
+            android:name=".ui.comui.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
 
         <!-- .............分享功能................ -->

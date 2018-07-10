@@ -11,7 +11,8 @@ package com.example.tomasyb.tomasybandroid.common;
 
 public class Constant {
     public static String BASE_URL = "http://scrs.daqsoft.com/api/";
-    public static String STUDY_TYPE = "STUDY_TYPE";
+    public static String STUDY_TYPE = "STUDY_TYPE";//学习页面的类型
+    public static String STUDY_TITLE = "STUDY_TITLE";//学习页面的标题
 
     /**
      * 界面跳转
