@@ -98,6 +98,13 @@ public class StudyMainFragment extends BaseFragment {
             public void convert(final ViewHolderHelper helper, final StudyMainEntity.RetrofitBean bean) {
                 helper.setText(R.id.normal_tv_title,bean.getName());
                 helper.setText(R.id.item_content,bean.getContent());
+                helper.setOnClickListener(R.id.item_ll_content, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ARouter.getInstance().build(Constant.STUDY_RETROFIT)
+                                .navigation();
+                    }
+                });
             }
         };
         mRv.setAdapter(adapter);

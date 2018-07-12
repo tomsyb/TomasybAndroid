@@ -63,7 +63,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!-- qq配置结束 -->
         <!-- Retrofit用法 -->
-        <activity android:name=".ui.RetrofitUseActivity"></activity>
+        <activity android:name=".ui.study.RetrofitStudyActivity" />
         <activity android:name=".ui.study.StudyMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -71,7 +71,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.study.RxjavaStudyActivity"></activity>
+        <activity android:name=".ui.study.RxjavaStudyActivity" />
+        <activity android:name=".ui.text.TextActivity"></activity>
     </application>
 
 </manifest>

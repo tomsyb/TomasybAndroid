@@ -3,7 +3,9 @@ package com.example.tomasyb.tomasybandroid.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.tomasyb.baselib.base.BaseActivity;
@@ -25,6 +27,7 @@ public abstract class ToolbarBaseActivity extends BaseActivity{
     Toolbar mToolbar;
     @BindView(R.id.title_text)
     TextView mTitleName;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,4 +68,5 @@ public abstract class ToolbarBaseActivity extends BaseActivity{
     protected boolean isShowBack(){
         return true;
     }
+
 }

@@ -11,6 +11,7 @@ package com.example.tomasyb.tomasybandroid.common;
 
 public class Constant {
     public static String BASE_URL = "http://scrs.daqsoft.com/api/";
+    public static final String BASE_UPDATAURL = "http://app.daqsoft.com/appserives/";
     public static String STUDY_TYPE = "STUDY_TYPE";//学习页面的类型
     public static String STUDY_TITLE = "STUDY_TITLE";//学习页面的标题
 
@@ -20,6 +21,7 @@ public class Constant {
     public static final String MAIN = "/main/mainActivity";
     public static final String MAIN_STUDY = "/study/main/StudyMainActivity";
     public static final String MAIN_STUDY_RXJAVA = "/study/RxjavaActivity";
+    public static final String STUDY_RETROFIT= "/study/RetrofitStudyActivity";
     /**
      * 首页选中的tab
      */

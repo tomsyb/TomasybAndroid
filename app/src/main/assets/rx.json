@@ -41,20 +41,20 @@
       "content": "在Rxjava中timer 操作符既可以延迟执行一段逻辑，也可以间隔执行一段逻辑,【注意】但在RxJava 2.x已经过时了，现在用interval操作符来间隔执行,timer和interval都默认执行在一个新线程上"
     },
     {
-      "name": "",
-      "content": "和flatMap用法一样只是他有序而已"
+      "name": "interval",
+      "content": "间隔执行操作，默认在新线程,其接受三个参数，分别是第一次发送延迟，间隔时间，时间单位"
     },
     {
-      "name": "",
-      "content": "和flatMap用法一样只是他有序而已"
+      "name": "doOnNext",
+      "content": "让订阅者在接手数据之前的操作如保存数据"
     },
     {
-      "name": "",
-      "content": "和flatMap用法一样只是他有序而已"
+      "name": "实际应用--单一网络请求",
+      "content": "单一的网络请求,1、通过 Observable.create() 方法，调用 OkHttp 网络请求,2、通过 map 操作符结合 Gson , 将 Response 转换为 bean 类，3、通过 doOnNext() 方法，解析 bean 中的数据，并进行数据库存储等操作，4、调度线程，在子线程进行耗时操作任务，在主线程更新 UI，5、通过 subscribe(),根据请求成功或者失败来更新 UI"
     },
     {
-      "name": "",
-      "content": "和flatMap用法一样只是他有序而已"
+      "name": "实际应用--多个接口同时处理",
+      "content": "zip 操作符可以把多个 Observable 的数据接口成一个数据源再发出去"
     }
   ],
   "retrofit": [

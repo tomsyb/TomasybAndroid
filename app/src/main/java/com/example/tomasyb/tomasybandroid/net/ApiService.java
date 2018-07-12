@@ -1,6 +1,8 @@
 package com.example.tomasyb.tomasybandroid.net;
 
+import com.example.tomasyb.baselib.net.entity.BaseResponse;
 import com.example.tomasyb.tomasybandroid.bean.LoginUser;
+import com.example.tomasyb.tomasybandroid.ui.study.entity.UpdateEntity;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -34,7 +36,24 @@ public interface ApiService {
      * get
      */
     @GET("rest/app/disguiseLogin")
-    Observable<BaseEnty<LoginUser>> getUser(@Query("account") String account,
-                                               @Query("password") String psd);
+    Observable<BaseResponse<LoginUser>> getUser(@Query("account") String account,
+                                                @Query("password") String psd);
+
+    /**
+     * 更新用的接口
+     * Services.aspx?AppId=81383&Method=AppVersion&token=daqsoft&AppType=1&VersionCode=2.0.0
+     * @param AppId
+     * @param Method
+     * @param token
+     * @param AppType
+     * @param VersionCode
+     * @return
+     */
+    @GET("Services.aspx")
+    Call<UpdateEntity> getUpdateMsg(@Query("AppId") String AppId,
+                                          @Query("Method") String Method,
+                                          @Query("token") String token,
+                                          @Query("AppType") String AppType,
+                                          @Query("VersionCode") String VersionCode);
 
 }

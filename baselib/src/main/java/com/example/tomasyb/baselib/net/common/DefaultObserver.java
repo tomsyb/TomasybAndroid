@@ -27,6 +27,7 @@ import io.reactivex.disposables.Disposable;
  */
 
 public abstract class DefaultObserver<T> implements Observer<T> {
+
     @Override
     public void onSubscribe(Disposable d) {
 
@@ -64,6 +65,7 @@ public abstract class DefaultObserver<T> implements Observer<T> {
 
     @Override
     public void onComplete() {
+
     }
 
     /**

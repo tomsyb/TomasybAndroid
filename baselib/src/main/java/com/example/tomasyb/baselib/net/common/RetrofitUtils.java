@@ -68,4 +68,20 @@ public class RetrofitUtils {
                 .baseUrl(baseUrl);
     }
 
+    /**
+     * 单一获取Retrofit不结合Rxjava
+     * @param baseurl
+     * @return
+     */
+    public static Retrofit getRetrofit(String baseurl){
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").serializeNulls().create();
+        OkHttpClient client = RetrofitUtils.getOkBuilder().build();
+        return new Retrofit.Builder()
+                .client(client)
+                //自定义处理返回数据
+                .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create(gson))
+                .baseUrl(baseurl).build();
+    }
+
+
 }

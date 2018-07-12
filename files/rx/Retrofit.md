@@ -18,6 +18,7 @@ http://102.10.10.132/api/News
 **2、Url中有参数**
 
 http://102.10.10.132/api/News/1
+
 http://102.10.10.132/api/News/{资讯id}
 
 ```
@@ -25,6 +26,7 @@ http://102.10.10.132/api/News/{资讯id}
  Call<NewsBean> getItem(@Path("newsId") String newsId);
 ```
 http://102.10.10.132/api/News/1/类型1
+
 http://102.10.10.132/api/News/{资讯id}/{类型}
 
 ```
@@ -34,6 +36,7 @@ http://102.10.10.132/api/News/{资讯id}/{类型}
 3、样式3（参数在URL问号之后）
 
 http://102.10.10.132/api/News?newsId=1
+
 http://102.10.10.132/api/News?newsId={资讯id}
 
 ```
@@ -41,6 +44,7 @@ http://102.10.10.132/api/News?newsId={资讯id}
     Call<NewsBean> getItem(@Query("newsId") String newsId);
 ```
 http://102.10.10.132/api/News?newsId=1&type=类型1
+
 http://102.10.10.132/api/News?newsId={资讯id}&type={类型}
 
 ```
@@ -50,6 +54,7 @@ http://102.10.10.132/api/News?newsId={资讯id}&type={类型}
 4、样式4（多个参数在URL问号之后，且个数不确定）
 
 http://102.10.10.132/api/News?newsId=1&type=类型1...
+
 http://102.10.10.132/api/News?newsId={资讯id}&type={类型}...
 
 ```
@@ -68,6 +73,7 @@ http://102.10.10.132/api/News?newsId={资讯id}&type={类型}...
 1、补URL 并传参数
 
 http://102.10.10.132/api/Comments/1
+
 http://102.10.10.132/api/Comments/{newsId}
 
 ```
@@ -80,6 +86,7 @@ http://102.10.10.132/api/Comments/{newsId}
 2、样式2（需要补全URL，问号后加入access_token，post的数据只有一条reason）
 
 http://102.10.10.132/api/Comments/1?access_token=1234123
+
 http://102.10.10.132/api/Comments/{newsId}?access_token={access_token}
 ```
     @FormUrlEncoded
@@ -93,6 +100,7 @@ http://102.10.10.132/api/Comments/{newsId}?access_token={access_token}
 3、样式3（需要补全URL，问号后加入access_token，post一个body（对象））
 
 http://102.10.10.132/api/Comments/1?access_token=1234123
+
 http://102.10.10.132/api/Comments/{newsId}?access_token={access_token}
 ```
     @POST("Comments/{newsId}")
@@ -107,6 +115,7 @@ http://102.10.10.132/api/Comments/{newsId}?access_token={access_token}
 1、样式1（需要补全URL）
 
   http://102.10.10.132/api/Comments/1
+
   http://102.10.10.132/api/Comments/{commentId}
 
   ```
@@ -118,6 +127,7 @@ http://102.10.10.132/api/Comments/{newsId}?access_token={access_token}
 2、样式2（需要补全URL，问号后加入access_token）
 
 http://102.10.10.132/api/Comments/1?access_token=1234123
+
 http://102.10.10.132/api/Comments/{commentId}?access_token={access_token}
 
 ```
@@ -156,12 +166,19 @@ http://102.10.10.132/api/Accounts/{accountId}
 总结
 
 @Path：所有在网址中的参数（URL的问号前面），如：
+
 http://102.10.10.132/api/Accounts/{accountId}
+
 @Query：URL问号后面的参数，如：
+
 http://102.10.10.132/api/Comments?access_token={access_token}
+
 @QueryMap：相当于多个@Query
+
 @Field：用于POST请求，提交单个数据
+
 @Body：相当于多个@Field，以对象的形式提交
+
 Tips
 
     Tips1

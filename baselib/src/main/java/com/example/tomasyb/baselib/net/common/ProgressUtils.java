@@ -16,6 +16,7 @@ import io.reactivex.functions.Consumer;
  */
 
 public class ProgressUtils {
+
     public static <T> ObservableTransformer<T, T> applyProgressBar(
             @NonNull final Activity activity, String msg) {
         final WeakReference<Activity> activityWeakReference = new WeakReference<>(activity);

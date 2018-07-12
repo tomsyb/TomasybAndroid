@@ -1,11 +1,13 @@
-package com.example.tomasyb.tomasybandroid.ui;
+package com.example.tomasyb.tomasybandroid.ui.study;
 
 import android.os.Bundle;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.tomasyb.baselib.base.BaseActivity;
 import com.example.tomasyb.baselib.net.common.DefaultObserver;
 import com.example.tomasyb.baselib.net.common.ProgressUtils;
+import com.example.tomasyb.baselib.net.entity.BaseResponse;
 import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.util.ToastUitl;
 import com.example.tomasyb.tomasybandroid.R;
@@ -28,8 +30,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-public class RetrofitUseActivity extends BaseActivity {
+@Route(path = "/study/RetrofitStudyActivity")
+public class RetrofitStudyActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
@@ -67,18 +69,13 @@ public class RetrofitUseActivity extends BaseActivity {
     private void RJget() {
         RetrofitHelper.getmApiService()
                 .getUser("yanb","123456")
-                .compose(this.<BaseEnty<LoginUser>>bindToLifecycle())
-                .compose(ProgressUtils.<BaseEnty<LoginUser>>applyProgressBar(this))
+                .compose(this.<BaseResponse<LoginUser>>bindToLifecycle())
+                .compose(ProgressUtils.<BaseResponse<LoginUser>>applyProgressBar(this))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<BaseEnty<LoginUser>>() {
+                .subscribe(new DefaultObserver<BaseResponse<LoginUser>>() {
                     @Override
-                    public void onFail(String message) {
-                        super.onFail(message);
-                    }
-
-                    @Override
-                    public void onSuccess(BaseEnty<LoginUser> response) {
+                    public void onSuccess(BaseResponse<LoginUser> response) {
                         ToastUitl.showLong("请求成功"+response.getData().getName());
                     }
                 });
@@ -88,6 +85,7 @@ public class RetrofitUseActivity extends BaseActivity {
      * 获取用户信息http://scrs.daqsoft.com/api/rest/app/disguiseLogin?account=yanb&password=123456
      */
     private void getUserMsg() {
+
         // 1、获取Retrofit实例
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
@@ -106,6 +104,7 @@ public class RetrofitUseActivity extends BaseActivity {
             public void onFailure(Call<BaseEnty<LoginUser>> call, Throwable t) {
 
             }
+
         });
         //取消请求
         //call.cancel();

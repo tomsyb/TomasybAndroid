@@ -4,13 +4,19 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.example.tomasyb.baselib.net.common.RetrofitUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.util.TimeUtil;
+import com.example.tomasyb.baselib.util.ToastUitl;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.base.ToolbarBaseActivity;
+import com.example.tomasyb.tomasybandroid.bean.LoginUser;
 import com.example.tomasyb.tomasybandroid.common.Constant;
+import com.example.tomasyb.tomasybandroid.net.ApiService;
+import com.example.tomasyb.tomasybandroid.net.BaseEnty;
 import com.example.tomasyb.tomasybandroid.ui.comui.entity.Users;
 import com.example.tomasyb.tomasybandroid.ui.study.entity.TextEntity;
+import com.example.tomasyb.tomasybandroid.ui.study.entity.UpdateEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +32,17 @@ import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Rxjava学习的页面
@@ -100,10 +112,20 @@ public class RxjavaStudyActivity extends ToolbarBaseActivity {
             case 9:
                 timer();
                 break;
+            case 10:
+                interval();
+                break;
+            case 11:
+                doOnNext();
+                break;
+            case 12:
+                singleNet();
+                break;
+            case 13:
+                moreNet();
+                break;
         }
     }
-
-
 
 
     /**
@@ -397,4 +419,170 @@ public class RxjavaStudyActivity extends ToolbarBaseActivity {
                 });
     }
 
+    /**
+     * --------------------------------------------------------------interval间隔时间操作
+     * 延时操作当页面销毁的时候还是会执行我们用Disposable对象来操作
+     *
+     */
+    private Disposable disposable;
+    private void interval() {
+        mTvContent.append(TimeUtil.getCurrentDate("yyyy-MM-dd HH:mm:ss"));
+        mTvContent.append("\n");
+        disposable = Observable.interval(3,2,TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())// 由于interval默认在新线程，所以我们应该切回主线程
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        mTvContent.append(aLong+"at"+TimeUtil.getCurrentDate("yyyy-MM-dd HH:mm:ss"));
+                    }
+                });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (disposable !=null&&!disposable.isDisposed()){
+            disposable.dispose();
+        }
+    }
+
+    /**
+     * --------------------------------------------------------------doOnNext
+     *
+     */
+    private void doOnNext() {
+        Observable.just(1,2,3,4)
+                .doOnNext(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        mTvContent.append("保存"+integer.toString());
+                    }
+                }).subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+                mTvContent.append("最后"+integer);
+            }
+        });
+    }
+    /**
+     * --------------------------------------------------------------单一的网络请求
+     * 这里使用Retrofit请求网络
+     */
+    private void singleNet() {
+        Observable.create(new ObservableOnSubscribe<BaseEnty<LoginUser>>() {
+            @Override
+            public void subscribe(final ObservableEmitter<BaseEnty<LoginUser>> e) throws Exception {
+                RetrofitUtils.getRetrofit(Constant.BASE_URL).create(ApiService.class)
+                        .getUserMsg("yanb","123456")
+                        .enqueue(new Callback<BaseEnty<LoginUser>>() {
+                            @Override
+                            public void onResponse(Call<BaseEnty<LoginUser>> call,
+                                                   Response<BaseEnty<LoginUser>> response) {
+                                e.onNext(response.body());
+                            }
+
+                            @Override
+                            public void onFailure(Call<BaseEnty<LoginUser>> call, Throwable t) {
+                                e.onError(t);
+                            }
+                        });
+            }
+            //map数据操作变换把对象通过某种形式转换位String并显示
+        }).map(new Function<BaseEnty<LoginUser>, String>() {
+            @Override
+            public String apply(BaseEnty<LoginUser> loginUserBaseEnty) throws Exception {
+                LogUtils.e("map的线程-->"+Thread.currentThread().getName());
+                return loginUserBaseEnty.getData().getName();
+            }
+        }).observeOn(AndroidSchedulers.mainThread())//数据接收之前操作
+                .doOnNext(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        mTvContent.append("数据保存"+s);
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        LogUtils.e("subscribe 线程:" + Thread.currentThread().getName() + "\n");
+                        mTvContent.append("数据请求成功-->" + s);
+                    }
+                }, new Consumer<Throwable>() {//第二个是错误的接收
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        ToastUitl.showLong("请求错误");
+                    }
+                });
+    }
+
+    /**
+     * --------------------------------------------------------------
+     * 多个接口组合处理数据
+     */
+    private void moreNet() {
+        Observable.zip(getUserObservable(), getUpdateObservable(), new BiFunction<BaseEnty<LoginUser>, UpdateEntity, String>() {
+
+            @Override
+            public String apply(BaseEnty<LoginUser> loginUserBaseEnty, UpdateEntity updateEntity) throws Exception {
+                return "合并后的数据为:"+loginUserBaseEnty.getData().getName()+updateEntity.getUpdateTime();
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        mTvContent.setText(s);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        ToastUitl.showLong("请求错误");
+                    }
+                });
+
+    }
+    private Observable<BaseEnty<LoginUser>> getUserObservable(){
+        return Observable.create(new ObservableOnSubscribe<BaseEnty<LoginUser>>() {
+            @Override
+            public void subscribe(final ObservableEmitter<BaseEnty<LoginUser>> e) throws Exception {
+                RetrofitUtils.getRetrofit(Constant.BASE_URL).create(ApiService.class).getUserMsg("yanb","123456")
+                        .enqueue(new Callback<BaseEnty<LoginUser>>() {
+                            @Override
+                            public void onResponse(Call<BaseEnty<LoginUser>> call,
+                                                   Response<BaseEnty<LoginUser>> response) {
+                                e.onNext(response.body());
+                            }
+
+                            @Override
+                            public void onFailure(Call<BaseEnty<LoginUser>> call, Throwable t) {
+                                e.onError(t);
+                            }
+                        });
+            }
+        });
+    }
+    private Observable<UpdateEntity> getUpdateObservable(){
+        return Observable.create(new ObservableOnSubscribe<UpdateEntity>() {
+            @Override
+            public void subscribe(final ObservableEmitter<UpdateEntity> e) throws Exception {
+                RetrofitUtils.getRetrofit(Constant.BASE_UPDATAURL).create(ApiService.class)
+                        .getUpdateMsg("81383","AppVersion","daqsoft","1","2.0.0")
+                        .enqueue(new Callback<UpdateEntity>() {
+                            @Override
+                            public void onResponse(Call<UpdateEntity> call, Response<UpdateEntity> response) {
+                                e.onNext(response.body());
+                            }
+
+                            @Override
+                            public void onFailure(Call<UpdateEntity> call, Throwable t) {
+                                e.onError(t);
+                            }
+                        });
+            }
+        });
+                
+    }
 }
