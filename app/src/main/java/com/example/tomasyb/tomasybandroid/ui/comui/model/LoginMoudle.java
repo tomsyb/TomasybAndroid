@@ -31,9 +31,9 @@ public class LoginMoudle {
         RetrofitHelper.getmApiService().getUser(username,psd)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext(new Consumer<BaseResponse<LoginUser>>() {
+                .doOnNext(new Consumer<LoginUser>() {
                     @Override
-                    public void accept(BaseResponse<LoginUser> loginUserBaseEnty) throws Exception {
+                    public void accept(LoginUser loginUserBaseEnty) throws Exception {
 
                     }
                 });

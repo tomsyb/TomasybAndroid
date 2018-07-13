@@ -1,6 +1,5 @@
 package com.example.tomasyb.tomasybandroid.net;
 
-import com.example.tomasyb.baselib.net.entity.BaseResponse;
 import com.example.tomasyb.tomasybandroid.bean.LoginUser;
 import com.example.tomasyb.tomasybandroid.ui.study.entity.UpdateEntity;
 
@@ -36,8 +35,8 @@ public interface ApiService {
      * get
      */
     @GET("rest/app/disguiseLogin")
-    Observable<BaseResponse<LoginUser>> getUser(@Query("account") String account,
-                                                @Query("password") String psd);
+    Observable<LoginUser> getUser(@Query("account") String account,
+                                               @Query("password") String psd);
 
     /**
      * 更新用的接口

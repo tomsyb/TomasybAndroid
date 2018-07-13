@@ -69,14 +69,14 @@ public class RetrofitStudyActivity extends BaseActivity {
     private void RJget() {
         RetrofitHelper.getmApiService()
                 .getUser("yanb","123456")
-                .compose(this.<BaseResponse<LoginUser>>bindToLifecycle())
-                .compose(ProgressUtils.<BaseResponse<LoginUser>>applyProgressBar(this))
+                .compose(this.<LoginUser>bindToLifecycle())
+                .compose(ProgressUtils.<LoginUser>applyProgressBar(this))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<BaseResponse<LoginUser>>() {
+                .subscribe(new DefaultObserver<LoginUser>() {
                     @Override
-                    public void onSuccess(BaseResponse<LoginUser> response) {
-                        ToastUitl.showLong("请求成功"+response.getData().getName());
+                    public void onSuccess(LoginUser response) {
+                        ToastUitl.showLong("请求成功"+response.getName());
                     }
                 });
     }

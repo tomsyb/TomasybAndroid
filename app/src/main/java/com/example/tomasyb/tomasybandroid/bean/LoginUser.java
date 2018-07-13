@@ -13,29 +13,56 @@ import java.util.List;
 
 public class LoginUser {
 
-
     /**
      * scenicName : 石象湖
      * code : 510131
-     * headImg : http://file.geeker.com.cn/uploadfile/scrs/img/1524642626572/tp1.jpg
+     * headImg : http://file.geeker.com
+     * .cn/uploadfile/scrs/img/1527643117736/937e3ac77de03ee68a0f74a624a33bd7.jpg
      * meetName :
      * nickName :
      * latitude : 30.193642
-     * userId : 619
+     * userId : 723
      * vcode : d80f699c062c8662fad3df86024e246c
      * userKey :
-     * personName : 超级管理员
-     * rolePermission : {"top":[{"id":15,"name":"数字景区","code":"szjq","level":1,"pid":0},{"id":16,"name":"视频监控","code":"spjk","level":1,"pid":0},{"id":17,"name":"景区上报","code":"jqsb","level":1,"pid":0},{"id":18,"name":"签到","code":"qd","level":1,"pid":0},{"id":19,"name":"投诉建议","code":"tsjy","level":1,"pid":0},{"id":21,"name":"信息发布","code":"xxfb","level":1,"pid":0},{"id":23,"name":"电子巡更","code":"dzxg","level":1,"pid":0}],"xxfb":[{"id":63,"name":"微博","code":"wb","level":2,"pid":21},{"id":65,"name":"客户端","code":"khd","level":2,"pid":21},{"id":64,"name":"LED","code":"led","level":2,"pid":21},{"id":66,"name":"微官网","code":"wgw","level":2,"pid":21},{"id":67,"name":"APP","code":"app","level":2,"pid":21},{"id":68,"name":"官网","code":"gw","level":2,"pid":21},{"id":69,"name":"资讯网","code":"zxw","level":2,"pid":21}],"jqtcwtb":[{"id":47,"name":"停车位按天填报","code":"tcwattb","level":3,"pid":43},{"id":48,"name":"停车位按小时填报","code":"tcwaxstb","level":3,"pid":43},{"id":49,"name":"停车位5小时统计","code":"tcw5tj","level":3,"pid":43}],"jqssd":[{"id":37,"name":"景区舒适度-折线","code":"jqssd-zx","level":3,"pid":26},{"id":38,"name":"景区舒适度-百分比","code":"jqssd-bfb","level":3,"pid":26}],"jqsb":[{"id":42,"name":"景区人数填报","code":"jqrstb","level":2,"pid":17},{"id":43,"name":"景区停车位填报","code":"jqtcwtb","level":2,"pid":17}],"jqssrs":[{"id":29,"name":"实时人数","code":"ssrs","level":3,"pid":25},{"id":33,"name":"客流趋势","code":"klqs","level":3,"pid":25},{"id":30,"name":"人数走势","code":"rszs","level":3,"pid":25},{"id":34,"name":"团队数趋势","code":"tdsqs","level":3,"pid":25},{"id":35,"name":"销售量","code":"xsl","level":3,"pid":25},{"id":36,"name":"收入预估","code":"sryg","level":3,"pid":25},{"id":32,"name":"客流来源地","code":"kllyd","level":3,"pid":25}],"szjq":[{"id":25,"name":"景区实时人数","code":"jqssrs","level":2,"pid":15},{"id":26,"name":"景区舒适度","code":"jqssd","level":2,"pid":15},{"id":27,"name":"停车场使用","code":"tccsy","level":2,"pid":15},{"id":28,"name":"门票统计","code":"mptj","level":2,"pid":15}],"jqrstb":[{"id":44,"name":"人数按天填报","code":"rsattb","level":3,"pid":42},{"id":45,"name":"人数按小时填报","code":"rsaxstb","level":3,"pid":42},{"id":46,"name":"人数最近5小时统计","code":"rs5tj","level":3,"pid":42}],"mptj":[{"id":39,"name":"按日门票统计","code":"armptj","level":3,"pid":28},{"id":40,"name":"按月门票统计","code":"aymptj","level":3,"pid":28},{"id":41,"name":"按年门票统计","code":"anmptj","level":3,"pid":28}]}
-     * appUserType : appUserType1
-     * phone : 13908224049
+     * personName : 严博
+     * rolePermission : {"top":[{"id":15,"name":"数字景区","code":"szjq","level":1,"pid":0},{"id":16,
+     * "name":"视频监控","code":"spjk","level":1,"pid":0},{"id":17,"name":"景区上报","code":"jqsb",
+     * "level":1,"pid":0},{"id":18,"name":"签到","code":"qd","level":1,"pid":0},{"id":19,
+     * "name":"投诉建议","code":"tsjy","level":1,"pid":0},{"id":21,"name":"信息发布","code":"xxfb",
+     * "level":1,"pid":0},{"id":23,"name":"电子巡更","code":"dzxg","level":1,"pid":0}],
+     * "xxfb":[{"id":63,"name":"微博","code":"wb","level":2,"pid":21},{"id":65,"name":"客户端",
+     * "code":"khd","level":2,"pid":21},{"id":64,"name":"LED","code":"led","level":2,"pid":21},
+     * {"id":66,"name":"微官网","code":"wgw","level":2,"pid":21},{"id":67,"name":"APP","code":"app",
+     * "level":2,"pid":21},{"id":68,"name":"官网","code":"gw","level":2,"pid":21},{"id":69,
+     * "name":"资讯网","code":"zxw","level":2,"pid":21}],"jqtcwtb":[{"id":47,"name":"停车位按天填报",
+     * "code":"tcwattb","level":3,"pid":43},{"id":48,"name":"停车位按小时填报","code":"tcwaxstb",
+     * "level":3,"pid":43},{"id":49,"name":"停车位5小时统计","code":"tcw5tj","level":3,"pid":43}],
+     * "jqssd":[{"id":37,"name":"景区舒适度-折线","code":"jqssd-zx","level":3,"pid":26},{"id":38,
+     * "name":"景区舒适度-百分比","code":"jqssd-bfb","level":3,"pid":26}],"jqsb":[{"id":42,
+     * "name":"景区人数填报","code":"jqrstb","level":2,"pid":17},{"id":43,"name":"景区停车位填报",
+     * "code":"jqtcwtb","level":2,"pid":17}],"jqssrs":[{"id":29,"name":"实时人数","code":"ssrs",
+     * "level":3,"pid":25},{"id":33,"name":"客流趋势","code":"klqs","level":3,"pid":25},{"id":30,
+     * "name":"人数走势","code":"rszs","level":3,"pid":25},{"id":34,"name":"团队数趋势","code":"tdsqs",
+     * "level":3,"pid":25},{"id":35,"name":"销售量","code":"xsl","level":3,"pid":25},{"id":36,
+     * "name":"收入预估","code":"sryg","level":3,"pid":25},{"id":32,"name":"客流来源地","code":"kllyd",
+     * "level":3,"pid":25}],"szjq":[{"id":25,"name":"景区实时人数","code":"jqssrs","level":2,"pid":15},
+     * {"id":26,"name":"景区舒适度","code":"jqssd","level":2,"pid":15},{"id":27,"name":"停车场使用",
+     * "code":"tccsy","level":2,"pid":15},{"id":28,"name":"门票统计","code":"mptj","level":2,
+     * "pid":15}],"jqrstb":[{"id":44,"name":"人数按天填报","code":"rsattb","level":3,"pid":42},
+     * {"id":45,"name":"人数按小时填报","code":"rsaxstb","level":3,"pid":42},{"id":46,
+     * "name":"人数最近5小时统计","code":"rs5tj","level":3,"pid":42}],"mptj":[{"id":39,"name":"按日门票统计",
+     * "code":"armptj","level":3,"pid":28},{"id":40,"name":"按月门票统计","code":"aymptj","level":3,
+     * "pid":28},{"id":41,"name":"按年门票统计","code":"anmptj","level":3,"pid":28}]}
+     * appUserType : appUserType4
+     * phone : 18385458784
      * closeTime : 17:33
-     * name : 超级管理员
-     * personId : 3022
-     * position : 保安
+     * name : 严博
+     * personId : 3054
+     * position : 巡逻员
      * id :
      * department : 安保部
      * job :
-     * email : admin@daqsoft.com
+     * email : 10000@qq.com
      * longitude : 103.428253
      */
 
