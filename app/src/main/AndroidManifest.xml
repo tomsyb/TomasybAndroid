@@ -35,7 +35,13 @@
         <activity android:name=".SplashActivity" />
 
         <!-- .............常用UI主界面................ -->
-        <activity android:name=".ui.comui.ComUiMainActivity" />
+        <activity android:name=".ui.comui.ComUiMainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!-- .............登录界面................ -->
         <activity
@@ -65,11 +71,7 @@
         <!-- Retrofit用法 -->
         <activity android:name=".ui.study.RetrofitStudyActivity" />
         <activity android:name=".ui.study.StudyMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.study.RxjavaStudyActivity" />
         <activity android:name=".ui.text.TextActivity"></activity>

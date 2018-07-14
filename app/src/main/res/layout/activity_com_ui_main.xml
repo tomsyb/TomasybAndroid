@@ -21,6 +21,18 @@
                 android:text="登录界面"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <com.example.tomasyb.baselib.widget.banner.BannerView
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                app:bvAspectRatio="0.6666666"
+                app:bvBarColor="#88888888"
+                app:bvIndicatorColor="#cccccc"
+                app:bvIndicatorColorSelected="@color/colorAccent"
+                app:bvIndicatorGravity="right"
+                app:bvTitleVisible="true"/>
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
