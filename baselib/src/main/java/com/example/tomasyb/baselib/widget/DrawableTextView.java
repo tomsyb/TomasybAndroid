@@ -47,7 +47,7 @@ public class DrawableTextView extends android.support.v7.widget.AppCompatTextVie
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.drawableText);
             try {
-                drawableLeft = a.getResourceId(R.styleable.drawableText_leftDrawable, 0);
+                drawableLeft = a.getResourceId(R.styleable.drawableText_leftDrawables, 0);
                 drawableRight = a.getResourceId(R.styleable.drawableText_rightDrawable, 0);
                 drawableTop = a.getResourceId(R.styleable.drawableText_topDrawable, 0);
                 drawableBottom = a.getResourceId(R.styleable.drawableText_bottomDrawable, 0);

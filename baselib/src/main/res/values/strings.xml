@@ -12,4 +12,5 @@
     <string name="b_parse_error">解析服务器响应数据失败</string>
     <string name="b_unknown_error">未知错误</string>
     <string name="b_response_return_error">服务器返回数据失败</string>
+    <string name="titlebar_search_hint">Search</string>
 </resources>

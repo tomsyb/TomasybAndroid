@@ -5,60 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/index_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/b_main_orange"
-            android:theme="@style/AppTheme.AppBarOverlay">
-            <!--
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-            recyclerview下拉时，数据显示完后，CollapsingToolbarLayout才开始展开
-            scroll|enterAlways:数据未显示完就展开
-            scroll|exitUntilCollapsed  recyclerview上拉时不能完全折叠
-            -->
-            <android.support.v7.widget.Toolbar
-                android:layout_width="match_parent"
-                android:background="@color/b_main_orange"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                app:title="@string/app_name"/>
-            <LinearLayout
-                android:background="@color/b_main_orange"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TabLayout
-                    android:id="@+id/index_fg_tablayout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:tabBackground="@color/b_main_orange"
-                    app:tabIndicatorColor="@color/b_main_white"
-                    android:layout_weight="1" />
-                <ImageView
-                    android:id="@+id/add_channel_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:maxHeight="?attr/actionBarSize"
-                    android:padding="@dimen/b_dp_8"
-                    android:src="@drawable/b_ic_add"/>
-            </LinearLayout>
-        </android.support.design.widget.AppBarLayout>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/index_fg_vp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-    </android.support.design.widget.CoordinatorLayout>
+        android:layout_height="match_parent"/>
 </android.support.constraint.ConstraintLayout>

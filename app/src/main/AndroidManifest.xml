@@ -32,15 +32,16 @@
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
         <activity android:name=".example.custom.CustomViewActivity" />
-        <activity android:name=".SplashActivity" />
-
-        <!-- .............常用UI主界面................ -->
-        <activity android:name=".ui.comui.ComUiMainActivity" >
+        <activity android:name=".SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!-- .............常用UI主界面................ -->
+        <activity android:name=".ui.study.uiexample.ComUiMainActivity" >
         </activity>
 
         <!-- .............登录界面................ -->

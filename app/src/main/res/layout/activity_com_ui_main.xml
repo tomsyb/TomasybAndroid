@@ -4,9 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tomasyb.tomasybandroid.ui.comui.ComUiMainActivity">
-    <ScrollView
+    tools:context="com.example.tomasyb.tomasybandroid.ui.study.uiexample.ComUiMainActivity">
+    <com.example.tomasyb.baselib.widget.titlebar.CommonTitleBar
         app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/comui_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:centerText="UI学习"
+        app:centerType="textView"
+        app:leftDrawable="@drawable/comm_titlebar_back_normal"
+        app:leftDrawablePadding="0dp"
+        app:leftText="返回"
+        app:centerTextColor="@color/b_main_white"
+        app:leftTextColor="@color/b_main_white"
+        app:leftType="textView"
+        android:background="@color/b_main_black"
+        app:titleBarColor="@color/b_main_white"/>
+    <ScrollView
+        app:layout_constraintTop_toBottomOf="@+id/comui_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -16,11 +31,23 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <Button
-                android:id="@+id/comui_btn_login"
-                android:text="登录界面"
+            <TextView
+                android:textColor="@color/b_main_black"
+                android:text="Banner图"
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+            <com.example.tomasyb.baselib.widget.banner.BannerView
+                android:id="@+id/banner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/white"
+                app:bvIsLoop="false"
+                app:bvAspectRatio="0.6666666"
+                app:bvIndicatorColor="#cccccc"
+                app:bvIndicatorColorSelected="@color/colorAccent"
+                />
 
             <com.example.tomasyb.baselib.widget.banner.BannerView
                 android:id="@+id/banner"
@@ -33,6 +60,14 @@
                 app:bvIndicatorColorSelected="@color/colorAccent"
                 app:bvIndicatorGravity="right"
                 app:bvTitleVisible="true"/>
+            <!--圆角图片-->
+            <TextView
+                android:textColor="@color/b_main_black"
+                android:text="圆角图片"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

@@ -4,10 +4,16 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.aspsine.irecyclerview.universaladapter.ViewHolderHelper;
+import com.aspsine.irecyclerview.universaladapter.recyclerview.CommonRecycleViewAdapter;
+import com.aspsine.irecyclerview.universaladapter.recyclerview.OnItemClickListener;
 import com.example.tomasyb.baselib.base.BaseFragment;
 import com.example.tomasyb.baselib.base.adapter.BaseFragmentAdapter;
 import com.example.tomasyb.baselib.util.TabLayoutUtils;
@@ -35,11 +41,11 @@ import butterknife.BindView;
  */
 
 public class IndexFragment extends BaseFragment {
-    @BindView(R.id.index_fg_vp)
-    ViewPager mViewPager;
-    @BindView(R.id.index_fg_tablayout)
-    TabLayout mTab;
+    @BindView(R.id.index_rv)
+    RecyclerView mRv;
 
+    List<String> mDatas;
+    private CommonRecycleViewAdapter<String> mAdapter;
     @Override
     protected int getLayoutResource() {
         return R.layout.fg_main_index;
@@ -51,8 +57,27 @@ public class IndexFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        mDatas = new ArrayList<>();
+        mDatas.add("顶部Title的封装使用");
+        mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mAdapter = new CommonRecycleViewAdapter<String>(getActivity(),R.layout.item_text,mDatas) {
+            @Override
+            public void convert(final ViewHolderHelper helper, String s) {
+                helper.setText(R.id.item_btn,s);
+                helper.setOnClickListener(R.id.item_btn, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        switch (helper.getPosition()){
+                            case 0:
+                                ARouter.getInstance().build(Constant.STUDY_COMUIMAIN).navigation();
+                                break;
 
-
+                        }
+                    }
+                });
+            }
+        };
+        mRv.setAdapter(mAdapter);
     }
 
 

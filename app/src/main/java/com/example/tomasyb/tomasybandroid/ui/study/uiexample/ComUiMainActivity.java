@@ -1,14 +1,17 @@
-package com.example.tomasyb.tomasybandroid.ui.comui;
+package com.example.tomasyb.tomasybandroid.ui.study.uiexample;
 
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.tomasyb.baselib.base.BaseActivity;
+import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.widget.banner.BannerView;
+import com.example.tomasyb.baselib.widget.titlebar.CommonTitleBar;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.comui.entity.BannerEntity;
 
@@ -19,8 +22,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * Ui相关
+ */
+@Route(path = "/study/ComUiMainActivity")
 public class ComUiMainActivity extends BaseActivity {
-
+    @BindView(R.id.banner)
+    BannerView mBanner;
+    @BindView(R.id.banner1)
+    BannerView mBanner1;
+    @BindView(R.id.comui_title)
+    CommonTitleBar mTitleBar;
     public static String[] titles = new String[]{
             "每周7件Tee不重样",
             "俏皮又知性 适合上班族的漂亮衬衫",
@@ -40,15 +52,18 @@ public class ComUiMainActivity extends BaseActivity {
 
     public static class BannerViewFactory implements BannerView.ViewFactory<BannerEntity> {
         @Override
-        public View create(BannerEntity item, int position, ViewGroup container) {
+        public View create(BannerEntity item, final int position, ViewGroup container) {
             ImageView iv = new ImageView(container.getContext());
+            iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LogUtils.e("你点击的是-->"+position);
+                }
+            });
             Glide.with(container.getContext().getApplicationContext()).load(item.getImg()).into(iv);
             return iv;
         }
     }
-
-    @BindView(R.id.banner)
-    BannerView mBanner;
 
     @Override
     public int getLayoutId() {
@@ -69,16 +84,26 @@ public class ComUiMainActivity extends BaseActivity {
         mBanner.setDataList(list);
         mBanner.start();
 
+        mBanner1.setViewFactory(new BannerViewFactory());
+        mBanner1.setDataList(list);
+        mBanner1.start();
+
+        mTitleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
+            @Override
+            public void onClicked(View v, int action, String extra) {
+                if (action == CommonTitleBar.ACTION_LEFT_TEXT){
+                    onBackPressed();
+                }
+            }
+        });
+        mTitleBar.setBackgroundColor(getResources().getColor(R.color.main));
+        mTitleBar.setStatusBarColor(getResources().getColor(R.color.b_main_red));
+
     }
 
     @Override
     public void initPresenter() {
 
-    }
-
-
-    @OnClick(R.id.comui_btn_login)
-    public void onViewClicked() {
     }
 
 }

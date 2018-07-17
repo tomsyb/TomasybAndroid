@@ -9,6 +9,7 @@
     <color name="b_main_black">#c9000000</color>
     <color name="b_main_gray">#99d4d4d4</color>
     <color name="b_main_red">#FF0000</color>
+    <color name="b_main_spacegray">#F5F5F5</color>
 
     <color name="b_tab_unselect">#c9c9c9</color>
     <color name="b_text_gray">#999999</color>
