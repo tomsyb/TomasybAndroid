@@ -627,6 +627,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         KeyboardConflictCompat.assistWindow(window);
     }
 
+
     private Window getWindow() {
         Context context = getContext();
         Activity activity;

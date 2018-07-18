@@ -15,7 +15,7 @@
     <color name="b_text_gray">#999999</color>
     <color name="b_text_graylight">#b0b8b2</color>
     <color name="b_line_gray">#eeeeee</color>
-    <color name="main">#16A0FF</color>
+    <color name="main">#00D0BA</color>
 
     <!--白天主题-->
     <color name="day_backgroup_color">#FFFFFFFF</color>

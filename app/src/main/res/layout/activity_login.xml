@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root"
-    android:background="@color/b_main_white"
+    android:background="@color/main"
     android:orientation="vertical"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
