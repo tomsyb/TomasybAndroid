@@ -1,7 +1,6 @@
 package com.example.tomasyb.tomasybandroid.ui.comui;
 
 import android.animation.ObjectAnimator;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -14,17 +13,16 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.tomasyb.baselib.base.BaseActivity;
 import com.example.tomasyb.baselib.util.AnimationUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.util.ToastUitl;
-import com.example.tomasyb.baselib.widget.DrawableTextView;
 import com.example.tomasyb.baselib.widget.KeyboardWatcher;
 import com.example.tomasyb.tomasybandroid.R;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -32,7 +30,7 @@ import butterknife.OnClick;
  */
 public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftKeyboardStateListener {
     @BindView(R.id.logo)
-    DrawableTextView mLogo;
+    TextView mLogo;
     @BindView(R.id.et_mobile)
     EditText mEtAccount;
     @BindView(R.id.et_password)
@@ -138,11 +136,11 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
             case R.id.iv_show_pwd://显示密码
                 if (flag == true) {
                     mEtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    mImgShowPwd.setImageResource(R.drawable.ic_login_closeeye);
+                    mImgShowPwd.setImageResource(R.drawable.ic_eye_close);
                     flag = false;
                 } else {
                     mEtPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    mImgShowPwd.setImageResource(R.drawable.ic_login_openeye);
+                    mImgShowPwd.setImageResource(R.drawable.ic_eye_open);
                     flag = true;
                 }
                 String pwd = mEtPassword.getText().toString();

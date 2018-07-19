@@ -92,14 +92,7 @@
         <!-- 中间自定义布局, 对应centerType_CustomView -->
         <attr name="centerCustomView" format="reference" />
     </declare-styleable>
-    <declare-styleable name="drawableText">
-        <attr name="leftDrawables" format="reference|integer" />
-        <attr name="rightDrawable" format="reference|integer" />
-        <attr name="topDrawable" format="reference|integer" />
-        <attr name="bottomDrawable" format="reference|integer" />
-        <attr name="drawableWidth" format="dimension" />
-        <attr name="drawableHeight" format="dimension" />
-    </declare-styleable>
+
     <!--圆形imgview-->
     <declare-styleable name="RoundImageView">
         <!-- 描边宽度-->

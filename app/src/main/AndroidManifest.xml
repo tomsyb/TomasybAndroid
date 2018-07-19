@@ -33,11 +33,7 @@
         <activity android:name=".example.life.ActivityLifeActivity" />
         <activity android:name=".example.custom.CustomViewActivity" />
         <activity android:name=".SplashActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <!-- .............常用UI主界面................ -->
@@ -47,7 +43,13 @@
         <!-- .............登录界面................ -->
         <activity
             android:name=".ui.comui.LoginActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!-- .............分享功能................ -->
         <!-- qq配置开始 -->
