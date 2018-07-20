@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
         android:text="欢迎登陆"
@@ -73,10 +73,10 @@
 
             <ImageView
                 android:id="@+id/iv_clean_phone"
-                android:layout_width="40dp"
-                android:layout_height="fill_parent"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_clear"
+                android:src="@drawable/ic_close_white"
                 android:visibility="gone" />
         </LinearLayout>
 
@@ -117,12 +117,13 @@
                 android:textSize="16sp" />
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/clean_password"
-                android:layout_width="40dp"
-                android:layout_height="fill_parent"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_clear"
-                android:visibility="gone" />
+                android:src="@drawable/ic_close_white"
+                />
 
             <ImageView
                 android:id="@+id/iv_show_pwd"
@@ -176,10 +177,11 @@
         </LinearLayout>
     </LinearLayout>
     <TextView
+        android:layout_marginTop="20dp"
         android:layout_above="@+id/ll_qq"
         android:drawableRight="@drawable/shap_line_white_w100h1"
         android:drawableLeft="@drawable/shap_line_white_w100h1"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="第三方账号登录"
@@ -190,7 +192,7 @@
 
     <LinearLayout
         android:id="@+id/ll_qq"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:layout_above="@+id/ll_bottom"
         android:gravity="center"
         android:orientation="horizontal"
@@ -198,40 +200,19 @@
         android:layout_height="wrap_content">
         <ImageView
             android:layout_marginRight="10dp"
-            android:id="@+id/mine_login_qq"
+            android:id="@+id/login_img_qq"
             android:src="@drawable/ic_qq"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <ImageView
             android:layout_marginLeft="@dimen/dp_10"
-            android:id="@+id/mine_login_wechat"
+            android:id="@+id/login_img_wechat"
             android:src="@drawable/ic_weixin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/ll_bottom"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:textSize="12sp"
-            android:textColor="@color/b_main_white"
-            android:text="登录即表示你已阅读,并同意"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:textSize="12sp"
-            android:textColor="@color/b_main_white"
-            android:text="《用户注册协议》"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <RelativeLayout
@@ -239,39 +220,26 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
-
         <LinearLayout
-            android:id="@+id/service"
+            android:id="@+id/ll_bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
+            android:orientation="horizontal">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="联系客服"
+                android:textSize="12sp"
                 android:textColor="@color/b_main_white"
-                android:textSize="14dp" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/b_main_white" />
-
+                android:text="登录即表示你已阅读,并同意"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="关于我们"
+                android:textSize="12sp"
                 android:textColor="@color/b_main_white"
-                android:textSize="14dp" />
+                android:text="《用户注册协议》"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

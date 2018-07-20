@@ -52,7 +52,8 @@
         </activity>
 
         <!-- .............分享功能................ -->
-        <!-- qq配置开始 -->
+
+        <!-- .............qq配置开始................ -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
@@ -63,15 +64,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="tencent1106556586" />
+                <data android:scheme="tencent1106985215" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!-- qq配置结束 -->
-        <!-- Retrofit用法 -->
+        <!-- .............qq配置结束................ -->
+
+        <!-- .............Retrofit用法................ -->
         <activity android:name=".ui.study.RetrofitStudyActivity" />
         <activity android:name=".ui.study.StudyMainActivity">
 

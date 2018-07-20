@@ -1,6 +1,7 @@
 package com.example.tomasyb.tomasybandroid.ui.comui;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -21,9 +22,13 @@ import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.util.ToastUitl;
 import com.example.tomasyb.baselib.widget.KeyboardWatcher;
 import com.example.tomasyb.tomasybandroid.R;
+import com.example.tomasyb.tomasybandroid.utils.ShareUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import yanb.sharelib.SocialHelper;
+import yanb.sharelib.callback.SocialLoginCallback;
+import yanb.sharelib.entities.ThirdInfoEntity;
 
 /**
  * 登录界面
@@ -48,6 +53,8 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
     private int screenHeight = 0;//屏幕高度
     private KeyboardWatcher keyboardWatcher;
 
+    private SocialHelper socialHelper;
+
 
     @Override
     public int getLayoutId() {
@@ -56,6 +63,8 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
 
     @Override
     public void initView() {
+        // 分享工具
+        socialHelper = ShareUtils.INSTANCE.socialHelper;
         screenHeight = this.getResources().getDisplayMetrics().heightPixels; //获取屏幕高度
         keyboardWatcher = new KeyboardWatcher(findViewById(Window.ID_ANDROID_CONTENT));
         keyboardWatcher.addSoftKeyboardStateListener(this);
@@ -121,7 +130,7 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
 
     }
 
-    @OnClick({R.id.close, R.id.iv_clean_phone, R.id.clean_password, R.id.iv_show_pwd})
+    @OnClick({R.id.close, R.id.iv_clean_phone, R.id.clean_password, R.id.iv_show_pwd,R.id.login_img_qq,R.id.login_img_wechat})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.close://关闭当前页面
@@ -129,6 +138,21 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
                 break;
             case R.id.iv_clean_phone://清除账号
                 mEtAccount.setText("");
+                break;
+            case R.id.login_img_qq://qq登录
+                socialHelper.loginQQ(this, new SocialLoginCallback() {
+                    @Override
+                    public void loginSuccess(ThirdInfoEntity info) {
+                        LogUtils.e(info.getNickname());
+                    }
+
+                    @Override
+                    public void socialError(String msg) {
+
+                    }
+                });
+                break;
+            case R.id.login_img_wechat://微信登录
                 break;
             case R.id.clean_password://清除密码
                 mEtPassword.setText("");
@@ -188,4 +212,30 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
     }
 
 
+    private String toString(ThirdInfoEntity info) {
+        return "登录信息 = {" +
+                "unionId='" + info.getUnionId() + '\'' +
+                ", openId='" + info.getOpenId() + '\'' +
+                ", 名称='" + info.getNickname() + '\'' +
+                ", 性别='" + info.getSex() + '\'' +
+                ", avatar='" + info.getAvatar() + '\'' +
+                ", platform='" + info.getPlatform() + '\'' +
+                '}';
+    }
+
+    //用处：qq登录和分享回调，以及微博登录回调
+
+    /**
+     * 用处：qq登录和分享回调，以及微博登录回调,必须写这个登录的 回调才能起作用
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null && socialHelper != null) {//qq分享如果选择留在qq，通过home键退出，再进入app则不会有回调
+            socialHelper.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 }

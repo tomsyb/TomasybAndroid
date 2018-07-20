@@ -1,5 +1,4 @@
 package yanb.sharelib.callback;
-
 import yanb.sharelib.entities.ThirdInfoEntity;
 
 /**
@@ -7,6 +6,6 @@ import yanb.sharelib.entities.ThirdInfoEntity;
  * Function：
  * Desc：
  */
-public interface SocialLoginCallback extends SocialCallback{
+public interface SocialLoginCallback extends SocialCallback {
     void loginSuccess(ThirdInfoEntity info);
 }
