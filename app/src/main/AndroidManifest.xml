@@ -32,8 +32,8 @@
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
         <activity android:name=".example.custom.CustomViewActivity" />
-        <!-- .............引导页................-->
-        <activity android:name=".SplashActivity" >
+        <!-- .............引导页................ -->
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,18 +41,16 @@
             </intent-filter>
         </activity>
 
-        <!-- .............常用UI主界面................  -->
-        <activity android:name=".ui.study.uiexample.ComUiMainActivity" >
-        </activity>
+        <!-- .............常用UI主界面................ -->
+        <activity android:name=".ui.study.uiexample.ComUiMainActivity"></activity>
 
         <!-- .............登录界面................ -->
         <activity
             android:name=".ui.comui.LoginActivity"
-            android:windowSoftInputMode="adjustResize" >
-
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
 
         <!-- .............分享功能................ -->
+
 
         <!-- .............qq配置开始................ -->
         <activity
@@ -74,13 +72,13 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!-- .............qq配置结束................ -->
 
+
         <!-- .............Retrofit用法................ -->
         <activity android:name=".ui.study.RetrofitStudyActivity" />
-        <activity android:name=".ui.study.StudyMainActivity">
-
-        </activity>
+        <activity android:name=".ui.study.StudyMainActivity"></activity>
         <activity android:name=".ui.study.RxjavaStudyActivity" />
-        <activity android:name=".ui.text.TextActivity"></activity>
+        <activity android:name=".ui.text.TextActivity" />
+        <activity android:name=".ui.imgselect.ImgSelectActivity"></activity>
     </application>
 
 </manifest>
