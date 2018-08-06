@@ -42,12 +42,12 @@
         </activity>
 
         <!-- .............常用UI主界面................ -->
-        <activity android:name=".ui.study.uiexample.ComUiMainActivity"></activity>
+        <activity android:name=".ui.study.uiexample.ComUiMainActivity" />
 
         <!-- .............登录界面................ -->
         <activity
             android:name=".ui.comui.LoginActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
 
         <!-- .............分享功能................ -->
 
@@ -75,10 +75,11 @@
 
         <!-- .............Retrofit用法................ -->
         <activity android:name=".ui.study.RetrofitStudyActivity" />
-        <activity android:name=".ui.study.StudyMainActivity"></activity>
+        <activity android:name=".ui.study.StudyMainActivity" />
         <activity android:name=".ui.study.RxjavaStudyActivity" />
         <activity android:name=".ui.text.TextActivity" />
-        <activity android:name=".ui.imgselect.ImgSelectActivity"></activity>
+        <activity android:name=".ui.imgselect.ImgSelectActivity" />
+        <activity android:name=".ui.study.kotlin.KotlinUseActivity"></activity>
     </application>
 
 </manifest>

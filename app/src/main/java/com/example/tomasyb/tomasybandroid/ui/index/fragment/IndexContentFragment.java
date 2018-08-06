@@ -1,29 +1,11 @@
 package com.example.tomasyb.tomasybandroid.ui.index.fragment;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.widget.TextView;
-
-import com.aspsine.irecyclerview.IRecyclerView;
-import com.aspsine.irecyclerview.OnRefreshListener;
-import com.aspsine.irecyclerview.widget.LoadMoreFooterView;
 import com.example.tomasyb.baselib.base.BaseFragment;
-import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.tomasybandroid.R;
-import com.example.tomasyb.tomasybandroid.bean.IndexTable;
 import com.example.tomasyb.tomasybandroid.bean.NewsSummary;
-import com.example.tomasyb.tomasybandroid.bean.Student;
-import com.example.tomasyb.tomasybandroid.common.Constant;
-import com.example.tomasyb.tomasybandroid.ui.index.adapter.IndexContentAdapter;
-import com.example.tomasyb.tomasybandroid.ui.index.contract.IndexContentContract;
-import com.example.tomasyb.tomasybandroid.ui.index.model.IndexContentModel;
-import com.example.tomasyb.tomasybandroid.ui.index.presenter.IndexContentPresenter;
-import com.example.tomasyb.tomasybandroid.ui.main.model.IndexModel;
-import com.example.tomasyb.tomasybandroid.ui.main.presenter.IndexPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
 
 
 /**
@@ -36,9 +18,7 @@ import butterknife.BindView;
  */
 
 public class IndexContentFragment extends BaseFragment{
-    @BindView(R.id.content_irc)
-    IRecyclerView mIrc;
-    private IndexContentAdapter mAdapter;
+
     private List<NewsSummary> mDatas = new ArrayList<>();
     private int mStartPage=0;
     @Override
@@ -53,10 +33,6 @@ public class IndexContentFragment extends BaseFragment{
 
     @Override
     protected void initView() {
-        mIrc.setLayoutManager(new LinearLayoutManager(getContext()));
-        mDatas.clear();
-        mAdapter = new IndexContentAdapter(getContext(),mDatas);
-        mIrc.setAdapter(mAdapter);
 
     }
 }

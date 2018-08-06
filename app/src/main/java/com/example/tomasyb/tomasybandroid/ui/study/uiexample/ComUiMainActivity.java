@@ -6,8 +6,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.tomasyb.baselib.base.BaseActivity;
 import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.widget.banner.BannerView;
@@ -60,7 +58,7 @@ public class ComUiMainActivity extends BaseActivity {
                     LogUtils.e("你点击的是-->"+position);
                 }
             });
-            Glide.with(container.getContext().getApplicationContext()).load(item.getImg()).into(iv);
+            //Glide.with(container.getContext().getApplicationContext()).load(item.getImg()).into(iv);
             return iv;
         }
     }

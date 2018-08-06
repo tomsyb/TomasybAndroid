@@ -7,9 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.aspsine.irecyclerview.universaladapter.ViewHolderHelper;
-import com.aspsine.irecyclerview.universaladapter.recyclerview.CommonRecycleViewAdapter;
-import com.aspsine.irecyclerview.universaladapter.recyclerview.OnItemClickListener;
+import com.example.tomasyb.baselib.adapter.BaseQuickAdapter;
+import com.example.tomasyb.baselib.adapter.BaseViewHolder;
 import com.example.tomasyb.baselib.base.BaseFragment;
 import com.example.tomasyb.baselib.util.JsonUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
@@ -39,7 +38,7 @@ public class StudyMainFragment extends BaseFragment {
     private List<StudyMainEntity.RxjavaBean> mRxjavaDatas;//Rxjava数据
     private List<StudyMainEntity.RetrofitBean> mRetrofitDatas;//Retrofit数据
     private int mPostion;
-    private CommonRecycleViewAdapter adapter;
+    private BaseQuickAdapter<StudyMainEntity.RetrofitBean,BaseViewHolder> adapter;
 
     /**
      * 单列获取fragment
@@ -92,21 +91,21 @@ public class StudyMainFragment extends BaseFragment {
      * Retrofit的适配器
      */
     private void initRetrofitAdapter() {
-        adapter = new CommonRecycleViewAdapter<StudyMainEntity.RetrofitBean>(getActivity(),R.layout.item_title_content,mRetrofitDatas){
-
+        adapter = new BaseQuickAdapter<StudyMainEntity.RetrofitBean, BaseViewHolder>(R.layout.item_title_content,mRetrofitDatas) {
             @Override
-            public void convert(final ViewHolderHelper helper, final StudyMainEntity.RetrofitBean bean) {
-                helper.setText(R.id.normal_tv_title,bean.getName());
-                helper.setText(R.id.item_content,bean.getContent());
-                helper.setOnClickListener(R.id.item_ll_content, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ARouter.getInstance().build(Constant.STUDY_RETROFIT)
-                                .navigation();
-                    }
-                });
+            protected void convert(BaseViewHolder helper, StudyMainEntity.RetrofitBean item) {
+                helper.setText(R.id.normal_tv_title,item.getName());
+                helper.setText(R.id.item_content,item.getContent());
             }
         };
+        adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                ARouter.getInstance().build(Constant.STUDY_RETROFIT)
+                        .navigation();
+            }
+        });
+
         mRv.setAdapter(adapter);
     }
 
@@ -114,23 +113,8 @@ public class StudyMainFragment extends BaseFragment {
      * Rxjava的适配器
      */
     private void initRxjavaAdapter() {
-        adapter = new CommonRecycleViewAdapter<StudyMainEntity.RxjavaBean>(getActivity(),R.layout.item_title_content,mRxjavaDatas){
 
-            @Override
-            public void convert(final ViewHolderHelper helper, final StudyMainEntity.RxjavaBean bean) {
-                helper.setText(R.id.normal_tv_title,bean.getName());
-                helper.setText(R.id.item_content,bean.getContent());
-                helper.setOnClickListener(R.id.item_ll_content, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ARouter.getInstance().build(Constant.MAIN_STUDY_RXJAVA)
-                                .withInt(Constant.STUDY_TYPE,helper.getPosition())
-                                .withString(Constant.STUDY_TITLE,bean.getName())
-                                .navigation();
-                    }
-                });
-            }
-        };
+
         mRv.setAdapter(adapter);
     }
 
