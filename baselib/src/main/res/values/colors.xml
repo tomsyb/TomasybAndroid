@@ -10,6 +10,9 @@
     <color name="b_main_gray">#99d4d4d4</color>
     <color name="b_main_red">#FF0000</color>
     <color name="b_main_spacegray">#F5F5F5</color>
+    <color name="b_m_blue">#00D0BA</color>
+
+
     <color name="b_color_f6">#f6f6f6</color>
 
     <color name="b_tab_unselect">#c9c9c9</color>

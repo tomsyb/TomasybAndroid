@@ -3,12 +3,14 @@ apply from: "config.gradle"
 buildscript {
     
     repositories {
+        mavenCentral()
         google()
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        
+        //greendao
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -28,8 +30,17 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
+// 统一管理版本
 ext {
+    //SDK
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.3'
+    minSdkVersion = 21
+    targetSdkVersion = 27
+    //dependencies
+    versionCode = 1
+    versionName = '1.0'
+
     supportLibVersion = '25.1.0'
     butterknifeVersion = '8.5.1'
     rxjava2Version = '2.0.8'
