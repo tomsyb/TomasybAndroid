@@ -19,8 +19,6 @@ import butterknife.BindView;
  */
 public class SplashActivity extends BaseActivity {
 
-    @BindView(R.id.splash_img_center)
-    ImageView mImgCenter;
 
     @Override
     public int getLayoutId() {

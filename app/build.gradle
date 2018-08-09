@@ -41,8 +41,6 @@ dependencies {
     testImplementation rootProject.ext.dependencies["junit"]
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    //适配器
-    implementation rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
     //tools
     //dagger2 的apt，3.0不需引用apt 这里自动生成变异代码，因为我在baselib里引入了dagger2这里不需重复引用只需引用这个
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]

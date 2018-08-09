@@ -2,9 +2,13 @@ package com.example.tomasyb.tomasybandroid.base;
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.example.greendao.DaoMaster;
+import com.example.greendao.DaoSession;
 import com.example.tomasyb.baselib.base.BaseApplication;
 import com.example.tomasyb.baselib.util.InitUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
+
+import org.greenrobot.greendao.database.Database;
 
 /**
  * Created by Tomasyb on 2018-4-24.
@@ -13,6 +17,7 @@ import com.example.tomasyb.baselib.util.LogUtils;
 
 public class IApplication extends BaseApplication{
     private boolean isDebug = true;
+    private static DaoSession daoSession;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -20,7 +25,23 @@ public class IApplication extends BaseApplication{
         LogUtils.logInit(true);
         InitUtils.init(this);
         initRouter();
+        initGreenDao();
     }
+
+    /**
+     * 数据库
+     */
+    private void initGreenDao() {
+        DaoMaster.DevOpenHelper openHelper = new DaoMaster.DevOpenHelper(this, "yanb.db");
+        Database db = openHelper.getWritableDb();
+        DaoMaster daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+    }
+
+    public static DaoSession getDaoSession(){
+        return daoSession;
+    }
+
 
     /**
      * 初始化路由跳转

@@ -1,31 +1,13 @@
 package com.example.tomasyb.tomasybandroid.ui.main.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.os.Environment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.tomasyb.baselib.base.BaseFragment;
-import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.tomasybandroid.R;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.UUID;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
+
 
 /**
  * 首页fragment
@@ -37,11 +19,7 @@ import butterknife.Unbinder;
  */
 
 public class MeFragment extends BaseFragment {
-    @BindView(R.id.img)
-    ImageView img;
-    Unbinder unbinder;
-    @BindView(R.id.start)
-    Button start;
+
 
     @Override
     protected int getLayoutResource() {
@@ -66,14 +44,8 @@ public class MeFragment extends BaseFragment {
 
 
 
-    @OnClick(R.id.start)
+    @OnClick(R.id.btn_addresslist)
     public void onViewClicked() {
-        Bitmap capture = capture(getActivity());
 
     }
-
-
-
-
-
 }

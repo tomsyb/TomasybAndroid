@@ -9,7 +9,7 @@ import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.util.TimeUtil;
 import com.example.tomasyb.baselib.util.ToastUitl;
 import com.example.tomasyb.tomasybandroid.R;
-import com.example.tomasyb.tomasybandroid.base.ToolbarBaseActivity;
+import com.example.tomasyb.tomasybandroid.base.ToolbarsBaseActivity;
 import com.example.tomasyb.tomasybandroid.bean.LoginUser;
 import com.example.tomasyb.tomasybandroid.common.Constant;
 import com.example.tomasyb.tomasybandroid.net.ApiService;
@@ -48,7 +48,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Rxjava学习的页面
  */
 @Route(path = "/study/RxjavaActivity")
-public class RxjavaStudyActivity extends ToolbarBaseActivity {
+public class RxjavaStudyActivity extends ToolbarsBaseActivity {
     @BindView(R.id.rxstudy_tv_content)
     TextView mTvContent;
     private int mPostion;
@@ -64,7 +64,7 @@ public class RxjavaStudyActivity extends ToolbarBaseActivity {
     }
 
     @Override
-    public void initPresenter() {
+    protected void initData() {
 
     }
 

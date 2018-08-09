@@ -20,6 +20,18 @@
     <!-- 在sdcard中创建/删除文件的权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
+    <!--
+    _________________________________________________________地图SDK（包含其搜索功能）需要的基础权限
+    1、WRITE_EXTERNAL_STORAGE :允许程序设置内置sd卡的写权限
+    2、INTERNET :允许程序打开网络套接字
+    3、ACCESS_NETWORK_STATE :允许程序获取网络状态
+    4、ACCESS_WIFI_STATE :允许程序访问WiFi网络信息
+    5、READ_PHONE_STATE: 允许程序读写手机状态和身份
+    6、ACCESS_COARSE_LOCATION:允许程序访问CellID或WiFi热点来获取粗略的位置(如下)
+    -->
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name=".base.IApplication"
         android:allowBackup="true"
@@ -28,17 +40,28 @@
         android:roundIcon="@mipmap/icon_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".example.callback.CallBackActivity" />
-        <activity android:name=".example.life.ActivityLifeActivity" />
-        <activity android:name=".example.custom.CustomViewActivity" />
-        <!-- .............引导页................ -->
-        <activity android:name=".SplashActivity">
+
+        <!-- _________________________________________________________高德地图Key -->
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="472e6477f4510174c89ee05a1fe4a280" />
+        <activity android:name=".ui.map.MapInfoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".MainActivity" />
+        <activity android:name=".example.callback.CallBackActivity" />
+        <activity android:name=".example.life.ActivityLifeActivity" />
+        <activity android:name=".example.custom.CustomViewActivity" />
+
+        <!-- .............引导页................ -->
+        <activity android:name=".SplashActivity">
+
         </activity>
 
         <!-- .............常用UI主界面................ -->
@@ -79,7 +102,9 @@
         <activity android:name=".ui.study.RxjavaStudyActivity" />
         <activity android:name=".ui.text.TextActivity" />
         <activity android:name=".ui.imgselect.ImgSelectActivity" />
-        <activity android:name=".ui.study.kotlin.KotlinUseActivity"></activity>
+        <activity android:name=".ui.study.kotlin.KotlinUseActivity" />
+        <activity android:name=".ui.me.MeAdressListActivity" />
+
     </application>
 
 </manifest>

@@ -23,6 +23,8 @@ public class Constant {
     public static final String MAIN_STUDY_RXJAVA = "/study/RxjavaActivity";
     public static final String STUDY_RETROFIT= "/study/RetrofitStudyActivity";
     public static final String STUDY_COMUIMAIN= "/study/ComUiMainActivity";
+    public static final String ME_ADRESS_LIST= "/me/";
+
     /**
      * 首页选中的tab
      */
