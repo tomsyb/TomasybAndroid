@@ -1,30 +1,21 @@
 package com.example.tomasyb.tomasybandroid.ui.study;
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.tomasyb.baselib.base.BaseActivity;
 import com.example.tomasyb.baselib.net.common.DefaultObserver;
 import com.example.tomasyb.baselib.net.common.ProgressUtils;
-import com.example.tomasyb.baselib.net.entity.BaseResponse;
-import com.example.tomasyb.baselib.util.LogUtils;
-import com.example.tomasyb.baselib.util.ToastUitl;
+import com.example.tomasyb.baselib.util.ToastUtils;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.bean.LoginUser;
-import com.example.tomasyb.tomasybandroid.common.Constant;
 import com.example.tomasyb.tomasybandroid.net.ApiService;
 import com.example.tomasyb.tomasybandroid.net.BaseEnty;
 import com.example.tomasyb.tomasybandroid.net.RetrofitHelper;
 
-import java.io.IOException;
-
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -76,7 +67,7 @@ public class RetrofitStudyActivity extends BaseActivity {
                 .subscribe(new DefaultObserver<LoginUser>() {
                     @Override
                     public void onSuccess(LoginUser response) {
-                        ToastUitl.showLong("请求成功"+response.getName());
+                        ToastUtils.showLong("请求成功"+response.getName());
                     }
                 });
     }
@@ -97,7 +88,7 @@ public class RetrofitStudyActivity extends BaseActivity {
         call.enqueue(new Callback<BaseEnty<LoginUser>>() {
             @Override
             public void onResponse(Call<BaseEnty<LoginUser>> call, Response<BaseEnty<LoginUser>> response) {
-                ToastUitl.showLong("请求成功message="+response.body().getMessage());
+                ToastUtils.showLong("请求成功message="+response.body().getMessage());
             }
 
             @Override

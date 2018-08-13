@@ -1,20 +1,18 @@
 package com.example.tomasyb.tomasybandroid.ui.study;
 
-import android.os.Bundle;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.tomasyb.baselib.net.common.RetrofitUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
-import com.example.tomasyb.baselib.util.TimeUtil;
-import com.example.tomasyb.baselib.util.ToastUitl;
+import com.example.tomasyb.baselib.util.TimeUtils;
+import com.example.tomasyb.baselib.util.ToastUtils;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.base.ToolbarsBaseActivity;
 import com.example.tomasyb.tomasybandroid.bean.LoginUser;
 import com.example.tomasyb.tomasybandroid.common.Constant;
 import com.example.tomasyb.tomasybandroid.net.ApiService;
 import com.example.tomasyb.tomasybandroid.net.BaseEnty;
-import com.example.tomasyb.tomasybandroid.ui.comui.entity.Users;
 import com.example.tomasyb.tomasybandroid.ui.study.entity.TextEntity;
 import com.example.tomasyb.tomasybandroid.ui.study.entity.UpdateEntity;
 
@@ -23,7 +21,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -32,7 +29,6 @@ import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
@@ -41,8 +37,6 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Rxjava学习的页面
@@ -406,7 +400,7 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
      * 这里延迟两秒操作
      */
     private void timer() {
-        mTvContent.append(TimeUtil.getCurrentDate("yyyy-MM-dd HH:mm:ss"));
+        mTvContent.append(TimeUtils.getNowString());
         mTvContent.append("\n");
         Observable.timer(2,TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
@@ -414,7 +408,7 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        mTvContent.append(aLong+"at"+TimeUtil.getCurrentDate("yyyy-MM-dd HH:mm:ss"));
+                        mTvContent.append(aLong+"at"+TimeUtils.getNowString());
                     }
                 });
     }
@@ -426,7 +420,7 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
      */
     private Disposable disposable;
     private void interval() {
-        mTvContent.append(TimeUtil.getCurrentDate("yyyy-MM-dd HH:mm:ss"));
+        mTvContent.append(TimeUtils.getNowString());
         mTvContent.append("\n");
         disposable = Observable.interval(3,2,TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
@@ -434,7 +428,7 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        mTvContent.append(aLong+"at"+TimeUtil.getCurrentDate("yyyy-MM-dd HH:mm:ss"));
+                        mTvContent.append(aLong+"at"+TimeUtils.getNowString());
                     }
                 });
     }
@@ -513,7 +507,7 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
                 }, new Consumer<Throwable>() {//第二个是错误的接收
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        ToastUitl.showLong("请求错误");
+                        ToastUtils.showLong("请求错误");
                     }
                 });
     }
@@ -539,7 +533,7 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        ToastUitl.showLong("请求错误");
+                        ToastUtils.showLong("请求错误");
                     }
                 });
 

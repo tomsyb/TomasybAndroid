@@ -7,18 +7,16 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Window;
 
 import com.example.tomasyb.baselib.R;
-import com.example.tomasyb.baselib.util.TUtil;
-import com.example.tomasyb.baselib.util.ToastUitl;
+import com.example.tomasyb.baselib.util.ObjectUtils;
+import com.example.tomasyb.baselib.util.ToastUtils;
 import com.example.tomasyb.baselib.widget.LoadingDialog;
 import com.example.tomasyb.baselib.widget.StatusBarCompat;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -79,8 +77,8 @@ public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> exte
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mUnbinder = ButterKnife.bind(this);
         mContext = this;
-        mPre = TUtil.getT(this,0);
-        mModel = TUtil.getT(this,1);
+        mPre = ObjectUtils.getT(this,0);
+        mModel = ObjectUtils.getT(this,1);
         if (mPre !=null){
             mPre.mContext = this;
         }
@@ -191,54 +189,6 @@ public abstract class BaseActivity<V extends BasePre, M extends IBaseModel> exte
         LoadingDialog.cancelDialogForLoading();
     }
 
-    //******************************************************************Toast吐司*********
-    /**
-     * 短暂显示Toast提示(来自String)
-     **/
-    public void showShortToast(String text) {
-        ToastUitl.showShort(text);
-    }
-
-    /**
-     * 短暂显示Toast提示(id)
-     **/
-    public void showShortToast(int resId) {
-        ToastUitl.showShort(resId);
-    }
-
-    /**
-     * 长时间显示Toast提示(来自res)
-     **/
-    public void showLongToast(int resId) {
-        ToastUitl.showLong(resId);
-    }
-
-    /**
-     * 长时间显示Toast提示(来自String)
-     **/
-    public void showLongToast(String text) {
-        ToastUitl.showLong(text);
-    }
-
-    /**
-     * 带图片的toast
-     * @param text
-     * @param res
-     */
-    public void showToastWithImg(String text,int res) {
-        ToastUitl.showToastWithImg(text,res);
-    }
-
-    /**
-     * 网络访问错误提醒
-     */
-    public void showNetErrorTip() {
-        ToastUitl.showToastWithImg(getText(R.string.b_net_error).toString(),R.drawable.ic_wifi_off);
-    }
-
-    public void showNetErrorTip(String error) {
-        ToastUitl.showToastWithImg(error,R.drawable.ic_wifi_off);
-    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {

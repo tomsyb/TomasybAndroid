@@ -1,5 +1,6 @@
 package com.example.tomasyb.baselib.net.common;
 
+import com.example.tomasyb.baselib.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.example.tomasyb.baselib.base.BaseConfig;
@@ -7,7 +8,6 @@ import com.example.tomasyb.baselib.net.converter.GsonConverterFactory;
 import com.example.tomasyb.baselib.net.interceptor.HttpCacheInterceptor;
 import com.example.tomasyb.baselib.net.interceptor.HttpHeaderInterceptor;
 import com.example.tomasyb.baselib.net.interceptor.LoggingInterceptor;
-import com.example.tomasyb.baselib.util.InitUtils;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +38,7 @@ public class RetrofitUtils {
      */
     public static OkHttpClient.Builder getOkBuilder(){
         //缓存文件
-        File cacheFile = new File(InitUtils.getContext().getCacheDir(),"cache");
+        File cacheFile = new File(Utils.getApp().getCacheDir(),"cache");
         Cache cache= new Cache(cacheFile,1024*1024*100);//100Mb
         return new OkHttpClient.Builder()
                 .readTimeout(BaseConfig.READ_TIME_OUT, TimeUnit.MILLISECONDS)

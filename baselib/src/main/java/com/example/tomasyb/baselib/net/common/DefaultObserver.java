@@ -1,12 +1,10 @@
 package com.example.tomasyb.baselib.net.common;
 
-import android.widget.Toast;
-
 import com.example.tomasyb.baselib.R;
 import com.example.tomasyb.baselib.net.exception.NoDataExceptionException;
 import com.example.tomasyb.baselib.net.exception.ServerResponseException;
 import com.example.tomasyb.baselib.util.LogUtils;
-import com.example.tomasyb.baselib.util.ToastUitl;
+import com.example.tomasyb.baselib.util.ToastUtils;
 import com.google.gson.JsonParseException;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
@@ -83,7 +81,7 @@ public abstract class DefaultObserver<T> implements Observer<T> {
      * 服务器返回数据，但响应码不为1000
      */
     public void onFail(String message) {
-        ToastUitl.showLong(message);
+        ToastUtils.showLong(message);
 
     }
 
@@ -97,24 +95,24 @@ public abstract class DefaultObserver<T> implements Observer<T> {
     public void onException(ExceptionReason reason) {
         switch (reason) {
             case CONNECT_ERROR:
-                ToastUitl.showShort(R.string.b_connect_error);
+                ToastUtils.showLong(R.string.b_connect_error);
                 break;
 
             case CONNECT_TIMEOUT:
-                ToastUitl.showShort(R.string.b_connect_timeout);
+                ToastUtils.showLong(R.string.b_connect_timeout);
                 break;
 
             case BAD_NETWORK:
-                ToastUitl.showShort(R.string.b_bad_network);
+                ToastUtils.showLong(R.string.b_bad_network);
                 break;
 
             case PARSE_ERROR:
-                ToastUitl.showShort(R.string.b_parse_error);
+                ToastUtils.showLong(R.string.b_parse_error);
                 break;
 
             case UNKNOWN_ERROR:
             default:
-                ToastUitl.showShort(R.string.b_unknown_error);
+                ToastUtils.showLong(R.string.b_unknown_error);
                 break;
         }
     }

@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.example.tomasyb.baselib.base.BaseActivity;
 import com.example.tomasyb.baselib.util.AnimationUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
-import com.example.tomasyb.baselib.util.ToastUitl;
+import com.example.tomasyb.baselib.util.ToastUtils;
 import com.example.tomasyb.baselib.widget.KeyboardWatcher;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.utils.ShareUtils;
@@ -117,7 +117,7 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
                     return;
                 if (!s.toString().matches("[A-Za-z0-9]+")) {
                     String temp = s.toString();
-                    ToastUitl.showLong("请输入数字或字母");
+                    ToastUtils.showLong("请输入数字或字母");
                     s.delete(temp.length() - 1, temp.length());
                     mEtPassword.setSelection(s.length());
                 }

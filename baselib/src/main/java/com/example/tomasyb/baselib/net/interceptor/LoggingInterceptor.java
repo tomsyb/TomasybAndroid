@@ -1,7 +1,5 @@
 package com.example.tomasyb.baselib.net.interceptor;
 
-import android.util.Log;
-
 import com.example.tomasyb.baselib.util.LogUtils;
 
 import java.io.IOException;

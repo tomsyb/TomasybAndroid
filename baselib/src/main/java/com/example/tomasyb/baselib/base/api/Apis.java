@@ -1,20 +1,14 @@
 package com.example.tomasyb.baselib.base.api;
 
 
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-
 import com.example.tomasyb.baselib.base.BaseApplication;
-import com.example.tomasyb.baselib.util.NetworkUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
-import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

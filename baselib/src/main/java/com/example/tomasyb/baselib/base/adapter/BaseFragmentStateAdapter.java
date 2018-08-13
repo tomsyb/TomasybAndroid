@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 
-import com.example.tomasyb.baselib.util.CollectionUtils;
+import com.example.tomasyb.baselib.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class BaseFragmentStateAdapter extends FragmentStatePagerAdapter {
     }
     @Override
     public CharSequence getPageTitle(int position) {
-        return !CollectionUtils.isNullOrEmpty(mTitles) ? mTitles.get(position) : "";
+        return !ObjectUtils.isNullOrEmpty(mTitles) ? mTitles.get(position) : "";
     }
 
     @Override

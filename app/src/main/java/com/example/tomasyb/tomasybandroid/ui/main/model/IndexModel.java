@@ -1,15 +1,5 @@
 package com.example.tomasyb.tomasybandroid.ui.main.model;
 
-import com.example.tomasyb.baselib.util.ACache;
-import com.example.tomasyb.tomasybandroid.base.IApplication;
-import com.example.tomasyb.tomasybandroid.bean.IndexTable;
-import com.example.tomasyb.tomasybandroid.common.Constant;
-import com.example.tomasyb.tomasybandroid.db.AppLocalManager;
-import com.example.tomasyb.tomasybandroid.ui.main.contract.IndexContract;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 功能
  *

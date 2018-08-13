@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.tomasyb.baselib.adapter.BaseQuickAdapter;
 import com.example.tomasyb.baselib.adapter.BaseViewHolder;
 import com.example.tomasyb.baselib.base.BaseFragment;
-import com.example.tomasyb.baselib.util.JsonUtils;
-import com.example.tomasyb.baselib.util.LogUtils;
+import com.example.tomasyb.baselib.util.GsonUtils;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.bean.StudyMainEntity;
 import com.example.tomasyb.tomasybandroid.common.Common;
@@ -76,7 +74,8 @@ public class StudyMainFragment extends BaseFragment {
      */
     private void initData() {
         String json = Common.getJson(getActivity(), "rx.json");
-        StudyMainEntity bean = JsonUtils.JsonToObject(json, StudyMainEntity.class);
+        GsonUtils.fromJson(json, StudyMainEntity.class);
+        StudyMainEntity bean =  GsonUtils.fromJson(json, StudyMainEntity.class);
         mRxjavaDatas = bean.getRxjava();
         mRetrofitDatas = bean.getRetrofit();
         if (mPostion == 0){

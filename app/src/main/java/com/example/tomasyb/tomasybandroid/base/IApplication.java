@@ -1,12 +1,9 @@
 package com.example.tomasyb.tomasybandroid.base;
-import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.greendao.DaoMaster;
 import com.example.greendao.DaoSession;
 import com.example.tomasyb.baselib.base.BaseApplication;
-import com.example.tomasyb.baselib.util.InitUtils;
-import com.example.tomasyb.baselib.util.LogUtils;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -21,9 +18,6 @@ public class IApplication extends BaseApplication{
     @Override
     public void onCreate() {
         super.onCreate();
-        //初始化logger
-        LogUtils.logInit(true);
-        InitUtils.init(this);
         initRouter();
         initGreenDao();
     }
