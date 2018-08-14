@@ -552,6 +552,7 @@ isSDCardEnableByEnvironment: 根据 Environment 判断 SD 卡是否可用
 getSDCardPathByEnvironment : 根据 Environment 获取 SD 卡路径
 isSDCardEnable             : 判断 SD 卡是否可用
 getSDCardPaths             : 获取 SD 卡路径
+getVideoThumbnail          : 获取 视频第一针图像(放入线程中)
 ```
 
 * ### 服务相关 -> [ServiceUtils.java][service.java]

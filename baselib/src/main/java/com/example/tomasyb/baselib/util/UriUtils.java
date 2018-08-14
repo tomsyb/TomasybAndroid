@@ -57,4 +57,5 @@ public final class UriUtils {
         cursor.moveToFirst();
         return new File(cursor.getString(columnIndex));
     }
+
 }

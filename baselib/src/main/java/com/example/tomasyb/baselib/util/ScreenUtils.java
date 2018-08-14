@@ -36,7 +36,7 @@ public final class ScreenUtils {
 
     /**
      * Return the width of screen, in pixel.
-     *
+     * 获取屏幕宽度
      * @return the width of screen, in pixel
      */
     public static int getScreenWidth() {
@@ -55,7 +55,7 @@ public final class ScreenUtils {
 
     /**
      * Return the height of screen, in pixel.
-     *
+     * 获取屏幕高度
      * @return the height of screen, in pixel
      */
     public static int getScreenHeight() {
