@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shap_sd_white_r6"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_popup_window_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shap_sd_white_r6"
+            android:gravity="center"
+            android:minHeight="45dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="10dp"
+            android:textColor="#8F8F8F"
+            android:textSize="13sp"
+            android:visibility="gone" />
+        <!--根据有无标题让此分隔线出现-->
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#8F8F8F"
+            android:visibility="gone" />
+
+        <ScrollView
+            android:id="@+id/scroll_view_layout_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadingEdge="none">
+
+            <LinearLayout
+                android:id="@+id/layout_popup_window_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_popup_window_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shap_sd_white_r6"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#037BFF"
+        android:textSize="18sp" />
+
+</LinearLayout>

@@ -1,5 +1,7 @@
 package com.example.tomasyb.tomasybandroid.common;
 
+import com.amap.api.maps.model.LatLng;
+
 /**
  * 常量及
  *
@@ -35,6 +37,9 @@ public class Constant {
      */
     public static final String INDEX_TOP_NAME="INDEX_TOP_NAME";
 
-
+    /**
+     * 地图
+     */
+    public static final LatLng CHENGDU = new LatLng(30.679879, 104.064855);// 成都市经纬度
 
 }

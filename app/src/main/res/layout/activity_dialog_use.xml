@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tomasyb.tomasybandroid.ui.dialog.DialogUseActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_general_dialog_one"
+                style="@style/btn_match_parent"
+                android:text="提示确认Dialog" />
+
+            <Button
+                android:id="@+id/btn_general_dialog_two"
+                style="@style/btn_match_parent"
+                android:text="提示确认Dialog-带副标题" />
+
+            <Button
+                android:id="@+id/btn_general_dialog_three"
+                style="@style/btn_match_parent"
+                android:text="提示确认Dialog-带图标" />
+
+            <Button
+                android:id="@+id/btn_general_dialog_four"
+                style="@style/btn_match_parent"
+                android:text="提示确认Dialog-一个按钮" />
+
+            <Button
+                android:id="@+id/btn_bottom_popup_widow"
+                style="@style/btn_match_parent"
+                android:text="仿IOS底部弹窗" />
+            <Button
+                android:id="@+id/btn_bottom_popup_widow1"
+                style="@style/btn_match_parent"
+                android:text="仿IOS底部弹窗1" />
+            <Button
+                android:id="@+id/btn_bottom_popup_widow2"
+                style="@style/btn_match_parent"
+                android:text="仿IOS底部弹窗2" />
+            <Button
+                android:id="@+id/btn_edit_dialog"
+                style="@style/btn_match_parent"
+                android:text="仿IOS中间弹窗可编辑" />
+
+            <!--<Button-->
+            <!--android:id="@+id/btn_share_dialog"-->
+            <!--style="@style/MainButton"-->
+            <!--android:text="分享" />-->
+
+            <!--<Button-->
+            <!--android:id="@+id/btn_friend_setting"-->
+            <!--style="@style/MainButton"-->
+            <!--android:text="好友设置" />-->
+
+            <!--<Button-->
+            <!--android:id="@+id/btn_comment_dialog"-->
+            <!--style="@style/MainButton"-->
+            <!--android:text="评论" />-->
+
+            <!--<Button-->
+            <!--android:id="@+id/btn_red_package_dialog"-->
+            <!--style="@style/MainButton"-->
+            <!--android:text="红包" />-->
+
+            <!--<Button-->
+            <!--android:id="@+id/btn_loading_dialog"-->
+            <!--style="@style/MainButton"-->
+            <!--android:text="加载提示" />-->
+
+            <!--<Button-->
+            <!--android:id="@+id/btn_ensure_dialog_0"-->
+            <!--style="@style/MainButton"-->
+            <!--android:text="确定-0" />-->
+
+            <Button
+                android:id="@+id/btn_custom_dialog"
+                style="@style/btn_match_parent"
+                android:text="自定义布局的Dialog" />
+
+
+            <Button
+                android:id="@+id/btn_sd_custom_dialog"
+                style="@style/btn_match_parent"
+                android:text="自定义布局支持各种自定义Dialog" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
