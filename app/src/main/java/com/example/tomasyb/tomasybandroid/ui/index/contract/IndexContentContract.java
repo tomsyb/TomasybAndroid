@@ -1,10 +1,9 @@
 package com.example.tomasyb.tomasybandroid.ui.index.contract;
 
-import com.example.tomasyb.baselib.base.BasePre;
+import com.example.tomasyb.baselib.base.BasePresenter;
 import com.example.tomasyb.baselib.base.IBaseModel;
 import com.example.tomasyb.baselib.base.IBaseView;
 import com.example.tomasyb.tomasybandroid.bean.NewsSummary;
-import com.example.tomasyb.tomasybandroid.ui.main.contract.IndexContract;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ public interface IndexContentContract {
         void changeData(List<NewsSummary> mData);
 
     }
-    abstract class Presenter extends BasePre<View,Model>{
+    abstract class Presenter extends BasePresenter<View,Model> {
         public abstract void getIndexList(String type,String id,int startPage);
     }
 }

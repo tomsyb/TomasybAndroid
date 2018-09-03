@@ -1,6 +1,5 @@
 package com.example.tomasyb.baselib.base;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tomasyb.baselib.R;
 import com.example.tomasyb.baselib.util.ObjectUtils;
-import com.example.tomasyb.baselib.widget.LoadingDialog;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -53,7 +50,7 @@ import butterknife.Unbinder;
 //    public void initView() {
 //    }
 //}
-public abstract  class BaseFragment<T extends BasePre, E extends IBaseModel> extends Fragment {
+public abstract  class BaseFragment<T extends BasePresenter, E extends IBaseModel> extends Fragment {
     protected View rootView;
     public T mPresenter;
     public E mModel;

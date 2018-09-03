@@ -1,6 +1,6 @@
 package com.example.tomasyb.tomasybandroid.ui.main.contract;
 
-import com.example.tomasyb.baselib.base.BasePre;
+import com.example.tomasyb.baselib.base.BasePresenter;
 import com.example.tomasyb.baselib.base.IBaseModel;
 import com.example.tomasyb.baselib.base.IBaseView;
 import com.example.tomasyb.tomasybandroid.bean.IndexTable;
@@ -29,7 +29,7 @@ public interface IndexContract {
     }
 
     // presenter
-    abstract static class Presenter extends BasePre<View,Model>{
+    abstract static class Presenter extends BasePresenter<View,Model> {
         public abstract void loadIndexTopData();
     }
 }
