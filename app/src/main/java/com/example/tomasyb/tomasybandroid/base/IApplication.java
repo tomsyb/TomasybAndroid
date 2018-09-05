@@ -3,7 +3,7 @@ package com.example.tomasyb.tomasybandroid.base;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.greendao.DaoMaster;
 import com.example.greendao.DaoSession;
-import com.example.tomasyb.baselib.base.BaseApplication;
+import com.example.tomasyb.baselib.base.app.BaseApplication;
 
 import org.greenrobot.greendao.database.Database;
 

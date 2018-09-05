@@ -1,4 +1,4 @@
-package com.example.tomasyb.baselib.base;
+package com.example.tomasyb.baselib.base.mvp;
 
 import io.reactivex.disposables.Disposable;
 

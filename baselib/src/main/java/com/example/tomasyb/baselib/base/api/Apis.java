@@ -1,7 +1,7 @@
 package com.example.tomasyb.baselib.base.api;
 
 
-import com.example.tomasyb.baselib.base.BaseApplication;
+import com.example.tomasyb.baselib.base.app.BaseApplication;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

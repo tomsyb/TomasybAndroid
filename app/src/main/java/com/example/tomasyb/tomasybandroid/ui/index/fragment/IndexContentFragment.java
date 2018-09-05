@@ -1,6 +1,7 @@
 package com.example.tomasyb.tomasybandroid.ui.index.fragment;
 
 import com.example.tomasyb.baselib.base.BaseFragment;
+import com.example.tomasyb.baselib.base.mvp.BasePresenter;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.bean.NewsSummary;
 
@@ -27,12 +28,23 @@ public class IndexContentFragment extends BaseFragment{
     }
 
     @Override
-    public void initPresenter() {
-        mPresenter.setVM(this,mModel);
+    public BasePresenter initPresenter() {
+        return null;
     }
+
 
     @Override
     protected void initView() {
+
+    }
+
+    @Override
+    public void showLoadingDialog(String msg) {
+
+    }
+
+    @Override
+    public void dismissLoadingDialog() {
 
     }
 }

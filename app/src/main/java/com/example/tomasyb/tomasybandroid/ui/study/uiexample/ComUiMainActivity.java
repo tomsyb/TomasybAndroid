@@ -5,7 +5,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.tomasyb.baselib.base.BaseActivity;
+import com.example.tomasyb.baselib.base.mvp.BaseActivity;
+import com.example.tomasyb.baselib.base.mvp.BasePresenter;
 import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.widget.banner.BannerView;
 import com.example.tomasyb.baselib.widget.titlebar.CommonTitleBar;
@@ -97,8 +98,9 @@ public class ComUiMainActivity extends BaseActivity {
     }
 
     @Override
-    public void initPresenter() {
-
+    public BasePresenter initPresenter() {
+        return null;
     }
+
 
 }

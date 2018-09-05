@@ -16,7 +16,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.tomasyb.baselib.base.BaseActivity;
+import com.example.tomasyb.baselib.base.mvp.BaseActivity;
+import com.example.tomasyb.baselib.base.mvp.BasePresenter;
 import com.example.tomasyb.baselib.util.AnimationUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.util.ToastUtils;
@@ -69,6 +70,11 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
         keyboardWatcher = new KeyboardWatcher(findViewById(Window.ID_ANDROID_CONTENT));
         keyboardWatcher.addSoftKeyboardStateListener(this);
         initListener();
+    }
+
+    @Override
+    public BasePresenter initPresenter() {
+        return null;
     }
 
     /**
@@ -125,10 +131,7 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
         });
     }
 
-    @Override
-    public void initPresenter() {
 
-    }
 
     @OnClick({R.id.close, R.id.iv_clean_phone, R.id.clean_password, R.id.iv_show_pwd,R.id.login_img_qq,R.id.login_img_wechat})
     public void onViewClicked(View view) {

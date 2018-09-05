@@ -1,6 +1,7 @@
 package com.example.tomasyb.tomasybandroid.ui.main.fragment;
 
 import com.example.tomasyb.baselib.base.BaseFragment;
+import com.example.tomasyb.baselib.base.mvp.BasePresenter;
 import com.example.tomasyb.tomasybandroid.R;
 
 /**
@@ -19,12 +20,23 @@ public class GuideFragment extends BaseFragment{
     }
 
     @Override
-    public void initPresenter() {
+    public BasePresenter initPresenter() {
+        return null;
+    }
+
+
+    @Override
+    protected void initView() {
 
     }
 
     @Override
-    protected void initView() {
+    public void showLoadingDialog(String msg) {
+
+    }
+
+    @Override
+    public void dismissLoadingDialog() {
 
     }
 }

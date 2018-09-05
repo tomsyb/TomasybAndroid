@@ -1,15 +1,13 @@
 package com.example.tomasyb.tomasybandroid.ui.study;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.tomasyb.baselib.base.BaseActivity;
-import com.example.tomasyb.baselib.base.BaseFragment;
+import com.example.tomasyb.baselib.base.mvp.BaseActivity;
 import com.example.tomasyb.baselib.base.adapter.BaseFragmentAdapter;
+import com.example.tomasyb.baselib.base.mvp.BasePresenter;
 import com.example.tomasyb.baselib.widget.coordinatortablayout.CoordinatorTabLayout;
 import com.example.tomasyb.tomasybandroid.R;
 
@@ -17,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  *
@@ -62,6 +59,11 @@ public class StudyMainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public BasePresenter initPresenter() {
+        return null;
+    }
+
     /**
      * 初始化viewPager
      */
@@ -83,10 +85,6 @@ public class StudyMainActivity extends BaseActivity {
         }
     }
 
-    @Override
-    public void initPresenter() {
-
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

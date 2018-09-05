@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.tomasyb.baselib.base.BaseFragment;
+import com.example.tomasyb.baselib.base.mvp.BasePresenter;
 import com.example.tomasyb.tomasybandroid.R;
 import butterknife.OnClick;
 
@@ -27,9 +28,10 @@ public class MeFragment extends BaseFragment {
     }
 
     @Override
-    public void initPresenter() {
-
+    public BasePresenter initPresenter() {
+        return null;
     }
+
 
     @Override
     protected void initView() {
@@ -46,6 +48,16 @@ public class MeFragment extends BaseFragment {
 
     @OnClick(R.id.btn_addresslist)
     public void onViewClicked() {
+
+    }
+
+    @Override
+    public void showLoadingDialog(String msg) {
+
+    }
+
+    @Override
+    public void dismissLoadingDialog() {
 
     }
 }

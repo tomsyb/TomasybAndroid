@@ -3,7 +3,8 @@ package com.example.tomasyb.tomasybandroid.ui.study;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.tomasyb.baselib.base.BaseActivity;
+import com.example.tomasyb.baselib.base.mvp.BaseActivity;
+import com.example.tomasyb.baselib.base.mvp.BasePresenter;
 import com.example.tomasyb.baselib.net.common.DefaultObserver;
 import com.example.tomasyb.baselib.net.common.ProgressUtils;
 import com.example.tomasyb.baselib.util.ToastUtils;
@@ -35,11 +36,9 @@ public class RetrofitStudyActivity extends BaseActivity {
     }
 
     @Override
-    public void initPresenter() {
-
+    public BasePresenter initPresenter() {
+        return null;
     }
-
-
 
 
     @OnClick({R.id.btn_1, R.id.btn_2})
@@ -60,7 +59,6 @@ public class RetrofitStudyActivity extends BaseActivity {
     private void RJget() {
         RetrofitHelper.getmApiService()
                 .getUser("yanb","123456")
-                .compose(this.<LoginUser>bindToLifecycle())
                 .compose(ProgressUtils.<LoginUser>applyProgressBar(this))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

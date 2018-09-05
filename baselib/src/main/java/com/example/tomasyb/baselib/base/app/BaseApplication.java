@@ -1,4 +1,4 @@
-package com.example.tomasyb.baselib.base;
+package com.example.tomasyb.baselib.base.app;
 
 import android.app.Application;
 import android.content.Context;

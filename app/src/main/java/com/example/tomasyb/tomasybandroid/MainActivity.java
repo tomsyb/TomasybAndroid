@@ -1,10 +1,10 @@
 package com.example.tomasyb.tomasybandroid;
 
-import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.tomasyb.baselib.base.BaseActivity;
+import com.example.tomasyb.baselib.base.mvp.BasePresenter;
+import com.example.tomasyb.baselib.base.mvp.BaseActivity;
 import com.example.tomasyb.baselib.widget.bottombar.BottomBar;
 import com.example.tomasyb.baselib.widget.bottombar.BottomBarTab;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.BookFragment;
@@ -13,7 +13,6 @@ import com.example.tomasyb.tomasybandroid.ui.main.fragment.IndexFragment;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.MeFragment;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 首页
@@ -37,6 +36,11 @@ public class MainActivity extends BaseActivity {
     public void initView() {
         initFragment();
         initBottomBar();
+    }
+
+    @Override
+    public BasePresenter initPresenter() {
+        return null;
     }
 
     /**
@@ -132,11 +136,6 @@ public class MainActivity extends BaseActivity {
                 break;
 
         }
-    }
-
-    @Override
-    public void initPresenter() {
-
     }
     private void hideshowFragment(){
 
