@@ -331,6 +331,7 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
      * flatMap是无序的窝
      * 而concatMap用法和flatmap用法一样但是但是他有序
      */
+
     private void flatMap() {
         Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
