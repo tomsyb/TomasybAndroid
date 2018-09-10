@@ -1,6 +1,6 @@
 package com.example.tomasyb.tomasybandroid.ui.mvpexample.contact;
 
-import com.example.tomasyb.baselib.base.mvp.BasePresenter;
+import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.BaseView;
 import com.example.tomasyb.tomasybandroid.ui.mvpexample.bean.MvpUseBean;
 
@@ -21,7 +21,7 @@ public interface MvpContact {
         void setData(List<MvpUseBean.StoriesBean> dataList);
     }
     //p层
-    interface presenter extends BasePresenter{
+    interface presenter extends IBasePresenter {
         // 获取数据
         void getData();
     }

@@ -16,9 +16,7 @@ import retrofit2.http.GET;
  */
 public interface RetrofitService {
 
-
     String BASE_URL = "https://news-at.zhihu.com/api/4/";
-
 
     /**
      * 测试接口

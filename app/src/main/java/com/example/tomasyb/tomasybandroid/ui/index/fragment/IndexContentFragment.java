@@ -1,7 +1,7 @@
 package com.example.tomasyb.tomasybandroid.ui.index.fragment;
 
 import com.example.tomasyb.baselib.base.BaseFragment;
-import com.example.tomasyb.baselib.base.mvp.BasePresenter;
+import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.bean.NewsSummary;
 
@@ -28,7 +28,7 @@ public class IndexContentFragment extends BaseFragment{
     }
 
     @Override
-    public BasePresenter initPresenter() {
+    public IBasePresenter initPresenter() {
         return null;
     }
 

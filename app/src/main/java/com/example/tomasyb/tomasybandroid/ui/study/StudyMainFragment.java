@@ -9,7 +9,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.tomasyb.baselib.adapter.BaseQuickAdapter;
 import com.example.tomasyb.baselib.adapter.BaseViewHolder;
 import com.example.tomasyb.baselib.base.BaseFragment;
-import com.example.tomasyb.baselib.base.mvp.BasePresenter;
+import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.util.GsonUtils;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.bean.StudyMainEntity;
@@ -59,7 +59,7 @@ public class StudyMainFragment extends BaseFragment {
     }
 
     @Override
-    public BasePresenter initPresenter() {
+    public IBasePresenter initPresenter() {
         return null;
     }
 

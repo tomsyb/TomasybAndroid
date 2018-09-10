@@ -1,4 +1,4 @@
-package com.example.tomasyb.baselib.net.interceptor;
+package com.example.tomasyb.baselib.base.retrofit.interceptor;
 
 import com.example.tomasyb.baselib.util.LogUtils;
 

@@ -1,4 +1,4 @@
-package com.example.tomasyb.baselib.net.entity;
+package com.example.tomasyb.baselib.base.retrofit.entity;
 
 /**
  * 服务器返回数据基类

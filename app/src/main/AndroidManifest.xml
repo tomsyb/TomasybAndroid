@@ -92,7 +92,14 @@
         <!-- .............Retrofit用法................ -->
         <activity android:name=".ui.study.RetrofitStudyActivity" />
         <activity android:name=".ui.study.StudyMainActivity" />
-        <activity android:name=".ui.study.RxjavaStudyActivity" />
+        <!-- _________________________________________________________Rxjava学习 -->
+        <activity android:name=".ui.rxjava.RxjavaStudyActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.text.TextActivity" />
         <activity android:name=".ui.imgselect.ImgSelectActivity" />
         <activity android:name=".ui.study.kotlin.KotlinUseActivity" />
@@ -104,11 +111,7 @@
         <activity android:name=".ui.dialog.DialogUseActivity">
         </activity>
         <activity android:name=".ui.mvpexample.MvpExampleActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

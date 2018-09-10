@@ -1,17 +1,12 @@
 package com.example.tomasyb.baselib.base.retrofit;
 
-import android.util.Log;
-
-import com.example.tomasyb.baselib.net.interceptor.LoggingInterceptor;
-import com.example.tomasyb.baselib.util.LogUtils;
+import com.example.tomasyb.baselib.base.retrofit.interceptor.LoggingInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

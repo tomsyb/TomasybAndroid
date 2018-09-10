@@ -1,16 +1,18 @@
 package com.example.tomasyb.tomasybandroid.ui.main.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import com.alibaba.android.arouter.launcher.ARouter;
+
 import com.example.tomasyb.baselib.adapter.BaseQuickAdapter;
 import com.example.tomasyb.baselib.adapter.BaseViewHolder;
 import com.example.tomasyb.baselib.base.BaseFragment;
-import com.example.tomasyb.baselib.base.mvp.BasePresenter;
+import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.tomasybandroid.R;
-import com.example.tomasyb.tomasybandroid.common.Constant;
+import com.example.tomasyb.tomasybandroid.ui.main.contact.IndexContact;
+import com.example.tomasyb.tomasybandroid.ui.main.presenter.IndexPresenter;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 
 
@@ -23,45 +25,25 @@ import butterknife.BindView;
  * @since JDK 1.8
  */
 
-public class IndexFragment extends BaseFragment {
-    @BindView(R.id.index_rv)
+public class IndexFragment extends BaseFragment<IndexContact.presenter> implements IndexContact.view{
+    @BindView(R.id.index_main_rv)
     RecyclerView mRv;
-
-    List<String> mDatas;
-    private BaseQuickAdapter<String,BaseViewHolder> mAdapter;
+    private BaseQuickAdapter<String,BaseViewHolder> mAdaper;
+    private List<String> mDatas;
     @Override
     protected int getLayoutResource() {
         return R.layout.fg_main_index;
     }
 
     @Override
-    public BasePresenter initPresenter() {
-        return null;
+    public IndexContact.presenter initPresenter() {
+        return new IndexPresenter(this);
     }
 
 
     @Override
     protected void initView() {
-        mDatas = new ArrayList<>();
-        mDatas.add("顶部Title的封装使用");
-        mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mAdapter = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_text,mDatas) {
-            @Override
-            protected void convert(BaseViewHolder helper, String item) {
-                helper.setText(R.id.item_btn,item);
-            }
-        };
-        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                switch (position){
-                    case 0:
-                        ARouter.getInstance().build(Constant.STUDY_COMUIMAIN).navigation();
-                        break;
-                }
-            }
-        });
-        mRv.setAdapter(mAdapter);
+
     }
 
 
@@ -73,5 +55,18 @@ public class IndexFragment extends BaseFragment {
     @Override
     public void dismissLoadingDialog() {
 
+    }
+
+    @Override
+    public void initAdapter() {
+        mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mDatas = new ArrayList<>();
+        mAdaper = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_btn_only,mDatas) {
+            @Override
+            protected void convert(BaseViewHolder helper, String item) {
+                helper.setText(R.id.btn_txt,item);
+            }
+        };
+        mRv.setAdapter(mAdaper);
     }
 }

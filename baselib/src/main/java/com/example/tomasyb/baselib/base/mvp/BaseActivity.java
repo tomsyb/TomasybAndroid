@@ -21,7 +21,7 @@ import butterknife.Unbinder;
  * @date 2018-5-30.10:23
  * @since JDK 1.8
  */
-public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements BaseView{
+public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatActivity implements BaseView{
     protected P presenter;
     public Context mContext;
     public Unbinder mUnbinder;//黄油刀

@@ -3,9 +3,8 @@ package com.example.tomasyb.tomasybandroid.ui.main.fragment;
 import android.app.Activity;
 import android.graphics.Bitmap;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.tomasyb.baselib.base.BaseFragment;
-import com.example.tomasyb.baselib.base.mvp.BasePresenter;
+import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.tomasybandroid.R;
 import butterknife.OnClick;
 
@@ -28,7 +27,7 @@ public class MeFragment extends BaseFragment {
     }
 
     @Override
-    public BasePresenter initPresenter() {
+    public IBasePresenter initPresenter() {
         return null;
     }
 

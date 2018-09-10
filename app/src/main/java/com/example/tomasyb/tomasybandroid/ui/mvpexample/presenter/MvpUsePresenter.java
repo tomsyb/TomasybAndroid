@@ -1,6 +1,6 @@
 package com.example.tomasyb.tomasybandroid.ui.mvpexample.presenter;
 
-import com.example.tomasyb.baselib.base.mvp.BasePresenterImpl;
+import com.example.tomasyb.baselib.base.mvp.BasePresenter;
 import com.example.tomasyb.baselib.base.retrofit.ExceptionHelper;
 import com.example.tomasyb.tomasybandroid.ui.mvpexample.bean.MvpUseBean;
 import com.example.tomasyb.tomasybandroid.ui.mvpexample.contact.MvpContact;
@@ -23,7 +23,7 @@ import io.reactivex.schedulers.Schedulers;
  * @since JDK 1.8
  */
 
-public class MvpUsePresenter extends BasePresenterImpl<MvpContact.view> implements MvpContact
+public class MvpUsePresenter extends BasePresenter<MvpContact.view> implements MvpContact
         .presenter {
 
 

@@ -1,7 +1,7 @@
 package com.example.tomasyb.tomasybandroid;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.example.tomasyb.baselib.base.mvp.BasePresenter;
+import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
 import com.example.tomasyb.tomasybandroid.common.Constant;
 
@@ -23,7 +23,7 @@ public class SplashActivity extends BaseActivity{
     }
 
     @Override
-    public BasePresenter initPresenter() {
+    public IBasePresenter initPresenter() {
         return null;
     }
 

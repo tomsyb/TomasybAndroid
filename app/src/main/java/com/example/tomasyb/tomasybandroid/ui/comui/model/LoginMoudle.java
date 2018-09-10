@@ -1,9 +1,6 @@
 package com.example.tomasyb.tomasybandroid.ui.comui.model;
 
-import com.example.tomasyb.baselib.net.entity.BaseResponse;
 import com.example.tomasyb.tomasybandroid.bean.LoginUser;
-import com.example.tomasyb.tomasybandroid.net.BaseEnty;
-import com.example.tomasyb.tomasybandroid.net.RetrofitHelper;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -28,14 +25,5 @@ public class LoginMoudle {
     private String psd;
 
     private void login (String username,String psd){
-        RetrofitHelper.getmApiService().getUser(username,psd)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext(new Consumer<LoginUser>() {
-                    @Override
-                    public void accept(LoginUser loginUserBaseEnty) throws Exception {
-
-                    }
-                });
     }
 }

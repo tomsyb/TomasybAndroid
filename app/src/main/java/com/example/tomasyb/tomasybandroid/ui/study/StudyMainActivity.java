@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
 import com.example.tomasyb.baselib.base.adapter.BaseFragmentAdapter;
-import com.example.tomasyb.baselib.base.mvp.BasePresenter;
+import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.widget.coordinatortablayout.CoordinatorTabLayout;
 import com.example.tomasyb.tomasybandroid.R;
 
@@ -60,7 +60,7 @@ public class StudyMainActivity extends BaseActivity {
     }
 
     @Override
-    public BasePresenter initPresenter() {
+    public IBasePresenter initPresenter() {
         return null;
     }
 

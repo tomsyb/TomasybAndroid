@@ -3,7 +3,7 @@ package com.example.tomasyb.tomasybandroid;
 import android.support.v4.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.tomasyb.baselib.base.mvp.BasePresenter;
+import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
 import com.example.tomasyb.baselib.widget.bottombar.BottomBar;
 import com.example.tomasyb.baselib.widget.bottombar.BottomBarTab;
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public BasePresenter initPresenter() {
+    public IBasePresenter initPresenter() {
         return null;
     }
 

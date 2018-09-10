@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tomasyb.baselib.base.mvp.BasePresenter;
+import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.BaseView;
 
 import butterknife.ButterKnife;
@@ -19,7 +19,7 @@ import butterknife.Unbinder;
  * Created by yanb
  * on 2016.07.12:38
  */
-public abstract  class BaseFragment<P extends BasePresenter> extends Fragment implements BaseView{
+public abstract  class BaseFragment<P extends IBasePresenter> extends Fragment implements BaseView{
     protected View rootView;
     public P mPresenter;
     public Unbinder mUnbinder;//黄油刀

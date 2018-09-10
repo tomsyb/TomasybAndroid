@@ -1,6 +1,7 @@
 package com.example.tomasyb.tomasybandroid.net;
 
 import com.example.tomasyb.tomasybandroid.bean.LoginUser;
+import com.example.tomasyb.tomasybandroid.ui.rxjava.entity.User;
 import com.example.tomasyb.tomasybandroid.ui.study.entity.UpdateEntity;
 
 import io.reactivex.Observable;
@@ -54,5 +55,15 @@ public interface ApiService {
                                           @Query("token") String token,
                                           @Query("AppType") String AppType,
                                           @Query("VersionCode") String VersionCode);
+
+
+    /**
+     * 登录请求
+     * http://scrs.daqsoft.com/api/rest/app/login?account=yinh%20&password=123456
+     *
+     */
+    @GET("rest/app/disguiseLogin")
+    Observable<BaseEnty<User>> getLogin(@Query("account") String account,
+                                        @Query("password") String password);
 
 }
