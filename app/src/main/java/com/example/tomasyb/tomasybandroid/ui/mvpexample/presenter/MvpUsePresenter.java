@@ -33,33 +33,33 @@ public class MvpUsePresenter extends BasePresenter<MvpContact.view> implements M
 
     @Override
     public void getData() {
-        Api.getInstance().test()
-                .subscribeOn(Schedulers.io())
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        addDisposable(disposable);
-                        view.showLoadingDialog("正在加载中...");
-                    }
-                }).map(new Function<MvpUseBean, List<MvpUseBean.StoriesBean>>() {
-            @Override
-            public List<MvpUseBean.StoriesBean> apply(MvpUseBean mvpUseBean) throws Exception {
-                return mvpUseBean.getStories();
-            }
-        })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<MvpUseBean.StoriesBean>>() {
-                    @Override
-                    public void accept(List<MvpUseBean.StoriesBean> storiesBeans) throws Exception {
-                        view.dismissLoadingDialog();
-                        view.setData(storiesBeans);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        view.dismissLoadingDialog();
-                        ExceptionHelper.handleException(throwable);
-                    }
-                });
+//        Api.getInstance().getLogin("yinh","123456")
+//                .subscribeOn(Schedulers.io())
+//                .doOnSubscribe(new Consumer<Disposable>() {
+//                    @Override
+//                    public void accept(Disposable disposable) throws Exception {
+//                        addDisposable(disposable);
+//                        view.showLoadingDialog("正在加载中...");
+//                    }
+//                }).map(new Function<MvpUseBean, List<MvpUseBean.StoriesBean>>() {
+//            @Override
+//            public List<MvpUseBean.StoriesBean> apply(MvpUseBean mvpUseBean) throws Exception {
+//                return mvpUseBean.getStories();
+//            }
+//        })
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<List<MvpUseBean.StoriesBean>>() {
+//                    @Override
+//                    public void accept(List<MvpUseBean.StoriesBean> storiesBeans) throws Exception {
+//                        view.dismissLoadingDialog();
+//                        view.setData(storiesBeans);
+//                    }
+//                }, new Consumer<Throwable>() {
+//                    @Override
+//                    public void accept(Throwable throwable) throws Exception {
+//                        view.dismissLoadingDialog();
+//                        ExceptionHelper.handleException(throwable);
+//                    }
+//                });
     }
 }

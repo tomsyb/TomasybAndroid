@@ -1,10 +1,13 @@
 package com.example.tomasyb.tomasybandroid.ui.mvpexample.net;
 
 
-import com.example.tomasyb.tomasybandroid.ui.mvpexample.bean.MvpUseBean;
+import com.example.tomasyb.baselib.base.mvp.BaseBean;
+import com.example.tomasyb.tomasybandroid.ui.rxjava.entity.User;
+import com.example.tomasyb.tomasybandroid.ui.rxjava.entity.Video;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /*
  * 项目名:    playstock
@@ -16,15 +19,24 @@ import retrofit2.http.GET;
  */
 public interface RetrofitService {
 
-    String BASE_URL = "https://news-at.zhihu.com/api/4/";
+    String BASE_URL = "http://scrs.daqsoft.com/api/";
 
     /**
-     * 测试接口
+     * 登录请求
+     * http://scrs.daqsoft.com/api/rest/app/login?account=yinh%20&password=123456
+     */
+    @GET("rest/app/disguiseLogin")
+    Observable<BaseBean<User>> getLogin(@Query("account") String account,
+                                        @Query("password") String password);
+
+    /**
+     * 获取监控列表
+     * http://scrs.daqsoft.com/api/rest/monitor/getMonitorGroup?vcode=d80f699c062c8662fad3df86024e246c
      *
+     * @param vcode 景区vcode
      * @return
      */
-    @GET("news/latest")
-    Observable<MvpUseBean> test();
-
+    @GET("rest/monitor/getMonitorGroup")
+    Observable<BaseBean<Video>> getVideoList(@Query("vcode") String vcode);
 
 }

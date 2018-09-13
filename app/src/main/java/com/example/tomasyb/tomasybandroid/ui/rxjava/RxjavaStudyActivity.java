@@ -1,29 +1,41 @@
 package com.example.tomasyb.tomasybandroid.ui.rxjava;
 
+import android.os.AsyncTask;
 import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.example.tomasyb.baselib.base.mvp.BaseBean;
+import com.example.tomasyb.baselib.base.retrofit.ExceptionHelper;
 import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.util.TimeUtils;
 import com.example.tomasyb.baselib.util.ToastUtils;
+import com.example.tomasyb.baselib.widget.LoadingDialog;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.base.ToolbarsBaseActivity;
-import com.example.tomasyb.tomasybandroid.bean.LoginUser;
-import com.example.tomasyb.tomasybandroid.common.Constant;
-import com.example.tomasyb.tomasybandroid.net.ApiService;
-import com.example.tomasyb.tomasybandroid.net.BaseEnty;
 import com.example.tomasyb.tomasybandroid.ui.mvpexample.bean.MvpUseBean;
 import com.example.tomasyb.tomasybandroid.ui.mvpexample.net.Api;
+import com.example.tomasyb.tomasybandroid.ui.rxjava.entity.User;
+import com.example.tomasyb.tomasybandroid.ui.rxjava.entity.Video;
 import com.example.tomasyb.tomasybandroid.ui.study.entity.TextEntity;
-import com.example.tomasyb.tomasybandroid.ui.study.entity.UpdateEntity;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -37,9 +49,6 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Rxjava学习的页面
@@ -69,7 +78,9 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
     }
 
     @OnClick({R.id.txjava_btn_create, R.id.txjava_btn_map, R.id.txjava_btn_thread, R.id
-            .txjava_btn_net,R.id.txjava_btn_flatmap})
+            .txjava_btn_net, R.id.txjava_btn_flatmap, R.id.txjava_btn_net_flamap, R.id
+            .txjava_btn_zip, R.id.txjava_btn_net_zip, R.id.txjava_btn_filter, R.id
+            .txjava_btn_sample,R.id.txjava_btn_flowable})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txjava_btn_create:
@@ -79,7 +90,7 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
                 map();
                 break;
             case R.id.txjava_btn_flatmap:
-               flatMap();
+                flatMap();
                 break;
             case R.id.txjava_btn_thread:
                 thread();
@@ -87,7 +98,184 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
             case R.id.txjava_btn_net:
                 netQuest();
                 break;
+            case R.id.txjava_btn_net_flamap://演示先注册再登录
+                netFlamap();
+                break;
+            case R.id.txjava_btn_zip://zip操作
+                zip();
+                break;
+            case R.id.txjava_btn_net_zip://zip 网络合并
+                zipNet();
+                break;
+            case R.id.txjava_btn_filter://过滤
+                filter();
+                break;
+            case R.id.txjava_btn_sample://每隔一定时间取值
+                simple();
+                break;
+            case R.id.txjava_btn_flowable://Flowable()
+                flowable();
+                break;
+
         }
+    }
+    //-----------------------------------------------------------------------------------Flowable
+
+    /**
+     * BackpressureStrategy.ERROR 用来选择背压，下游流速不均抛出MissingBackpressureException异常
+     */
+    private void flowable() {
+        Flowable.create(new FlowableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(FlowableEmitter<Integer> e) throws Exception {
+                LogUtils.e("发送1");
+                e.onNext(1);
+                LogUtils.e("发送2");
+                e.onNext(2);
+                LogUtils.e("发送3");
+                e.onNext(3);
+                LogUtils.e("完成");
+                e.onComplete();
+            }
+        }, BackpressureStrategy.ERROR)
+                .subscribe(new Subscriber<Integer>() {
+                    @Override
+                    public void onSubscribe(Subscription s) {
+                        //Subscription.cancel()可切断水管，不接收上游事件
+                        LogUtils.e("onSubscribe");
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        LogUtils.e("接收-->"+integer);
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        LogUtils.e("onError");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        LogUtils.e("onComplete");
+                    }
+                });
+    }
+
+    /**
+     * --------------------------------------------------------------sample间隔操作
+     * sample 这里有缺陷，就是会有事件丢失
+     * 这里实际处理了一个问题，如果去掉sample，内存直接爆炸，可以在循环处做延时操作，Thread.sleep(2000); 每次发送完事件延时2秒，很好解决事件不会丢失
+     */
+    private void simple() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                for (int i = 0; ; i++) {
+                    e.onNext(i);
+                }
+            }
+        }).subscribeOn(Schedulers.io())
+                .sample(2, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        LogUtils.e(integer);
+                    }
+                });
+    }
+
+    /**
+     * --------------------------------------------------------------filter过滤
+     * filter
+     */
+    private void filter() {
+        Observable.just(1, 45, 63, 12, 33, 90)
+                .filter(new Predicate<Integer>() {
+                    @Override
+                    public boolean test(Integer integer) throws Exception {
+                        return integer > 60;
+                    }
+                }).subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+                mTvShow.append(integer.toString());
+            }
+        });
+
+    }
+
+    //-----------------------------------------------------------------------------------zip多个网络请求合并
+    private void zipNet() {
+        LoadingDialog.showDialogForLoading(this);
+        Observable<BaseBean<User>> loginObservable = Api.getInstance().getLogin("yinh", "123456")
+                .subscribeOn(Schedulers.io());
+        Observable<BaseBean<Video>> videoObservable = Api.getInstance()
+                .getVideoList("d80f699c062c8662fad3df86024e246c").subscribeOn(Schedulers.io());
+
+        Observable.zip(loginObservable, videoObservable, new BiFunction<BaseBean<User>,
+                BaseBean<Video>, String>() {
+
+            @Override
+            public String apply(BaseBean<User> userBaseBean, BaseBean<Video> videoBaseBean)
+                    throws Exception {
+                return userBaseBean.getData().getName() + videoBaseBean.getDatas().get(0)
+                        .getGroupName();
+            }
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        mTvShow.setText(s);
+                        LoadingDialog.cancelDialogForLoading();
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        ToastUtils.showLong(ExceptionHelper.handleException(throwable));
+                        LoadingDialog.cancelDialogForLoading();
+                    }
+                });
+    }
+
+    //-----------------------------------------------------------------------------------网络嵌套请求演示先注册再登录
+    private void netFlamap() {
+        Api.getInstance()
+                .getLogin("yinh", "123456")
+                .subscribeOn(Schedulers.io())//上游线程只能赋值一次
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(new Consumer<BaseBean<User>>() {
+                    @Override
+                    public void accept(BaseBean<User> userBaseEnty) throws Exception {
+                        ////先根据注册的响应结果去做一些操作
+                        LogUtils.e("登录成功--》" + userBaseEnty.getData().getName());
+                    }
+                }).observeOn(Schedulers.io())
+                .flatMap(new Function<BaseBean<User>, ObservableSource<BaseBean<Video>>>() {
+                    @Override
+                    public ObservableSource<BaseBean<Video>> apply(BaseBean<User> userBaseEnty)
+                            throws Exception {
+                        if (userBaseEnty.getCode() == 0) {
+                            return Api.getInstance().getVideoList(userBaseEnty.getData().getVcode
+                                    ());
+                        } else {
+                            return null;
+                        }
+                    }
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<BaseBean<Video>>() {
+                    @Override
+                    public void accept(BaseBean<Video> videoBaseBean) throws Exception {
+                        ToastUtils.showLong("请求成功" + videoBaseBean.getDatas().get(0).getGroupName
+                                ());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        ToastUtils.showLong(ExceptionHelper.handleException(throwable));
+                    }
+                });
     }
 
     //-----------------------------------------------------------------------------------网络请求演示线程的用法
@@ -114,19 +302,24 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
      * 1、取消所有网络请求 用 CompositeDisposable容器
      */
     private void netQuest() {
-        Api.getInstance().test()
+        Api.getInstance().getLogin("yinh", "123456")
                 .subscribeOn(Schedulers.newThread())// 子线程请求数据
+                .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
                         addDisposable(disposable);
                     }
                 })
-                .observeOn(AndroidSchedulers.mainThread())// 主线程更新UI
-                .subscribe(new Consumer<MvpUseBean>() {
+                .subscribe(new Consumer<BaseBean<User>>() {
                     @Override
-                    public void accept(MvpUseBean mvpUseBean) throws Exception {
-                        mTvShow.setText(mvpUseBean.getStories().get(0).getTitle());
+                    public void accept(BaseBean<User> mvpUseBean) throws Exception {
+                        mTvShow.setText(mvpUseBean.getData().getName());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        ToastUtils.showLong(ExceptionHelper.handleException(throwable));//异常处理
                     }
                 });
 
@@ -263,55 +456,67 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
      * ----------------------------------------------------------------------------------------zip
      * 我们将两种类型进行合并处理
      * zip 组合事件的过程就是分别从发射器 A 和发射器 B 各取出一个事件来组合，并且一个事件只能被使用一次，
-     * 组合的顺序是严格按照事件发送的顺序来进行的，所以，可以看到，我将发送 永远是和 12 结合的，--> 永远是和 434 结合的。
+     * 组合的顺序是严格按照事件发送的顺序来进行的，所以，可以看到，1 永远是和 A 结合的，--> 2和 B 结合的。以此类推，
+     * 如果两个事件不指定线程那么执行顺序是发射器A先执行完再执行发射器B，如果添加线程就随机了但是组合顺序是不变的
+     * 可以试一试subscribeOn(Schedulers.io())不要的结果
      */
     private void zip() {
-        Observable.zip(getStringObservable(), getIntObservable(), new BiFunction<String, Integer,
-                String>() {
-            @Override
-            public String apply(String s, Integer integer) throws Exception {
-                return s + integer;//将事件进行合并
-            }
-        }).subscribe(new Consumer<String>() {
-            @Override
-            public void accept(String s) throws Exception {
-                mTvShow.append(s);
-            }
-        });
-    }
-
-    /**
-     * @return 获取String类型的Observable
-     */
-    private Observable<String> getStringObservable() {
-        return Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(ObservableEmitter<String> e) throws Exception {
-                if (!e.isDisposed()) {
-                    e.onNext("我将发送");
-                    e.onNext("-->");
-                }
-            }
-        });
-    }
-
-    /**
-     * @return 获取Int类型的Observable
-     */
-    private Observable<Integer> getIntObservable() {
-        return Observable.create(new ObservableOnSubscribe<Integer>() {
+        Observable<Integer> firstObservable = Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
-                if (!e.isDisposed()) {//判断是否被截断
-                    e.onNext(12);
-                    e.onNext(434);//如果这里不写将只会打印我将发送12组合以最少的为准
-                }
+                LogUtils.e("发送1");
+                e.onNext(1);
+                LogUtils.e("发送2");
+                e.onNext(2);
+                LogUtils.e("发送3");
+                e.onNext(3);
+                LogUtils.e("123onComplete");
+                e.onComplete();
+            }
+        }).subscribeOn(Schedulers.io());
+        Observable<String> secondObservable = Observable.create(new ObservableOnSubscribe<String>
+                () {
+            @Override
+            public void subscribe(ObservableEmitter<String> e) throws Exception {
+                LogUtils.e("发送A");
+                e.onNext("A");
+                LogUtils.e("发送B");
+                e.onNext("B");
+                LogUtils.e("ABonComplete");
+                e.onComplete();
+            }
+        }).subscribeOn(Schedulers.io());
+        Observable.zip(firstObservable, secondObservable, new BiFunction<Integer, String, String>
+                () {
+            @Override
+            public String apply(Integer integer, String s) throws Exception {
+                return integer + s;
+            }
+        }).subscribe(new Observer<String>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                LogUtils.e("onSubscribe");
+            }
+
+            @Override
+            public void onNext(String s) {
+                LogUtils.e("onNext结合后-->:" + s);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                LogUtils.e("onError");
+            }
+
+            @Override
+            public void onComplete() {
+                LogUtils.e("onComplete");
             }
         });
     }
 
     /**
-     * --------------------------------------------------------------concat
+     * ------------------------------------------------------------------------------------------------concat
      * 对于单一的把两个发射器连接成一个发射器
      */
     private void concat() {
@@ -412,25 +617,6 @@ public class RxjavaStudyActivity extends ToolbarsBaseActivity {
 
     }
 
-    /**
-     * --------------------------------------------------------------filter过滤
-     * filter
-     */
-    private void filter() {
-        Observable.just(1, 45, 63, 12, 33, 90)
-                .filter(new Predicate<Integer>() {
-                    @Override
-                    public boolean test(Integer integer) throws Exception {
-                        return integer > 60;
-                    }
-                }).subscribe(new Consumer<Integer>() {
-            @Override
-            public void accept(Integer integer) throws Exception {
-                mTvShow.append(integer.toString());
-            }
-        });
-
-    }
 
     /**
      * --------------------------------------------------------------buffer

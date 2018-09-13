@@ -4,8 +4,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.tomasyb.baselib.adapter.BaseQuickAdapter;
 import com.example.tomasyb.baselib.adapter.BaseViewHolder;
-import com.example.tomasyb.baselib.base.BaseFragment;
-import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
+import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.main.contact.IndexContact;
 import com.example.tomasyb.tomasybandroid.ui.main.presenter.IndexPresenter;

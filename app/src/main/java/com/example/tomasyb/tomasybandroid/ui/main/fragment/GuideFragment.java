@@ -1,6 +1,6 @@
 package com.example.tomasyb.tomasybandroid.ui.main.fragment;
 
-import com.example.tomasyb.baselib.base.BaseFragment;
+import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.tomasybandroid.R;
 

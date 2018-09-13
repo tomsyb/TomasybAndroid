@@ -12,7 +12,7 @@ import io.reactivex.disposables.Disposable;
  * @since JDK 1.8
  */
 
-public abstract class BasePresenter<V extends BaseView> implements IBasePresenter {
+public abstract class BasePresenter<V extends IBaseView> implements IBasePresenter {
     protected V view;
     //将所有正在处理的Subscription都添加到CompositeSubscription中。统一退出的时候注销观察
     private CompositeDisposable mCompositeDisposable;

@@ -1,7 +1,7 @@
 package com.example.tomasyb.baselib.base.mvp;
 
 /**
- * BaseView
+ * IBaseView
  *
  * @author 严博
  * @version 1.0.0
@@ -9,7 +9,7 @@ package com.example.tomasyb.baselib.base.mvp;
  * @since JDK 1.8
  */
 
-public interface BaseView {
+public interface IBaseView {
     void showLoadingDialog(String msg);
     void dismissLoadingDialog();
 }

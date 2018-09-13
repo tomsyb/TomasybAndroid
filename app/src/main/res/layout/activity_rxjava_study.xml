@@ -48,11 +48,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <Button
+                android:id="@+id/txjava_btn_zip"
+                android:textSize="14sp"
+                android:text="zip()将多个Observable合并为一个发送事件以少的为准"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
                 android:id="@+id/txjava_btn_thread"
                 android:textSize="14sp"
                 android:text="thread()线程控制"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/txjava_btn_backpressure"
+                android:textSize="14sp"
+                android:text="背压"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/txjava_btn_filter"
+                android:textSize="14sp"
+                android:text="filter()过滤"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/txjava_btn_sample"
+                android:textSize="14sp"
+                android:text="sample()每隔指定时间取上游事件发送到下游"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/txjava_btn_flowable"
+                android:textSize="14sp"
+                android:text="flowable()"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <!--实践实践实践实践实践实践实践实践实践-->
             <TextView
                 android:padding="@dimen/dp_10"
                 android:textStyle="bold"
@@ -71,6 +102,12 @@
                 android:id="@+id/txjava_btn_net_flamap"
                 android:textSize="14sp"
                 android:text="flamap实践之嵌套网络请求，先注册再登录"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/txjava_btn_net_zip"
+                android:textSize="14sp"
+                android:text="zip实践之多个网络请求更新UI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

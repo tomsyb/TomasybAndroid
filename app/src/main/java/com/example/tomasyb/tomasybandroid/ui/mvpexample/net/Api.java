@@ -20,6 +20,8 @@ public class Api extends BaseApiImpl {
     }
 
     public static RetrofitService getInstance() {
+
         return api.getRetrofit().create(RetrofitService.class);
     }
+
 }

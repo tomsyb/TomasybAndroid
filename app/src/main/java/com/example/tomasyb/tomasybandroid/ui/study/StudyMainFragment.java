@@ -8,7 +8,7 @@ import android.view.View;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.tomasyb.baselib.adapter.BaseQuickAdapter;
 import com.example.tomasyb.baselib.adapter.BaseViewHolder;
-import com.example.tomasyb.baselib.base.BaseFragment;
+import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.util.GsonUtils;
 import com.example.tomasyb.tomasybandroid.R;

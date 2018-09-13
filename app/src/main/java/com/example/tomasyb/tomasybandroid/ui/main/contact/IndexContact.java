@@ -1,7 +1,7 @@
 package com.example.tomasyb.tomasybandroid.ui.main.contact;
 
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
-import com.example.tomasyb.baselib.base.mvp.BaseView;
+import com.example.tomasyb.baselib.base.mvp.IBaseView;
 
 /**
  * 首页
@@ -14,7 +14,7 @@ import com.example.tomasyb.baselib.base.mvp.BaseView;
 
 public interface IndexContact {
     // view
-    interface view extends BaseView{
+    interface view extends IBaseView {
         void initAdapter();
     }
     //p
