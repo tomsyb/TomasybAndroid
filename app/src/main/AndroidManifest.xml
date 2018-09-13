@@ -47,15 +47,13 @@
             android:name="com.amap.api.v2.apikey"
             android:value="472e6477f4510174c89ee05a1fe4a280" />
 
-        <activity android:name=".ui.map.MapInfoActivity"></activity>
+        <activity android:name=".ui.map.MapInfoActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
         <activity android:name=".example.custom.CustomViewActivity" />
         <!-- _________________________________________________________引导页 -->
-        <activity android:name=".SplashActivity" >
-
-        </activity>
+        <activity android:name=".SplashActivity"></activity>
 
         <!-- .............常用UI主界面................ -->
         <activity android:name=".ui.study.uiexample.ComUiMainActivity" />
@@ -93,12 +91,7 @@
         <activity android:name=".ui.study.RetrofitStudyActivity" />
         <activity android:name=".ui.study.StudyMainActivity" />
         <!-- _________________________________________________________Rxjava学习 -->
-        <activity android:name=".ui.rxjava.RxjavaStudyActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".ui.rxjava.RxjavaStudyActivity">
         </activity>
         <activity android:name=".ui.text.TextActivity" />
         <activity android:name=".ui.imgselect.ImgSelectActivity" />
@@ -108,10 +101,15 @@
         <activity android:name=".ui.video.VideoRecordingActivity" />
         <activity android:name=".ui.collect.CollectActivity" />
         <!-- ___________________________________________________________Dialog使用 -->
-        <activity android:name=".ui.dialog.DialogUseActivity">
-        </activity>
-        <activity android:name=".ui.mvpexample.MvpExampleActivity">
+        <activity android:name=".ui.dialog.DialogUseActivity"></activity>
+        <activity android:name=".ui.mvpexample.MvpExampleActivity"></activity>
+        <!--_____________________________________________________________SwipeRefresh的使用-->
+        <activity android:name=".ui.refresh.nativerefresh.SwipeRefreshActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
