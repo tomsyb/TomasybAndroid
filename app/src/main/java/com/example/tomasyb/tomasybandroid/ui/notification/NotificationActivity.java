@@ -39,7 +39,7 @@ public class NotificationActivity extends AppCompatActivity {
         btn_send_chat = findViewById(R.id.btn_send_chat);
         btn_send_subscribe = findViewById(R.id.btn_send_scribe);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {//表示在26以上执行下面操作
             String channelId = "chat";// 渠道id（随便定义只要保证全局唯一性即可）
             String channelName = "聊天消息";//渠道名称(给用户看的)
             int importance = NotificationManager.IMPORTANCE_HIGH;// 重要等级很高
