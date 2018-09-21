@@ -12,11 +12,12 @@ import com.example.tomasyb.tomasybandroid.ui.mvpexample.presenter.MvpUsePresente
 
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * mvp用法列子
  */
 public class MvpExampleActivity extends BaseActivity<MvpContact.presenter> implements MvpContact.view{
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_mvp_example;

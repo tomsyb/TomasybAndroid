@@ -47,9 +47,11 @@ public class MeAdressListActivity extends ToolbarsBaseActivity {
 
     }
 
+
     @Override
     protected String getSubTitle() {
         return "通讯录";
     }
+
 
 }
