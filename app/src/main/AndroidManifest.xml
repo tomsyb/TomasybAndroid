@@ -101,19 +101,25 @@
         <activity android:name=".ui.collect.CollectActivity" />
         <!-- ___________________________________________________________Dialog使用 -->
         <activity android:name=".ui.dialog.DialogUseActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.mvpexample.MvpExampleActivity" />
         <!-- _____________________________________________________________SwipeRefresh的使用 -->
         <activity android:name=".ui.refresh.nativerefresh.SwipeRefreshActivity" />
         <!-- _____________________________________________________________通知适配8.0系统的使用 -->
         <activity android:name=".ui.notification.NotificationActivity" />
-        <activity android:name=".ui.activitylifecycle.LifeCycleActivity" />
-        <activity android:name=".ui.activitylifecycle.IntenTtransmitActivity"></activity>
+        <!-- _____________________________________________________________Activity生命周期 -->
+        <activity android:name=".ui.activitylifecycle.LifeCycleActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- _____________________________________________________________Activity通信-->
+        <activity android:name=".ui.activitylifecycle.IntenTtransmitActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -22,7 +22,7 @@ Activity是通过栈的形式来管理的，主要情形如下:
 
 - Activity与Activity之间的通信主要通过Intent/Bundle
 
-
+3.6
 
 
 
