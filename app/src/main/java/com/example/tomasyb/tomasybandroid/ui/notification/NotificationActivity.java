@@ -4,6 +4,8 @@ import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.tomasyb.baselib.util.NotifyUtil;
+import com.example.tomasyb.tomasybandroid.MainActivity;
 import com.example.tomasyb.tomasybandroid.R;
 
 import butterknife.ButterKnife;
@@ -60,7 +64,7 @@ public class NotificationActivity extends AppCompatActivity {
         notificationManager.createNotificationChannel(channel);
     }
 
-    @OnClick({R.id.btn_send_chat, R.id.btn_send_scribe})
+    @OnClick({R.id.btn_send_chat, R.id.btn_send_scribe,R.id.btn_single})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_send_chat:
@@ -87,6 +91,21 @@ public class NotificationActivity extends AppCompatActivity {
                         .setAutoCancel(true)
                         .build();
                 manager1.notify(2, notification1);
+                break;
+            case R.id.btn_single:
+                //设置想要展示的数据内容
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                PendingIntent pIntent = PendingIntent.getActivity(this,
+                        54, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                int smallIcon = R.drawable.ic_qq;
+                String ticker = "您有一条新通知";
+                String title = "双十一大优惠！！！";
+                String content = "仿真皮肤充气娃娃，女朋友带回家！";
+
+                //实例化工具类，并且调用接口
+                NotifyUtil notify1 = new NotifyUtil(this, 1);
+                notify1.notify_normal_singline(pIntent, smallIcon, ticker, title, content, true, true, false);
                 break;
         }
     }

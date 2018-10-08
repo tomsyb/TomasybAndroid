@@ -288,6 +288,7 @@ public class DialogUseActivity extends AppCompatActivity implements View.OnClick
         dialog.setNegativeButton("取消", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
             }
         });
         dialog.setPositiveButton("确定", new View.OnClickListener() {
@@ -300,6 +301,7 @@ public class DialogUseActivity extends AppCompatActivity implements View.OnClick
         });
         dialog.show();
     }
+
     private void showCustomDialog() {
         CustomDialog customDialog = new CustomDialog(this, R.layout.dialog_sd_custom);
         customDialog.show();
@@ -316,6 +318,7 @@ public class DialogUseActivity extends AppCompatActivity implements View.OnClick
                 false,
                 false,
                 Gravity.CENTER);
+
         customDialog.setOnDialogItemClickListener(new CustomDialog.OnCustomDialogItemClickListener() {
             @Override
             public void OnCustomDialogItemClick(CustomDialog dialog, View view) {
@@ -329,7 +332,6 @@ public class DialogUseActivity extends AppCompatActivity implements View.OnClick
                 }
             }
         });
-
         customDialog.show();
         final List<View> viewList = customDialog.getViews();
         final Button btnSure = (Button) viewList.get(1);
@@ -339,5 +341,6 @@ public class DialogUseActivity extends AppCompatActivity implements View.OnClick
         edtContent.setHint("这是一个主内容");
         edtSubContent.setHint("这是一个副内容");
     }
+
 
 }

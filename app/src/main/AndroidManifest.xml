@@ -91,7 +91,7 @@
         <activity android:name=".ui.study.RetrofitStudyActivity" />
         <activity android:name=".ui.study.StudyMainActivity" />
         <!-- _________________________________________________________Rxjava学习 -->
-        <activity android:name=".ui.rxjava.RxjavaStudyActivity"></activity>
+        <activity android:name=".ui.rxjava.RxjavaStudyActivity" />
         <activity android:name=".ui.text.TextActivity" />
         <activity android:name=".ui.imgselect.ImgSelectActivity" />
         <activity android:name=".ui.study.kotlin.KotlinUseActivity" />
@@ -100,19 +100,20 @@
         <activity android:name=".ui.video.VideoRecordingActivity" />
         <activity android:name=".ui.collect.CollectActivity" />
         <!-- ___________________________________________________________Dialog使用 -->
-        <activity android:name=".ui.dialog.DialogUseActivity" />
-        <activity android:name=".ui.mvpexample.MvpExampleActivity" />
-        <!-- _____________________________________________________________SwipeRefresh的使用 -->
-        <activity android:name=".ui.refresh.nativerefresh.SwipeRefreshActivity">
-        </activity>
-        <!-- _____________________________________________________________通知适配8.0系统的使用 -->
-        <activity android:name=".ui.notification.NotificationActivity">
+        <activity android:name=".ui.dialog.DialogUseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.mvpexample.MvpExampleActivity" />
+        <!-- _____________________________________________________________SwipeRefresh的使用 -->
+        <activity android:name=".ui.refresh.nativerefresh.SwipeRefreshActivity" />
+        <!-- _____________________________________________________________通知适配8.0系统的使用 -->
+        <activity android:name=".ui.notification.NotificationActivity" />
+        <activity android:name=".ui.activitylifecycle.LifeCycleActivity" />
+        <activity android:name=".ui.activitylifecycle.IntenTtransmitActivity"></activity>
     </application>
 
 </manifest>

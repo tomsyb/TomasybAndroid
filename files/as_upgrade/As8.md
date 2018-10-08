@@ -24,7 +24,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 26  （必须targetSdkVersion高于或等于26才能使用通知渠道，26以上不适配通知的话通知都收不到的窝）
     defaultConfig {
         applicationId "com.example.notificationtest"
         minSdkVersion 15
@@ -35,7 +35,7 @@ android {
     }
 }
 
-必须targetSdkVersion高于或等于26才能使用通知渠道，26以上不适配通知的话通知都收不到的窝
+
 
 ```
 ## **通知渠道的创建**
