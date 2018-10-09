@@ -46,14 +46,49 @@ public class BottomFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick(R.id.btn_getdata)
-    public void onViewClicked() {
-        tvShowBottom.setText(getArguments().getString("fgname")+mTitle);
-    }
-
+    /**
+     * 当fragment被加载到activity的时候调用
+     *
+     * @param activity
+     */
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        mTitle = ((IntenTtransmitActivity)activity).getTitles();
+        // 通过强转成宿主Activity获取数据
+        mTitle = ((IntenTtransmitActivity) activity).getTitles();
+        if (activity instanceof FragmentListener) {
+            listener = (FragmentListener) activity;
+        } else {
+            throw new IllegalArgumentException("activity 必须实现FragmentListener");
+        }
+    }
+
+    //___________________________________________________________________________下面演示Activity
+    // 调用fragment方法获取数据
+    //定义用来与外部Activity交互，获取到宿主activity
+    private FragmentListener listener;
+    public interface FragmentListener {
+        void getfgData(String str);
+    }
+
+    @OnClick({R.id.btn_getdata, R.id.btn_changedata})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_getdata:
+                tvShowBottom.setText(getArguments().getString("fgname") + mTitle);
+                break;
+            case R.id.btn_changedata:
+                listener.getfgData("我是接口");
+                break;
+        }
+    }
+
+    /**
+     * 传递进来的activity对象释放掉避免内存泄漏
+     */
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
     }
 }

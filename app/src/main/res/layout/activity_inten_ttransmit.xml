@@ -33,9 +33,14 @@
         android:text="点击动态加载fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
     <FrameLayout
         android:id="@+id/fg_contentlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tv_showdata"
+        android:text="展示"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

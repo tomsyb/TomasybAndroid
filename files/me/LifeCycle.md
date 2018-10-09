@@ -21,8 +21,8 @@ Activity是通过栈的形式来管理的，主要情形如下:
 ## Actiivty之间的通信
 
 - Activity与Activity之间的通信主要通过Intent/Bundle
-
-3.6
+- Activity与fragment通信，fragment.setArguments(Bundle ...)进行通信fragment调用getArguments()获取数据
+-
 
 
 
