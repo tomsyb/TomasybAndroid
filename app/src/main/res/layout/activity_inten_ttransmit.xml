@@ -33,6 +33,16 @@
         android:text="点击动态加载fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_bindservice"
+        android:text="绑定服务"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_sendservicedata"
+        android:text="绑定服务"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <FrameLayout
         android:id="@+id/fg_contentlayout"
         android:layout_width="match_parent"

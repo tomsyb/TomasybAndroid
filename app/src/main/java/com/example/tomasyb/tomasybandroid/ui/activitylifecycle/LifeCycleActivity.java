@@ -76,7 +76,7 @@ public class LifeCycleActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.btn_startactivity, R.id.btn_startfragment})
+    @OnClick({R.id.btn_startactivity})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_startactivity:
@@ -86,8 +86,7 @@ public class LifeCycleActivity extends AppCompatActivity {
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
-            case R.id.btn_startfragment:
-                break;
         }
     }
+
 }

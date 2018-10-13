@@ -89,7 +89,7 @@
 
 -
 
-- 了解Activity生命周期及LaunchMode的使用。
+- 了解Activity生命周期，Activity组件之间的通信，项目中通过AppManager中Stack管理生命周期及LaunchMode的使用。
 - 了解ARouter页面路由框架实现页面解耦
 
 

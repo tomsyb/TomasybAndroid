@@ -1,7 +1,12 @@
 package com.example.tomasyb.tomasybandroid.ui.activitylifecycle;
 
 import android.app.Fragment;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -16,7 +21,8 @@ import butterknife.OnClick;
 /**
  * 通信
  */
-public class IntenTtransmitActivity extends AppCompatActivity implements BottomFragment.FragmentListener{
+public class IntenTtransmitActivity extends AppCompatActivity implements BottomFragment
+        .FragmentListener, ServiceConnection {
 
     @BindView(R.id.tv_showdata)
     TextView tvShowdata;
@@ -36,11 +42,20 @@ public class IntenTtransmitActivity extends AppCompatActivity implements BottomF
         LogUtils.e("你获取的值是-->" + getIntent().getStringExtra("name"));
     }
 
-    @OnClick({R.id.btn_loadfg})
+    @OnClick({R.id.btn_loadfg, R.id.btn_bindservice,R.id.btn_sendservicedata})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_loadfg:
                 initfg();
+                break;
+            case R.id.btn_bindservice://绑定服务
+                Intent intent = new Intent(IntenTtransmitActivity.this, CountService.class);
+                bindService(intent,this, Context.BIND_AUTO_CREATE);
+                break;
+            case R.id.btn_sendservicedata:
+                if (binder !=null){
+                    binder.sendData("我发送了一个数据");
+                }
                 break;
 
         }
@@ -72,5 +87,35 @@ public class IntenTtransmitActivity extends AppCompatActivity implements BottomF
     @Override
     public void getfgData(String str) {
         tvShowdata.setText(str);
+    }
+
+    //-----------------------------------------------------------------------服务相关
+    public CountService.Binder binder = null;
+
+    /**
+     * 这是是服务器绑定的时候调用
+     *
+     * @param name
+     * @param iBinder
+     */
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder iBinder) {
+        binder = (CountService.Binder) iBinder;
+    }
+
+    /**
+     * 这是是服务解绑的时候调用
+     *
+     * @param name
+     */
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(this);
     }
 }
