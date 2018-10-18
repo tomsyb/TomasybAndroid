@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.tomasybandroid.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -16,6 +18,8 @@ import butterknife.OnClick;
  */
 public class LifeCycleActivity extends AppCompatActivity {
 
+    @BindView(R.id.tv_showlifecycle)
+    TextView mTvShow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

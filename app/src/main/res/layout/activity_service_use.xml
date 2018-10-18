@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tomasyb.tomasybandroid.ui.service.ServiceUseActivity">
+    <Button
+        android:id="@+id/btn_bindservice"
+        android:text="启动服务"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_send"
+        android:text="通过ServiceConnection方式通信"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_intent_send"
+        android:text="通过Intent方式通信"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_closeservice"
+        android:text="终止服务"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

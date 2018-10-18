@@ -16,6 +16,7 @@
 
 ### **1.高德地图多个Marker标记自动缩放全部显示在屏幕中**
 
+
 ```
 LatLngBounds.Builder boundsBuilder = new LatLngBounds.Builder();//存放所有点的经纬度
 for(int i=0;i<markers.size();i++){
