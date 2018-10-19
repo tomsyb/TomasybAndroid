@@ -113,7 +113,7 @@
         <!-- _____________________________________________________________Activity通信 -->
         <activity android:name=".ui.activitylifecycle.IntenTtransmitActivity"></activity>
 
-        <service android:name=".ui.service.TextService" />
+
         <!-- _____________________________________________________________Activity服务通信 -->
         <activity android:name=".ui.service.ServiceUseActivity">
             <intent-filter>
@@ -122,6 +122,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".ui.service.TextService" />
+        <service android:name=".ui.service.FrontService"/>
     </application>
 
 </manifest>

@@ -8,23 +8,33 @@
     android:orientation="vertical"
     tools:context="com.example.tomasyb.tomasybandroid.ui.service.ServiceUseActivity">
     <Button
-        android:id="@+id/btn_bindservice"
+        android:id="@+id/btn_start"
         android:text="启动服务"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
-        android:id="@+id/btn_send"
-        android:text="通过ServiceConnection方式通信"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btn_intent_send"
-        android:text="通过Intent方式通信"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btn_closeservice"
+        android:id="@+id/btn_stop"
         android:text="终止服务"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_bind"
+        android:text="Activity与Service绑定"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_unbind"
+        android:text="取消绑定"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_start_fond"
+        android:text="开始前台服务"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_stop_fond"
+        android:text="关闭前台服务"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

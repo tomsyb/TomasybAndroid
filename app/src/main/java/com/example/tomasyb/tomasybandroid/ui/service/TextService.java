@@ -2,6 +2,7 @@ package com.example.tomasyb.tomasybandroid.ui.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
@@ -19,10 +20,7 @@ import com.example.tomasyb.baselib.util.ToastUtils;
  */
 
 public class TextService extends Service {
-    private String data = "服务器正在执行";
 
-    public TextService() {
-    }
 
     @Override
     public void onCreate() {
@@ -34,7 +32,19 @@ public class TextService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         LogUtils.e("执行onStartCommand");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //执行后台耗时操作
+            }
+        }).start();
         return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LogUtils.e("执行onDestroy");
     }
 
     @Nullable
@@ -42,15 +52,29 @@ public class TextService extends Service {
     public IBinder onBind(Intent intent) {
         //将其返回Activity
         LogUtils.e("执行onBind");
-        return new Binder();
+        return binder;
     }
 
-
-    public class Binder extends android.os.Binder {
-        public void sendData(String datas) {
-            TextService.this.data = datas;
-            ToastUtils.showLong("我得到Activity给我服务的数据是-->" + datas);
+    /**
+     * Service  与Activity进行通信
+     */
+    private MyBinder binder = new MyBinder();
+    class MyBinder extends Binder{
+        // 模拟后台进行下载任务
+        public void startDownload(){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    //执行耗时操作
+                }
+            }).start();
+            ToastUtils.showLong("开始下载");
         }
+
     }
+
+
+
+
 
 }
