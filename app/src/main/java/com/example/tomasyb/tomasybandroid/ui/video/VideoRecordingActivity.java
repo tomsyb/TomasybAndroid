@@ -62,8 +62,9 @@ public class VideoRecordingActivity extends AppCompatActivity {
                             @Override
                             public void accept(Boolean aBoolean) throws Exception {
                                 if (aBoolean) {
+                                    startActivity(new Intent(VideoRecordingActivity.this,IjkFullScreenActivity.class));
                                     // 用户已经同意该权限
-                                    reconverIntent();
+                                    //reconverIntent();
                                 }else {
                                     // 用户拒绝了该权限，并且选中『不再询问』
                                 }

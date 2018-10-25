@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':sharelib'
+include ':app', ':baselib', ':playerview'

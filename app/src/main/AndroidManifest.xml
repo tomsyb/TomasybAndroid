@@ -63,30 +63,6 @@
             android:name=".ui.comui.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- .............分享功能................ -->
-
-
-        <!-- .............qq配置开始................ -->
-        <activity
-            android:name="com.tencent.tauth.AuthActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="tencent1106985215" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.tencent.connect.common.AssistActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!-- .............qq配置结束................ -->
-
-
         <!-- .............Retrofit用法................ -->
         <activity android:name=".ui.study.RetrofitStudyActivity" />
         <activity android:name=".ui.study.StudyMainActivity" />
@@ -96,34 +72,41 @@
         <activity android:name=".ui.imgselect.ImgSelectActivity" />
         <activity android:name=".ui.study.kotlin.KotlinUseActivity" />
         <activity android:name=".ui.me.MeAdressListActivity" />
-        <!-- _________________________________________________________视屏录制 -->
-        <activity android:name=".ui.video.VideoRecordingActivity" />
         <activity android:name=".ui.collect.CollectActivity" />
         <!-- ___________________________________________________________Dialog使用 -->
-        <activity android:name=".ui.dialog.DialogUseActivity"></activity>
+        <activity android:name=".ui.dialog.DialogUseActivity" />
         <activity android:name=".ui.mvpexample.MvpExampleActivity" />
         <!-- _____________________________________________________________SwipeRefresh的使用 -->
         <activity android:name=".ui.refresh.nativerefresh.SwipeRefreshActivity" />
         <!-- _____________________________________________________________通知适配8.0系统的使用 -->
         <activity android:name=".ui.notification.NotificationActivity" />
         <!-- _____________________________________________________________Activity生命周期 -->
-        <activity android:name=".ui.activitylifecycle.LifeCycleActivity">
-
-        </activity>
+        <activity android:name=".ui.activitylifecycle.LifeCycleActivity"></activity>
         <!-- _____________________________________________________________Activity通信 -->
-        <activity android:name=".ui.activitylifecycle.IntenTtransmitActivity"></activity>
-
+        <activity android:name=".ui.activitylifecycle.IntenTtransmitActivity" />
 
         <!-- _____________________________________________________________Activity服务通信 -->
         <activity android:name=".ui.service.ServiceUseActivity">
+
+        </activity>
+
+        <service android:name=".ui.service.TextService" />
+        <service android:name=".ui.service.FrontService" />
+        <!-- _____________________________________________________________视频相关 -->
+        <!--录制小视频-->
+        <activity android:name=".ui.video.VideoRecordingActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".ui.service.TextService" />
-        <service android:name=".ui.service.FrontService"/>
+        <!--全屏播放-->
+        <activity android:name=".ui.video.IjkFullScreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="nosensor">
+
+        </activity>
     </application>
 
 </manifest>
