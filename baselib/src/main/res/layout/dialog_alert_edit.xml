@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linear_alert_dialog_bg"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shap_sd_white_r6"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_alert_dialog_title"
