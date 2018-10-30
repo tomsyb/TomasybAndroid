@@ -81,32 +81,39 @@
         <!-- _____________________________________________________________通知适配8.0系统的使用 -->
         <activity android:name=".ui.notification.NotificationActivity" />
         <!-- _____________________________________________________________Activity生命周期 -->
-        <activity android:name=".ui.activitylifecycle.LifeCycleActivity"></activity>
+        <activity android:name=".ui.activitylifecycle.LifeCycleActivity" />
         <!-- _____________________________________________________________Activity通信 -->
         <activity android:name=".ui.activitylifecycle.IntenTtransmitActivity" />
 
         <!-- _____________________________________________________________Activity服务通信 -->
-        <activity android:name=".ui.service.ServiceUseActivity">
-
-        </activity>
+        <activity android:name=".ui.service.ServiceUseActivity"></activity>
 
         <service android:name=".ui.service.TextService" />
         <service android:name=".ui.service.FrontService" />
         <!-- _____________________________________________________________视频相关 -->
-        <!--录制小视频-->
-        <activity android:name=".ui.video.VideoRecordingActivity" >
+        <!-- 录制小视频 -->
+        <activity android:name=".ui.video.VideoRecordingActivity">
+
+        </activity>
+        <!-- 全屏播放 -->
+        <activity
+            android:name=".ui.video.IjkFullScreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="nosensor"></activity>
+        <!--_____________________________________________________________微信登录-->
+        <activity android:name=".ui.login.WXLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--全屏播放-->
-        <activity android:name=".ui.video.IjkFullScreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="nosensor">
-
-        </activity>
+        <!--微信登录配置 start  WXEntryActivity 必须在包名下-->
+        <activity android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:theme="@style/wx_login_style"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <!--微信登录配置 end-->
     </application>
 
 </manifest>

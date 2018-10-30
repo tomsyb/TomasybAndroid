@@ -23,6 +23,7 @@ public class BaseApplication extends Application {
         baseApplication = this;
         Utils.init(this);
         initLog();
+
     }
 
     public static Context getAppContext() {

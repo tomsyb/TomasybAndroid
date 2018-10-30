@@ -2,8 +2,11 @@ package com.example.tomasyb.tomasybandroid.ui.mvpexample.net;
 
 
 import com.example.tomasyb.baselib.base.mvp.BaseBean;
+
 import com.example.tomasyb.tomasybandroid.ui.rxjava.entity.User;
 import com.example.tomasyb.tomasybandroid.ui.rxjava.entity.Video;
+import com.example.tomasyb.tomasybandroid.wxapi.WXAccessTokenEntity;
+import com.example.tomasyb.tomasybandroid.wxapi.WXUserInfo;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -19,7 +22,6 @@ import retrofit2.http.Query;
  */
 public interface RetrofitService {
 
-    String BASE_URL = "http://scrs.daqsoft.com/api/";
 
     /**
      * 登录请求
@@ -38,5 +40,22 @@ public interface RetrofitService {
      */
     @GET("rest/monitor/getMonitorGroup")
     Observable<BaseBean<Video>> getVideoList(@Query("vcode") String vcode);
+
+    //------------------------------------------------------------------------------微信登录
+    @GET("oauth2/access_token")
+    Observable<WXAccessTokenEntity> getWxToken(@Query("appid") String appid,
+                                               @Query("secret") String secret,
+                                               @Query("code") String code,
+                                               @Query("grant_type") String grant_type
+                                              );
+
+    /**
+     * 获取微信个人信息
+     * @param access_token
+     * @param openid
+     * @return
+     */
+    Observable<WXUserInfo> getWxInfo(@Query("access_token") String access_token,
+                                     @Query("openid") String openid);
 
 }

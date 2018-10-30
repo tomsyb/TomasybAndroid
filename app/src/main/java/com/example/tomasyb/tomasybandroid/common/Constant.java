@@ -12,6 +12,9 @@ import com.amap.api.maps.model.LatLng;
  */
 
 public class Constant {
+    //-----------------------------------------------------------------------请求基础地址
+    public static String BASE_URL = "http://scrs.daqsoft.com/api/";
+    public static String WX_BASE_URL = "https://api.weixin.qq.com/sns/";
     public static final String BASE_UPDATAURL = "http://app.daqsoft.com/appserives/";
     public static String STUDY_TYPE = "STUDY_TYPE";//学习页面的类型
     public static String STUDY_TITLE = "STUDY_TITLE";//学习页面的标题
@@ -40,5 +43,16 @@ public class Constant {
      * 地图
      */
     public static final LatLng CHENGDU = new LatLng(30.679879, 104.064855);// 成都市经纬度
+
+    //----------------------------------------------------------------登录相关
+    /**
+     * app_id是从微信官网申请到的合法APPid
+     */
+    public static final String APP_ID_WX = "wxb363a9ff53731258";
+    /**
+     * 微信AppSecret值
+     */
+    public static final String  APP_SECRET_WX = "2b0d0325bb7c8383bff52e0900b7f56c";
+
 
 }

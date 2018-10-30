@@ -2,6 +2,7 @@ package com.example.tomasyb.tomasybandroid.ui.mvpexample.net;
 
 
 import com.example.tomasyb.baselib.base.retrofit.BaseApiImpl;
+import com.example.tomasyb.tomasybandroid.common.Constant;
 
 /*
  * 项目名:    BaseFrame
@@ -13,7 +14,7 @@ import com.example.tomasyb.baselib.base.retrofit.BaseApiImpl;
  */
 public class Api extends BaseApiImpl {
 
-    private static Api api = new Api(RetrofitService.BASE_URL);
+    private static Api api = new Api(Constant.BASE_URL);
 
     public Api(String baseUrl) {
         super(baseUrl);
