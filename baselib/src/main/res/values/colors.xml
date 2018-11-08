@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF000000</color>
-    <color name="colorPrimaryDark">#FF000000</color>
-    <color name="colorAccent">#FF000000</color>
+    <color name="colorPrimary">#5DA49F</color>
+    <color name="colorPrimaryDark">#5DA49F</color>
+    <color name="colorAccent">#5DA49F</color>
     <!-- app主色调-->
     <color name="b_main_orange">#FA7C20</color>
     <color name="b_main_white">#FFFFFFFF</color>

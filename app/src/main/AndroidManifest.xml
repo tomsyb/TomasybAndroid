@@ -47,16 +47,21 @@
             android:name="com.amap.api.v2.apikey"
             android:value="472e6477f4510174c89ee05a1fe4a280" />
 
-        <activity android:name=".ui.map.MapInfoActivity" />
+        <activity android:name=".ui.map.MapInfoActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
         <activity android:name=".example.custom.CustomViewActivity" />
         <!-- _________________________________________________________引导页 -->
-        <activity android:name=".SplashActivity" />
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Splash">
+
+        </activity>
 
         <!-- .............常用UI主界面................ -->
-        <activity android:name=".ui.study.uiexample.ComUiMainActivity" />
+        <activity android:name=".ui.study.uiexample.ComUiMainActivity"></activity>
 
         <!-- .............登录界面................ -->
         <activity
@@ -86,34 +91,35 @@
         <activity android:name=".ui.activitylifecycle.IntenTtransmitActivity" />
 
         <!-- _____________________________________________________________Activity服务通信 -->
-        <activity android:name=".ui.service.ServiceUseActivity"></activity>
+        <activity android:name=".ui.service.ServiceUseActivity" />
 
         <service android:name=".ui.service.TextService" />
         <service android:name=".ui.service.FrontService" />
         <!-- _____________________________________________________________视频相关 -->
         <!-- 录制小视频 -->
-        <activity android:name=".ui.video.VideoRecordingActivity">
-
-        </activity>
+        <activity android:name=".ui.video.VideoRecordingActivity"></activity>
         <!-- 全屏播放 -->
         <activity
             android:name=".ui.video.IjkFullScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="nosensor"></activity>
-        <!--_____________________________________________________________微信登录-->
-        <activity android:name=".ui.login.WXLoginActivity">
+            android:screenOrientation="nosensor" />
+        <!-- _____________________________________________________________微信登录 -->
+        <activity android:name=".ui.login.WXLoginActivity"></activity>
+        <!-- 微信登录配置 start  WXEntryActivity 必须在包名下 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:theme="@style/wx_login_style" />
+        <!-- 微信登录配置 end -->
+
+        <activity android:name=".ui.banneruse.BannerUseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--微信登录配置 start  WXEntryActivity 必须在包名下-->
-        <activity android:name=".wxapi.WXEntryActivity"
-            android:exported="true"
-            android:theme="@style/wx_login_style"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
-        <!--微信登录配置 end-->
     </application>
 
 </manifest>

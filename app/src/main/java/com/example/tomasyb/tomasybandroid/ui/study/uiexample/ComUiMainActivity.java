@@ -8,7 +8,6 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.util.LogUtils;
-import com.example.tomasyb.baselib.widget.banner.BannerView;
 import com.example.tomasyb.baselib.widget.titlebar.CommonTitleBar;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.comui.entity.BannerEntity;
@@ -23,10 +22,6 @@ import butterknife.BindView;
  */
 @Route(path = "/study/ComUiMainActivity")
 public class ComUiMainActivity extends BaseActivity {
-    @BindView(R.id.banner)
-    BannerView mBanner;
-    @BindView(R.id.banner1)
-    BannerView mBanner1;
     @BindView(R.id.comui_title)
     CommonTitleBar mTitleBar;
     public static String[] titles = new String[]{
@@ -46,20 +41,6 @@ public class ComUiMainActivity extends BaseActivity {
             "http://s16.mogucdn.com/p2/170206/upload_1759d25k9a3djeb125a5bcg0c43eg_750x500.jpg"
     };
 
-    public static class BannerViewFactory implements BannerView.ViewFactory<BannerEntity> {
-        @Override
-        public View create(BannerEntity item, final int position, ViewGroup container) {
-            ImageView iv = new ImageView(container.getContext());
-            iv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    LogUtils.e("你点击的是-->"+position);
-                }
-            });
-            //Glide.with(container.getContext().getApplicationContext()).load(item.getImg()).into(iv);
-            return iv;
-        }
-    }
 
     @Override
     public int getLayoutId() {
@@ -76,13 +57,7 @@ public class ComUiMainActivity extends BaseActivity {
             list.add(item);
         }
 
-        mBanner.setViewFactory(new BannerViewFactory());
-        mBanner.setDataList(list);
-        mBanner.start();
 
-        mBanner1.setViewFactory(new BannerViewFactory());
-        mBanner1.setDataList(list);
-        mBanner1.start();
 
         mTitleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
             @Override

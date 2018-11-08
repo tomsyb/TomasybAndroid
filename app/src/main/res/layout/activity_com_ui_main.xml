@@ -37,29 +37,8 @@
                 android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <com.example.tomasyb.baselib.widget.banner.BannerView
-                android:id="@+id/banner1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@android:color/white"
-                app:bvIsLoop="false"
-                app:bvAspectRatio="0.6666666"
-                app:bvIndicatorColor="#cccccc"
-                app:bvIndicatorColorSelected="@color/colorAccent"
-                />
 
-            <com.example.tomasyb.baselib.widget.banner.BannerView
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                app:bvAspectRatio="0.6666666"
-                app:bvBarColor="#88888888"
-                app:bvIndicatorColor="#cccccc"
-                app:bvIndicatorColorSelected="@color/colorAccent"
-                app:bvIndicatorGravity="right"
-                app:bvTitleVisible="true"/>
+
             <!--圆角图片-->
             <TextView
                 android:textColor="@color/b_main_black"

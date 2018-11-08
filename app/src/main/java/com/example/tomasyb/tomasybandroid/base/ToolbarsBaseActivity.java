@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.tomasyb.baselib.base.AppManager;
-import com.example.tomasyb.baselib.widget.StatusBarCompat;
+import com.example.tomasyb.baselib.util.StatusBarUtil;
 import com.example.tomasyb.tomasybandroid.R;
 
 import butterknife.BindView;
@@ -40,8 +40,7 @@ public abstract class ToolbarsBaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//无标题
-        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, com.example.tomasyb
-                .baselib.R.color.b_main_orange));
+        StatusBarUtil.setColor(this,ContextCompat.getColor(this, com.example.tomasyb.baselib.R.color.b_main_orange));
         initContentView(R.layout.include_layout_toolbar);
         if (getLayoutId() !=0){
             setContentView(getLayoutId());

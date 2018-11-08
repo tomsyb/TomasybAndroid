@@ -1,10 +1,12 @@
 package com.example.tomasyb.tomasybandroid;
 
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
+import com.example.tomasyb.baselib.util.StatusBarUtil;
 import com.example.tomasyb.baselib.widget.bottombar.BottomBar;
 import com.example.tomasyb.baselib.widget.bottombar.BottomBarTab;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.BookFragment;
@@ -34,6 +36,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.b_main_orange));
         initFragment();
         initBottomBar();
     }

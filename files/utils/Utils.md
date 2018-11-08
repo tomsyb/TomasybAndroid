@@ -545,6 +545,11 @@ adaptScreen4HorizontalSlide: 适配水平滑动的屏幕
 cancelAdaptScreen          : 取消适配屏幕
 isAdaptScreen              : 是否适配屏幕
 ```
+* ### 状态栏卡相关 -> [StatusBarUtil.java][sdcard.java] -> [Demo][sdcard.demo]
+
+(详细见)[https://jaeger.itscoder.com/android/2016/03/27/statusbar-util.html]
+
+(项目地址)[https://pan.baidu.com/s/1fuhGOBMndSySvC8NK3SWXQ]
 
 * ### SD 卡相关 -> [SDCardUtils.java][sdcard.java] -> [Demo][sdcard.demo]
 ```

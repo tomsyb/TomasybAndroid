@@ -25,9 +25,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    /**
-    微信登录
-    */
+    <!--微信登录-->
     <style name="wx_login_style" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowNoTitle">true</item>
         <item name="android:windowFrame">@null</item>
@@ -37,5 +35,9 @@
         <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item><!--退出动画-->
         <item name="android:activityOpenExitAnimation">@anim/slide_right_in</item>
         <!--<item name="android:background">@color/color_transparent_9000</item>-->
+    </style>
+    <!---->
+    <style name="ButtonStyle" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/colorAccent</item>
     </style>
 </resources>

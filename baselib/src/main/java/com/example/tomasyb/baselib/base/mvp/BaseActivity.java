@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import com.example.tomasyb.baselib.R;
 import com.example.tomasyb.baselib.base.AppManager;
-import com.example.tomasyb.baselib.widget.StatusBarCompat;
+import com.example.tomasyb.baselib.util.StatusBarUtil;
+import com.example.tomasyb.baselib.widget.titlebar.StatusBarUtils;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -49,7 +51,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
         AppManager.getAppManager().addActivity(this);//添加Activity到堆栈
         requestWindowFeature(Window.FEATURE_NO_TITLE);//无标题
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//设置竖屏
-        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.b_main_orange));
+        StatusBarUtil.setColor(this,ContextCompat.getColor(this, R.color.b_main_orange));
     }
 
     /**
