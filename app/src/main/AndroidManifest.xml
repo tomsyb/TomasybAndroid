@@ -47,7 +47,7 @@
             android:name="com.amap.api.v2.apikey"
             android:value="472e6477f4510174c89ee05a1fe4a280" />
 
-        <activity android:name=".ui.map.MapInfoActivity"></activity>
+        <activity android:name=".ui.map.MapInfoActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
@@ -57,11 +57,15 @@
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- .............常用UI主界面................ -->
-        <activity android:name=".ui.study.uiexample.ComUiMainActivity"></activity>
+        <activity android:name=".ui.study.uiexample.ComUiMainActivity" />
 
         <!-- .............登录界面................ -->
         <activity
@@ -97,14 +101,14 @@
         <service android:name=".ui.service.FrontService" />
         <!-- _____________________________________________________________视频相关 -->
         <!-- 录制小视频 -->
-        <activity android:name=".ui.video.VideoRecordingActivity"></activity>
+        <activity android:name=".ui.video.VideoRecordingActivity" />
         <!-- 全屏播放 -->
         <activity
             android:name=".ui.video.IjkFullScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="nosensor" />
         <!-- _____________________________________________________________微信登录 -->
-        <activity android:name=".ui.login.WXLoginActivity"></activity>
+        <activity android:name=".ui.login.WXLoginActivity" />
         <!-- 微信登录配置 start  WXEntryActivity 必须在包名下 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -113,13 +117,8 @@
             android:theme="@style/wx_login_style" />
         <!-- 微信登录配置 end -->
 
-        <activity android:name=".ui.banneruse.BannerUseActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.banneruse.BannerUseActivity"></activity>
+        <activity android:name=".ui.bottombaruse.BottomBarUseActivity"></activity>
     </application>
 
 </manifest>

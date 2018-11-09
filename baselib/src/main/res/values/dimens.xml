@@ -24,4 +24,9 @@
         <dimen name="sp_12">12sp</dimen>
         <dimen name="sp_14">14sp</dimen>
         <dimen name="sp_16">16sp</dimen>
+
+        <!--bottombar-->
+        <dimen name="bb_height">56dp</dimen>
+        <dimen name="bb_default_elevation">8dp</dimen>
+        <dimen name="bb_fake_shadow_height">4dp</dimen>
 </resources>

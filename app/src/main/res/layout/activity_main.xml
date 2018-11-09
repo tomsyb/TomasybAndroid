@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.example.tomasyb.tomasybandroid.MainActivity">
 
     <FrameLayout
@@ -13,15 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/main_bottom_bar"/>
-    <LinearLayout
-        android:layout_gravity="bottom"
-        android:orientation="vertical"
+    <com.example.tomasyb.baselib.widget.bottombar.BottomBar
+        android:id="@+id/main_bottom_bar"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/main_bottom_bar">
-        <include layout="@layout/include_line_one"/>
-        <com.example.tomasyb.baselib.widget.bottombar.BottomBar
-            android:id="@+id/main_bar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/main_bottom_bar"/>
-    </LinearLayout>
-</FrameLayout>
+        android:layout_height="52dp"
+        app:bb_tabXmlResource="@xml/btm_bar_res"/>
+</RelativeLayout>

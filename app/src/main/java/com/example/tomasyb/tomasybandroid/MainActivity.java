@@ -1,14 +1,13 @@
 package com.example.tomasyb.tomasybandroid;
 
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
 import com.example.tomasyb.baselib.util.StatusBarUtil;
 import com.example.tomasyb.baselib.widget.bottombar.BottomBar;
-import com.example.tomasyb.baselib.widget.bottombar.BottomBarTab;
+import com.example.tomasyb.baselib.widget.bottombar.OnTabSelectListener;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.BookFragment;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.GuideFragment;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.IndexFragment;
@@ -21,10 +20,8 @@ import butterknife.BindView;
  */
 @Route(path = "/main/mainActivity")
 public class MainActivity extends BaseActivity {
-
-    @BindView(R.id.main_bar)
-    BottomBar mainBar;
-
+    @BindView(R.id.main_bottom_bar)
+    BottomBar botBar;
     private IndexFragment mIndexFragment;
     private GuideFragment mGuideFragment;
     private BookFragment mBookFragment;
@@ -36,7 +33,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.b_main_orange));
         initFragment();
         initBottomBar();
     }
@@ -50,26 +46,10 @@ public class MainActivity extends BaseActivity {
      * 初始化底部
      */
     private void initBottomBar() {
-        mainBar
-                .addItem(new BottomBarTab(this,R.drawable.tab_home_normal,getString(R.string.main_tab_home)))
-                .addItem(new BottomBarTab(this,R.drawable.tab_guide_normal,getString(R.string.main_tab_guide)))
-                .addItem(new BottomBarTab(this,R.drawable.tab_book_normal,getString(R.string.main_tab_book)))
-                .addItem(new BottomBarTab(this,R.drawable.tab_personal_normal,getString(R.string.main_tab_me)));
-
-        mainBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
+        botBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
-            public void onTabSelected(int position, int prePosition) {
-                switchTo(position);
-            }
-
-            @Override
-            public void onTabUnselected(int position) {
-
-            }
-
-            @Override
-            public void onTabReselected(int position) {
-
+            public void onTabSelected(int tabId) {
+                switchTo(tabId);
             }
         });
     }
@@ -79,7 +59,6 @@ public class MainActivity extends BaseActivity {
      */
     private void initFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        int currentTabPosition = 0;
         if (mIndexFragment != null&&mBookFragment !=null&&mGuideFragment !=null&&mMeFragment!=null){
             mIndexFragment= (IndexFragment) getSupportFragmentManager().findFragmentByTag("mIndexFragment");
             mGuideFragment= (GuideFragment) getSupportFragmentManager().findFragmentByTag("mGuideFragment");
@@ -96,8 +75,6 @@ public class MainActivity extends BaseActivity {
             transaction.add(R.id.fl_tab_container,mMeFragment,"mMeFragment");
         }
         transaction.commit();
-        switchTo(currentTabPosition);
-        mainBar.setCurrentItem(currentTabPosition);
     }
 
     /**
@@ -107,28 +84,28 @@ public class MainActivity extends BaseActivity {
     private void switchTo(int postion) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         switch (postion){
-            case 0://首页
+            case R.id.tab_index://首页
                 transaction.show(mIndexFragment);
                 transaction.hide(mGuideFragment);
                 transaction.hide(mBookFragment);
                 transaction.hide(mMeFragment);
                 transaction.commitAllowingStateLoss();
                 break;
-            case 1://导游
+            case R.id.tab_nearby://附近
                 transaction.hide(mIndexFragment);
                 transaction.show(mGuideFragment);
                 transaction.hide(mBookFragment);
                 transaction.hide(mMeFragment);
                 transaction.commitAllowingStateLoss();
                 break;
-            case 2://书籍
+            case R.id.tab_time://书籍
                 transaction.hide(mIndexFragment);
                 transaction.hide(mGuideFragment);
                 transaction.show(mBookFragment);
                 transaction.hide(mMeFragment);
                 transaction.commitAllowingStateLoss();
                 break;
-            case 3://我的
+            case R.id.tab_me://我的
                 transaction.hide(mIndexFragment);
                 transaction.hide(mGuideFragment);
                 transaction.hide(mBookFragment);
@@ -140,8 +117,4 @@ public class MainActivity extends BaseActivity {
 
         }
     }
-    private void hideshowFragment(){
-
-    }
-
 }

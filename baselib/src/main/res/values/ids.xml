@@ -10,4 +10,8 @@
     <item type="id" name="statusbarutil_translucent_view" />
     <!--banner-->
     <item name="banner_indicatorId" type="id" />
+
+    <!--bottombar-->
+    <item name="bb_bottom_bar_color_id" type="id"/>
+    <item name="bb_bottom_bar_appearance_id" type="id"/>
 </resources>

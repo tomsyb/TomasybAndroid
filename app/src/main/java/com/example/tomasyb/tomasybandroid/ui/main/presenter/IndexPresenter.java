@@ -18,4 +18,9 @@ public class IndexPresenter extends BasePresenter<IndexContact.view> implements 
     public IndexPresenter(IndexContact.view view) {
         super(view);
     }
+
+    @Override
+    public void addData() {
+
+    }
 }

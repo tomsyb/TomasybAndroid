@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tomasyb.tomasybandroid.ui.bottombaruse.BottomBarUseActivity">
+    <TextView
+        android:textColor="@color/b_main_orange"
+        android:textSize="12sp"
+        android:text="1.布局中bb_tabXmlResource:指定图标及文字的xml,  2.bb_behavior只展示图片的属性，有4种值"
+        android:id="@+id/tv_bottom_show"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+    <com.example.tomasyb.baselib.widget.bottombar.BottomBar
+        android:id="@+id/index_bottombar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:bb_tabXmlResource="@xml/btm_bar_res"
+        app:bb_behavior=""/>
+</LinearLayout>

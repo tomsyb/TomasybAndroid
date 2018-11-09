@@ -1,7 +1,9 @@
 package com.example.tomasyb.tomasybandroid.ui.main.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.tomasyb.baselib.adapter.BaseQuickAdapter;
 import com.example.tomasyb.baselib.adapter.BaseViewHolder;
 import com.example.tomasyb.baselib.base.mvp.BaseFragment;
@@ -60,12 +62,23 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     public void initAdapter() {
         mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         mDatas = new ArrayList<>();
+        mDatas.add("BottomBar导航");
         mAdaper = new BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_btn_only,mDatas) {
             @Override
             protected void convert(BaseViewHolder helper, String item) {
                 helper.setText(R.id.btn_txt,item);
             }
         };
+        mAdaper.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                switch (position){
+                    case 0:
+                        ARouter.getInstance().build("BottomBarUseActivity").navigation();
+                        break;
+                }
+            }
+        });
         mRv.setAdapter(mAdaper);
     }
 }

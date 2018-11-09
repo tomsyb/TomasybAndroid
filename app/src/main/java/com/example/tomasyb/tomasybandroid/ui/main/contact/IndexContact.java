@@ -19,6 +19,6 @@ public interface IndexContact {
     }
     //p
     interface presenter extends IBasePresenter {
-
+        void addData();
     }
 }
