@@ -7,11 +7,10 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.FrameLayout;
 
-
 /**
  * 解决沉浸式标题栏下，键盘兼容问题
  * <p>
- * Created by yanbo on 2017/9/5.
+ * Created by wuhenzhizao on 2017/9/5.
  */
 public class KeyboardConflictCompat {
     private View mChildOfContent;

@@ -1,4 +1,5 @@
 <resources>
     <!---->
     <dimen name="main_bottom_bar">52dp</dimen>
+    <dimen name="grid_expected_size">120dp</dimen>
 </resources>

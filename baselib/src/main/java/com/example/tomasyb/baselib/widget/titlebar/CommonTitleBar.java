@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import com.example.tomasyb.baselib.R;
 
+
 /**
  * 通用标题栏
  * <p/>
@@ -83,6 +84,7 @@ import com.example.tomasyb.baselib.R;
  * <attr name="centerText" format="string" /> <!-- TextView 文字, 对应centerType_TextView -->
  * <attr name="centerTextColor" format="color" /> <!-- TextView 颜色, 对应centerType_TextView -->
  * <attr name="centerTextSize" format="dimension" /> <!-- TextView 字体大小, 对应centerType_TextView -->
+ * <attr name="centerTextMarquee" format="boolean" /> <!-- TextView 跑马灯效果, 对应centerType_TextView -->
  * <attr name="centerSubText" format="string" /> <!-- 子标题TextView 文字, 对应centerType_TextView -->
  * <attr name="centerSubTextColor" format="color" /> <!-- 子标题TextView 颜色, 对应centerType_TextView -->
  * <attr name="centerSubTextSize" format="dimension" /> <!-- 子标题TextView 字体大小, 对应centerType_TextView -->
@@ -90,7 +92,7 @@ import com.example.tomasyb.baselib.R;
  * <attr name="centerCustomView" format="reference" /> <!-- 中间自定义布局, 对应centerType_CustomView -->
  * </declare-styleable>
  * <p/>
- * Created by 严博 on 16/1/12.
+ * Created by wuhenzhizao on 16/1/12.
  */
 @SuppressWarnings("ResourceType")
 public class CommonTitleBar extends RelativeLayout implements View.OnClickListener {
@@ -145,10 +147,11 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     private String centerText;                          // 中间TextView文字
     private int centerTextColor;                        // 中间TextView字体颜色
     private float centerTextSize;                       // 中间TextView字体大小
+    private boolean centerTextMarquee;                  // 中间TextView字体是否显示跑马灯效果
     private String centerSubText;                       // 中间subTextView文字
     private int centerSubTextColor;                     // 中间subTextView字体颜色
     private float centerSubTextSize;                    // 中间subTextView字体大小
-    private boolean centerSearchEdiable;                // 搜索框是否可输入
+    private boolean centerSearchEditable;                // 搜索框是否可输入
     private int centerSearchBgResource;                 // 搜索框背景图片
     private int centerSearchRightType;                  // 搜索框右边按钮类型  0: voice 1: delete
     private int centerCustomViewRes;                    // 中间自定义布局资源
@@ -230,11 +233,12 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             centerText = array.getString(R.styleable.CommonTitleBar_centerText);
             centerTextColor = array.getColor(R.styleable.CommonTitleBar_centerTextColor, Color.parseColor("#333333"));
             centerTextSize = array.getDimension(R.styleable.CommonTitleBar_centerTextSize, ScreenUtils.dp2PxInt(context, 18));
+            centerTextMarquee = array.getBoolean(R.styleable.CommonTitleBar_centerTextMarquee, true);
             centerSubText = array.getString(R.styleable.CommonTitleBar_centerSubText);
             centerSubTextColor = array.getColor(R.styleable.CommonTitleBar_centerSubTextColor, Color.parseColor("#666666"));
             centerSubTextSize = array.getDimension(R.styleable.CommonTitleBar_centerSubTextSize, ScreenUtils.dp2PxInt(context, 11));
         } else if (centerType == TYPE_CENTER_SEARCHVIEW) {
-            centerSearchEdiable = array.getBoolean(R.styleable.CommonTitleBar_centerSearchEditable, true);
+            centerSearchEditable = array.getBoolean(R.styleable.CommonTitleBar_centerSearchEditable, true);
             centerSearchBgResource = array.getResourceId(R.styleable.CommonTitleBar_centerSearchBg, R.drawable.comm_titlebar_search_gray_shape);
             centerSearchRightType = array.getInt(R.styleable.CommonTitleBar_centerSearchRightType, TYPE_CENTER_SEARCH_RIGHT_VOICE);
         } else if (centerType == TYPE_CENTER_CUSTOM_VIEW) {
@@ -256,8 +260,10 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         ViewGroup.LayoutParams globalParams = new ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
         setLayoutParams(globalParams);
 
+        boolean transparentStatusBar = StatusBarUtils.supportTransparentStatusBar();
+
         // 构建标题栏填充视图
-        if (fillStatusBar) {
+        if (fillStatusBar && transparentStatusBar) {
             int statusBarHeight = StatusBarUtils.getStatusBarHeight(context);
             viewStatusBarFill = new View(context);
             viewStatusBarFill.setId(StatusBarUtils.generateViewId());
@@ -272,7 +278,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         rlMain.setId(StatusBarUtils.generateViewId());
         rlMain.setBackgroundColor(titleBarColor);
         LayoutParams mainParams = new LayoutParams(MATCH_PARENT, titleBarHeight);
-        if (fillStatusBar) {
+        if (fillStatusBar && transparentStatusBar) {
             mainParams.addRule(RelativeLayout.BELOW, viewStatusBarFill.getId());
         } else {
             mainParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
@@ -449,12 +455,12 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             tvCenter.setSingleLine(true);
             // 设置跑马灯效果
             tvCenter.setMaxWidth((int) (ScreenUtils.getScreenPixelSize(context)[0] * 3 / 5.0));
-            tvCenter.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            tvCenter.setMarqueeRepeatLimit(-1);
-            tvCenter.setFocusable(true);
-            tvCenter.setFocusableInTouchMode(true);
-            tvCenter.requestFocus();
-            tvCenter.setSelected(true);
+            if (centerTextMarquee){
+                tvCenter.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                tvCenter.setMarqueeRepeatLimit(-1);
+                tvCenter.requestFocus();
+                tvCenter.setSelected(true);
+            }
 
             LinearLayout.LayoutParams centerTextParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
             llMainCenter.addView(tvCenter, centerTextParams);
@@ -555,7 +561,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             etSearchHint.setHintTextColor(Color.parseColor("#999999"));
             etSearchHint.setTextSize(TypedValue.COMPLEX_UNIT_PX, ScreenUtils.dp2PxInt(context, 14));
             etSearchHint.setPadding(PADDING_5, 0, PADDING_5, 0);
-            if (!centerSearchEdiable) {
+            if (!centerSearchEditable) {
                 etSearchHint.setCursorVisible(false);
                 etSearchHint.clearFocus();
                 etSearchHint.setFocusable(false);
@@ -613,20 +619,21 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        setUpImmersionTitleBar();
+    }
+
+    private void setUpImmersionTitleBar() {
         Window window = getWindow();
         if (window == null) return;
+        // 设置状态栏背景透明
+        StatusBarUtils.transparentStatusBar(window);
         // 设置图标主题
         if (statusBarMode == 0) {
             StatusBarUtils.setDarkMode(window);
         } else {
             StatusBarUtils.setLightMode(window);
         }
-        // 设置状态栏背景透明
-        StatusBarUtils.transparentStatusBar(window);
-        // 解决部分手机输入框被键盘遮挡的问题
-        KeyboardConflictCompat.assistWindow(window);
     }
-
 
     private Window getWindow() {
         Context context = getContext();
@@ -733,11 +740,23 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
      *
      * @param color
      */
+    @Override
     public void setBackgroundColor(int color) {
         if (viewStatusBarFill != null) {
             viewStatusBarFill.setBackgroundColor(color);
         }
         rlMain.setBackgroundColor(color);
+    }
+
+    /**
+     * 设置背景图片
+     *
+     * @param resource
+     */
+    @Override
+    public void setBackgroundResource(int resource) {
+        setBackgroundColor(Color.TRANSPARENT);
+        super.setBackgroundResource(resource);
     }
 
     /**
@@ -768,11 +787,13 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     public void toggleStatusBarMode() {
         Window window = getWindow();
         if (window == null) return;
-        statusBarMode = ~statusBarMode;
+        StatusBarUtils.transparentStatusBar(window);
         if (statusBarMode == 0) {
-            StatusBarUtils.setDarkMode(window);
-        } else {
+            statusBarMode = 1;
             StatusBarUtils.setLightMode(window);
+        } else {
+            statusBarMode = 0;
+            StatusBarUtils.setDarkMode(window);
         }
     }
 
@@ -955,7 +976,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
      * @return
      */
     public void showSoftInputKeyboard(boolean show) {
-        if (centerSearchEdiable && show) {
+        if (centerSearchEditable && show) {
             etSearchHint.setFocusable(true);
             etSearchHint.setFocusableInTouchMode(true);
             etSearchHint.requestFocus();

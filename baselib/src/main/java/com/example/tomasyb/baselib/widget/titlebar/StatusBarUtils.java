@@ -1,9 +1,11 @@
 package com.example.tomasyb.baselib.widget.titlebar;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.annotation.ColorInt;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -13,20 +15,40 @@ import java.lang.reflect.Method;
 import java.util.UUID;
 
 public class StatusBarUtils {
+
+    public static boolean supportTransparentStatusBar() {
+        return OSUtils.isMiui()
+                || OSUtils.isFlyme()
+                || (OSUtils.isOppo() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                || Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+    }
+
     /**
      * 设置状态栏透明
      *
      * @param window
      */
     public static void transparentStatusBar(Window window) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        if (OSUtils.isMiui() || OSUtils.isFlyme()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                transparentStatusBarAbove21(window);
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            }
+        } else if ((OSUtils.isOppo() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
+            transparentStatusBarAbove21(window);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            transparentStatusBarAbove21(window);
         }
+    }
+
+    @TargetApi(21)
+    private static void transparentStatusBarAbove21(Window window) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        window.setStatusBarColor(Color.TRANSPARENT);
     }
 
     /**
@@ -35,13 +57,15 @@ public class StatusBarUtils {
      * @param window
      */
     public static void setLightMode(Window window) {
-        if (setMIUIStatusBarDarkMode(window, false)) {
-            return;
+        if (OSUtils.isMiui()) {
+            setMIUIStatusBarDarkMode(window, false);
+        } else if (OSUtils.isFlyme()) {
+            setFlymeStatusBarDarkMode(window, false);
+        } else if (OSUtils.isOppo()) {
+            setOppoStatusBarDarkMode(window, false);
+        } else {
+            setStatusBarDarkMode(window, false);
         }
-        if (setFlymeStatusBarDarkMode(window, false)) {
-            return;
-        }
-        setStatusBarDarkMode(window, false);
     }
 
     /**
@@ -50,28 +74,28 @@ public class StatusBarUtils {
      * @param window
      */
     public static void setDarkMode(Window window) {
-        if (setMIUIStatusBarDarkMode(window, true)) {
-            return;
+        if (OSUtils.isMiui()) {
+            setMIUIStatusBarDarkMode(window, true);
+        } else if (OSUtils.isFlyme()) {
+            setFlymeStatusBarDarkMode(window, true);
+        } else if (OSUtils.isOppo()) {
+            setOppoStatusBarDarkMode(window, true);
+        } else {
+            setStatusBarDarkMode(window, true);
         }
-        if (setFlymeStatusBarDarkMode(window, true)) {
-            return;
-        }
-        setStatusBarDarkMode(window, true);
     }
 
-    private static boolean setStatusBarDarkMode(Window window, boolean darkMode) {
+    private static void setStatusBarDarkMode(Window window, boolean darkMode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (darkMode) {
-                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            } else {
                 window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            } else {
+                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             }
-            return true;
         }
-        return false;
     }
 
-    private static boolean setMIUIStatusBarDarkMode(Window window, boolean darkMode) {
+    private static void setMIUIStatusBarDarkMode(Window window, boolean darkMode) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             Class<? extends Window> clazz = window.getClass();
             try {
@@ -80,23 +104,68 @@ public class StatusBarUtils {
                 int darkModeFlag = field.getInt(layoutParams);
                 Method extraFlagField = clazz.getMethod("setExtraFlags", int.class, int.class);
                 extraFlagField.invoke(window, darkMode ? darkModeFlag : 0, darkModeFlag);
-                return true;
             } catch (Exception e) {
-                e.printStackTrace();
-                return false;
             }
-        } else {
+        }
+        setStatusBarDarkMode(window, darkMode);
+    }
+
+    private static void setFlymeStatusBarDarkMode(Window window, boolean darkMode) {
+        FlymeStatusBarUtils.setStatusBarDarkIcon(window, darkMode);
+    }
+
+    private static final int SYSTEM_UI_FLAG_OP_STATUS_BAR_TINT = 0x00000010;
+
+    private static void setOppoStatusBarDarkMode(Window window, boolean darkMode) {
+        int vis = window.getDecorView().getSystemUiVisibility();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (darkMode) {
-                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                vis |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
             } else {
-                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                vis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
             }
-            return true;
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (darkMode) {
+                vis |= SYSTEM_UI_FLAG_OP_STATUS_BAR_TINT;
+            } else {
+                vis &= ~SYSTEM_UI_FLAG_OP_STATUS_BAR_TINT;
+            }
+        }
+        window.getDecorView().setSystemUiVisibility(vis);
+    }
+
+    /**
+     * 设置状态栏颜色和透明度
+     *
+     * @param window
+     * @param color
+     * @param alpha
+     */
+    public static void setStatusBarColor(Window window, @ColorInt int color, int alpha) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(calculateStatusColor(color, alpha));
         }
     }
 
-    private static boolean setFlymeStatusBarDarkMode(Window window, boolean darkMode) {
-        return FlymeStatusBarUtils.setStatusBarDarkIcon(window, darkMode);
+    /**
+     * 计算状态栏颜色
+     *
+     * @param color color值
+     * @param alpha alpha值
+     * @return 最终的状态栏颜色
+     */
+    private static int calculateStatusColor(@ColorInt int color, int alpha) {
+        if (alpha == 0) {
+            return color;
+        }
+        float a = 1 - alpha / 255f;
+        int red = color >> 16 & 0xff;
+        int green = color >> 8 & 0xff;
+        int blue = color & 0xff;
+        red = (int) (red * a + 0.5);
+        green = (int) (green * a + 0.5);
+        blue = (int) (blue * a + 0.5);
+        return 0xff << 24 | red << 16 | green << 8 | blue;
     }
 
     /**

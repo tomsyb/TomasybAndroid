@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tomasyb.tomasybandroid.ui.titlebaruse.TitleBarUseActivity">
+    <com.example.tomasyb.baselib.widget.titlebar.CommonTitleBar
+        android:id="@+id/title_bar"
+        app:statusBarMode="dark"
+        app:centerText="标题"
+        app:centerType="textView"
+        app:bottomShadowHeight="0dp"
+        app:showBottomLine="false"
+        app:rightText="切换图标颜色"
+        app:rightType="textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

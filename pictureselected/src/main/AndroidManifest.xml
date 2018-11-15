@@ -1,0 +1,29 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.agora.pictureselected">
+    <application android:theme="@style/AppTheme">
+
+        <provider
+            android:name="io.agora.pictureselected.PictureFileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <activity
+            android:name=".PictureSelectorActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".PicturePreviewActivity" />
+        <activity
+            android:name=".PictureVideoPlayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="sensor" />
+        <activity android:name=".PictureExternalPreviewActivity" />
+        <activity android:name="io.agora.ucrop.UCropActivity" />
+        <activity android:name="io.agora.ucrop.PictureMultiCuttingActivity" />
+        <activity android:name=".PicturePlayAudioActivity" />
+
+
+    </application>
+</manifest>

@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':playerview'
+include ':app', ':baselib', ':playerview', ':pictureselected', ':ucrop'

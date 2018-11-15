@@ -44,7 +44,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
 
     @Override
     protected void initView() {
-
+        initAdapter();
     }
 
 

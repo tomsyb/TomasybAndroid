@@ -14,4 +14,5 @@
     <!--bottombar-->
     <item name="bb_bottom_bar_color_id" type="id"/>
     <item name="bb_bottom_bar_appearance_id" type="id"/>
+    <item name="fab_label" type="id"/>
 </resources>

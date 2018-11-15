@@ -1,20 +1,17 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    compileSdkVersion cfgs.compileSdkVersion
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
     useLibrary 'org.apache.http.legacy'
-    compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
-        sourceCompatibility JavaVersion.VERSION_1_8
-    }
+
 
     defaultConfig {
-        minSdkVersion rootProject.ext.android["minSdkVersion"]
-        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
-        versionCode rootProject.ext.android["versionCode"]
-        versionName rootProject.ext.android["versionName"]
-
+        minSdkVersion cfgs.minSdkVersion
+        targetSdkVersion cfgs.targetSdkVersion
+        versionCode cfgs.versionCode
+        versionName cfgs.versionName
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
@@ -35,6 +32,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    api 'com.android.support.constraint:constraint-layout:1.1.0'
 
     //support
     api(rootProject.ext.dependencies["support-v4"]) {
@@ -58,12 +56,14 @@ dependencies {
     //network
     testImplementation rootProject.ext.dependencies["junit"]
 
-    compile 'com.android.support:multidex:1.0.0'//分包
+    compile 'com.android.support:multidex:1.0.1'//分包
 
     /**
      * Rxjava2和Retrofit2
      */
     compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava2Version"
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit2Version"
     compile "com.squareup.retrofit2:converter-scalars:$rootProject.ext.retrofit2Version"
     //Retrofit到Gson进行转换的库，如果你使用的是Jackson，替换为compile 'com.squareup.retrofit2:converter-jackson:2.3.0'
@@ -71,7 +71,7 @@ dependencies {
     //Retrofit到RxJava进行装换的库
     compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofit2Version"
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
     //如果需要添加HttpLoggingInterceptor进行调试，添加如下依赖
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     // Okhttp库
@@ -89,6 +89,6 @@ dependencies {
     /**
      * 图片加载glide
      */
-    compile 'com.github.bumptech.glide:glide:4.7.1'
+    api "com.github.bumptech.glide:glide:${cfgs.glide}"
 
 }
