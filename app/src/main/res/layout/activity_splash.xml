@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/MatchMatch"
+    style="@style/mm"
     tools:context="com.example.tomasyb.tomasybandroid.SplashActivity">
     <com.example.tomasyb.baselib.widget.banner.BGAGuideLinkageLayout
-        style="@style/MatchMatch">
+        style="@style/mm">
 
         <com.example.tomasyb.baselib.widget.banner.BGABanner
             android:id="@+id/banner_guide_background"
-            style="@style/MatchMatch"
+            style="@style/mm"
             app:banner_pageChangeDuration="1000"
             app:banner_pointAutoPlayAble="false"
             app:banner_pointContainerBackground="@android:color/transparent"
@@ -20,7 +20,7 @@
 
         <com.example.tomasyb.baselib.widget.banner.BGABanner
             android:id="@+id/banner_guide_foreground"
-            style="@style/MatchMatch"
+            style="@style/mm"
             app:banner_pageChangeDuration="1000"
             app:banner_pointAutoPlayAble="false"
             app:banner_pointContainerBackground="@android:color/transparent"
@@ -30,7 +30,7 @@
     </com.example.tomasyb.baselib.widget.banner.BGAGuideLinkageLayout>
     <TextView
         android:id="@+id/tv_guide_skip"
-        style="@style/WrapWrap"
+        style="@style/wm"
         android:layout_alignParentRight="true"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
@@ -42,7 +42,7 @@
 
     <Button
         android:id="@+id/btn_guide_enter"
-        style="@style/WrapWrap"
+        style="@style/ww"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"

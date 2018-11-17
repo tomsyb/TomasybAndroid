@@ -57,7 +57,11 @@
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- .............常用UI主界面................ -->
@@ -116,11 +120,7 @@
         <activity android:name=".ui.banneruse.BannerUseActivity" />
         <activity android:name=".ui.bottombaruse.BottomBarUseActivity" />
         <activity android:name=".ui.titlebaruse.TitleBarUseActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
