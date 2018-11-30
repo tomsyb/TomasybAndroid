@@ -180,7 +180,7 @@ public class FloatingActionButton extends ImageButton {
 
     private int getCircleSize() {
         return getResources().getDimensionPixelSize(mFabSize == SIZE_NORMAL
-                ? R.dimen.fab_size_normal : R.dimen.fab_size_mini);
+                ? R.dimen.d56 : R.dimen.d40);
     }
 
     private int calculateMeasuredWidth() {

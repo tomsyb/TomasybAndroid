@@ -22,7 +22,7 @@
                 android:src="@drawable/comm_titlebar_back_normal"
                 android:id="@+id/lay_actionbar_img_back"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/d10"
                 android:layout_width="20dp"
                 android:layout_height="20dp" />
             <TextView

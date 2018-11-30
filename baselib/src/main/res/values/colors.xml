@@ -32,7 +32,8 @@
     <color name="night_two_text_color">#8A9599</color>
     <color name="night_there_text_color">#8A9599</color>
 
-    <color name="b_tab_main_gray">#F5F5F5</color>
+    <color name="b_tab_main_gray">#f0f0f0</color>
+    <color name="line_gray">#f0f0f0</color>
     <!--bottombar-->
     <color name="bb_inActiveBottomBarItemColor">#747474</color>
     <color name="bb_darkBackgroundColor">#212121</color>

@@ -10,7 +10,9 @@ import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.widget.fab.FloatingActionButton;
 import com.example.tomasyb.baselib.widget.fab.FloatingActionMenu;
+import com.example.tomasyb.baselib.widget.scrollview.TranslucentActionBar;
 import com.example.tomasyb.tomasybandroid.R;
+import com.example.tomasyb.tomasybandroid.ui.flow.FlowLayoutActivity;
 import com.example.tomasyb.tomasybandroid.ui.imgselect.ImgSelectActivity;
 
 import butterknife.BindView;
@@ -44,6 +46,9 @@ public class MeFragment extends BaseFragment {
     @BindView(R.id.menu_red)
     FloatingActionMenu menuRed;
     Unbinder unbinder;
+    @BindView(R.id.me_actionbar)
+    TranslucentActionBar mActionBar;
+    Unbinder unbinder1;
 
     @Override
     protected int getLayoutResource() {
@@ -80,6 +85,7 @@ public class MeFragment extends BaseFragment {
                 startActivity(new Intent(getActivity(), ImgSelectActivity.class));
                 break;
             case R.id.fab2:
+                startActivity(new Intent(getActivity(), FlowLayoutActivity.class));
                 break;
             case R.id.fab3:
                 break;
@@ -88,5 +94,20 @@ public class MeFragment extends BaseFragment {
             case R.id.fab5:
                 break;
         }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
+            savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder1 = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder1.unbind();
     }
 }

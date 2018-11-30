@@ -161,7 +161,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
             ViewGroup.LayoutParams params = getLayoutParams();
             if (params instanceof MarginLayoutParams) {
                 MarginLayoutParams layoutParams = (MarginLayoutParams) params;
-                final int shadowHeight = getResources().getDimensionPixelSize(R.dimen.bb_fake_shadow_height);
+                final int shadowHeight = getResources().getDimensionPixelSize(R.dimen.d4);
 
                 layoutParams.setMargins(layoutParams.leftMargin,
                         layoutParams.topMargin - shadowHeight,
@@ -178,7 +178,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
             shadowElevation = getElevation();
             shadowElevation = shadowElevation > 0
                     ? shadowElevation
-                    : getResources().getDimensionPixelSize(R.dimen.bb_default_elevation);
+                    : getResources().getDimensionPixelSize(R.dimen.d8);
             setElevation(MiscUtils.dpToPixel(context, shadowElevation));
             setOutlineProvider(ViewOutlineProvider.BOUNDS);
         }
@@ -397,7 +397,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
         inActiveShiftingItemWidth = (int) (proposedItemWidth * 0.9);
         activeShiftingItemWidth = (int) (proposedItemWidth + (proposedItemWidth * ((tabsToAdd.length - 1) * 0.1)));
         int height = Math.round(getContext().getResources()
-                                            .getDimension(R.dimen.bb_height));
+                                            .getDimension(R.dimen.d56));
 
         for (BottomBarTab tabView : tabsToAdd) {
             ViewGroup.LayoutParams params = tabView.getLayoutParams();

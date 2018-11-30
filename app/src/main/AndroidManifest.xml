@@ -119,9 +119,8 @@
 
         <activity android:name=".ui.banneruse.BannerUseActivity" />
         <activity android:name=".ui.bottombaruse.BottomBarUseActivity" />
-        <activity android:name=".ui.titlebaruse.TitleBarUseActivity">
-
-        </activity>
+        <activity android:name=".ui.titlebaruse.TitleBarUseActivity"></activity>
+        <activity android:name=".ui.flow.FlowLayoutActivity"></activity>
     </application>
 
 </manifest>

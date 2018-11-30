@@ -36,7 +36,7 @@
         fab:fab_colorNormal="#818aa7"
         fab:backgroundTint="#818aa7"
         fab:fab_size="mini"
-        fab:fab_label="关注" />
+        fab:fab_label="流布局" />
 
     <com.example.tomasyb.baselib.widget.fab.FloatingActionButton
         android:id="@+id/fab3"

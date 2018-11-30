@@ -58,4 +58,6 @@ public interface RetrofitService {
     Observable<WXUserInfo> getWxInfo(@Query("access_token") String access_token,
                                      @Query("openid") String openid);
 
+
+
 }

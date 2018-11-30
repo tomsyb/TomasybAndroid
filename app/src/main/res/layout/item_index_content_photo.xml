@@ -23,7 +23,7 @@
             <TextView
                 android:id="@+id/photo_title"
                 android:singleLine="true"
-                android:textSize="@dimen/b_font_normal"
+                android:textSize="@dimen/s14"
                 android:textColor="@color/b_main_black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,10 +44,10 @@
             </LinearLayout>
             <TextView
                 android:id="@+id/photo_tv_time"
-                android:layout_marginRight="@dimen/b_dp_8"
+                android:layout_marginRight="@dimen/d8"
                 android:gravity="center_vertical|end"
                 android:singleLine="true"
-                android:textSize="@dimen/b_font_small"
+                android:textSize="@dimen/s12"
                 android:textColor="@color/b_main_black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

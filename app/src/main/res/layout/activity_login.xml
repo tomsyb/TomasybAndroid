@@ -206,7 +206,7 @@
             android:layout_height="wrap_content" />
 
         <ImageView
-            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/d10"
             android:id="@+id/login_img_wechat"
             android:src="@drawable/ic_weixin"
             android:layout_width="wrap_content"
