@@ -25,7 +25,7 @@ public class TranslucentActionBar extends LinearLayout {
      *
      * 以下是控件
      */
-    private TextView mTv_Title;// 标题
+    public TextView mTv_Title;// 标题
     private View mV_StatusBar;//状态栏
     private View mL_Root;
     public TranslucentActionBar(Context context) {
@@ -64,7 +64,7 @@ public class TranslucentActionBar extends LinearLayout {
      * @param translucent
      * @param titleInitVisible
      */
-    private void setNeedTranslucent(boolean translucent,boolean titleInitVisible){
+    public void setNeedTranslucent(boolean translucent,boolean titleInitVisible){
         if (translucent){
             mL_Root.setBackgroundDrawable(null);
         }
@@ -77,7 +77,7 @@ public class TranslucentActionBar extends LinearLayout {
      * 设置标题
      * @param title
      */
-    private void setTitle(String title){
+    public void setTitle(String title){
         if (!TextUtils.isEmpty(title)){
             mTv_Title.setText(title);
         }else {

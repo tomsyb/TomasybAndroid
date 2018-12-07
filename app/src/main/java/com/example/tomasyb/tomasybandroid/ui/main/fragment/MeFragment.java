@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 
 import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
+import com.example.tomasyb.baselib.util.BarUtils;
 import com.example.tomasyb.baselib.widget.fab.FloatingActionButton;
 import com.example.tomasyb.baselib.widget.fab.FloatingActionMenu;
 import com.example.tomasyb.baselib.widget.scrollview.TranslucentActionBar;
+import com.example.tomasyb.baselib.widget.scrollview.TranslucentScrollView;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.flow.FlowLayoutActivity;
 import com.example.tomasyb.tomasybandroid.ui.imgselect.ImgSelectActivity;
@@ -48,7 +50,13 @@ public class MeFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.me_actionbar)
     TranslucentActionBar mActionBar;
+    @BindView(R.id.me_scrollview)
+    TranslucentScrollView mTransScrollView;
+    // 伸缩的view
+    @BindView(R.id.me_ll_header)
+    View zoomView;
     Unbinder unbinder1;
+
 
     @Override
     protected int getLayoutResource() {
@@ -64,6 +72,22 @@ public class MeFragment extends BaseFragment {
     @Override
     protected void initView() {
         menuRed.setClosedOnTouchOutside(true);// 点击外部关闭
+        // 标题栏的设置
+        mActionBar.setTitle("我的");
+        mActionBar.setNeedTranslucent(true,false);
+        mActionBar.setStatusBarHeight(BarUtils.getStatusBarHeight());
+        // mTransScrollView透明度监听
+        mTransScrollView.setTransChangeListener(new TranslucentScrollView.TranslucentChangeListener() {
+            @Override
+            public void onTranslucentChanged(int transAlpha) {
+                mActionBar.mTv_Title.setVisibility(transAlpha>48?View.VISIBLE:View.GONE);
+            }
+        });
+        // 关联需要渐变的view
+        mTransScrollView.setTransView(mActionBar);
+        // 关联伸缩视图
+        mTransScrollView.setPullZoomView(zoomView);
+
     }
 
 
