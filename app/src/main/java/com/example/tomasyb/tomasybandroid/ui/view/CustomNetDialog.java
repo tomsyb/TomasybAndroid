@@ -38,6 +38,7 @@ public class CustomNetDialog extends View{
      * @param context
      * @param attrs
      * @param defStyleAttr
+     *
      */
     public CustomNetDialog(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
