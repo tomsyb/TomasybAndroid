@@ -64,4 +64,5 @@ dependencies {
     implementation files('libs/wechat-sdk-android-with-mta-1.3.4.jar')
     implementation files('libs/fastjson-1.1.38.jar')
     implementation project(':pictureselected')
+    implementation project(':ybmap')
 }

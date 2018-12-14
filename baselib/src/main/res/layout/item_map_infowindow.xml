@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/ic_map_tankuang">
     <LinearLayout
+
         android:gravity="center_vertical"
         android:paddingRight="@dimen/d10"
         android:paddingLeft="@dimen/d10"

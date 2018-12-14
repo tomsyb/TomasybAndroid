@@ -20,14 +20,14 @@ import com.example.tomasyb.baselib.R;
  * @since JDK 1.8
  */
 
-public class TranslucentActionBar extends LinearLayout {
+public final class TranslucentActionBar extends LinearLayout {
     /**
      *
      * 以下是控件
      */
-    public TextView mTv_Title;// 标题
-    private View mV_StatusBar;//状态栏
-    private View mL_Root;
+    public TextView mTvTitle;// 标题
+    private View mStatusBar;//状态栏
+    private LinearLayout mRootView;
     public TranslucentActionBar(Context context) {
         this(context,null);
     }
@@ -44,9 +44,9 @@ public class TranslucentActionBar extends LinearLayout {
         setOrientation(HORIZONTAL);// 设置横向
         View contentView = inflate(getContext(), R.layout.actionbar_trans, this);
         // 下面找控件
-        mTv_Title = (TextView) contentView.findViewById(R.id.lay_actionbar_title);
-        mV_StatusBar = (View) contentView.findViewById(R.id.v_statusbar);
-        mL_Root = (View) contentView.findViewById(R.id.lay_transroot);
+        mTvTitle = (TextView) contentView.findViewById(R.id.lay_actionbar_title);
+        mStatusBar = (View) contentView.findViewById(R.id.v_statusbar);
+        mRootView = (LinearLayout)contentView.findViewById(R.id.lay_transroot);
     }
 
     /**
@@ -54,9 +54,9 @@ public class TranslucentActionBar extends LinearLayout {
      * @param statusBarHeight
      */
     public void setStatusBarHeight(int statusBarHeight){
-        ViewGroup.LayoutParams params = mV_StatusBar.getLayoutParams();
+        ViewGroup.LayoutParams params = mStatusBar.getLayoutParams();
         params.height = statusBarHeight;
-        mV_StatusBar.setLayoutParams(params);
+        mStatusBar.setLayoutParams(params);
     }
 
     /**
@@ -66,10 +66,10 @@ public class TranslucentActionBar extends LinearLayout {
      */
     public void setNeedTranslucent(boolean translucent,boolean titleInitVisible){
         if (translucent){
-            mL_Root.setBackgroundDrawable(null);
+            mRootView.setBackgroundDrawable(null);
         }
         if (!titleInitVisible){
-            mTv_Title.setVisibility(GONE);
+            mTvTitle.setVisibility(GONE);
         }
     }
 
@@ -79,9 +79,9 @@ public class TranslucentActionBar extends LinearLayout {
      */
     public void setTitle(String title){
         if (!TextUtils.isEmpty(title)){
-            mTv_Title.setText(title);
+            mTvTitle.setText(title);
         }else {
-            mTv_Title.setVisibility(GONE);
+            mTvTitle.setVisibility(GONE);
         }
     }
 

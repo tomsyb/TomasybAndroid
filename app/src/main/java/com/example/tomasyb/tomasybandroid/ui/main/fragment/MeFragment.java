@@ -47,7 +47,6 @@ public class MeFragment extends BaseFragment {
     FloatingActionButton fab5;
     @BindView(R.id.menu_red)
     FloatingActionMenu menuRed;
-    Unbinder unbinder;
     @BindView(R.id.me_actionbar)
     TranslucentActionBar mActionBar;
     @BindView(R.id.me_scrollview)
@@ -55,7 +54,7 @@ public class MeFragment extends BaseFragment {
     // 伸缩的view
     @BindView(R.id.me_ll_header)
     View zoomView;
-    Unbinder unbinder1;
+
 
 
     @Override
@@ -71,6 +70,7 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+
         menuRed.setClosedOnTouchOutside(true);// 点击外部关闭
         // 标题栏的设置
         mActionBar.setTitle("我的");
@@ -80,7 +80,7 @@ public class MeFragment extends BaseFragment {
         mTransScrollView.setTransChangeListener(new TranslucentScrollView.TranslucentChangeListener() {
             @Override
             public void onTranslucentChanged(int transAlpha) {
-                mActionBar.mTv_Title.setVisibility(transAlpha>48?View.VISIBLE:View.GONE);
+                mActionBar.mTvTitle.setVisibility(transAlpha>48?View.VISIBLE:View.GONE);
             }
         });
         // 关联需要渐变的view
@@ -120,18 +120,4 @@ public class MeFragment extends BaseFragment {
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
-            savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder1 = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder1.unbind();
-    }
 }

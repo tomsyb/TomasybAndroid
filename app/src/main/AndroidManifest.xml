@@ -40,14 +40,13 @@
         android:roundIcon="@mipmap/icon_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.map.MapInfoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <!-- _________________________________________________________高德地图Key -->
-
-        <meta-data
-            android:name="com.amap.api.v2.apikey"
-            android:value="472e6477f4510174c89ee05a1fe4a280" />
-
-        <activity android:name=".ui.map.MapInfoActivity" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
@@ -56,13 +55,7 @@
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.Splash"></activity>
 
         <!-- .............常用UI主界面................ -->
         <activity android:name=".ui.study.uiexample.ComUiMainActivity" />
@@ -119,8 +112,9 @@
 
         <activity android:name=".ui.banneruse.BannerUseActivity" />
         <activity android:name=".ui.bottombaruse.BottomBarUseActivity" />
-        <activity android:name=".ui.titlebaruse.TitleBarUseActivity"></activity>
-        <activity android:name=".ui.flow.FlowLayoutActivity"></activity>
+        <activity android:name=".ui.titlebaruse.TitleBarUseActivity" />
+        <activity android:name=".ui.flow.FlowLayoutActivity" />
+        <activity android:name=".ui.view.CustomViewStudyActivity"></activity>
     </application>
 
 </manifest>

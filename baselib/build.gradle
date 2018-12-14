@@ -85,7 +85,6 @@ dependencies {
      * 打印日志
      */
     compile 'com.orhanobut:logger:1.13'
-    compile 'com.amap.api:3dmap:latest.integration'
     /**
      * 图片加载glide
      */
