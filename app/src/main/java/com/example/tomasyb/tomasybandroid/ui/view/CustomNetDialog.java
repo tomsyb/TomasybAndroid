@@ -33,7 +33,7 @@ public class CustomNetDialog extends View{
     }
 
     /**
-     * 不会走动调用，一般在第二个构造函数里主动调用，如View有style属性时
+     * 不会主动调用，一般在第二个构造函数里主动调用，如View有style属性时
      * 4个构造方法和这个3个构造方法一样4个构造方法在API21之后才使用
      * @param context
      * @param attrs
