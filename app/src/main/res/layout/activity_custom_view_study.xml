@@ -5,5 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.tomasyb.tomasybandroid.ui.view.CustomViewStudyActivity">
-
+    <com.example.tomasyb.tomasybandroid.ui.view.PointView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.example.tomasyb.tomasybandroid.ui.view.CustomPieChart
+        android:id="@+id/cuspiechart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>
