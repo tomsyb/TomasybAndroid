@@ -100,6 +100,7 @@
             <include layout="@layout/include_space_15"/>
             <!--下面是条目-->
             <LinearLayout
+                android:id="@+id/ll_share"
                 style="@style/mwv"
                 android:background="@color/white">
                 <LinearLayout
@@ -113,7 +114,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/d16"/>
                     <TextView
-                        android:text="基本资料"
+                        android:text="社会化登录分享"
                         style="@style/am"
                        android:gravity="center_vertical"
                         android:layout_marginLeft="17dp"/>

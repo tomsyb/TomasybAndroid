@@ -4,8 +4,11 @@
         <dimen name="d5">5dp</dimen>
         <dimen name="d8">8dp</dimen>
         <dimen name="d10">10dp</dimen>
+        <dimen name="d12">12dp</dimen>
         <dimen name="d15">15dp</dimen>
         <dimen name="d16">16dp</dimen>
+        <dimen name="d32">32dp</dimen>
+        <dimen name="d38">38dp</dimen>
         <dimen name="d40">40dp</dimen>
         <dimen name="d72">72dp</dimen>
         <dimen name="d50">50dp</dimen>

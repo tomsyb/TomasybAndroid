@@ -1,4 +1,4 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+// 下面这句话是引用依赖的版本号统一管理以便项目不管哪个地方都可以引用
 apply from: "config.gradle"
 buildscript {
     
@@ -11,9 +11,6 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.0.1'
         //greendao
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
@@ -32,17 +29,21 @@ task clean(type: Delete) {
 }
 // 统一管理版本
 ext {
-    //SDK
-    compileSdkVersion = 27
+    //android
+    compileSdkVersion = 26
     buildToolsVersion = '27.0.3'
-    minSdkVersion = 21
+    minSdkVersion = 14
     targetSdkVersion = 27
+    supportLibVersion = '27.1.0'
+
     //dependencies
     versionCode = 1
     versionName = '1.0'
+    //约束布局
+    constraintVersion= '1.1.0'
+    butterknifeVersion = '8.8.1'
+    glide = '4.5.0'
 
-    supportLibVersion = '25.1.0'
-    butterknifeVersion = '8.5.1'
     rxjava2Version = '2.0.5'
     retrofit2Version = '2.2.0'
     rxlifecycle='2.1.0'

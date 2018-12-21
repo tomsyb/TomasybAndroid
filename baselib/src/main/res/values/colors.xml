@@ -40,4 +40,8 @@
     <color name="bb_tabletRightBorderDark">#505050</color>
 
 
+    <color name="b_gray_light">#f2f2f2</color>
+    <color name="gray_font_dark">#646464</color>
+
+
 </resources>

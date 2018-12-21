@@ -2,13 +2,13 @@ package com.example.tomasyb.tomasybandroid.ui.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.example.tomasyb.tomasybandroid.R;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 自定义view 学习
@@ -17,23 +17,26 @@ import butterknife.ButterKnife;
  */
 public class CustomViewStudyActivity extends AppCompatActivity {
 
-    @BindView(R.id.cuspiechart)
-    CustomPieChart cuspiechart;
+    @BindView(R.id.canvasview)
+    CanvasView canvasview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view_study);
         ButterKnife.bind(this);
-        initData();
     }
 
-    private void initData() {
-        ArrayList<PieChart> mList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            PieChart pieChart = new PieChart("我是"+i,i);
-            mList.add(pieChart);
+
+    @OnClick({R.id.btn_translate, R.id.btn_scale})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_translate:
+                canvasview.setmCanvasType(0);
+                break;
+            case R.id.btn_scale:
+                canvasview.setmCanvasType(1);
+                break;
         }
-        cuspiechart.setData(mList);
     }
 }

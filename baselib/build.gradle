@@ -1,60 +1,39 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion cfgs.compileSdkVersion
-    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     useLibrary 'org.apache.http.legacy'
 
-
     defaultConfig {
-        minSdkVersion cfgs.minSdkVersion
-        targetSdkVersion cfgs.targetSdkVersion
-        versionCode cfgs.versionCode
-        versionName cfgs.versionName
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        //分包
         multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
-            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86","arm64-v8a","x86_64"
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "arm64-v8a", "x86_64"
         }
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    api 'com.android.support.constraint:constraint-layout:1.1.0'
-
-    //support
-    api(rootProject.ext.dependencies["support-v4"]) {
-        exclude module: 'support-annotations'
-    }
-    api(rootProject.ext.dependencies["appcompat-v7"]) {
-        exclude module: 'support-annotations'
-        exclude module: 'support-v4'
-    }
-    api(rootProject.ext.dependencies["design"]) {
-        exclude module: 'support-annotations'
-        exclude module: 'appcompat-v7'
-        exclude module: 'support-v4'
-    }
-    api rootProject.ext.dependencies["annotations"]
-    api(rootProject.ext.dependencies["butterknife"]) {
-        exclude module: 'support-annotations'
-    }
-
-    //rx
-    //network
-    testImplementation rootProject.ext.dependencies["junit"]
+    api 'com.android.support.constraint:constraint-layout:' + rootProject.ext.constraintVersion
+    api 'com.android.support:support-v4:' + rootProject.ext.supportLibVersion
+    api 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibVersion
+    api 'com.android.support:design:' + rootProject.ext.supportLibVersion
+    api 'com.android.support:support-annotations:' + rootProject.ext.supportLibVersion
+    api 'com.jakewharton:butterknife:' + rootProject.ext.butterknifeVersion
+    testImplementation 'junit:junit:4.12'
+    /**
+     * 图片加载glide
+     */
+    api 'com.github.bumptech.glide:glide:' + rootProject.ext.glide
 
     compile 'com.android.support:multidex:1.0.1'//分包
 
@@ -80,14 +59,9 @@ dependencies {
     compile "com.trello.rxlifecycle2:rxlifecycle:$rootProject.ext.rxlifecycle"
     //compile "com.trello.rxlifecycle2:rxlifecycle-android:$rootProject.ext.rxlifecycle"
     compile "com.trello.rxlifecycle2:rxlifecycle-components:$rootProject.ext.rxlifecycle"
-
     /**
      * 打印日志
      */
     compile 'com.orhanobut:logger:1.13'
-    /**
-     * 图片加载glide
-     */
-    api "com.github.bumptech.glide:glide:${cfgs.glide}"
 
 }

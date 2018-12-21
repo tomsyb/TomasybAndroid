@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
+import com.example.tomasyb.baselib.util.ActivityUtils;
 import com.example.tomasyb.baselib.util.BarUtils;
 import com.example.tomasyb.baselib.widget.fab.FloatingActionButton;
 import com.example.tomasyb.baselib.widget.fab.FloatingActionMenu;
@@ -16,6 +17,7 @@ import com.example.tomasyb.baselib.widget.scrollview.TranslucentScrollView;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.flow.FlowLayoutActivity;
 import com.example.tomasyb.tomasybandroid.ui.imgselect.ImgSelectActivity;
+import com.example.tomasyb.tomasybandroid.ui.login.ShareLoginMainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,7 +56,7 @@ public class MeFragment extends BaseFragment {
     // 伸缩的view
     @BindView(R.id.me_ll_header)
     View zoomView;
-
+    Unbinder unbinder;
 
 
     @Override
@@ -74,13 +76,14 @@ public class MeFragment extends BaseFragment {
         menuRed.setClosedOnTouchOutside(true);// 点击外部关闭
         // 标题栏的设置
         mActionBar.setTitle("我的");
-        mActionBar.setNeedTranslucent(true,false);
+        mActionBar.setNeedTranslucent(true, false);
         mActionBar.setStatusBarHeight(BarUtils.getStatusBarHeight());
         // mTransScrollView透明度监听
-        mTransScrollView.setTransChangeListener(new TranslucentScrollView.TranslucentChangeListener() {
+        mTransScrollView.setTransChangeListener(new TranslucentScrollView
+                .TranslucentChangeListener() {
             @Override
             public void onTranslucentChanged(int transAlpha) {
-                mActionBar.mTvTitle.setVisibility(transAlpha>48?View.VISIBLE:View.GONE);
+                mActionBar.mTvTitle.setVisibility(transAlpha > 48 ? View.VISIBLE : View.GONE);
             }
         });
         // 关联需要渐变的view
@@ -102,7 +105,7 @@ public class MeFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.fab1, R.id.fab2, R.id.fab3, R.id.fab4, R.id.fab5})
+    @OnClick({R.id.fab1, R.id.fab2, R.id.fab3, R.id.fab4, R.id.fab5,R.id.ll_share})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fab1:
@@ -117,7 +120,9 @@ public class MeFragment extends BaseFragment {
                 break;
             case R.id.fab5:
                 break;
+            case R.id.ll_share:
+                ActivityUtils.startActivity(ShareLoginMainActivity.class);
+                break;
         }
     }
-
 }
