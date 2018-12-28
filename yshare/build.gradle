@@ -26,9 +26,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation files('libs/open_sdk_r6019_lite.jar')
+    api files('libs/open_sdk_r6019_lite.jar')
+    api 'com.sina.weibo.sdk:core:2.0.3:openDefaultRelease@aar'
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.1.6'
 }

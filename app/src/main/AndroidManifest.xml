@@ -40,7 +40,7 @@
         android:roundIcon="@mipmap/icon_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.map.MapInfoActivity"></activity>
+        <activity android:name=".ui.map.MapInfoActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
@@ -49,13 +49,7 @@
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.Splash" />
 
         <!-- .............常用UI主界面................ -->
         <activity android:name=".ui.study.uiexample.ComUiMainActivity" />
@@ -101,7 +95,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="nosensor" />
         <!-- _____________________________________________________________微信登录 -->
-        <activity android:name=".ui.login.WXLoginActivity" />
+        <activity android:name=".ui.login.WXLoginActivity"></activity>
         <!-- 微信登录配置 start  WXEntryActivity 必须在包名下 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -114,8 +108,21 @@
         <activity android:name=".ui.bottombaruse.BottomBarUseActivity" />
         <activity android:name=".ui.titlebaruse.TitleBarUseActivity" />
         <activity android:name=".ui.flow.FlowLayoutActivity" />
-        <activity android:name=".ui.view.CustomViewStudyActivity"></activity>
-        <activity android:name=".ui.login.ShareLoginMainActivity"></activity>
+        <activity android:name=".ui.view.CustomViewStudyActivity" />
+        <activity android:name=".ui.login.ShareLoginMainActivity" />
+        <activity android:name=".ui.audio.AudioMainActivity" />
+        <activity android:name=".ui.addressbook.AddressBookActivity"></activity>
+        <activity android:name=".ui.addressbook.AddressBookWithHeaderActivity"></activity>
+        <activity android:name=".ui.addressbook.AddressBookWithSwipDelActivity">
+
+        </activity>
+        <activity android:name=".ui.cityselected.MeituanCitySelectActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

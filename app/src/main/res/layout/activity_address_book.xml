@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/address_book_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <io.agora.yview.indexbar.IndexBar
+        android:id="@+id/indexbar"
+        android:layout_width="24dp"
+        android:layout_gravity="right"
+        android:layout_height="match_parent"
+        app:indexBarPressBackground="@color/b_text_graylight"
+        app:indexBarTextSize="16sp"/>
+    <!--当下拉indexbar的时候中间显示的索引字-->
+    <TextView
+        android:id="@+id/tvSideBarHint"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_side_bar_bg"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="48sp"
+        android:visibility="gone"
+        tools:text="A"
+        tools:visibility="visible"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:onClick="updateDatas"
+        android:text="更新数据源"/>
+</FrameLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:text="上海"
+    android:textSize="14sp"
+    android:textColor="@color/b_text_gray"
+    android:gravity="center"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/tvname"
+    android:background="@drawable/stroke_rec_gray"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="35dp">
+
+</TextView>

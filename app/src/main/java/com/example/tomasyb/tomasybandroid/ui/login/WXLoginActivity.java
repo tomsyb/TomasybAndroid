@@ -14,12 +14,16 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
 /**
  * 微信登录界面
+ *
+ * @author 严博
+ * @version 1.0.0
+ * @date 2018-12-25.19:37
+ * @since JDK 1.8
  */
-public class WXLoginActivity extends AppCompatActivity {
 
+public class WXLoginActivity extends AppCompatActivity{
     @BindView(R.id.tv_show)
     TextView tvShow;
     // 微信登录相关
@@ -31,7 +35,6 @@ public class WXLoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initwx();
     }
-
     /**
      * 微信初始化
      */
@@ -40,7 +43,6 @@ public class WXLoginActivity extends AppCompatActivity {
         api = WXAPIFactory.createWXAPI(this, Constant.APP_ID_WX,true);
         api.registerApp(Constant.APP_ID_WX);
     }
-
     /**
      * 点击进行登录
      */
@@ -51,7 +53,6 @@ public class WXLoginActivity extends AppCompatActivity {
         req.state = "wechat_sdk_微信登录";
         api.sendReq(req);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0){
