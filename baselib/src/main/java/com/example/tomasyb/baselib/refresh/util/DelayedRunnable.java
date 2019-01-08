@@ -2,7 +2,7 @@ package com.example.tomasyb.baselib.refresh.util;
 
 public class DelayedRunnable implements Runnable {
     public long delayMillis;
-    private Runnable runnable = null;
+    private Runnable runnable;
     public DelayedRunnable(Runnable runnable, long delayMillis) {
         this.runnable = runnable;
         this.delayMillis = delayMillis;

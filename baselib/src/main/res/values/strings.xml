@@ -14,11 +14,12 @@
     <string name="b_response_return_error">服务器返回数据失败</string>
     <!--搜索-->
     <string name="titlebar_search_hint">Search</string>
-    <!--刷新-->
+
+    <!--刷新开始-->
     <string name="srl_header_pulling">下拉可以刷新</string>
     <string name="srl_header_refreshing">正在刷新…</string>
     <string name="srl_header_loading">正在加载…</string>
-    <string name="srl_header_release">释放立即刷新</string>
+    <string name="srl_header_release">释放立即刷新</string>srl_header_refreshing
     <string name="srl_header_finish">刷新完成</string>
     <string name="srl_header_failed">刷新失败</string>
     <string name="srl_header_update">上次更新 M-d HH:mm</string>
@@ -34,6 +35,7 @@
 
     <string name="srl_content_empty">SmartRefreshLayout中没有找到内容视图。您是否忘记在xml布局文件中添加？</string>
     <string name="srl_component_falsify" formatted="false">%s 虚假区域\n代表运行时拖动的高度【%.1fdp】 \n而不会显示任何东西</string>
+    <!--刷新结束-->
     <string name="brvah_app_name">Library</string>
     <string name="brvah_loading">正在加载中...</string>
     <string name="brvah_load_failed">加载失败，请点我重试</string>

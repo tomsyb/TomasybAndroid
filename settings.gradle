@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':playerview', ':pictureselected', ':ucrop', ':ybmap', ':yview', ':yshare'
+include ':app', ':baselib', ':playerview', ':pictureselected', ':ucrop', ':ybmap', ':yview', ':yshare', ':yzxing'

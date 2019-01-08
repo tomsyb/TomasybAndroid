@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.agora.yzxing" >
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <application>
+        <activity android:name="io.agora.yzxing.ActivityScanerCode">
+        </activity>
+
+    </application>
+</manifest>

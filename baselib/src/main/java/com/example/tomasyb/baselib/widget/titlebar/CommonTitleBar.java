@@ -534,7 +534,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             searchParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
             searchParams.leftMargin = PADDING_12;
             rlMainCenterSearch.addView(ivSearch, searchParams);
-            ivSearch.setImageResource(R.drawable.comm_titlebar_search_normal);
+            ivSearch.setImageResource(R.drawable.icon_search_gray);
 
             // 初始化搜索框语音ImageView
             ivVoice = new ImageView(context);

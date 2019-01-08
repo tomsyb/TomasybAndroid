@@ -10,7 +10,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
-
 import com.example.tomasyb.baselib.R;
 import com.example.tomasyb.baselib.refresh.api.RefreshFooter;
 import com.example.tomasyb.baselib.refresh.api.RefreshKernel;

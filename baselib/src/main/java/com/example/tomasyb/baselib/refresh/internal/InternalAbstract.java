@@ -19,6 +19,7 @@ import com.example.tomasyb.baselib.refresh.constant.RefreshState;
 import com.example.tomasyb.baselib.refresh.constant.SpinnerStyle;
 import com.example.tomasyb.baselib.refresh.impl.RefreshFooterWrapper;
 import com.example.tomasyb.baselib.refresh.impl.RefreshHeaderWrapper;
+import com.example.tomasyb.baselib.refresh.listener.OnStateChangedListener;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
@@ -74,7 +75,6 @@ public abstract class InternalAbstract extends RelativeLayout implements Refresh
     }
 
     @Override
-    @Deprecated
     public void setPrimaryColors(@ColorInt int ... colors) {
         if (mWrappedInternal != null && mWrappedInternal != this) {
             mWrappedInternal.setPrimaryColors(colors);
@@ -184,7 +184,10 @@ public abstract class InternalAbstract extends RelativeLayout implements Refresh
                     newState = newState.toFooter();
                 }
             }
-            mWrappedInternal.onStateChanged(refreshLayout, oldState, newState);
+            final OnStateChangedListener listener = mWrappedInternal;
+            if (listener != null) {
+                listener.onStateChanged(refreshLayout, oldState, newState);
+            }
         }
     }
 }
