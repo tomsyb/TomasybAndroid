@@ -50,4 +50,6 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowBackground">@drawable/voice_round_background</item>
     </style>
+
+
 </resources>
