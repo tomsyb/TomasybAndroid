@@ -2,7 +2,11 @@ package com.example.tomasyb.tomasybandroid.ui.main.presenter;
 
 import com.example.tomasyb.baselib.base.mvp.BasePresenter;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
+import com.example.tomasyb.baselib.util.FileUtils;
+import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.main.contact.IndexContact;
+
+import java.util.ArrayList;
 
 /**
  * IndexPresenter
@@ -19,8 +23,14 @@ public class IndexPresenter extends BasePresenter<IndexContact.view> implements 
         super(view);
     }
 
-    @Override
-    public void addData() {
 
+    @Override
+    public ArrayList<Integer> getLocationBannerData() {
+        ArrayList<Integer> localImages = new ArrayList<Integer>();
+        // 本地图片集合
+        for (int position = 1; position < 4; position++){
+            localImages.add(FileUtils.getResId("ic_banner_test_" + position, R.drawable.class));
+        }
+        return localImages;
     }
 }

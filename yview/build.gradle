@@ -23,4 +23,5 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':baselib')
+    compileOnly 'androidx.annotation:annotation:1.0.1'
 }

@@ -5,12 +5,11 @@ import android.support.v4.app.FragmentTransaction;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
-import com.example.tomasyb.baselib.util.StatusBarUtil;
 import com.example.tomasyb.baselib.widget.bottombar.BottomBar;
 import com.example.tomasyb.baselib.widget.bottombar.OnTabSelectListener;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.BookFragment;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.GuideFragment;
-import com.example.tomasyb.tomasybandroid.ui.main.fragment.IndexFragment;
+import com.example.tomasyb.tomasybandroid.ui.main.index.IndexFragment;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.MeFragment;
 
 import butterknife.BindView;

@@ -23,6 +23,57 @@
             <LinearLayout
                 style="@style/mwv">
 
+                <LinearLayout
+                   style="@style/mwv">
+                    <android.support.design.widget.CollapsingToolbarLayout
+                        android:id="@+id/collapse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:contentScrim="?attr/colorPrimary"
+                        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                        app:titleEnabled="false">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_gravity="bottom"
+                            android:gravity="center_horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <!--banner-->
+                            <io.agora.yview.banner.ConvenientBanner
+                                android:id="@+id/index_banner"
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                app:canLoop="true"
+                                app:autoTurningTime="3000"/>
+                            <!--圆形-->
+                            <io.agora.yview.img.CircleImageView
+                                android:layout_marginTop="-32dp"
+                                android:src="@drawable/ic_head_map"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                app:civ_border_color="@android:color/white"
+                                app:civ_border_overlay="true"
+                                app:civ_border_width="2dp"/>
+                            <!--姓名-->
+                            <TextView
+                                android:layout_marginTop="@dimen/d10"
+                                android:textSize="14sp"
+                                android:textColor="@color/b_main_black"
+                                android:text="严博"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <!--基础信息-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </android.support.design.widget.CollapsingToolbarLayout>
+                </LinearLayout>
+
             </LinearLayout>
         </io.agora.yview.scrollview.JudgeNestedScrollView>
     </com.example.tomasyb.baselib.refresh.SmartRefreshLayout>
