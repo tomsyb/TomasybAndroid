@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <!--字体-->
+        <dimen name="tv_sp_12">12sp</dimen>
+        <dimen name="tv_sp_13">13sp</dimen>
+        <dimen name="tv_normal">14sp</dimen>
+        <dimen name="tv_small">12sp</dimen>
+        <dimen name="tv_large">16sp</dimen>
+        <dimen name="dp_2">2dp</dimen>
+        <dimen name="dp_5">5dp</dimen>
+        <dimen name="dp_10">10dp</dimen>
+        <dimen name="dp_20">20dp</dimen>
+
+
+</resources>

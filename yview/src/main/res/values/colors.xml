@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="y_main_blue">#4277fb</color>
+    <color name="y_main_white">#FFFFFF</color>
+    <color name="y_main_orange">#FA7C20</color>
+    <color name="y_main_black">#c9000000</color>
+    <color name="y_main_gray">#c6c6c6</color>
+    <color name="y_text_normal">#515151</color>
+
+
+</resources>
