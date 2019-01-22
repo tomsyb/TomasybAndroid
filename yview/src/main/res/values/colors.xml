@@ -4,8 +4,11 @@
     <color name="y_main_white">#FFFFFF</color>
     <color name="y_main_orange">#FA7C20</color>
     <color name="y_main_black">#c9000000</color>
-    <color name="y_main_gray">#c6c6c6</color>
+    <color name="y_main_gray">#888888</color>
     <color name="y_text_normal">#515151</color>
+    <!--空格颜色浅灰色-->
+    <color name="y_space_gray">#F5F5F5</color>
+    <color name="y_gray_light">#b0b8b2</color>
 
 
 </resources>

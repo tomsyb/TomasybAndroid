@@ -1,5 +1,9 @@
 package com.example.tomasyb.tomasybandroid.ui.main.fragment;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
+
 import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.tomasybandroid.R;
@@ -14,8 +18,10 @@ import com.example.tomasyb.tomasybandroid.R;
  */
 
 public class GuideFragment extends BaseFragment{
+
+
     @Override
-    protected int getLayoutResource() {
+    protected int getLayoutId() {
         return R.layout.fg_main_guide;
     }
 
@@ -24,11 +30,16 @@ public class GuideFragment extends BaseFragment{
         return null;
     }
 
-
     @Override
-    protected void initView() {
+    protected void initView(View view, @Nullable Bundle savedInstanceState) {
 
     }
+
+    @Override
+    protected void initData() {
+
+    }
+
 
     @Override
     public void showLoadingDialog(String msg) {

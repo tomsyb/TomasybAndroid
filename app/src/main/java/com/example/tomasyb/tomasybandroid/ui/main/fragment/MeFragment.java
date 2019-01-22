@@ -2,6 +2,7 @@ package com.example.tomasyb.tomasybandroid.ui.main.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,8 +60,9 @@ public class MeFragment extends BaseFragment {
     Unbinder unbinder;
 
 
+
     @Override
-    protected int getLayoutResource() {
+    protected int getLayoutId() {
         return R.layout.fg_main_me;
     }
 
@@ -69,10 +71,8 @@ public class MeFragment extends BaseFragment {
         return null;
     }
 
-
     @Override
-    protected void initView() {
-
+    protected void initView(View view, @Nullable Bundle savedInstanceState) {
         menuRed.setClosedOnTouchOutside(true);// 点击外部关闭
         // 标题栏的设置
         mActionBar.setTitle("我的");
@@ -90,8 +90,15 @@ public class MeFragment extends BaseFragment {
         mTransScrollView.setTransView(mActionBar);
         // 关联伸缩视图
         mTransScrollView.setPullZoomView(zoomView);
+    }
+
+    @Override
+    protected void initData() {
 
     }
+
+
+
 
 
     @Override

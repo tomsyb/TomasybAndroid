@@ -17,8 +17,11 @@ import java.util.ArrayList;
 public interface IndexContact {
     // view
     interface view extends IBaseView {
+        void initRefreshLayout();
         void initAdapter();
         void initBanner();
+        void initTabLayout();
+        void dealWithViewPager();
     }
     //p
     interface presenter extends IBasePresenter {

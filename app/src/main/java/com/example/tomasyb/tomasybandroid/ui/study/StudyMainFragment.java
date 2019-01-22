@@ -1,6 +1,7 @@
 package com.example.tomasyb.tomasybandroid.ui.study;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -53,8 +54,9 @@ public class StudyMainFragment extends BaseFragment {
         return fragment;
     }
 
+
     @Override
-    protected int getLayoutResource() {
+    protected int getLayoutId() {
         return R.layout.fg_study_main;
     }
 
@@ -63,18 +65,15 @@ public class StudyMainFragment extends BaseFragment {
         return null;
     }
 
-
     @Override
-    protected void initView() {
+    protected void initView(View view, @Nullable Bundle savedInstanceState) {
         mPostion = getArguments().getInt(ARG_TITLE);
         mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         initData();
     }
 
-    /**
-     * 初始化数据
-     */
-    private void initData() {
+    @Override
+    protected void initData() {
         String json = Common.getJson(getActivity(), "rx.json");
         GsonUtils.fromJson(json, StudyMainEntity.class);
         StudyMainEntity bean =  GsonUtils.fromJson(json, StudyMainEntity.class);
@@ -85,8 +84,8 @@ public class StudyMainFragment extends BaseFragment {
         }else {
             initRetrofitAdapter();
         }
-
     }
+
 
     /**
      * Retrofit的适配器

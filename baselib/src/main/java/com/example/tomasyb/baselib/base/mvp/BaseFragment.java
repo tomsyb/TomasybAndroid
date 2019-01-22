@@ -1,5 +1,6 @@
 package com.example.tomasyb.baselib.base.mvp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,10 +21,27 @@ public abstract  class BaseFragment<P extends IBasePresenter> extends Fragment i
     protected View rootView;
     public P mPresenter;
     public Unbinder mUnbinder;//黄油刀
-    private boolean isViewCreate = false;//view是否创建
-    private boolean isViewVisible = false;//view是否可见
-    private boolean isFirst = true;//是否第一次加载
     private Context context;
+    public Activity mActivity;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+        mActivity = (Activity) context;
+
+    }
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (rootView == null){
+            rootView = inflater.inflate(getLayoutId(), container, false);
+            mUnbinder = ButterKnife.bind(this,rootView);
+            initView(rootView,savedInstanceState);
+            initData();
+        }
+        return rootView;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,81 +49,29 @@ public abstract  class BaseFragment<P extends IBasePresenter> extends Fragment i
         mPresenter = initPresenter();
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        isViewCreate = true;
-    }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.context = context;
-
-    }
-
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (rootView == null)
-            rootView = inflater.inflate(getLayoutResource(), container, false);
-        mUnbinder = ButterKnife.bind(this,rootView);
-        initView();
-        return rootView;
-    }
     //获取布局文件
-    protected abstract int getLayoutResource();
+    protected abstract int getLayoutId();
     //简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
     public abstract P initPresenter();
     //初始化view
-    protected abstract void initView();
+    protected abstract void initView(View view, @Nullable Bundle savedInstanceState);
+    protected abstract void initData();
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mUnbinder.unbind();
+        if (mUnbinder !=null){
+            mUnbinder.unbind();
+        }
         if (mPresenter != null){
             mPresenter.detach();
         }
     }
-
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        isViewVisible = isVisibleToUser;
-        if (isVisibleToUser && isViewCreate) {
-            visibleToUser();
-        }
+    public void onDestroy() {
+        super.onDestroy();
+        this.rootView = null;
     }
-    /**
-     * 懒加载
-     * 让用户可见
-     */
-    protected void visibleToUser() {
-        if (isFirst) {
-            firstLoad();
-            isFirst = false;
-        }
-    }
-
-    /**
-     * 懒加载
-     * 让用户可见
-     * 第一次加载
-     */
-    protected void firstLoad() {
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (isViewVisible) {
-            visibleToUser();
-        }
-    }
-
-
 
 }

@@ -11,9 +11,19 @@
         app:srlEnablePreviewInEditMode="false">
         <!--头部-->
         <com.example.tomasyb.baselib.refresh.header.ClassicsHeader
-            app:srlAccentColor="@android:color/white"
+            app:srlAccentColor="@color/y_main_gray"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:srlFinishDuration="500"
+            app:srlEnableLastTime="true"
+            app:srlClassicsSpinnerStyle="FixedBehind"
+            app:srlTextSizeTitle="16sp"
+            app:srlTextSizeTime="10dp"
+            app:srlTextTimeMarginTop="2dp"
+            app:srlDrawableArrowSize="20dp"
+            app:srlDrawableProgressSize="20dp"
+            app:srlDrawableMarginRight="20dp"
+            app:srlDrawableProgress="@drawable/ic_progress_puzzle"/>
         <io.agora.yview.scrollview.JudgeNestedScrollView
             android:id="@+id/scrollview"
             android:fillViewport="true"
@@ -172,14 +182,126 @@
                                     android:background="@drawable/shap_solid_black_corners2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" />
+
                             </LinearLayout>
+                            <!--兴趣标签-->
+                            <RelativeLayout
+                                android:padding="@dimen/dp_10"
+                                android:layout_marginTop="@dimen/dp_10"
+                                style="@style/mwh">
+                                <TextView
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:textSize="@dimen/tv_normal"
+                                    android:textColor="@color/y_text_normal"
+                                    android:text="兴趣标签"
+                                    style="@style/ww" />
+                                <LinearLayout
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    style="@style/wwh">
+                                    <TextView
+                                        android:paddingRight="@dimen/dp_2"
+                                        android:paddingLeft="@dimen/dp_2"
+                                        android:paddingBottom="@dimen/dp_5"
+                                        android:paddingTop="@dimen/dp_5"
+                                        android:textColor="@color/y_text_normal"
+                                        android:textSize="@dimen/tv_small"
+                                        android:background="@drawable/shap_solid_gray_corners2"
+                                        android:text="Github"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                    <TextView
+                                        android:paddingRight="@dimen/dp_2"
+                                        android:paddingLeft="@dimen/dp_2"
+                                        android:paddingBottom="@dimen/dp_5"
+                                        android:paddingTop="@dimen/dp_5"
+                                        android:layout_marginLeft="@dimen/dp_10"
+                                        android:textColor="@color/y_text_normal"
+                                        android:textSize="@dimen/tv_small"
+                                        android:background="@drawable/shap_solid_gray_corners2"
+                                        android:text="Github"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                    <TextView
+                                        android:drawableRight="@mipmap/ic_arrow_right"
+                                        android:drawablePadding="@dimen/dp_5"
+                                        android:layout_marginRight="@dimen/dp_10"
+                                        android:textColor="@color/y_main_gray"
+                                        android:text="编辑资料"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                            </RelativeLayout>
+                            <include layout="@layout/include_space_10"/>
                         </LinearLayout>
                     </android.support.design.widget.CollapsingToolbarLayout>
                 </LinearLayout>
+                <!--横向滚动-->
+                <io.agora.yview.tablayout.SlidingTabLayout
+                    app:tl_tab_space_equal="true"
+                    app:tl_textUnselectColor="@color/y_main_black"
+                    app:tl_textSelectColor="@color/y_main_orange"
+                    app:tl_indicator_color="@color/y_main_orange"
+                    android:id="@+id/slitab"
+                    android:background="@color/y_main_white"
+                    app:tl_indicator_width="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"/>
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/y_main_gray" />
 
             </LinearLayout>
         </io.agora.yview.scrollview.JudgeNestedScrollView>
     </com.example.tomasyb.baselib.refresh.SmartRefreshLayout>
-
+    <!--标题-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/transparent"
+            app:layout_collapseMode="pin">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <android.support.v7.widget.ButtonBarLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_gravity="center">
+                    <io.agora.yview.img.CircleImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_head_map"
+                        android:layout_marginRight="5dp" />
+                    <TextView
+                        android:id="@+id/toolbar_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:maxLines="1"
+                        android:text="大锅饭"
+                        android:textColor="@color/y_main_black"
+                        android:textSize="16sp" />
+                </android.support.v7.widget.ButtonBarLayout>
+                <ImageView
+                    android:id="@+id/iv_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:src="@mipmap/ic_menu_white" />
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+    </RelativeLayout>
 
 </FrameLayout>
