@@ -1,9 +1,12 @@
 package com.example.tomasyb.tomasybandroid.ui.main.contact;
 
+import android.support.v4.app.Fragment;
+
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.IBaseView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 首页
@@ -18,10 +21,11 @@ public interface IndexContact {
     // view
     interface view extends IBaseView {
         void initRefreshLayout();
-        void initAdapter();
+        void initViews();
         void initBanner();
-        void initTabLayout();
         void dealWithViewPager();
+        //获取fragment集合
+        List<Fragment> getFragments();
     }
     //p
     interface presenter extends IBasePresenter {

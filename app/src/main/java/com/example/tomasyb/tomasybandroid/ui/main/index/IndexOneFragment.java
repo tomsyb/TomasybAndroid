@@ -34,12 +34,10 @@ import butterknife.Unbinder;
 public class IndexOneFragment extends LazyFragment {
     @BindView(R.id.index_onerecycleview)
     RecyclerView mRv;
-    private String mTitle;
     private CommonAdapter<String> mAdapter;
 
-    public static IndexOneFragment getInstance(String title) {
+    public static IndexOneFragment getInstance() {
         IndexOneFragment sf = new IndexOneFragment();
-        sf.mTitle = title;
         return sf;
     }
 

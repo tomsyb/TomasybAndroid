@@ -20,12 +20,14 @@ import com.example.tomasyb.baselib.refresh.listener.OnMultiPurposeListener;
 import com.example.tomasyb.baselib.refresh.listener.SimpleMultiPurposeListener;
 import com.example.tomasyb.baselib.util.ScreenUtils;
 import com.example.tomasyb.baselib.util.ToastUtils;
+import com.example.tomasyb.baselib.widget.viewpager.ComFragmentAdapter;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.main.contact.IndexContact;
 import com.example.tomasyb.tomasybandroid.ui.main.index.holder.LocalImageHolderView;
 import com.example.tomasyb.tomasybandroid.ui.main.presenter.IndexPresenter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,7 +61,6 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     ViewPager mVp;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    private MyPagerAdapter mTabAdapter;
     private final String[] mTitles = {
             "动态", "文章", "问答"
     };
@@ -80,10 +81,9 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
 
     @Override
     protected void initView(View view, @Nullable Bundle savedInstanceState) {
+        initViews();
         initRefreshLayout();
-        initAdapter();
         initBanner();
-        initTabLayout();
     }
 
     @Override
@@ -132,9 +132,23 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     }
 
     @Override
-    public void initAdapter() {
+    public void initViews() {
+        mVp.setAdapter(new ComFragmentAdapter(getActivity().getSupportFragmentManager(),getFragments()));
+        mVp.setOffscreenPageLimit(3);
+        mSlidTabLayout.setViewPager(mVp,mTitles);
+        mSlidTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                mVp.setCurrentItem(position);
+            }
 
+            @Override
+            public void onTabReselect(int position) {
+
+            }
+        });
     }
+
 
     @Override
     public void initBanner() {
@@ -157,26 +171,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         //        convenientBanner.setManualPageable(false);//设置不能手动影响
     }
 
-    @Override
-    public void initTabLayout() {
-        for (String title : mTitles) {
-            mFragments.add(IndexOneFragment.getInstance(title));
-        }
-        mTabAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
-        mVp.setAdapter(mTabAdapter);
-        mSlidTabLayout.setViewPager(mVp);
-        mSlidTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                mVp.setCurrentItem(position);
-            }
 
-            @Override
-            public void onTabReselect(int position) {
-
-            }
-        });
-    }
 
     @Override
     public void dealWithViewPager() {
@@ -184,6 +179,15 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         ViewGroup.LayoutParams params = mVp.getLayoutParams();
         params.height = ScreenUtils.getScreenHeight()- toolBarPositionY - mSlidTabLayout.getHeight() + 1;
         mVp.setLayoutParams(params);
+    }
+
+    @Override
+    public List<Fragment> getFragments() {
+        List<Fragment> fragments = new ArrayList<>();
+        fragments.add(IndexOneFragment.getInstance());
+        fragments.add(IndexOneFragment.getInstance());
+        fragments.add(IndexOneFragment.getInstance());
+        return fragments;
     }
 
     @Override
@@ -203,26 +207,5 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         super.onPause();
         //停止翻页
         mBanner.stopTurning();
-    }
-
-    private class MyPagerAdapter extends FragmentPagerAdapter {
-        public MyPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragments.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitles[position];
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragments.get(position);
-        }
     }
 }
