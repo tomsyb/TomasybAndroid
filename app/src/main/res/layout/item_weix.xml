@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--微信朋友圈简单布局-->
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dp_5"
+    android:paddingLeft="@dimen/dp_10"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <io.agora.yview.img.CircleImageView
+        android:id="@+id/img_head"
+        android:src="@mipmap/ic_me_doctor"
+        android:layout_width="45dp"
+        android:layout_height="45dp" />
+    <TextView
+        android:id="@+id/tv_person_name"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/img_head"
+        android:textColor="@color/y_main_orange"
+        android:text="张志荣"
+        android:textSize="@dimen/tv_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginRight="@dimen/dp_10"
+        android:id="@+id/tv_content"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@+id/tv_person_name"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_person_name"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="@dimen/tv_normal"
+        android:textColor="@color/y_text_normal"
+        android:text="需要二建的朋友搞快了"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    <!--9宫格布局图片-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_img_nine"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_person_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_content"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+    <!--下面是点赞-->
+    <TextView
+        android:paddingTop="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_5"
+        android:textColor="@color/y_gray_light"
+        android:textSize="@dimen/tv_small"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_person_name"
+        app:layout_constraintTop_toBottomOf="@+id/rv_img_nine"
+        android:text="32分钟前"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:paddingRight="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:background="@drawable/shap_solid_lightgray_corners3"
+        android:layout_marginRight="@dimen/dp_20"
+        app:layout_constraintTop_toBottomOf="@+id/rv_img_nine"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@mipmap/ic_point_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

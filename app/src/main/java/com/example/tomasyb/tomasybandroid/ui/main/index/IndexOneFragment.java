@@ -13,7 +13,10 @@ import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.LazyFragment;
 import com.example.tomasyb.baselib.rvadapter.CommonAdapter;
 import com.example.tomasyb.baselib.rvadapter.base.ViewHolder;
+import com.example.tomasyb.baselib.yadapter.decoration.DividerItemDecoration;
 import com.example.tomasyb.tomasybandroid.R;
+import com.example.tomasyb.tomasybandroid.ui.main.index.adapter.IndexVpAdapter;
+import com.example.tomasyb.tomasybandroid.ui.main.index.bean.IndexVpBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +37,8 @@ import butterknife.Unbinder;
 public class IndexOneFragment extends LazyFragment {
     @BindView(R.id.index_onerecycleview)
     RecyclerView mRv;
-    private CommonAdapter<String> mAdapter;
-
+    private IndexVpAdapter mVpAdapter;
+    private List<IndexVpBean> mDatas = new ArrayList<>();
     public static IndexOneFragment getInstance() {
         IndexOneFragment sf = new IndexOneFragment();
         return sf;
@@ -70,17 +73,13 @@ public class IndexOneFragment extends LazyFragment {
 
     @Override
     public void lazyInitView(View view, Bundle savedInstanceState) {
-        List<String> mList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            mList.add("我是--》"+i);
+            IndexVpBean bean = new IndexVpBean("2018","建筑考试","王麻子",0);
+            mDatas.add(bean);
         }
         mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mAdapter = new CommonAdapter<String>(getActivity(),R.layout.item_only_text,mList) {
-            @Override
-            protected void convert(ViewHolder holder, String s, int position) {
-                holder.setText(R.id.tvCurrent,s);
-            }
-        };
-        mRv.setAdapter(mAdapter);
+        mRv.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+        mVpAdapter = new IndexVpAdapter(getActivity(),mDatas);
+        mRv.setAdapter(mVpAdapter);
     }
 }

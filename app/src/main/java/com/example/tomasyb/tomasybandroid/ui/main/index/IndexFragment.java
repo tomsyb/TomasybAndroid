@@ -134,7 +134,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     @Override
     public void initViews() {
         mVp.setAdapter(new ComFragmentAdapter(getActivity().getSupportFragmentManager(),getFragments()));
-        mVp.setOffscreenPageLimit(3);
+        mVp.setOffscreenPageLimit(10);
         mSlidTabLayout.setViewPager(mVp,mTitles);
         mSlidTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
