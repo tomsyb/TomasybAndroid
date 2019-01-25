@@ -6,11 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.refresh.SmartRefreshLayout;
@@ -19,6 +23,7 @@ import com.example.tomasyb.baselib.refresh.api.RefreshLayout;
 import com.example.tomasyb.baselib.refresh.listener.OnMultiPurposeListener;
 import com.example.tomasyb.baselib.refresh.listener.SimpleMultiPurposeListener;
 import com.example.tomasyb.baselib.util.ScreenUtils;
+import com.example.tomasyb.baselib.util.SizeUtils;
 import com.example.tomasyb.baselib.util.ToastUtils;
 import com.example.tomasyb.baselib.widget.viewpager.ComFragmentAdapter;
 import com.example.tomasyb.tomasybandroid.R;
@@ -36,6 +41,7 @@ import io.agora.yview.banner.ConvenientBanner;
 import io.agora.yview.banner.holder.CBViewHolderCreator;
 import io.agora.yview.banner.holder.Holder;
 import io.agora.yview.banner.listener.OnItemClickListener;
+import io.agora.yview.scrollview.JudgeNestedScrollView;
 import io.agora.yview.tablayout.SlidingTabLayout;
 import io.agora.yview.tablayout.listener.OnTabSelectListener;
 
@@ -57,10 +63,18 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     ConvenientBanner mBanner;
     @BindView(R.id.slitab)
     SlidingTabLayout mSlidTabLayout;
+    @BindView(R.id.slitab_title)
+    SlidingTabLayout mSlidTabLayoutTitle;
     @BindView(R.id.view_pager)
     ViewPager mVp;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.scrollview)
+    JudgeNestedScrollView scrollView;
+    @BindView(R.id.buttonBarLayout)
+    ButtonBarLayout buttonBarLayout;
+    @BindView(R.id.iv_menu)
+    ImageView ivMenu;
     private final String[] mTitles = {
             "动态", "文章", "问答"
     };
@@ -136,10 +150,11 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         mVp.setAdapter(new ComFragmentAdapter(getActivity().getSupportFragmentManager(),getFragments()));
         mVp.setOffscreenPageLimit(10);
         mSlidTabLayout.setViewPager(mVp,mTitles);
+        mSlidTabLayoutTitle.setViewPager(mVp,mTitles);
         mSlidTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                mVp.setCurrentItem(position);
+                mVp.setCurrentItem(position,false);
             }
 
             @Override
@@ -147,6 +162,53 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
 
             }
         });
+        mSlidTabLayoutTitle.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                mVp.setCurrentItem(position,false);
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+
+            }
+        });
+        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            int lastScrollY = 0;
+            int h = SizeUtils.dp2px(170);
+            int color = ContextCompat.getColor(getActivity().getApplicationContext(), R.color.y_main_white) & 0x00ffffff;
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int
+                    oldScrollX, int oldScrollY) {
+                int[] location = new int[2];
+                mSlidTabLayout.getLocationOnScreen(location);
+                int yPosition = location[1];
+                if (yPosition < toolBarPositionY) {
+                    mSlidTabLayoutTitle.setVisibility(View.VISIBLE);
+                    scrollView.setNeedScroll(false);
+                } else {
+                    mSlidTabLayoutTitle.setVisibility(View.GONE);
+                    scrollView.setNeedScroll(true);
+                }
+                if (lastScrollY<h){
+                    scrollY = Math.min(h,scrollY);
+                    mScrollY = scrollY>h?h:scrollY;
+                    buttonBarLayout.setAlpha(1f * mScrollY / h);
+                    toolbar.setBackgroundColor(((255 * mScrollY / h) << 24) | color);
+                    //ivHeader.setTranslationY(mOffset - mScrollY);
+                }
+                if (scrollY == 0) {
+                    //ivBack.setImageResource(R.drawable.back_white);
+                    ivMenu.setImageResource(R.mipmap.ic_menu_black);
+                } else {
+                    //ivBack.setImageResource(R.drawable.back_black);
+                    ivMenu.setImageResource(R.mipmap.ic_menu_black);
+                }
+                lastScrollY = scrollY;
+            }
+        });
+        buttonBarLayout.setAlpha(0);
+        toolbar.setBackgroundColor(0);
     }
 
 

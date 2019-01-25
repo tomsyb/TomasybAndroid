@@ -274,6 +274,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <android.support.v7.widget.ButtonBarLayout
+                    android:id="@+id/buttonBarLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -302,6 +303,18 @@
                     android:src="@mipmap/ic_menu_white" />
             </LinearLayout>
         </android.support.v7.widget.Toolbar>
+        <io.agora.yview.tablayout.SlidingTabLayout
+            android:layout_below="@+id/toolbar"
+            android:visibility="gone"
+            app:tl_tab_space_equal="true"
+            app:tl_textUnselectColor="@color/y_main_black"
+            app:tl_textSelectColor="@color/y_main_orange"
+            app:tl_indicator_color="@color/y_main_orange"
+            android:id="@+id/slitab_title"
+            android:background="@color/y_main_white"
+            app:tl_indicator_width="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
     </RelativeLayout>
 
 </FrameLayout>

@@ -74,8 +74,13 @@ public class IndexOneFragment extends LazyFragment {
     @Override
     public void lazyInitView(View view, Bundle savedInstanceState) {
         for (int i = 0; i < 10; i++) {
-            IndexVpBean bean = new IndexVpBean("2018","建筑考试","王麻子",0);
-            mDatas.add(bean);
+            if (i%2==0){
+                IndexVpBean bean = new IndexVpBean("2018","建筑考试","王麻子",0);
+                mDatas.add(bean);
+            }else {
+                IndexVpBean bean = new IndexVpBean("2018","建筑考试","王麻子",1);
+                mDatas.add(bean);
+            }
         }
         mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRv.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
