@@ -31,6 +31,15 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.OverScroller;
 
+import io.agora.yview.photoview.listener.OnGestureListener;
+import io.agora.yview.photoview.listener.OnMatrixChangedListener;
+import io.agora.yview.photoview.listener.OnOutsidePhotoTapListener;
+import io.agora.yview.photoview.listener.OnPhotoTapListener;
+import io.agora.yview.photoview.listener.OnScaleChangedListener;
+import io.agora.yview.photoview.listener.OnSingleFlingListener;
+import io.agora.yview.photoview.listener.OnViewDragListener;
+import io.agora.yview.photoview.listener.OnViewTapListener;
+
 /**
  * The component of {@link PhotoView} which does the work allowing for zooming, scaling, panning, etc.
  * It is made public in case you need to subclass something other than AppCompatImageView and still

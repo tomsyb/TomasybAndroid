@@ -49,7 +49,7 @@
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Splash" >
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -101,7 +101,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="nosensor" />
         <!-- _____________________________________________________________微信登录 -->
-        <activity android:name=".ui.login.WXLoginActivity"></activity>
+        <activity android:name=".ui.login.WXLoginActivity" />
         <!-- 微信登录配置 start  WXEntryActivity 必须在包名下 -->
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -117,14 +117,11 @@
         <activity android:name=".ui.view.CustomViewStudyActivity" />
         <activity android:name=".ui.login.ShareLoginMainActivity" />
         <activity android:name=".ui.audio.AudioMainActivity" />
-        <activity android:name=".ui.addressbook.AddressBookActivity"></activity>
-        <activity android:name=".ui.addressbook.AddressBookWithHeaderActivity"></activity>
-        <activity android:name=".ui.addressbook.AddressBookWithSwipDelActivity">
-
-        </activity>
-        <activity android:name=".ui.cityselected.MeituanCitySelectActivity">
-
-        </activity>
+        <activity android:name=".ui.addressbook.AddressBookActivity" />
+        <activity android:name=".ui.addressbook.AddressBookWithHeaderActivity" />
+        <activity android:name=".ui.addressbook.AddressBookWithSwipDelActivity"></activity>
+        <activity android:name=".ui.cityselected.MeituanCitySelectActivity"></activity>
+        <activity android:name=".ui.main.CircleFriendsActivity"></activity>
     </application>
 
 </manifest>

@@ -1,2 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.agora.yview" />
+    package="io.agora.yview">
+
+    <application>
+        <activity android:name=".photoview.PicturePreviewActivity"></activity>
+    </application>
+
+</manifest>

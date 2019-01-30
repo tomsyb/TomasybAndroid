@@ -158,6 +158,7 @@
                                 android:layout_marginTop="@dimen/dp_20"
                                 style="@style/mwh">
                                 <TextView
+                                    android:id="@+id/tv_head"
                                     android:layout_marginRight="40dp"
                                     android:textSize="@dimen/tv_normal"
                                     android:paddingRight="@dimen/dp_10"
@@ -171,13 +172,14 @@
                                     android:layout_height="wrap_content" />
 
                                 <TextView
+                                    android:id="@+id/tv_circle_friends"
                                     android:layout_marginLeft="40dp"
                                     android:textSize="@dimen/tv_normal"
                                     android:paddingRight="@dimen/dp_10"
                                     android:paddingLeft="@dimen/dp_10"
                                     android:paddingTop="@dimen/dp_5"
                                     android:paddingBottom="@dimen/dp_5"
-                                    android:text="头衔认证"
+                                    android:text="朋友圈"
                                     android:textColor="@color/y_main_white"
                                     android:background="@drawable/shap_solid_black_corners2"
                                     android:layout_width="wrap_content"

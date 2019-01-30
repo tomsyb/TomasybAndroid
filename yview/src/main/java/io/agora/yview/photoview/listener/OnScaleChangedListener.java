@@ -1,4 +1,4 @@
-package io.agora.yview.photoview;
+package io.agora.yview.photoview.listener;
 
 
 /**

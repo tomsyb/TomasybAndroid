@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
@@ -20,13 +18,14 @@ import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.refresh.SmartRefreshLayout;
 import com.example.tomasyb.baselib.refresh.api.RefreshHeader;
 import com.example.tomasyb.baselib.refresh.api.RefreshLayout;
-import com.example.tomasyb.baselib.refresh.listener.OnMultiPurposeListener;
 import com.example.tomasyb.baselib.refresh.listener.SimpleMultiPurposeListener;
+import com.example.tomasyb.baselib.util.ActivityUtils;
 import com.example.tomasyb.baselib.util.ScreenUtils;
 import com.example.tomasyb.baselib.util.SizeUtils;
 import com.example.tomasyb.baselib.util.ToastUtils;
 import com.example.tomasyb.baselib.widget.viewpager.ComFragmentAdapter;
 import com.example.tomasyb.tomasybandroid.R;
+import com.example.tomasyb.tomasybandroid.ui.main.CircleFriendsActivity;
 import com.example.tomasyb.tomasybandroid.ui.main.contact.IndexContact;
 import com.example.tomasyb.tomasybandroid.ui.main.index.holder.LocalImageHolderView;
 import com.example.tomasyb.tomasybandroid.ui.main.presenter.IndexPresenter;
@@ -36,10 +35,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.agora.yview.banner.ConvenientBanner;
 import io.agora.yview.banner.holder.CBViewHolderCreator;
-import io.agora.yview.banner.holder.Holder;
 import io.agora.yview.banner.listener.OnItemClickListener;
 import io.agora.yview.scrollview.JudgeNestedScrollView;
 import io.agora.yview.tablayout.SlidingTabLayout;
@@ -56,7 +55,7 @@ import io.agora.yview.tablayout.listener.OnTabSelectListener;
  */
 
 public class IndexFragment extends BaseFragment<IndexContact.presenter> implements IndexContact
-        .view , OnItemClickListener {
+        .view, OnItemClickListener {
     @BindView(R.id.refreshlayout)
     SmartRefreshLayout mRefreshLayout;
     @BindView(R.id.index_banner)
@@ -78,11 +77,13 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     private final String[] mTitles = {
             "动态", "文章", "问答"
     };
+    Unbinder unbinder;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
     private int mOffset = 0;
     private int mScrollY = 0;
     int toolBarPositionY = 0;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fg_main_index;
@@ -106,7 +107,6 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     }
 
 
-
     @Override
     public void showLoadingDialog(String msg) {
 
@@ -119,7 +119,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
 
     @Override
     public void initRefreshLayout() {
-        mRefreshLayout.setOnMultiPurposeListener(new SimpleMultiPurposeListener(){
+        mRefreshLayout.setOnMultiPurposeListener(new SimpleMultiPurposeListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 refreshLayout.finishRefresh(2000);
@@ -133,7 +133,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
             @Override
             public void onHeaderMoving(RefreshHeader header, boolean isDragging, float percent,
                                        int offset, int headerHeight, int maxDragHeight) {
-                mOffset = offset/2;
+                mOffset = offset / 2;
                 toolbar.setAlpha(1 - Math.min(percent, 1));
             }
         });
@@ -147,14 +147,15 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
 
     @Override
     public void initViews() {
-        mVp.setAdapter(new ComFragmentAdapter(getActivity().getSupportFragmentManager(),getFragments()));
+        mVp.setAdapter(new ComFragmentAdapter(getActivity().getSupportFragmentManager(),
+                getFragments()));
         mVp.setOffscreenPageLimit(10);
-        mSlidTabLayout.setViewPager(mVp,mTitles);
-        mSlidTabLayoutTitle.setViewPager(mVp,mTitles);
+        mSlidTabLayout.setViewPager(mVp, mTitles);
+        mSlidTabLayoutTitle.setViewPager(mVp, mTitles);
         mSlidTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                mVp.setCurrentItem(position,false);
+                mVp.setCurrentItem(position, false);
             }
 
             @Override
@@ -165,7 +166,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         mSlidTabLayoutTitle.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                mVp.setCurrentItem(position,false);
+                mVp.setCurrentItem(position, false);
             }
 
             @Override
@@ -176,7 +177,9 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             int lastScrollY = 0;
             int h = SizeUtils.dp2px(170);
-            int color = ContextCompat.getColor(getActivity().getApplicationContext(), R.color.y_main_white) & 0x00ffffff;
+            int color = ContextCompat.getColor(getActivity().getApplicationContext(), R.color
+                    .y_main_white) & 0x00ffffff;
+
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int
                     oldScrollX, int oldScrollY) {
@@ -190,9 +193,9 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
                     mSlidTabLayoutTitle.setVisibility(View.GONE);
                     scrollView.setNeedScroll(true);
                 }
-                if (lastScrollY<h){
-                    scrollY = Math.min(h,scrollY);
-                    mScrollY = scrollY>h?h:scrollY;
+                if (lastScrollY < h) {
+                    scrollY = Math.min(h, scrollY);
+                    mScrollY = scrollY > h ? h : scrollY;
                     buttonBarLayout.setAlpha(1f * mScrollY / h);
                     toolbar.setBackgroundColor(((255 * mScrollY / h) << 24) | color);
                     //ivHeader.setTranslationY(mOffset - mScrollY);
@@ -224,9 +227,10 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
             public int getLayoutId() {
                 return R.layout.item_banner_img;
             }
-        },mPresenter.getLocationBannerData())
+        }, mPresenter.getLocationBannerData())
                 //设置两个点图片作为翻页指示器，不设置则没有指示器，可以根据自己需求自行配合自己的指示器,不需要圆点指示器可用不设
-                .setPageIndicator(new int[]{R.drawable.bga_banner_point_disabled,R.drawable.bga_banner_point_enabled,})
+                .setPageIndicator(new int[]{R.drawable.bga_banner_point_disabled, R.drawable
+                        .bga_banner_point_enabled,})
                 .setOnItemClickListener(this)
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL);
         //      .setOnPageChangeListener(this)设置翻页监听
@@ -234,12 +238,12 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     }
 
 
-
     @Override
     public void dealWithViewPager() {
         toolBarPositionY = toolbar.getHeight();
         ViewGroup.LayoutParams params = mVp.getLayoutParams();
-        params.height = ScreenUtils.getScreenHeight()- toolBarPositionY - mSlidTabLayout.getHeight() + 1;
+        params.height = ScreenUtils.getScreenHeight() - toolBarPositionY - mSlidTabLayout
+                .getHeight() + 1;
         mVp.setLayoutParams(params);
     }
 
@@ -254,7 +258,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
 
     @Override
     public void onItemClick(int position) {
-        ToastUtils.showLong("你点击的是"+position);
+        ToastUtils.showLong("你点击的是" + position);
     }
 
     @Override
@@ -269,5 +273,17 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         super.onPause();
         //停止翻页
         mBanner.stopTurning();
+    }
+
+
+    @OnClick({R.id.tv_head, R.id.tv_circle_friends})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_head:
+                break;
+            case R.id.tv_circle_friends:
+                ActivityUtils.startActivity(CircleFriendsActivity.class);
+                break;
+        }
     }
 }

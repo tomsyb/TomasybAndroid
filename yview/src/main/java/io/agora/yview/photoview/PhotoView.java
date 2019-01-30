@@ -20,12 +20,20 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.appcompat.widget.AppCompatImageView;
+import io.agora.yview.photoview.listener.OnMatrixChangedListener;
+import io.agora.yview.photoview.listener.OnOutsidePhotoTapListener;
+import io.agora.yview.photoview.listener.OnPhotoTapListener;
+import io.agora.yview.photoview.listener.OnScaleChangedListener;
+import io.agora.yview.photoview.listener.OnSingleFlingListener;
+import io.agora.yview.photoview.listener.OnViewDragListener;
+import io.agora.yview.photoview.listener.OnViewTapListener;
+
 
 /**
  * A zoomable ImageView. See {@link PhotoViewAttacher} for most of the details on how the zooming

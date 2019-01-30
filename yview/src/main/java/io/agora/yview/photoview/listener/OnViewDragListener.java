@@ -1,4 +1,4 @@
-package io.agora.yview.photoview;
+package io.agora.yview.photoview.listener;
 
 /**
  * Interface definition for a callback to be invoked when the photo is experiencing a drag event

@@ -13,7 +13,8 @@
     <color name="b_m_blue">#00D0BA</color>
     <color name="b_blue">#4277fb</color>
     <color name="transparent">#00000000</color>
-
+    <color name="nine_image_text_background_color">#4D000000</color>
+    <color name="nine_image_text_color">#FFFFFF</color>
     <color name="b_color_f6">#f6f6f6</color>
     <!--_________________________________________________________________字体-->
     <color name="b_txt">#3c3c3c</color>

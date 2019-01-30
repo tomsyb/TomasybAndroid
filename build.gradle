@@ -42,7 +42,7 @@ ext {
     //约束布局
     constraintVersion= '1.1.0'
     butterknifeVersion = '8.8.1'
-    glide = '4.5.0'
+    glide = '4.8.0'
 
     rxjava2Version = '2.0.5'
     retrofit2Version = '2.2.0'
