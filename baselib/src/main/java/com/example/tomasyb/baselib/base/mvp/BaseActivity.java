@@ -66,7 +66,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
             mUnbinder.unbind();
         }
         super.onDestroy();
-    }
+     }
 
     @Override
     public void showLoadingDialog(String msg) {
