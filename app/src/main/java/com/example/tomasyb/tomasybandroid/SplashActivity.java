@@ -1,10 +1,12 @@
 package com.example.tomasyb.tomasybandroid;
 
 import android.content.Intent;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
+import com.example.tomasyb.baselib.util.StatusBarUtil;
 import com.example.tomasyb.baselib.widget.banner.BGABanner;
 import com.example.tomasyb.baselib.widget.banner.BGALocalImageSize;
 
@@ -14,6 +16,12 @@ import com.example.tomasyb.baselib.widget.banner.BGALocalImageSize;
 public class SplashActivity extends BaseActivity{
     private BGABanner mBackgroundBanner;
     private BGABanner mForegroundBanner;
+
+    @Override
+    public void doBeforeSetContentView() {
+        super.doBeforeSetContentView();
+        StatusBarUtil.setTranslucent(this, StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+    }
 
     @Override
     public int getLayoutId() {
@@ -26,8 +34,8 @@ public class SplashActivity extends BaseActivity{
 //        finish();
         mBackgroundBanner = findViewById(R.id.banner_guide_background);
         mForegroundBanner = findViewById(R.id.banner_guide_foreground);
-        setListener();
-        processLogic();
+        //setListener();
+        //processLogic();
     }
 
     @Override
@@ -70,7 +78,7 @@ public class SplashActivity extends BaseActivity{
         super.onResume();
 
         // 如果开发者的引导页主题是透明的，需要在界面可见时给背景 Banner 设置一个白色背景，避免滑动过程中两个 Banner 都设置透明度后能看到 Launcher
-        mBackgroundBanner.setBackgroundResource(android.R.color.white);
+        //mBackgroundBanner.setBackgroundResource(android.R.color.white);
     }
 
 }

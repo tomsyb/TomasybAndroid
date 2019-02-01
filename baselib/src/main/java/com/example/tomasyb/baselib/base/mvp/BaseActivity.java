@@ -47,11 +47,9 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
     /**
      * 设置布局前设置
      */
-    private void doBeforeSetContentView() {
+    public void doBeforeSetContentView() {
         AppManager.getAppManager().addActivity(this);//添加Activity到堆栈
-        requestWindowFeature(Window.FEATURE_NO_TITLE);//无标题
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//设置竖屏
-        StatusBarUtil.setColor(this,ContextCompat.getColor(this, R.color.b_main_orange));
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
     }
 
     /**

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.tomasyb.baselib.rvadapter.CommonAdapter;
 import com.example.tomasyb.baselib.rvadapter.base.ViewHolder;
 import com.example.tomasyb.baselib.rvadapter.wrapper.HeaderAndFooterWrapper;
@@ -15,6 +16,9 @@ import com.example.tomasyb.baselib.util.ScreenUtils;
 import com.example.tomasyb.baselib.util.SizeUtils;
 import com.example.tomasyb.baselib.util.ToastUtils;
 import com.example.tomasyb.baselib.util.glide.GlideImageView;
+import com.example.tomasyb.baselib.util.glide.progress.CircleProgressView;
+import com.example.tomasyb.baselib.util.glide.progress.OnProgressListener;
+import com.example.tomasyb.baselib.util.glide.transformation.BlurTransformation;
 import com.example.tomasyb.baselib.util.glide.widget.GridLayoutHelper;
 import com.example.tomasyb.baselib.util.glide.widget.ImageData;
 import com.example.tomasyb.baselib.util.glide.widget.NineImageView;
@@ -47,6 +51,11 @@ public class CircleFriendsActivity extends AppCompatActivity {
     private int margin;
 
     private HeaderAndFooterWrapper mHeadWrape;
+    private GlideImageView mWechatImgHead;
+    private GlideImageView mPersionLogo;
+    private CircleProgressView mImgProgress;
+    public static final String girl = "https://raw.githubusercontent.com/sfsheng0322/GlideImageView/master/resources/girl.jpg";
+    public static final String headlogo = "http://img3.imgtn.bdimg.com/it/u=524208507,12616758&fm=206&gp=0.jpg";
 
 
 
@@ -157,6 +166,26 @@ public class CircleFriendsActivity extends AppCompatActivity {
      */
     private View getHeaderView(){
         View view = getLayoutInflater().inflate(R.layout.item_wechat_headview,(ViewGroup)mFriendsRv.getParent(),false);
+        mWechatImgHead =  (GlideImageView)view.findViewById(R.id.wechat_img_head);
+        mImgProgress =  (CircleProgressView)view.findViewById(R.id.img_progress);
+        mPersionLogo =  (GlideImageView)view.findViewById(R.id.persion_logo);
+        /**
+         * .diskCacheStrategy(DiskCacheStrategy.NONE)缓存策略可以不要
+         */
+        mWechatImgHead.centerCrop().error(R.mipmap.image_load_err).diskCacheStrategy(DiskCacheStrategy.NONE).load(girl, R.color.y_space_gray, new OnProgressListener() {
+            @Override
+            public void onProgress(boolean isComplete, int percentage, long bytesRead, long
+                    totalBytes) {
+                if (isComplete){
+                    mImgProgress.setVisibility(View.GONE);
+                }else {
+                    mImgProgress.setVisibility(View.VISIBLE);
+                    mImgProgress.setProgress(percentage);
+                }
+
+            }
+        });
+        mPersionLogo.fitCenter().load(headlogo, R.mipmap.image_loading, new BlurTransformation(this, 25, 1));
         return view;
     }
 }
