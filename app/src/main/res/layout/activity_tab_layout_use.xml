@@ -7,20 +7,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.tomasyb.tomasybandroid.ui.tablayout.TabLayoutUseActivity">
-    <ScrollView
+    <io.agora.yview.tablayout.SlidingTabLayout
+        android:id="@+id/tab_slidtablayout"
+        app:tl_textUnselectColor="@color/y_main_black"
+        app:tl_textSelectColor="@color/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <io.agora.yview.tablayout.SlidingTabLayout
-                android:id="@+id/tab_slidtablayout"
-                app:tl_textUnselectColor="@color/y_main_black"
-                app:tl_textSelectColor="@color/main"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"/>
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="48dp"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/tablayout_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
