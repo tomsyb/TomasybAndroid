@@ -112,7 +112,8 @@ public class MeFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.fab1, R.id.fab2, R.id.fab3, R.id.fab4, R.id.fab5,R.id.ll_share})
+    @OnClick({R.id.fab1, R.id.fab2, R.id.fab3, R.id.fab4, R.id.fab5,R.id.ll_share
+    ,R.id.ll_tablayout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fab1:
@@ -129,6 +130,10 @@ public class MeFragment extends BaseFragment {
                 break;
             case R.id.ll_share:
                 ActivityUtils.startActivity(ShareLoginMainActivity.class);
+                break;
+                // Tablayout的使用
+            case R.id.ll_tablayout:
+
                 break;
         }
     }

@@ -108,7 +108,6 @@
             android:theme="@style/wx_login_style" />
         <!-- 微信登录配置 end -->
 
-        <activity android:name=".ui.banneruse.BannerUseActivity" />
         <activity android:name=".ui.bottombaruse.BottomBarUseActivity" />
         <activity android:name=".ui.titlebaruse.TitleBarUseActivity" />
         <activity android:name=".ui.flow.FlowLayoutActivity" />
@@ -117,9 +116,10 @@
         <activity android:name=".ui.audio.AudioMainActivity" />
         <activity android:name=".ui.addressbook.AddressBookActivity" />
         <activity android:name=".ui.addressbook.AddressBookWithHeaderActivity" />
-        <activity android:name=".ui.addressbook.AddressBookWithSwipDelActivity"></activity>
-        <activity android:name=".ui.cityselected.MeituanCitySelectActivity"></activity>
-        <activity android:name=".ui.main.CircleFriendsActivity"></activity>
+        <activity android:name=".ui.addressbook.AddressBookWithSwipDelActivity" />
+        <activity android:name=".ui.cityselected.MeituanCitySelectActivity" />
+        <activity android:name=".ui.main.CircleFriendsActivity" />
+        <activity android:name=".ui.tablayout.TabLayoutUseActivity"></activity>
     </application>
 
 </manifest>
