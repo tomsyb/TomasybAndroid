@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.LazyFragment;
+import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.tomasybandroid.R;
 
 import butterknife.BindView;
@@ -61,6 +62,7 @@ public class SimpleTabFragment extends LazyFragment {
 
     @Override
     protected void initData() {
+        LogUtils.e("执行一次");
         tvShowTab.setText(mTitle);
     }
 }

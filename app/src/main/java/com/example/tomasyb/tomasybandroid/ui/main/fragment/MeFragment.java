@@ -19,6 +19,7 @@ import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.flow.FlowLayoutActivity;
 import com.example.tomasyb.tomasybandroid.ui.imgselect.ImgSelectActivity;
 import com.example.tomasyb.tomasybandroid.ui.login.ShareLoginMainActivity;
+import com.example.tomasyb.tomasybandroid.ui.tablayout.TabLayoutUseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -133,7 +134,7 @@ public class MeFragment extends BaseFragment {
                 break;
                 // Tablayout的使用
             case R.id.ll_tablayout:
-
+                ActivityUtils.startActivity(TabLayoutUseActivity.class);
                 break;
         }
     }

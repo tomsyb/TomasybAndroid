@@ -40,7 +40,12 @@ public class TabLayoutUseActivity extends AppCompatActivity {
             mFragments.add(SimpleTabFragment.getInstance(title));
         }
         mAdapter = new MyPagerAdapter(getSupportFragmentManager());
-
+        mVp.setAdapter(mAdapter);
+        mTbLayout.setViewPager(mVp,mTitles,this,mFragments);
+        //设置红点
+        mTbLayout.showDot(1);
+        mTbLayout.showMsg(2,4);
+        mTbLayout.setMsgMargin(2,0,10);
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {

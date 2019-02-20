@@ -8,9 +8,16 @@
     android:orientation="vertical"
     tools:context="com.example.tomasyb.tomasybandroid.ui.tablayout.TabLayoutUseActivity">
     <io.agora.yview.tablayout.SlidingTabLayout
+        app:tl_divider_color="@color/y_gray_light"
+        app:tl_divider_padding="@dimen/dp_13"
+        app:tl_divider_width="1dp"
+        app:tl_textBold="SELECT"
+        app:tl_tab_space_equal="true"
         android:id="@+id/tab_slidtablayout"
         app:tl_textUnselectColor="@color/y_main_black"
         app:tl_textSelectColor="@color/main"
+        app:tl_indicator_width_equal_title="true"
+        app:tl_indicator_color="@color/main"
         android:layout_width="match_parent"
         android:layout_height="48dp"/>
     <android.support.v4.view.ViewPager
