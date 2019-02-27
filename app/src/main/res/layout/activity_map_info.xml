@@ -10,17 +10,37 @@
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <android.support.v4.view.ViewPager
-        android:id="@+id/map_vp"
+    <TextView
+        android:layout_marginRight="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="@dimen/dp_5"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingRight="@dimen/dp_5"
+        android:paddingLeft="@dimen/dp_5"
+        android:background="@drawable/shap_solid_black_corners2"
+        android:textColor="@color/y_main_white"
+        android:textSize="@dimen/tv_normal"
+        android:text="成都市"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
         android:layout_alignParentBottom="true"
+        android:clipChildren="false"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_gravity="bottom"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:paddingBottom="10dp"
-        android:paddingEnd="60dp"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:paddingStart="60dp" />
+        android:layout_height="wrap_content">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/map_vp"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingTop="24dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="20dp"
+            />
+    </LinearLayout>
 </RelativeLayout>

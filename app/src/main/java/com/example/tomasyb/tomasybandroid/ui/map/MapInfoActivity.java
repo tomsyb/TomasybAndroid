@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
@@ -15,14 +17,14 @@ import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
+import com.example.tomasyb.baselib.util.ToastUtils;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.common.Constant;
-import com.example.tomasyb.tomasybandroid.ui.map.cardvp.CardItem;
-import com.example.tomasyb.tomasybandroid.ui.map.cardvp.CardPagerAdapter;
-import com.example.tomasyb.tomasybandroid.ui.map.cardvp.ShadowTransformer;
 import com.example.tomasyb.tomasybandroid.ui.map.contact.MapContact;
 import com.example.tomasyb.tomasybandroid.ui.map.pre.MapPresenter;
+import com.example.tomasyb.tomasybandroid.ui.map.tranform.VpTranform;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -39,8 +41,10 @@ public class MapInfoActivity extends BaseActivity<MapContact.presenter> implemen
     // 底部轮滑菜单
     @BindView(R.id.map_vp)
     ViewPager mapVp;
-    private CardPagerAdapter mCardAdapter;
-    private ShadowTransformer mCardShadowTransformer;
+
+    // 图片集合
+    int[] iconIds = {R.drawable.img_map_card1, R.drawable.img_map_card2, R.drawable.img_map_card3,
+            R.drawable.img_map_card4};
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,7 @@ public class MapInfoActivity extends BaseActivity<MapContact.presenter> implemen
         mapView.onCreate(savedInstanceState);
         initMap();
         addMarkerToMap();
+        setTitlePage();
     }
 
     @Override
@@ -190,16 +195,30 @@ public class MapInfoActivity extends BaseActivity<MapContact.presenter> implemen
         marker.setObject("我是对象");
     }
 
+
+
     @Override
-    public void setVpData(List<CardItem> cardItemList) {
-        mCardAdapter = new CardPagerAdapter();
-        for (int i = 0; i < cardItemList.size(); i++) {
-            mCardAdapter.addCardItem(cardItemList.get(i));
+    public void setTitlePage() {
+        List<Integer> dataList = new ArrayList<>();
+        for (int i = 0; i<100; i++){
+            dataList.add(iconIds[i%iconIds.length]);
         }
-        mCardShadowTransformer = new ShadowTransformer(mapVp, mCardAdapter);
-        mCardShadowTransformer.enableScaling(true);//卡片布局是否凸起
-        mapVp.setAdapter(mCardAdapter);
-        mapVp.setPageTransformer(false, mCardShadowTransformer);
-        mapVp.setOffscreenPageLimit(3);
+        BaseVPAdapter<Integer> baseVPAdapter = new BaseVPAdapter<Integer>(this, R.layout.item_map_viewpager, dataList) {
+            @Override
+            public void bindView(View view, Integer data) {
+                ImageView imageView = view.findViewById(R.id.map_card_img);
+                imageView.setImageResource(data);
+                Button btn = view.findViewById(R.id.btn_show);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ToastUtils.showLong("哈哈哈，你被骗了 O(∩_∩)O哈哈~");
+                    }
+                });
+            }
+        };
+        mapVp.setOffscreenPageLimit(4);
+        mapVp.setPageTransformer(false, new VpTranform());
+        mapVp.setAdapter(baseVPAdapter);
     }
 }

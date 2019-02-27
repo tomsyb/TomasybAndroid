@@ -2,7 +2,6 @@ package com.example.tomasyb.tomasybandroid.ui.map.contact;
 
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.IBaseView;
-import com.example.tomasyb.tomasybandroid.ui.map.cardvp.CardItem;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ import java.util.List;
 public interface MapContact {
     interface view extends IBaseView{
         void addMarkerToMap();
-        void setVpData(List<CardItem> cardItemList);
+        void setTitlePage();//设置带标题的卡片布局
     }
     interface presenter extends IBasePresenter{
         void addVpData();// 添加卡片布局数据

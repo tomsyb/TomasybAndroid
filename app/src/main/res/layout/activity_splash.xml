@@ -4,4 +4,12 @@
     style="@style/mm"
     android:background="@color/main"
     tools:context="com.example.tomasyb.tomasybandroid.SplashActivity">
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </RelativeLayout>
 </RelativeLayout>
