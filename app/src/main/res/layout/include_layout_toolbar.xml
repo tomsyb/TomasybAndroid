@@ -5,7 +5,7 @@
     android:layout_height="?attr/actionBarSize"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
-    android:background="@color/b_main_orange"
+    android:background="@color/y_main_orange"
     app:title=""
     android:orientation="vertical">
     <TextView

@@ -6,7 +6,7 @@
 
 ```
 tl_indicator_color 	 color 	            设置显示器颜色
-tl_indicator_height 	dimension 	    设置显示器高度
+tl_indicator_height 	dimension 	    设置显示器高度0就消失
 tl_indicator_width 	dimension 	        设置显示器固定宽度
 tl_indicator_margin_left 	dimension 	设置显示器margin,当indicator_width大于0,无效
 tl_indicator_margin_top 	dimension 	设置显示器margin,当indicator_width大于0,无效

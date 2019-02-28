@@ -1,11 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/tv_show_tab"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <io.agora.yview.tablayout.SegmentTabLayout
+            android:id="@+id/stab_1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            app:tl_bar_color="@color/y_main_white"
+            app:tl_indicator_color="@color/y_main"
+            app:tl_indicator_corner_radius="8dp"
+            app:tl_tab_padding="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"/>
+        <io.agora.yview.tablayout.SegmentTabLayout
+            android:id="@+id/tl_2"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:tl_indicator_anim_enable="true"
+            app:tl_indicator_bounce_enable="false"
+            app:tl_indicator_color="#009688"
+            app:tl_tab_padding="20dp"/>
+        <io.agora.yview.tablayout.SegmentTabLayout
+            android:id="@+id/tl_3"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            app:tl_bar_color="#ffffff"
+            app:tl_indicator_anim_enable="true"
+            app:tl_indicator_color="#F6CE59"
+            app:tl_indicator_margin_bottom="2dp"
+            app:tl_indicator_margin_left="2dp"
+            app:tl_indicator_margin_right="2dp"
+            app:tl_indicator_margin_top="2dp"
+            app:tl_textBold="SELECT"/>
+        <io.agora.yview.tablayout.SegmentTabLayout
+            android:layout_marginTop="@dimen/d10"
+            android:id="@+id/tl_4"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:tl_bar_color="#ffffff"
+            app:tl_indicator_color="#EC7263"
+            app:tl_indicator_margin_bottom="2dp"
+            app:tl_indicator_margin_left="2dp"
+            app:tl_indicator_margin_right="2dp"
+            app:tl_indicator_margin_top="2dp"
+            app:tl_tab_width="80dp"
+            app:tl_textBold="BOTH"/>
+
+        <io.agora.yview.tablayout.SegmentTabLayout
+            android:layout_marginTop="@dimen/d10"
+            android:id="@+id/tl_5"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            app:tl_indicator_anim_enable="true"
+            app:tl_indicator_bounce_enable="false"
+            app:tl_indicator_margin_bottom="2dp"
+            app:tl_indicator_margin_left="2dp"
+            app:tl_indicator_margin_right="2dp"
+            app:tl_indicator_margin_top="2dp"
+            app:tl_tab_space_equal="true"/>
+        <FrameLayout
+            android:id="@+id/fl_change"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"/>
+    </LinearLayout>
+</ScrollView>

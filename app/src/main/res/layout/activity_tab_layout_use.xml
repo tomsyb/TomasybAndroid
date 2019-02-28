@@ -22,6 +22,18 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/tablayout_vp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <io.agora.yview.tablayout.CommonTabLayout
+        android:id="@+id/tab_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        app:tl_indicator_color="@color/y_main"
+        app:tl_textSelectColor="@color/y_main"
+        app:tl_textUnselectColor="@color/y_main_gray"
+        app:tl_underline_color="@color/y_gray_light"
+        app:tl_underline_height="1dp"
+        app:tl_underline_gravity="TOP"/>
+
 
 </LinearLayout>

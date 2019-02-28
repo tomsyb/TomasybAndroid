@@ -1,7 +1,12 @@
 <resources>
-    <string name="bili_share_sdk_share_copy">复制成功</string>
-    <string name="bili_share_sdk_progress_compress_image">正在处理图片...</string>
-    <string name="bili_share_sdk_compress_image_failed">图片处理失败，请稍后重试</string>
-    <string name="bili_share_sdk_not_install_wechat">(>_>)请先安装微信~</string>
-    <string name="bili_share_sdk_not_install_qq">尚未安装QQ或当前QQ版本不支持分享~</string>
+    <string name="social_cancel">已取消</string>
+    <string name="social_share_error">分享失败</string>
+    <string name="social_error">获取信息失败</string>
+    <string name="social_qq_uninstall">QQ未安装</string>
+    <string name="social_qq_unionid_not_set">未申请unionId</string>
+    <string name="social_wx_uninstall">微信未安装</string>
+    <string name="social_wb_uninstall">微博未安装</string>
+    <string name="social_img_not_found">分享图片未找到</string>
+    <string name="social_wx_version_low_error">微信4.2以上才支持分享朋友圈，请升级微信</string>
+    <string name="social_error_appid_empty">appId或appSecret或redirectUrl为空</string>
 </resources>

@@ -4,7 +4,6 @@
     <color name="colorPrimaryDark">#083939</color>
     <color name="colorAccent">#FF4081</color>
     <!-- app主色调-->
-    <color name="b_main_orange">#FA7C20</color>
     <color name="b_main_white">#FFFFFFFF</color>
     <color name="b_main_black">#c9000000</color>
     <color name="b_main_gray">#99d4d4d4</color>

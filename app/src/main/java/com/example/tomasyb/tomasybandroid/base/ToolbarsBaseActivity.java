@@ -40,7 +40,7 @@ public abstract class ToolbarsBaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//无标题
-        StatusBarUtil.setColor(this,ContextCompat.getColor(this, com.example.tomasyb.baselib.R.color.b_main_orange));
+        StatusBarUtil.setColor(this,ContextCompat.getColor(this, R.color.y_main_orange));
         initContentView(R.layout.include_layout_toolbar);
         if (getLayoutId() !=0){
             setContentView(getLayoutId());

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="y_main">#00D0BA</color>
     <color name="y_main_blue">#4277fb</color>
     <color name="y_main_white">#FFFFFF</color>
     <color name="y_main_orange">#FA7C20</color>
@@ -8,7 +9,7 @@
     <color name="y_text_normal">#515151</color>
     <!--空格颜色浅灰色-->
     <color name="y_space_gray">#F5F5F5</color>
-    <color name="y_gray_light">#b0b8b2</color>
-
+    <color name="y_gray_light">#DDDDDD</color>
+    <color name="y_line_gray">#eeeeee</color>
 
 </resources>

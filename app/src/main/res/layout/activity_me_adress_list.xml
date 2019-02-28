@@ -16,6 +16,6 @@
         android:layout_height="match_parent"
         android:paddingRight="8dp"
         android:paddingLeft="8dp"
-        app:sidebar_text_color="@color/b_main_orange"/>
+        app:sidebar_text_color="@color/y_main_orange"/>
 
 </RelativeLayout>

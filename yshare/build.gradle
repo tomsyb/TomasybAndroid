@@ -2,19 +2,13 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 26
-
-
-
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -25,8 +19,9 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api files('libs/open_sdk_r6019_lite.jar')
-    api 'com.sina.weibo.sdk:core:2.0.3:openDefaultRelease@aar'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    compileOnly 'com.android.support:appcompat-v7:26.1.0'
+    compileOnly 'com.google.code.gson:gson:2.8.2'
+    api 'com.sina.weibo.sdk:core:4.3.1:openDefaultRelease@aar'
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.1.6'
 }
