@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tomasyb.tomasybandroid.ui.interview.InterviewMainActivity">
+    <io.agora.yview.tablayout.SlidingTabLayout
+        android:id="@+id/slidtab"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:tl_divider_color="#1A000000"
+        app:tl_divider_padding="13dp"
+        app:tl_divider_width="1dp"
+        app:tl_indicator_color="@color/y_main"
+        app:tl_indicator_height="1dp"
+        app:tl_indicator_width_equal_title="true"
+        app:tl_tab_padding="22dp"
+        app:tl_textSelectColor="@color/y_main"
+        app:tl_textUnselectColor="@color/y_main_black" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/interview_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

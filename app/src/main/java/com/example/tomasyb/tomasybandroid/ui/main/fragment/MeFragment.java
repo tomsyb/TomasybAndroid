@@ -18,6 +18,7 @@ import com.example.tomasyb.baselib.widget.scrollview.TranslucentScrollView;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.flow.FlowLayoutActivity;
 import com.example.tomasyb.tomasybandroid.ui.imgselect.ImgSelectActivity;
+import com.example.tomasyb.tomasybandroid.ui.interview.InterviewMainActivity;
 import com.example.tomasyb.tomasybandroid.ui.login.ShareLoginMainActivity;
 import com.example.tomasyb.tomasybandroid.ui.tablayout.TabLayoutUseActivity;
 
@@ -114,7 +115,7 @@ public class MeFragment extends BaseFragment {
 
 
     @OnClick({R.id.fab1, R.id.fab2, R.id.fab3, R.id.fab4, R.id.fab5,R.id.ll_share
-    ,R.id.ll_tablayout})
+    ,R.id.ll_tablayout,R.id.ll_interview})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fab1:
@@ -135,6 +136,9 @@ public class MeFragment extends BaseFragment {
                 // Tablayout的使用
             case R.id.ll_tablayout:
                 ActivityUtils.startActivity(TabLayoutUseActivity.class);
+                break;
+            case R.id.ll_interview:
+                ActivityUtils.startActivity(InterviewMainActivity.class);
                 break;
         }
     }

@@ -39,8 +39,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.map.MapInfoActivity">
-        </activity>
+        <activity android:name=".ui.map.MapInfoActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
@@ -120,7 +119,8 @@
         <activity android:name=".ui.addressbook.AddressBookWithSwipDelActivity" />
         <activity android:name=".ui.cityselected.MeituanCitySelectActivity" />
         <activity android:name=".ui.main.CircleFriendsActivity" />
-        <activity android:name=".ui.tablayout.TabLayoutUseActivity"></activity>
+        <activity android:name=".ui.tablayout.TabLayoutUseActivity" />
+        <activity android:name=".ui.interview.InterviewMainActivity"></activity>
     </application>
 
 </manifest>

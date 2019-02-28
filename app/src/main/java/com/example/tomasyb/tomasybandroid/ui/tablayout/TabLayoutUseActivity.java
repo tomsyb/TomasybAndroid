@@ -2,11 +2,10 @@ package com.example.tomasyb.tomasybandroid.ui.tablayout;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.tomasyb.baselib.widget.viewpager.ComPagerWithTitleAdapter;
 import com.example.tomasyb.tomasybandroid.R;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class TabLayoutUseActivity extends AppCompatActivity {
     CommonTabLayout mCommonTab;
     private String[] mTitles = {"ios","Android","Java","math"};
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private MyPagerAdapter mAdapter;
+    private ComPagerWithTitleAdapter mAdapter;
     private int[] mIconUnselectIds = {
             R.drawable.ic_yichexiao, R.drawable.ic_yichutuan_normal,
             R.drawable.ic_chutuanqian_normal, R.drawable.ic_yijieshu_normal};
@@ -50,7 +49,7 @@ public class TabLayoutUseActivity extends AppCompatActivity {
         for (String title : mTitles) {
             mFragments.add(SimpleTabFragment.getInstance(title));
         }
-        mAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        mAdapter = new ComPagerWithTitleAdapter(getSupportFragmentManager(),mFragments,mTitles);
         mVp.setAdapter(mAdapter);
         mTbLayout.setViewPager(mVp,mTitles,this,mFragments);
         //设置红点
@@ -67,28 +66,7 @@ public class TabLayoutUseActivity extends AppCompatActivity {
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
-
         mCommonTab.setTabData(mTabEntities);
     }
 
-    private class MyPagerAdapter extends FragmentPagerAdapter {
-        public MyPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragments.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitles[position];
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragments.get(position);
-        }
-    }
 }

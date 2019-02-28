@@ -154,6 +154,7 @@
             </LinearLayout>
             <include layout="@layout/include_line_one"/>
             <LinearLayout
+                android:id="@+id/ll_interview"
                 style="@style/mwv"
                 android:background="@color/white">
                 <LinearLayout
@@ -167,7 +168,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/d16"/>
                     <TextView
-                        android:text="基本资料"
+                        android:text="面试资料"
                         style="@style/am"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="17dp"/>
