@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <TextView
-        android:textColor="@color/b_main_black"
+        android:text="sfdfds"
+        android:textColor="@color/y_main_orange"
         android:textSize="14sp"
         android:id="@+id/tv_showlifecycle"
         android:layout_width="match_parent"

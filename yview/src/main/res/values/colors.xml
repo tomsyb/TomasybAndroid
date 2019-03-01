@@ -7,6 +7,7 @@
     <color name="y_main_black">#c9000000</color>
     <color name="y_main_gray">#888888</color>
     <color name="y_text_normal">#515151</color>
+    <color name="y_text_gray">#888888</color>
     <!--空格颜色浅灰色-->
     <color name="y_space_gray">#F5F5F5</color>
     <color name="y_gray_light">#DDDDDD</color>

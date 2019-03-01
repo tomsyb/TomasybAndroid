@@ -36,8 +36,8 @@ public class InterviewMainActivity extends BaseActivity {
     }
 
     private void initTablayout() {
-        for (String title : mTitles) {
-            mFragments.add(InterviewListFragment.getInstance());
+        for (int i = 0; i < mTitles.length; i++) {
+            mFragments.add(InterviewListFragment.getInstance(i));
         }
         mSlidTablayout.setViewPager(mVp,mTitles,this,mFragments);
     }

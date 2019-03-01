@@ -24,32 +24,32 @@ public class LifeCycleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_life_cycle);
-        LogUtils.e("执行-->onCreate");
+        mTvShow.append("onCreate");
         ButterKnife.bind(this);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        LogUtils.e("执行-->onStart");
+        mTvShow.append("onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtils.e("执行-->onResume");
+        mTvShow.append("onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        LogUtils.e("执行-->onPause");
+        mTvShow.append("onPause");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtils.e("执行-->onDestroy");
+        mTvShow.append("onDestroy");
     }
 
     /**

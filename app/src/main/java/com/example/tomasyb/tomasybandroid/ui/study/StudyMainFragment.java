@@ -74,7 +74,7 @@ public class StudyMainFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        String json = Common.getJson(getActivity(), "rx.json");
+        String json = GsonUtils.getJson(getActivity(), "rx.json");
         GsonUtils.fromJson(json, StudyMainEntity.class);
         StudyMainEntity bean =  GsonUtils.fromJson(json, StudyMainEntity.class);
         mRxjavaDatas = bean.getRxjava();

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F5F8FE"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="8dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/y_main_white">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/y_main_black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="王博" />
+        <TextView
+
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:background="@mipmap/common_tag_zhengchang"
+            android:id="@+id/tv_entity"
+            android:layout_alignParentRight="true"
+            android:text="实例"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="16dp"
+            android:layout_below="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/y_main_gray"
+            android:textSize="13sp"
+            android:text="执法机构" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

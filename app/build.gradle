@@ -86,4 +86,5 @@ dependencies {
     implementation project(':yview')
     implementation project(':yshare')
     implementation project(':yzxing')
+    implementation project(':yweb')
 }
