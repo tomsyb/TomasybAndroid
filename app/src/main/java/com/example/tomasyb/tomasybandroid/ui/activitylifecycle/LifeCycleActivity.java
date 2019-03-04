@@ -15,6 +15,7 @@ import butterknife.OnClick;
 
 /**
  * Activity生命周期
+ * 正常：onCreate() -> onStart() -> onResume() -> onPause() -> onStop() -> onDetroy()
  */
 public class LifeCycleActivity extends AppCompatActivity {
 
@@ -24,32 +25,27 @@ public class LifeCycleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_life_cycle);
-        mTvShow.append("onCreate");
         ButterKnife.bind(this);
     }
 
     @Override
     protected void onStart() {
-        super.onStart();
-        mTvShow.append("onStart");
+        super.onStart();;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mTvShow.append("onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mTvShow.append("onPause");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mTvShow.append("onDestroy");
     }
 
     /**

@@ -17,6 +17,7 @@ import com.example.tomasyb.baselib.util.ActivityUtils;
 import com.example.tomasyb.baselib.util.GsonUtils;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.activitylifecycle.LifeCycleActivity;
+import com.example.tomasyb.tomasybandroid.ui.androidservice.ServiceMainActivity;
 import com.example.tomasyb.tomasybandroid.ui.interview.entity.InterviewListEty;
 
 import java.util.ArrayList;
@@ -105,6 +106,10 @@ public class InterviewListFragment extends BaseFragment{
                             // Activity生命周期
                             case 0:
                                 ActivityUtils.startActivity(LifeCycleActivity.class);
+                                break;
+                            // Service生命周期
+                            case 1:
+                                ActivityUtils.startActivity(ServiceMainActivity.class);
                                 break;
                         }
                     }

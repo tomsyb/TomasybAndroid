@@ -39,7 +39,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.map.MapInfoActivity"></activity>
+        <activity android:name=".ui.map.MapInfoActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".example.callback.CallBackActivity" />
         <activity android:name=".example.life.ActivityLifeActivity" />
@@ -120,7 +120,11 @@
         <activity android:name=".ui.cityselected.MeituanCitySelectActivity" />
         <activity android:name=".ui.main.CircleFriendsActivity" />
         <activity android:name=".ui.tablayout.TabLayoutUseActivity" />
-        <activity android:name=".ui.interview.InterviewMainActivity"></activity>
+        <activity android:name=".ui.interview.InterviewMainActivity" />
+        <activity android:name=".ui.androidservice.ServiceMainActivity"></activity>
+        <!-- _____________________________________________________________服务相关 -->
+        <service android:name="com.example.tomasyb.tomasybandroid.ui.androidservice.MyService"
+            android:exported="true"/>
     </application>
 
 </manifest>

@@ -4,7 +4,13 @@
       "type": 0,
       "name": "Activity生命周期",
       "htmlurl": "https://github.com/Tomsyb/TomasybAndroid/blob/master/files/interview/Activity.md",
-      "content": "可用于获取一个被观察的对象"
+      "content": "onCreate() -> onStart() -> onResume() -> onPause() -> onStop() -> onDetroy()"
+    },
+    {
+      "type": 1,
+      "name": "Service生命周期",
+      "htmlurl": "https://github.com/Tomsyb/TomasybAndroid/blob/master/files/interview/Activity.md",
+      "content": "service 启动方式有两种，一种是通过startService()方式进行启动，另一种是通过bindService()方式进行启动。不同的启动方式他们的生命周期是不一样."
     }
   ]
 }
