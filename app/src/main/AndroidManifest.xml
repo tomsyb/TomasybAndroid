@@ -121,10 +121,13 @@
         <activity android:name=".ui.main.CircleFriendsActivity" />
         <activity android:name=".ui.tablayout.TabLayoutUseActivity" />
         <activity android:name=".ui.interview.InterviewMainActivity" />
-        <activity android:name=".ui.androidservice.ServiceMainActivity"></activity>
+        <activity android:name=".ui.androidservice.ServiceMainActivity" />
         <!-- _____________________________________________________________服务相关 -->
-        <service android:name="com.example.tomasyb.tomasybandroid.ui.androidservice.MyService"
-            android:exported="true"/>
+        <service
+            android:name=".ui.androidservice.MyService"
+            android:exported="true" />
+
+        <activity android:name=".ui.outofmemory.MainOutOfMemoryActivity"></activity>
     </application>
 
 </manifest>

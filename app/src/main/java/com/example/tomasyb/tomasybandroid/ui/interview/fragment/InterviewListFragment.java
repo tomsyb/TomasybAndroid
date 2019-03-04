@@ -102,7 +102,7 @@ public class InterviewListFragment extends BaseFragment{
                 holder.setOnClickListener(R.id.tv_entity, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        switch (datasBean.getType()){
+                        switch (position){
                             // Activity生命周期
                             case 0:
                                 ActivityUtils.startActivity(LifeCycleActivity.class);
