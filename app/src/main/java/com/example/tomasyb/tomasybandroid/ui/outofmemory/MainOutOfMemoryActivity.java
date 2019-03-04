@@ -1,5 +1,7 @@
 package com.example.tomasyb.tomasybandroid.ui.outofmemory;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -28,12 +30,52 @@ import com.example.tomasyb.tomasybandroid.R;
  在这些资源不使用的时候，记得调用相应的类似close（）、destroy（）、recycler（）、release（）等方法释放。
  七、集合对象没有及时清理引起的内存泄漏。
  通常会把一些对象装入到集合中，当不使用的时候一定要记得及时清理集合，让相关对象不再被引用。
+
+ 内存分配策略
+ 内存分配策略：1.静态、栈式和堆试分配（对应的内存空间静态存储区也叫方法区、栈区、堆区）
+ 静态存储区：放静态数据，全局static数据和常量，此内存在编译时就已经分配好，在程序整个运行期间都存在
+ 栈区：      当方法被执行时，方法体内的局部变量（其中包括基础数据类型、对象的引用）都在栈上创建，并在方法执行结束时这些局部变量所持有的内存将会自动被释放。因为栈内存分配运算内置于处理器的指令集中，效率很高，但是分配的内存容量有限
+ 堆区：       又称动态内存分配，通常就是指在程序运行时直接 new 出来的内存，也就是对象的实例。这部分内存在不使用时将会由 Java 垃圾回收器来负责回收
+
+
+
  */
 public class MainOutOfMemoryActivity extends AppCompatActivity {
-
+    /**
+     * 作用:
+     * 处理异步消息
+     * 主线程和子线程通过Handler来进行通信，子线程可以通过Handler来通知主线程进行UI更新
+     * 警告：In Android, Handler classes should be static or leaks might occur.会出现严重的内存泄漏
+     * Handler分析：
+     * android:程序启动，framework会
+     *
+     */
+    private Handler mHander = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outof_memory_main);
     }
+
+    /**
+     * 总结：
+     * 局部变量的基本数据类型和引用存储在栈中，引用的对象实体在堆中，因为它们属于方法中的变量，生命周期随方法结束
+     * 成员变量全部存储在堆中（包括基本数据类型，引用和引用的对象实体）因它们属于类，类对象终究是要被new出来使用的
+     */
+    Sample sample3 = new Sample();//指向的对象在堆上，包括这个对象的所有成员s1和sample1
+    public class Sample{
+        int s1 = 0;
+        Sample sample1 = new Sample();
+        public void method(){
+            //局部变量s2和引用变量sample2在栈中
+            int s2=1;
+            Sample sample2 = new Sample();//其指向的对象在堆上
+        }
+    }
+
 }

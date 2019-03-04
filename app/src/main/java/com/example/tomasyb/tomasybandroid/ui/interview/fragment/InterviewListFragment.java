@@ -19,6 +19,7 @@ import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.activitylifecycle.LifeCycleActivity;
 import com.example.tomasyb.tomasybandroid.ui.androidservice.ServiceMainActivity;
 import com.example.tomasyb.tomasybandroid.ui.interview.entity.InterviewListEty;
+import com.example.tomasyb.tomasybandroid.ui.outofmemory.MainOutOfMemoryActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +111,10 @@ public class InterviewListFragment extends BaseFragment{
                             // Service生命周期
                             case 1:
                                 ActivityUtils.startActivity(ServiceMainActivity.class);
+                                break;
+                            // 内存泄漏
+                            case 2:
+                                ActivityUtils.startActivity(MainOutOfMemoryActivity.class);
                                 break;
                         }
                     }

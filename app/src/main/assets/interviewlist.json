@@ -15,8 +15,8 @@
     {
       "type": 0,
       "name": "3、Android内存泄露及管理",
-      "htmlurl": "https://github.com/Tomsyb/TomasybAndroid/blob/master/app/src/main/java/com/example/tomasyb/tomasybandroid/ui/androidservice/ServiceMainActivity.java",
-      "content": "service 启动方式有两种，一种是通过startService()方式进行启动，另一种是通过bindService()方式进行启动。不同的启动方式他们的生命周期是不一样."
+      "htmlurl": "https://github.com/Tomsyb/TomasybAndroid/blob/master/app/src/main/java/com/example/tomasyb/tomasybandroid/ui/outofmemory/MainOutOfMemoryActivity.java",
+      "content": "内存溢出 out of memory：是指程序在申请内存时，没有足够的内存空间供其使用，出现out of memory；比如申请了一个integer,但给它存了long才能存下的数，那就是内存溢出。内存溢出通俗的讲就是内存不够用。"
     }
   ]
 }
