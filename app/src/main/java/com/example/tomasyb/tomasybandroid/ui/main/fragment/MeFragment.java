@@ -37,7 +37,7 @@ import butterknife.Unbinder;
  * @since JDK 1.8
  */
 
-public class MeFragment extends BaseFragment {
+public class MeFragment extends BaseFragment implements TranslucentScrollView.TranslucentChangedListener{
 
 
     @BindView(R.id.fab1)
@@ -52,6 +52,9 @@ public class MeFragment extends BaseFragment {
     FloatingActionButton fab5;
     @BindView(R.id.menu_red)
     FloatingActionMenu menuRed;
+    /**
+     * 伸缩
+     */
     @BindView(R.id.me_actionbar)
     TranslucentActionBar mActionBar;
     @BindView(R.id.me_scrollview)
@@ -59,7 +62,7 @@ public class MeFragment extends BaseFragment {
     // 伸缩的view
     @BindView(R.id.me_ll_header)
     View zoomView;
-    Unbinder unbinder;
+
 
 
 
@@ -78,18 +81,14 @@ public class MeFragment extends BaseFragment {
         menuRed.setClosedOnTouchOutside(true);// 点击外部关闭
         // 标题栏的设置
         mActionBar.setTitle("我的");
-        mActionBar.setNeedTranslucent(true, false);
+        mActionBar.setNeedTranslucent();
         mActionBar.setStatusBarHeight(BarUtils.getStatusBarHeight());
         // mTransScrollView透明度监听
-        mTransScrollView.setTransChangeListener(new TranslucentScrollView
-                .TranslucentChangeListener() {
-            @Override
-            public void onTranslucentChanged(int transAlpha) {
-                mActionBar.mTvTitle.setVisibility(transAlpha > 48 ? View.VISIBLE : View.GONE);
-            }
-        });
+        mTransScrollView.setTranslucentChangedListener(this);
         // 关联需要渐变的view
         mTransScrollView.setTransView(mActionBar);
+        //设置ActionBar键渐变颜色
+        mTransScrollView.setTransColor(getResources().getColor(R.color.y_main_orange));
         // 关联伸缩视图
         mTransScrollView.setPullZoomView(zoomView);
     }
@@ -141,5 +140,9 @@ public class MeFragment extends BaseFragment {
                 ActivityUtils.startActivity(InterviewMainActivity.class);
                 break;
         }
+    }
+    @Override
+    public void onTranslucentChanged(int transAlpha) {
+        mActionBar.mTvTitle.setVisibility(transAlpha > 48 ? View.VISIBLE : View.GONE);
     }
 }

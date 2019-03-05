@@ -10,7 +10,7 @@
     android:orientation="vertical"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
-    tools:context="com.example.tomasyb.tomasybandroid.ui.comui.LoginActivity">
+    tools:context="com.example.tomasyb.tomasybandroid.ui.login.LoginActivity">
     <ImageView
         android:id="@+id/close"
         android:src="@drawable/ic_close_white"
@@ -18,28 +18,34 @@
         android:padding="10dp"
         android:layout_margin="10dp"
         android:layout_height="wrap_content" />
-    <TextView
-        android:textColor="@color/b_main_white"
+    <LinearLayout
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:drawablePadding="10dp"
-        android:gravity="center_vertical"
-        android:text="欢迎登陆"
-        android:textSize="22sp"
-        android:textStyle="bold"/>
+        android:orientation="vertical">
+        <ImageView
+            android:src="@mipmap/ic_login_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/b_main_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="欢迎登陆"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="210dp"
-        android:layout_below="@+id/logo"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,7 +118,7 @@
                 android:maxLength="30"
                 android:singleLine="true"
                 android:text=""
-                android:textColor="@color/b_text_gray"
+                android:textColor="@color/y_main_white"
                 android:textColorHint="@color/b_main_white"
                 android:textSize="16sp" />
 
@@ -139,16 +145,21 @@
             android:background="@color/b_line_gray" />
 
         <Button
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="21dp"
-            android:background="@drawable/shap_solidwhite_strokegray_r8"
+            android:background="@drawable/selector_btn_login_whitetomain"
             android:text="登录"
             android:textColor="@color/main"
             android:textSize="18dp" />
 
         <LinearLayout
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

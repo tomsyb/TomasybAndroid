@@ -42,7 +42,7 @@ public final class TranslucentActionBar extends LinearLayout {
     }
     private void init() {
         setOrientation(HORIZONTAL);// 设置横向
-        View contentView = inflate(getContext(), R.layout.actionbar_trans, this);
+        View contentView = inflate(getContext(), R.layout.include_title_bar, this);
         // 下面找控件
         mTvTitle = (TextView) contentView.findViewById(R.id.lay_actionbar_title);
         mStatusBar = (View) contentView.findViewById(R.id.v_statusbar);
@@ -58,7 +58,12 @@ public final class TranslucentActionBar extends LinearLayout {
         params.height = statusBarHeight;
         mStatusBar.setLayoutParams(params);
     }
-
+    /**
+     * 设置是否需要渐变
+     */
+    public void setNeedTranslucent() {
+        setNeedTranslucent(true, false);
+    }
     /**
      * 设置是否需要渐变，并且隐藏标题
      * @param translucent

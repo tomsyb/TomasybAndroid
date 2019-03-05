@@ -260,10 +260,8 @@
         </LinearLayout>
     </com.example.tomasyb.baselib.widget.scrollview.TranslucentScrollView>
     <com.example.tomasyb.baselib.widget.scrollview.TranslucentActionBar
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        style="@style/mw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/me_actionbar"/>
     <include layout="@layout/item_floating_action_button"/>
 

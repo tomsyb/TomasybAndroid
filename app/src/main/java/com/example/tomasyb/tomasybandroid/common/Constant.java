@@ -22,7 +22,8 @@ public class Constant {
     /**
      * 界面跳转
      */
-    public static final String MAIN = "/main/mainActivity";
+    public static final String ACTIVITY_LOGIN = "/login/LoginActivity";
+    public static final String ACTIVITY_MAIN = "/main/mainActivity";
     public static final String MAIN_STUDY = "/study/main/StudyMainActivity";
     public static final String MAIN_STUDY_RXJAVA = "/study/RxjavaActivity";
     public static final String STUDY_RETROFIT= "/study/RetrofitStudyActivity";

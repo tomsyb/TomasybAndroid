@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentTransaction;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
+import com.example.tomasyb.baselib.util.LogUtils;
+import com.example.tomasyb.baselib.util.SPUtils;
 import com.example.tomasyb.baselib.widget.bottombar.BottomBar;
 import com.example.tomasyb.baselib.widget.bottombar.OnTabSelectListener;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.BookFragment;
@@ -32,6 +34,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        LogUtils.e("--->"+SPUtils.getInstance().getString("qq_img_head"));
         initFragment();
         initBottomBar();
     }

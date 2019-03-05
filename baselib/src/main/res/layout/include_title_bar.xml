@@ -37,8 +37,11 @@
         </RelativeLayout>
         <!--中间-->
         <TextView
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:id="@+id/lay_actionbar_title"
-            style="@style/tv_ww_b16"
+            android:textColor="@color/b_txt"
             android:layout_centerInParent="true"
             android:text="标题"/>
         <!--右边待开发-->

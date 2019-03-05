@@ -1,6 +1,5 @@
 package com.example.tomasyb.tomasybandroid;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.Button;
@@ -15,7 +14,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -37,7 +35,9 @@ public class SplashActivity extends BaseActivity {
                     break;
                 // 跳转到主界面
                 case 1:
-                    ARouter.getInstance().build(Constant.MAIN).navigation();
+                    ARouter.getInstance().build(Constant.ACTIVITY_LOGIN)
+                            .withTransition(R.anim.slide_in_bottom,R.anim.slide_out_bottom)
+                            .navigation(SplashActivity.this);
                     finish();
                     break;
             }
