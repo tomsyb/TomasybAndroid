@@ -7,6 +7,7 @@ import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
 import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.util.SPUtils;
+import com.example.tomasyb.baselib.util.StatusBarUtil;
 import com.example.tomasyb.baselib.widget.bottombar.BottomBar;
 import com.example.tomasyb.baselib.widget.bottombar.OnTabSelectListener;
 import com.example.tomasyb.tomasybandroid.ui.main.fragment.BookFragment;
@@ -37,6 +38,15 @@ public class MainActivity extends BaseActivity {
         LogUtils.e("--->"+SPUtils.getInstance().getString("qq_img_head"));
         initFragment();
         initBottomBar();
+    }
+
+    @Override
+    public void doBeforeSetContentView() {
+        super.doBeforeSetContentView();
+        /**
+         * 在fragment设置全屏
+         */
+        StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, null);
     }
 
     @Override

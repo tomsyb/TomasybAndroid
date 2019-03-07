@@ -24,6 +24,7 @@ import com.example.tomasyb.baselib.util.AnimationUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.util.ObjectUtils;
 import com.example.tomasyb.baselib.util.SPUtils;
+import com.example.tomasyb.baselib.util.StatusBarUtil;
 import com.example.tomasyb.baselib.util.ToastUtils;
 import com.example.tomasyb.baselib.widget.KeyboardWatcher;
 import com.example.tomasyb.tomasybandroid.R;
@@ -64,6 +65,12 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
      */
     private SocialHelper socialHelper;
 
+
+    @Override
+    public void doBeforeSetContentView() {
+        super.doBeforeSetContentView();
+        StatusBarUtil.setTranslucentForImageView(this,null);
+    }
 
     @Override
     public int getLayoutId() {

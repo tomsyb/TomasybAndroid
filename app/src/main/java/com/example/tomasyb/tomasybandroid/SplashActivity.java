@@ -48,7 +48,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void doBeforeSetContentView() {
         super.doBeforeSetContentView();
-        StatusBarUtil.setTranslucent(this, StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+        StatusBarUtil.setTranslucentForImageView(this,null);
     }
 
     @Override

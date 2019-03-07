@@ -42,6 +42,9 @@ dependencies {
     api 'com.github.bumptech.glide:annotations:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     api "com.github.bumptech.glide:okhttp3-integration:4.8.0"
+    // glide各种效果transformations https://github.com/wasabeef/glide-transformations
+    compile 'jp.wasabeef:glide-transformations:4.0.1'
+
 
     compile 'com.android.support:multidex:1.0.1'//分包
 
@@ -73,6 +76,5 @@ dependencies {
     compile 'com.orhanobut:logger:1.13'
 
     compile 'com.github.promeg:tinypinyin:2.0.3'
-
 
 }

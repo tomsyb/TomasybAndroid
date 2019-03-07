@@ -49,7 +49,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
      */
     public void doBeforeSetContentView() {
         AppManager.getAppManager().addActivity(this);//添加Activity到堆栈
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.main));
     }
 
     /**

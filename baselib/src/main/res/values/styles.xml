@@ -6,16 +6,15 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:windowActionBar">false</item>
         <item name="windowActionBar">false</item>
-        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/main</item>
+        <item name="colorPrimaryDark">@color/main</item>
+        <item name="colorAccent">@color/main</item>
     </style>
     <!--清单文件主题样式-->
     <style name="AppTheme" parent="AppBaseTheme">
     </style>
-
+    <!--  <item name="android:windowAnimationStyle">@style/AnimationActivity</item>使应用统一转场动画-->
     <style name="AnimationActivity" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_left_in</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>

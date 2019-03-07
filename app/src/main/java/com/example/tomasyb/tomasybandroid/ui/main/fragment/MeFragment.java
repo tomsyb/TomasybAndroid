@@ -6,11 +6,18 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.util.ActivityUtils;
 import com.example.tomasyb.baselib.util.BarUtils;
+import com.example.tomasyb.baselib.util.SPUtils;
+import com.example.tomasyb.baselib.util.StatusBarUtil;
 import com.example.tomasyb.baselib.widget.fab.FloatingActionButton;
 import com.example.tomasyb.baselib.widget.fab.FloatingActionMenu;
 import com.example.tomasyb.baselib.widget.scrollview.TranslucentActionBar;
@@ -26,6 +33,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import jp.wasabeef.glide.transformations.BlurTransformation;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 
 /**
@@ -62,6 +72,10 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
     // 伸缩的view
     @BindView(R.id.me_ll_header)
     View zoomView;
+    @BindView(R.id.img_head)
+    ImageView mImgHead;
+    @BindView(R.id.img_bg)
+    ImageView mImgBg;
 
 
 
@@ -78,9 +92,16 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
 
     @Override
     protected void initView(View view, @Nullable Bundle savedInstanceState) {
+        //MultiTransformation multi = new MultiTransformation(new BlurTransformation(25),new CropCircleTransformation());//模糊和圆一起
+        Glide.with(this).load(SPUtils.getInstance().getString("qq_img_head"))
+                .apply(RequestOptions.bitmapTransform(new CropCircleTransformation()))
+                .into(mImgHead);
+        Glide.with(this).load(SPUtils.getInstance().getString("qq_img_head"))
+                .apply(RequestOptions.bitmapTransform(new BlurTransformation(25)))
+                .into(mImgBg);
         menuRed.setClosedOnTouchOutside(true);// 点击外部关闭
         // 标题栏的设置
-        mActionBar.setTitle("我的");
+        mActionBar.setData("个人中心", 0, null, 0, null, null);
         mActionBar.setNeedTranslucent();
         mActionBar.setStatusBarHeight(BarUtils.getStatusBarHeight());
         // mTransScrollView透明度监听
@@ -88,7 +109,7 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
         // 关联需要渐变的view
         mTransScrollView.setTransView(mActionBar);
         //设置ActionBar键渐变颜色
-        mTransScrollView.setTransColor(getResources().getColor(R.color.y_main_orange));
+        mTransScrollView.setTransColor(getResources().getColor(R.color.main));
         // 关联伸缩视图
         mTransScrollView.setPullZoomView(zoomView);
     }
@@ -143,6 +164,6 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
     }
     @Override
     public void onTranslucentChanged(int transAlpha) {
-        mActionBar.mTvTitle.setVisibility(transAlpha > 48 ? View.VISIBLE : View.GONE);
+        mActionBar.tvTitle.setVisibility(transAlpha > 48 ? View.VISIBLE : View.GONE);
     }
 }
