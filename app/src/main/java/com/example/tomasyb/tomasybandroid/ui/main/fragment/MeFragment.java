@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.MultiTransformation;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.tomasyb.baselib.base.glide.GlideApp;
 import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.util.ActivityUtils;
@@ -93,9 +94,17 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
     @Override
     protected void initView(View view, @Nullable Bundle savedInstanceState) {
         //MultiTransformation multi = new MultiTransformation(new BlurTransformation(25),new CropCircleTransformation());//模糊和圆一起
-        Glide.with(this).load(SPUtils.getInstance().getString("qq_img_head"))
+        /**
+         * GlideApp使用这个必须先加入
+         */
+        GlideApp.with(this).load(SPUtils.getInstance().getString("qq_img_head"))
+                .placeholder(R.mipmap.ic_login_top)
+                .error(R.mipmap.ic_login_top)
                 .apply(RequestOptions.bitmapTransform(new CropCircleTransformation()))
                 .into(mImgHead);
+//        Glide.with(this).load(SPUtils.getInstance().getString("qq_img_head"))
+//                .apply(RequestOptions.bitmapTransform(new CropCircleTransformation()))
+//                .into(mImgHead);
         Glide.with(this).load(SPUtils.getInstance().getString("qq_img_head"))
                 .apply(RequestOptions.bitmapTransform(new BlurTransformation(25)))
                 .into(mImgBg);

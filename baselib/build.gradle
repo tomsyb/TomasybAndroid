@@ -37,11 +37,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     /**
      * 图片加载glide
+     * 最小SDK >=API14
+     * Complie SDK Version>=27
+     * SupportLibrary 27,若不是使用exclude
+     * implementation('com.github.bumptech.glide:glide:4.8.0') {
+     * exclude group: "com.android.support"
+     * }
      */
     api 'com.github.bumptech.glide:glide:' + rootProject.ext.glide
-    api 'com.github.bumptech.glide:annotations:4.8.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
-    api "com.github.bumptech.glide:okhttp3-integration:4.8.0"
+    api 'com.github.bumptech.glide:annotations:'+ rootProject.ext.glide
+    annotationProcessor 'com.github.bumptech.glide:compiler:'+ rootProject.ext.glide
+    api "com.github.bumptech.glide:okhttp3-integration:"+ rootProject.ext.glide
     // glide各种效果transformations https://github.com/wasabeef/glide-transformations
     compile 'jp.wasabeef:glide-transformations:4.0.1'
 

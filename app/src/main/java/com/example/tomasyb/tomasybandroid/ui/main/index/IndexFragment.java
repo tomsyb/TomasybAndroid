@@ -20,6 +20,8 @@ import com.example.tomasyb.baselib.refresh.api.RefreshHeader;
 import com.example.tomasyb.baselib.refresh.api.RefreshLayout;
 import com.example.tomasyb.baselib.refresh.listener.SimpleMultiPurposeListener;
 import com.example.tomasyb.baselib.util.ActivityUtils;
+import com.example.tomasyb.baselib.util.BarUtils;
+import com.example.tomasyb.baselib.util.LogUtils;
 import com.example.tomasyb.baselib.util.ScreenUtils;
 import com.example.tomasyb.baselib.util.SizeUtils;
 import com.example.tomasyb.baselib.util.ToastUtils;
@@ -74,6 +76,8 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     ButtonBarLayout buttonBarLayout;
     @BindView(R.id.iv_menu)
     ImageView ivMenu;
+    @BindView(R.id.v_statusbar)
+    View mStatusBar;
     private final String[] mTitles = {
             "动态", "文章", "问答"
     };
@@ -147,6 +151,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
 
     @Override
     public void initViews() {
+        setStatusBarHeight(BarUtils.getStatusBarHeight());
         mVp.setAdapter(new ComFragmentAdapter(getActivity().getSupportFragmentManager(),
                 getFragments()));
         mVp.setOffscreenPageLimit(10);
@@ -189,15 +194,18 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
                 if (yPosition < toolBarPositionY) {
                     mSlidTabLayoutTitle.setVisibility(View.VISIBLE);
                     scrollView.setNeedScroll(false);
+                    LogUtils.e("------");
                 } else {
                     mSlidTabLayoutTitle.setVisibility(View.GONE);
                     scrollView.setNeedScroll(true);
+                    LogUtils.e("------2");
                 }
                 if (lastScrollY < h) {
                     scrollY = Math.min(h, scrollY);
                     mScrollY = scrollY > h ? h : scrollY;
                     buttonBarLayout.setAlpha(1f * mScrollY / h);
                     toolbar.setBackgroundColor(((255 * mScrollY / h) << 24) | color);
+                    mStatusBar.setBackgroundColor(((255 * mScrollY / h) << 24) | color);
                     //ivHeader.setTranslationY(mOffset - mScrollY);
                 }
                 if (scrollY == 0) {
@@ -212,6 +220,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         });
         buttonBarLayout.setAlpha(0);
         toolbar.setBackgroundColor(0);
+        mStatusBar.setBackgroundColor(0);
     }
 
 
@@ -240,7 +249,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
 
     @Override
     public void dealWithViewPager() {
-        toolBarPositionY = toolbar.getHeight();
+        toolBarPositionY = toolbar.getHeight()+BarUtils.getStatusBarHeight();
         ViewGroup.LayoutParams params = mVp.getLayoutParams();
         params.height = ScreenUtils.getScreenHeight() - toolBarPositionY - mSlidTabLayout
                 .getHeight() + 1;
@@ -285,5 +294,16 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
                 ActivityUtils.startActivity(CircleFriendsActivity.class);
                 break;
         }
+    }
+
+    /**
+     * 设置状态栏高度
+     *
+     * @param statusBarHeight
+     */
+    public void setStatusBarHeight(int statusBarHeight) {
+        ViewGroup.LayoutParams params = mStatusBar.getLayoutParams();
+        params.height = statusBarHeight;
+        mStatusBar.setLayoutParams(params);
     }
 }
