@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="y_main">#00D0BA</color>
+    <color name="y_color_main">#00D0BA</color>
     <color name="y_main_blue">#4277fb</color>
     <color name="y_main_white">#FFFFFF</color>
     <color name="y_main_orange">#FA7C20</color>
