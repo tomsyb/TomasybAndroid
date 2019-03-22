@@ -1,9 +1,12 @@
 package com.example.tomasyb.tomasybandroid.ui.main.contact;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.IBaseView;
+import com.example.tomasyb.tomasybandroid.ui.main.entity.IndexMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +29,19 @@ public interface IndexContact {
         void dealWithViewPager();
         //获取fragment集合
         List<Fragment> getFragments();
+        // 获取context
+        FragmentActivity getContexts();
+        // 设置弹框的数据
+        void setDialogData(List<IndexMenu.DataBean> list);
     }
     //p
     interface presenter extends IBasePresenter {
         // 加载本地图片不用网络请求
         ArrayList<Integer> getLocationBannerData();
+
+        /**
+         * 获取弹框数据
+         */
+        void getDialogData();
     }
 }

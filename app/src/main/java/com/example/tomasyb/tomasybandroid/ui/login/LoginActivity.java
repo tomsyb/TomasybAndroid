@@ -162,6 +162,8 @@ public class LoginActivity extends BaseActivity implements KeyboardWatcher.SoftK
                 String psd = mEtPassword.getText().toString().trim();
                 if (ObjectUtils.isNotEmpty(account)&&ObjectUtils.isNotEmpty(psd)){
                     if (account.equals("yanb")&&psd.equals("123456")){
+                        SPUtils.getInstance().put("account",account);
+                        SPUtils.getInstance().put("psd",psd);
                         ARouter.getInstance().build(Constant.ACTIVITY_MAIN).navigation();
                     }else {
                         ToastUtils.showLong("账号或密码错误!");

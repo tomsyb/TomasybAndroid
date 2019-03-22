@@ -55,9 +55,141 @@
                                 android:layout_height="200dp"
                                 app:canLoop="true"
                                 app:autoTurningTime="3000"/>
+                            <!--菜单栏目-->
+                            <RelativeLayout
+                                android:layout_marginTop="-30dp"
+                                android:layout_marginRight="@dimen/dp_10"
+                                android:layout_marginLeft="@dimen/dp_10"
+                                android:background="@drawable/shap_bg_index_menu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:id="@+id/ll_memu_one"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:gravity="center_horizontal"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <ImageView
+                                            android:src="@mipmap/ic_menu_index_dinner"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                        <TextView
+                                            android:layout_marginTop="5dp"
+                                            android:textSize="14sp"
+                                            android:textColor="@color/y_text_normal"
+                                            android:text="美食"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:gravity="center_horizontal"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <ImageView
+                                            android:src="@mipmap/ic_menu_index_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                        <TextView
+                                            android:layout_marginTop="5dp"
+                                            android:textSize="14sp"
+                                            android:textColor="@color/y_text_normal"
+                                            android:text="餐饮"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:gravity="center_horizontal"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <ImageView
+                                            android:src="@mipmap/ic_menu_index_hotel"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                        <TextView
+                                            android:layout_marginTop="5dp"
+                                            android:textSize="14sp"
+                                            android:textColor="@color/y_text_normal"
+                                            android:text="酒店"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_marginTop="@dimen/dp_10"
+                                    android:layout_below="@+id/ll_memu_one"
+                                    android:id="@+id/ll_memu_two"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:gravity="center_horizontal"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <ImageView
+                                            android:src="@mipmap/ic_menu_index_line"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                        <TextView
+                                            android:layout_marginTop="5dp"
+                                            android:textSize="14sp"
+                                            android:textColor="@color/y_text_normal"
+                                            android:text="线路"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:gravity="center_horizontal"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <ImageView
+                                            android:src="@mipmap/ic_menu_index_scenic"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                        <TextView
+                                            android:layout_marginTop="5dp"
+                                            android:textSize="14sp"
+                                            android:textColor="@color/y_text_normal"
+                                            android:text="景区"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:gravity="center_horizontal"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+                                        <ImageView
+                                            android:src="@mipmap/ic_menu_index_specialty"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                        <TextView
+                                            android:layout_marginTop="5dp"
+                                            android:textSize="14sp"
+                                            android:textColor="@color/y_text_normal"
+                                            android:text="特产"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </RelativeLayout>
                             <!--圆形-->
                             <io.agora.yview.img.CircleImageView
-                                android:layout_marginTop="-32dp"
+                                android:id="@+id/img_map"
+                                android:layout_marginTop="32dp"
                                 android:src="@drawable/ic_head_map"
                                 android:layout_width="64dp"
                                 android:layout_height="64dp"
@@ -273,7 +405,7 @@
             android:id="@+id/toolbar"
             style="@style/AppTheme.Toolbar"
             android:layout_marginBottom="0dp"
-            android:background="@android:color/transparent"
+            android:background="@color/y_color_main"
             app:layout_collapseMode="pin">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -299,15 +431,15 @@
                         android:layout_gravity="center"
                         android:maxLines="1"
                         android:text="大锅饭"
-                        android:textColor="@color/y_main_black"
+                        android:textColor="@color/y_main_white"
                         android:textSize="16sp" />
                 </android.support.v7.widget.ButtonBarLayout>
                 <ImageView
                     android:id="@+id/iv_menu"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:src="@mipmap/ic_menu_white" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_setting" />
             </LinearLayout>
         </android.support.v7.widget.Toolbar>
         <io.agora.yview.tablayout.SlidingTabLayout

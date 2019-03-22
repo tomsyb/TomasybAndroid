@@ -3,17 +3,11 @@ package com.example.tomasyb.tomasybandroid.ui.main.index;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.example.tomasyb.baselib.base.mvp.BaseFragment;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.base.mvp.LazyFragment;
-import com.example.tomasyb.baselib.rvadapter.CommonAdapter;
-import com.example.tomasyb.baselib.rvadapter.base.ViewHolder;
-import com.example.tomasyb.baselib.yadapter.decoration.DividerItemDecoration;
+import com.example.tomasyb.baselib.rvadapter.DividerItemDecoration;
 import com.example.tomasyb.tomasybandroid.R;
 import com.example.tomasyb.tomasybandroid.ui.main.index.adapter.IndexVpAdapter;
 import com.example.tomasyb.tomasybandroid.ui.main.index.bean.IndexVpBean;
@@ -22,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * 功能

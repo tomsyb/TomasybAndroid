@@ -16,4 +16,5 @@ public class Common {
         return collection == null ? 0 : collection.size();
     }
 
+
 }

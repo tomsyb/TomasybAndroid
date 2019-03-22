@@ -83,6 +83,7 @@ public class InterviewListFragment extends BaseFragment{
     }
 
     private void initAdapter() {
+
         mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         mComAdapter = new CommonAdapter<InterviewListEty.DatasBean>(getActivity(),R.layout.item_interview_main_list,mList) {
             @Override

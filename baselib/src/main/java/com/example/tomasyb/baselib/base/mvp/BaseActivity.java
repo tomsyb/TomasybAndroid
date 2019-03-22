@@ -26,7 +26,7 @@ import butterknife.Unbinder;
 public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatActivity implements IBaseView {
     protected P presenter;
     public Context mContext;
-    public Unbinder mUnbinder;//黄油刀
+    public Unbinder mUnbinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,16 +39,19 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
         this.initView();
     }
 
-    //---------------------------------------------------------------------子类实现
-    public abstract int getLayoutId();//获取布局ID
-    public abstract void initView();//初始化
-    public abstract P initPresenter();//初始化Presenter
+    // 获取布局ID
+    public abstract int getLayoutId();
+    // 初始化
+    public abstract void initView();
+    // 初始化Presenter
+    public abstract P initPresenter();
 
     /**
      * 设置布局前设置
      */
     public void doBeforeSetContentView() {
-        AppManager.getAppManager().addActivity(this);//添加Activity到堆栈
+        // 添加Activity到堆栈
+        AppManager.getAppManager().addActivity(this);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.main));
     }
 
@@ -57,9 +60,11 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
      */
     @Override
     protected void onDestroy() {
-        AppManager.getAppManager().removeActivity(this);//将当前activity移除管理栈
+        // 将当前activity移除管理栈
+        AppManager.getAppManager().removeActivity(this);
         if (presenter !=null){
-            presenter.detach();//在presenter中解绑释放view
+            // 在presenter中解绑释放view
+            presenter.detach();
             presenter = null;
         }
         if (mUnbinder !=null){

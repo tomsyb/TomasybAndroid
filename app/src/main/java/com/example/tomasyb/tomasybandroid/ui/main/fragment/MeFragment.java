@@ -49,7 +49,8 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
  * @since JDK 1.8
  */
 
-public class MeFragment extends BaseFragment implements TranslucentScrollView.TranslucentChangedListener{
+public class MeFragment extends BaseFragment implements TranslucentScrollView
+        .TranslucentChangedListener {
 
 
     @BindView(R.id.fab1)
@@ -80,8 +81,6 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
     ImageView mImgBg;
 
 
-
-
     @Override
     protected int getLayoutId() {
         return R.layout.fg_main_me;
@@ -94,7 +93,8 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
 
     @Override
     protected void initView(View view, @Nullable Bundle savedInstanceState) {
-        //MultiTransformation multi = new MultiTransformation(new BlurTransformation(25),new CropCircleTransformation());//模糊和圆一起
+        MultiTransformation multi = new MultiTransformation(new BlurTransformation(25), new
+                CropCircleTransformation());//模糊和圆一起
         /**
          * GlideApp使用这个必须先加入
          */
@@ -130,9 +130,6 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
     }
 
 
-
-
-
     @Override
     public void showLoadingDialog(String msg) {
 
@@ -144,8 +141,8 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
     }
 
 
-    @OnClick({R.id.fab1, R.id.fab2, R.id.fab3, R.id.fab4, R.id.fab5,R.id.ll_share
-    ,R.id.ll_tablayout,R.id.ll_interview,R.id.ll_addressbook})
+    @OnClick({R.id.fab1, R.id.fab2, R.id.fab3, R.id.fab4, R.id.fab5, R.id.ll_share
+            , R.id.ll_tablayout, R.id.ll_interview, R.id.ll_addressbook})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fab1:
@@ -163,7 +160,7 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
             case R.id.ll_share:
                 ActivityUtils.startActivity(ShareLoginMainActivity.class);
                 break;
-                // Tablayout的使用
+            // Tablayout的使用
             case R.id.ll_tablayout:
                 ActivityUtils.startActivity(TabLayoutUseActivity.class);
                 break;
@@ -173,9 +170,12 @@ public class MeFragment extends BaseFragment implements TranslucentScrollView.Tr
             case R.id.ll_addressbook:
                 ActivityUtils.startActivity(AddressBookActivity.class);
                 break;
+            default:
+                break;
 
         }
     }
+
     @Override
     public void onTranslucentChanged(int transAlpha) {
         mActionBar.tvTitle.setVisibility(transAlpha > 48 ? View.VISIBLE : View.GONE);

@@ -1,15 +1,19 @@
 package com.example.tomasyb.tomasybandroid.ui.main.index;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.ButtonBarLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -19,6 +23,8 @@ import com.example.tomasyb.baselib.refresh.SmartRefreshLayout;
 import com.example.tomasyb.baselib.refresh.api.RefreshHeader;
 import com.example.tomasyb.baselib.refresh.api.RefreshLayout;
 import com.example.tomasyb.baselib.refresh.listener.SimpleMultiPurposeListener;
+import com.example.tomasyb.baselib.rvadapter.CommonAdapter;
+import com.example.tomasyb.baselib.rvadapter.base.ViewHolder;
 import com.example.tomasyb.baselib.util.ActivityUtils;
 import com.example.tomasyb.baselib.util.BarUtils;
 import com.example.tomasyb.baselib.util.LogUtils;
@@ -27,21 +33,24 @@ import com.example.tomasyb.baselib.util.SizeUtils;
 import com.example.tomasyb.baselib.util.ToastUtils;
 import com.example.tomasyb.baselib.widget.viewpager.ComFragmentAdapter;
 import com.example.tomasyb.tomasybandroid.R;
+import com.example.tomasyb.tomasybandroid.ui.addressbook.AddressBookActivity;
 import com.example.tomasyb.tomasybandroid.ui.main.CircleFriendsActivity;
 import com.example.tomasyb.tomasybandroid.ui.main.contact.IndexContact;
+import com.example.tomasyb.tomasybandroid.ui.main.entity.IndexMenu;
 import com.example.tomasyb.tomasybandroid.ui.main.index.holder.LocalImageHolderView;
 import com.example.tomasyb.tomasybandroid.ui.main.presenter.IndexPresenter;
+import com.example.tomasyb.tomasybandroid.ui.main.map.MapInfoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.agora.yview.banner.ConvenientBanner;
 import io.agora.yview.banner.holder.CBViewHolderCreator;
 import io.agora.yview.banner.listener.OnItemClickListener;
+import io.agora.yview.dialog.BaseDialog;
 import io.agora.yview.scrollview.JudgeNestedScrollView;
 import io.agora.yview.tablayout.SlidingTabLayout;
 import io.agora.yview.tablayout.listener.OnTabSelectListener;
@@ -81,8 +90,8 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     private final String[] mTitles = {
             "动态", "文章", "问答"
     };
-    Unbinder unbinder;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
+    // 菜单的弹框
+    private BaseDialog mMenuDialog;
 
     private int mOffset = 0;
     private int mScrollY = 0;
@@ -103,7 +112,9 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         initViews();
         initRefreshLayout();
         initBanner();
+        mPresenter.getDialogData();
     }
+
 
     @Override
     protected void initData() {
@@ -183,7 +194,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
             int lastScrollY = 0;
             int h = SizeUtils.dp2px(170);
             int color = ContextCompat.getColor(getActivity().getApplicationContext(), R.color
-                    .y_main_white) & 0x00ffffff;
+                    .y_color_main) & 0x00ffffff;
 
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int
@@ -210,10 +221,13 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
                 }
                 if (scrollY == 0) {
                     //ivBack.setImageResource(R.drawable.back_white);
-                    ivMenu.setImageResource(R.mipmap.ic_menu_black);
+                    //ivMenu.setImageResource(R.mipmap.ic_menu_black);
+                    ivMenu.setVisibility(View.GONE);
+
                 } else {
                     //ivBack.setImageResource(R.drawable.back_black);
-                    ivMenu.setImageResource(R.mipmap.ic_menu_black);
+                    //ivMenu.setImageResource(R.mipmap.ic_menu_black);
+                    ivMenu.setVisibility(View.VISIBLE);
                 }
                 lastScrollY = scrollY;
             }
@@ -221,6 +235,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         buttonBarLayout.setAlpha(0);
         toolbar.setBackgroundColor(0);
         mStatusBar.setBackgroundColor(0);
+        ivMenu.setVisibility(View.GONE);
     }
 
 
@@ -249,7 +264,7 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
 
     @Override
     public void dealWithViewPager() {
-        toolBarPositionY = toolbar.getHeight()+BarUtils.getStatusBarHeight();
+        toolBarPositionY = toolbar.getHeight() + BarUtils.getStatusBarHeight();
         ViewGroup.LayoutParams params = mVp.getLayoutParams();
         params.height = ScreenUtils.getScreenHeight() - toolBarPositionY - mSlidTabLayout
                 .getHeight() + 1;
@@ -263,6 +278,42 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
         fragments.add(IndexOneFragment.getInstance());
         fragments.add(IndexOneFragment.getInstance());
         return fragments;
+    }
+
+    @Override
+    public FragmentActivity getContexts() {
+        return getActivity();
+    }
+
+    @Override
+    public void setDialogData(List<IndexMenu.DataBean> list) {
+        mMenuDialog = new BaseDialog(getActivity());
+        mMenuDialog.contentView(R.layout.dialog_index_menu)
+                .layoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT))
+                .gravity(Gravity.RIGHT | Gravity.TOP)
+                .animType(BaseDialog.AnimInType.RIGHT)
+                .offset((int) ivMenu.getX(), (int) ivMenu.getY())
+                .canceledOnTouchOutside(true);
+        RecyclerView mRv = (RecyclerView)mMenuDialog.findViewById(R.id.dialog_rv);
+        mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRv.setAdapter(new CommonAdapter<IndexMenu.DataBean>(getActivity(),R.layout.item_only_text,list) {
+            @Override
+            protected void convert(ViewHolder holder, IndexMenu.DataBean indexMenu, int position) {
+                holder.setText(R.id.tvCurrent,indexMenu.getName());
+                holder.setOnClickListener(R.id.tvCurrent, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        switch (position){
+                            case 0:
+                                ActivityUtils.startActivity(AddressBookActivity.class);
+                                mMenuDialog.dismiss();
+                                break;
+                        }
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -285,13 +336,20 @@ public class IndexFragment extends BaseFragment<IndexContact.presenter> implemen
     }
 
 
-    @OnClick({R.id.tv_head, R.id.tv_circle_friends})
+    @OnClick({R.id.tv_head, R.id.tv_circle_friends, R.id.iv_menu, R.id.img_map})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_head:
                 break;
             case R.id.tv_circle_friends:
                 ActivityUtils.startActivity(CircleFriendsActivity.class);
+                break;
+            case R.id.iv_menu:
+                mMenuDialog.show();
+                //ActivityUtils.startActivity(AddressBookActivity.class);
+                break;
+            case R.id.img_map:
+                ActivityUtils.startActivity(MapInfoActivity.class);
                 break;
         }
     }

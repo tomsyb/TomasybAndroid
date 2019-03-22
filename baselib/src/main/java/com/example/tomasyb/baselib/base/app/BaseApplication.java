@@ -25,6 +25,7 @@ import java.util.ArrayList;
  * APPLICATION
  */
 public class BaseApplication extends Application {
+
     static {
         //启用矢量图兼容
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -51,23 +52,25 @@ public class BaseApplication extends Application {
             }
         });
     }
-    private static BaseApplication baseApplication;
+    private static BaseApplication mApplication = null;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        baseApplication = this;
+        if (mApplication ==null){
+            mApplication = this;
+        }
         Utils.init(this);
         initLog();
 
     }
 
     public static Context getAppContext() {
-        return baseApplication;
+        return mApplication;
     }
 
     public static Resources getAppResources() {
-        return baseApplication.getResources();
+        return mApplication.getResources();
     }
 
     @Override

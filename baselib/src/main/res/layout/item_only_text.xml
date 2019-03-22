@@ -3,12 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="45dp"
     android:gravity="center_vertical"
-    android:paddingLeft="@dimen/d15"
+    android:orientation="vertical"
     android:background="@android:color/white">
     <TextView
+        android:padding="@dimen/d10"
+        android:textSize="14sp"
         android:id="@+id/tvCurrent"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text="当前：上海"/>
+    <include layout="@layout/include_line_one"/>
 </LinearLayout>

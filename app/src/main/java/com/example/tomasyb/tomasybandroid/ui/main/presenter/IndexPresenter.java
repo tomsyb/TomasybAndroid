@@ -3,10 +3,14 @@ package com.example.tomasyb.tomasybandroid.ui.main.presenter;
 import com.example.tomasyb.baselib.base.mvp.BasePresenter;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
 import com.example.tomasyb.baselib.util.FileUtils;
+import com.example.tomasyb.baselib.util.GsonUtils;
 import com.example.tomasyb.tomasybandroid.R;
+import com.example.tomasyb.tomasybandroid.ui.interview.entity.InterviewListEty;
 import com.example.tomasyb.tomasybandroid.ui.main.contact.IndexContact;
+import com.example.tomasyb.tomasybandroid.ui.main.entity.IndexMenu;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * IndexPresenter
@@ -32,5 +36,20 @@ public class IndexPresenter extends BasePresenter<IndexContact.view> implements 
             localImages.add(FileUtils.getResId("ic_banner_test_" + position, R.drawable.class));
         }
         return localImages;
+    }
+
+    @Override
+    public void getDialogData() {
+        try {
+            String json = GsonUtils.getJson(view.getContexts(), "indexmenu.json");
+            List<IndexMenu.DataBean> mlist = new ArrayList<>();
+            IndexMenu bean = GsonUtils.fromJson(json, IndexMenu.class);
+            for (int i = 0; i < bean.getData().size(); i++) {
+                mlist.add(bean.getData().get(i));
+            }
+            view.setDialogData(mlist);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

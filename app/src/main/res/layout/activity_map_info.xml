@@ -5,25 +5,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tomasyb.tomasybandroid.ui.map.MapInfoActivity">
+    tools:context="com.example.tomasyb.tomasybandroid.ui.main.map.MapInfoActivity">
     <com.amap.api.maps.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <TextView
-        android:layout_marginRight="@dimen/dp_5"
+    <LinearLayout
+        android:layout_marginRight="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_alignParentRight="true"
-        android:paddingBottom="@dimen/dp_5"
-        android:paddingTop="@dimen/dp_5"
-        android:paddingRight="@dimen/dp_5"
-        android:paddingLeft="@dimen/dp_5"
-        android:background="@drawable/shap_solid_black_corners2"
-        android:textColor="@color/y_main_white"
-        android:textSize="@dimen/tv_normal"
-        android:text="成都市"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:gravity="center_horizontal"
+        android:background="@drawable/shap_bg_map_tag"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/img_map_addline"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_map_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <include layout="@layout/include_line_one"/>
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:id="@+id/img_map_clear"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_map_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_alignParentBottom="true"

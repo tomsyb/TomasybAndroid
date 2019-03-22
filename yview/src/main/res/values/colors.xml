@@ -13,5 +13,6 @@
     <color name="y_space_gray">#F5F5F5</color>
     <color name="y_gray_light">#DDDDDD</color>
     <color name="y_line_gray">#eeeeee</color>
+    <color name="y_color_line">#eeeeee</color>
 
 </resources>
