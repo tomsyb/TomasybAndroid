@@ -3,8 +3,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    buildToolsVersion rootProject.ext.buildToolsVersion
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion '27.0.3'
+    compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.tomasyb.tomasybandroid"
         minSdkVersion rootProject.ext.minSdkVersion
