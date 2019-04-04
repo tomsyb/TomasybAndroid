@@ -58,7 +58,7 @@ dependencies {
      * Rxjava2和Retrofit2
      */
     compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava2Version"
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxandroid:'+ rootProject.ext.rxandroid
 
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit2Version"
     compile "com.squareup.retrofit2:converter-scalars:$rootProject.ext.retrofit2Version"

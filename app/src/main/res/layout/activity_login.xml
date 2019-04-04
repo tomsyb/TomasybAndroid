@@ -108,6 +108,8 @@
 
 
             <EditText
+                android:cursorVisible="true"
+                android:textCursorDrawable="@drawable/shap_edittext_show"
                 android:id="@+id/et_password"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
