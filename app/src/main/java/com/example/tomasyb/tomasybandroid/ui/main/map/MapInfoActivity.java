@@ -44,8 +44,7 @@ public class MapInfoActivity extends BaseActivity<MapContact.presenter> implemen
     ViewPager mapVp;
 
     // 图片集合
-    int[] iconIds = {R.drawable.img_map_card1, R.drawable.img_map_card2, R.drawable.img_map_card3,
-            R.drawable.img_map_card4};
+    int[] iconIds = {R.drawable.img_map_card1, R.drawable.img_map_card2, R.drawable.img_map_card3};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -204,8 +203,8 @@ public class MapInfoActivity extends BaseActivity<MapContact.presenter> implemen
     @Override
     public void setTitlePage() {
         List<Integer> dataList = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            dataList.add(iconIds[i % iconIds.length]);
+        for (int i = 0; i < 3; i++) {
+            dataList.add(iconIds[i]);
         }
         BaseVPAdapter<Integer> baseVPAdapter = new BaseVPAdapter<Integer>(this, R.layout
                 .item_map_viewpager, dataList) {
