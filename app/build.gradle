@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 //greendao数据库配置
 apply plugin: 'org.greenrobot.greendao'
-
 android {
     buildToolsVersion '27.0.3'
     compileSdkVersion 26
@@ -81,4 +80,5 @@ dependencies {
     implementation project(':yshare')
     implementation project(':yzxing')
     implementation project(':yweb')
+    implementation project(':work-login')
 }

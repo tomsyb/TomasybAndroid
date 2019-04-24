@@ -4,13 +4,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.Button;
 
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.daqsoft.work_login.Login2Activity;
+import com.daqsoft.work_login.LoginActivity;
 import com.example.tomasyb.baselib.base.mvp.BaseActivity;
 import com.example.tomasyb.baselib.base.mvp.IBasePresenter;
+import com.example.tomasyb.baselib.util.ActivityUtils;
 import com.example.tomasyb.baselib.util.ObjectUtils;
 import com.example.tomasyb.baselib.util.SPUtils;
 import com.example.tomasyb.baselib.util.StatusBarUtil;
-import com.example.tomasyb.tomasybandroid.common.Constant;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -39,13 +40,14 @@ public class SplashActivity extends BaseActivity {
                     break;
                 // 跳转到主界面
                 case 1:
-                    if (isHaveAccount){
-                        ARouter.getInstance().build(Constant.ACTIVITY_MAIN).navigation();
-                    }else {
-                        ARouter.getInstance().build(Constant.ACTIVITY_LOGIN)
-                                .withTransition(R.anim.slide_in_bottom,R.anim.slide_out_bottom)
-                                .navigation(SplashActivity.this);
-                    }
+                    ActivityUtils.startActivity(com.daqsoft.work_login.MainActivity.class);
+//                    if (isHaveAccount){
+//                        ARouter.getInstance().build(Constant.ACTIVITY_MAIN).navigation();
+//                    }else {
+//                        ARouter.getInstance().build(Constant.ACTIVITY_LOGIN)
+//                                .withTransition(R.anim.slide_in_bottom,R.anim.slide_out_bottom)
+//                                .navigation(SplashActivity.this);
+//                    }
                     finish();
                     break;
             }

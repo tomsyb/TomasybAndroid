@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.daqsoft.work_login">
+
+    <application>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Login2Activity" />
+        <activity android:name=".MainActivity"></activity>
+    </application>
+
+</manifest>
